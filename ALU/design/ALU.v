@@ -5,6 +5,8 @@
 `include "./include/sim_ver/DW02_mult.v"
 `include "./include/sim_ver/DW_div.v"
 
+//Added verilog
+
 
 
 module ALU (ID_EX_Instr, ALU_out);
