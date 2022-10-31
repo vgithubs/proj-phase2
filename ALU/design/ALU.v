@@ -278,6 +278,8 @@ case(ID_EX_Instr[0:5])
 		// LOAD, STORE: begin
 			// ALU_out <= ID_EX_A + ID_EX_Imm;
 		// end
+
+		//Extra comment
 		
 	end
 endcase
