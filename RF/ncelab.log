@@ -1,0 +1,38 @@
+ncelab(64): 15.20-s079: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
+TOOL:	ncelab(64)	15.20-s079: Started on Oct 31, 2022 at 00:02:44 PDT
+ncelab
+    -ACCESS +rwc
+    -NCFATAL INVSUP
+    -NCFATAL CUNOTB
+    -ERRORMAX 5
+    -UPDATE
+    -MESSAGES
+    -TIMESCALE 1ns/10ps
+    -LIBVERBOSE
+    work.tb_reg_file
+
+	Elaborating the design hierarchy:
+Resolving design unit 'reg_file' at 'tb_reg_file.rf1'.
+		Caching library 'work' ....... Done
+	library: 'work' views: 'module' -> found
+Resolved design unit 'reg_file' at 'tb_reg_file.rf1' to 'work.reg_file:module'.
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		work.reg_file:module <0x19e49d2c>
+			streams:   9, words: 15782
+		work.tb_reg_file:module <0x251689f2>
+			streams:  11, words:  9163
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                  2       2
+		Registers:               12      12
+		Scalar wires:             4       -
+		Vectored wires:           6       -
+		Always blocks:            3       3
+		Initial blocks:           2       2
+		Pseudo assignments:       8       8
+		Simulation timescale:  10ps
+	Writing initial simulation snapshot: work.tb_reg_file:module
+TOOL:	ncelab(64)	15.20-s079: Exiting on Oct 31, 2022 at 00:02:44 PDT  (total: 00:00:00)

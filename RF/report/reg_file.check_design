@@ -1,0 +1,16 @@
+ 
+****************************************
+check_design summary:
+Version:     K-2015.06-SP5-5
+Date:        Sun Oct 30 23:22:30 2022
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                      2
+    Unconnected ports (LINT-28)                                     2
+--------------------------------------------------------------------------------
+
+Warning: In design 'reg_file', port 'addr_r1[5]' is not connected to any nets. (LINT-28)
+Warning: In design 'reg_file', port 'addr_r2[5]' is not connected to any nets. (LINT-28)
+1
