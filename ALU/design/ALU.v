@@ -535,6 +535,6 @@ case(Op_code)
 
 		//Extra comment
 		
-		//Load, store, branch, nop pending
+		//Load, store, branch, nop pending, in each case for width decide for default
 	end
 endcase

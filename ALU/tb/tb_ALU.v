@@ -51,12 +51,123 @@ module tb_ALU;
 		R_ins = 6'b000101;
 		WW = 10;
 
-		//
+		//VADD WW field is 10, 32 bit Operand width, 
+		#10;
 		Op_code = 6'b101010;
 		rA_64bit_val = 64'hFFFFFFFF_00000000;
-		rB_64bit_val = 64'd14;
-		R_ins = 6'b000101;
+		rB_64bit_val = 64'h00000000_11111111;
+		R_ins = 6'b000110;
 		WW = 10;
+
+		//VADD WW field is 00, 8 bit Operand width, 
+		#10;
+		Op_code = 6'b101010;
+		rA_64bit_val = 64'hFFFFFFFF_FFFFFFFF;
+		rB_64bit_val = 64'h00000000_11111111;
+		R_ins = 6'b000110;
+		WW = 10;
+
+		//VSUB WW field is 10, 32 bit Operand width,
+		#10; 
+		Op_code = 6'b101010;
+		rA_64bit_val = 64'hFFFFFFFF_FFFFFFFF;
+		rB_64bit_val = 64'h0F0F0F0F_11111111;
+		R_ins = 6'b000111;
+		WW = 10;
+
+		//VSUB WW field is 11, 64 bit Operand width,
+		#10;
+		Op_code = 6'b101010;
+		rA_64bit_val = 64'hFFFFFFFF_FFFFFFFF;
+		rB_64bit_val = 64'h00000000_11111111;
+		R_ins = 6'b000111;
+		WW = 11;
+
+		//VMULEU rA[0:15] = FF00 and rB[0:15] = 0002, rA[32:47] =  FFFF, rB[32:47] = 000F,   o/p is ALU[0:31] = 1FE0016, ALU[32:63] = EFFF1
+		#10;
+		Op_code = 6'b101010;
+		rA_64bit_val = 64'hFF000000_FFFFFFFF;		
+		rB_64bit_val = 64'h00020000_000F0001;
+		R_ins = 6'b001000;
+		WW = 01;
+
+		//VMULEU o/p 400 , WW is 10 32 bit
+		#10;
+		Op_code = 6'b101010;
+		rA_64bit_val = 64'd20;		
+		rB_64bit_val = 64'd20;
+		R_ins = 6'b001000;
+		WW = 10;
+
+		//VMULOU, WW is 01,  16 bit
+		#10;
+		Op_code = 6'b101010;
+		rA_64bit_val = 64'hFF000000_FFFFFFFF;		
+		rB_64bit_val = 64'h00020000_000F0001;
+		R_ins = 6'b001001;
+		WW = 01;
+
+		//VMULOU, WW is 10, 32 bit
+		#10;
+		Op_code = 6'b101010;
+		rA_64bit_val = 64'd20;		
+		rB_64bit_val = 64'd20;
+		R_ins = 6'b001001;
+		WW = 10;
+		
+
+		//VSLL
+
+		//VSRL
+
+		//VSRA
+
+		//VRTTH, First 32 bits are now last 32 bits
+		#10;
+		Op_code = 6'b101010;
+		rA_64bit_val = 64'hFFFFFFFF_00000000;		
+		rB_64bit_val = 64'd20;
+		R_ins = 6'b001101;
+		WW = 11;
+
+		//VDIV check 8 bits result, pending for divide by zero case
+		#10;
+		Op_code = 6'b101010;
+		rA_64bit_val = 64'hFF00FF00_FF00FF00;		
+		rB_64bit_val = 64'h11221122_44444444;
+		R_ins = 6'b001110;
+		WW = 00;
+		
+		//VMOD
+		#10;
+		Op_code = 6'b101010;
+		rA_64bit_val = 64'd102;		
+		rB_64bit_val = 64'd10;
+		R_ins = 6'b001111;
+		WW = 11;
+		
+		//VSQEU
+		#10;
+		Op_code = 6'b101010;
+		rA_64bit_val = 64'h00000040_00000001;		
+		rB_64bit_val = 64'd10;
+		R_ins = 6'b010000;
+		WW = 11;
+
+		//VSQOU	
+		#10;
+		Op_code = 6'b101010;
+		rA_64bit_val = 64'h00000040_00000001;		
+		rB_64bit_val = 64'd10;
+		R_ins = 6'b010001;
+		WW = 11;
+
+		//VSQRT
+		Op_code = 6'b101010;
+		rA_64bit_val = 64'h00000040_00000001;		
+		rB_64bit_val = 64'd10;
+		R_ins = 6'b010010;
+		WW = 11;
 
 		#20 $finish;
 	end
