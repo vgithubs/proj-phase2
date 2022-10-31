@@ -280,6 +280,7 @@ case(ID_EX_Instr[0:5])
 		// end
 
 		//Extra comment
+		//Extra comment 2
 		
 	end
 endcase
