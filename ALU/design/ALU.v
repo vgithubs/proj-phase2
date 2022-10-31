@@ -26,108 +26,108 @@ case(ID_EX_Instr[0:5])
 	
 		case(ID_EX_Instr[26:31])	
 			VAND: begin
-				ALU_out[0:63] <= rA& rB;
+				ALU_out[0:63] <= rA & rB;
 			end
 			
 			VOR: begin
-				ALU_out[0:63] <= rA| rB;
+				ALU_out[0:63] <= rA | rB;
 			end
 			
 			VXOR: begin
-				ALU_out[0:63] <= rA^ rB;
+				ALU_out[0:63] <= rA ^ rB;
 			end
 			
 			VNOT: begin
-				ALU_out[0:63] <= ~ID_EX_A;
+				ALU_out[0:63] <= ~rA;
 			end
 			
 			VMOV: begin
-				ALU_out[0:63] <= ID_EX_A;
+				ALU_out[0:63] <= rA;
 			end
 				
 				
 			VADD: begin											
 				case(ID_EX_Instr[24:25])						//Depending on WW field
-					Width_8: 	ALU_out[0:7] <= ID_EX_A[0:7] + rB[0:7];
-								ALU_out[8:15] <= ID_EX_A[8:15] + rB[8:15];
-								ALU_out[16:23] <= ID_EX_A[16:23] + rB[16:23];
-								ALU_out[24:31] <= ID_EX_A[24:31]+ rB[24:31];
-								ALU_out[32:39] <= ID_EX_A[32:39] + rB[32:39];
-								ALU_out[40:47] <= ID_EX_A[40:47] + rB[40:47];
-								ALU_out[48:55] <= ID_EX_A[48:55] + rB[48:55];
-								ALU_out[56:63] <= ID_EX_A[56:63] + rB[56:63];
+					Width_8: 	ALU_out[0:7] <= rA[0:7] + rB[0:7];
+								ALU_out[8:15] <= rA[8:15] + rB[8:15];
+								ALU_out[16:23] <= rA[16:23] + rB[16:23];
+								ALU_out[24:31] <= rA[24:31]+ rB[24:31];
+								ALU_out[32:39] <= rA[32:39] + rB[32:39];
+								ALU_out[40:47] <= rA[40:47] + rB[40:47];
+								ALU_out[48:55] <= rA[48:55] + rB[48:55];
+								ALU_out[56:63] <= rA[56:63] + rB[56:63];
 								
-					Width_16:	ALU_out[0:15] <= ID_EX_A[0:15] + rB[0:15];
-								ALU_out[16:31] <= ID_EX_A[16:31] + rB[16:31];
-								ALU_out[32:47] <= ID_EX_A[32:47] + rB[32:47];
-								ALU_out[48:63] <= ID_EX_A[48:63] + rB[48:63];
+					Width_16:	ALU_out[0:15] <= rA[0:15] + rB[0:15];
+								ALU_out[16:31] <= rA[16:31] + rB[16:31];
+								ALU_out[32:47] <= rA[32:47] + rB[32:47];
+								ALU_out[48:63] <= rA[48:63] + rB[48:63];
 					
 					
 					
-					Width_32:	ALU_out[0:31] <= ID_EX_A[0:31] + rB[0:31];
-								ALU_out[32:63] <= ID_EX_A[32:63] + rB[32:63];
+					Width_32:	ALU_out[0:31] <= rA[0:31] + rB[0:31];
+								ALU_out[32:63] <= rA[32:63] + rB[32:63];
 					
 					
 					
-					Width_64:	ALU_out[0:63] <= ID_EX_A[0:63] + rB[0:63];
+					Width_64:	ALU_out[0:63] <= rA[0:63] + rB[0:63];
 					
 				endcase
 			end
 			
 			VSUB: begin											
 				case(ID_EX_Instr[24:25])						//Depending on WW field					//Check if to add designware module for 2's complement, also check if carry is discarded?????
-					Width_8: 	ALU_out[0:7] <= ID_EX_A[0:7] + (~rB[0:7]) + 1;
-								ALU_out[8:15] <= ID_EX_A[8:15] + (~rB[8:15]) + 1;
-								ALU_out[16:23] <= ID_EX_A[16:23] + (~rB[16:23]) + 1;
-								ALU_out[24:31] <= ID_EX_A[24:31] + (~rB[24:31]) + 1;
-								ALU_out[32:39] <= ID_EX_A[32:39] + (~rB[32:39]) + 1;
-								ALU_out[40:47] <= ID_EX_A[40:47] + (~rB[40:47]) + 1;
-								ALU_out[48:55] <= ID_EX_A[48:55] + (~rB[48:55]) + 1;
-								ALU_out[56:63] <= ID_EX_A[56:63] + (~rB[56:63]) + 1;
+					Width_8: 	ALU_out[0:7] <= rA[0:7] + (~rB[0:7]) + 1;
+								ALU_out[8:15] <= rA[8:15] + (~rB[8:15]) + 1;
+								ALU_out[16:23] <= rA[16:23] + (~rB[16:23]) + 1;
+								ALU_out[24:31] <= rA[24:31] + (~rB[24:31]) + 1;
+								ALU_out[32:39] <= rA[32:39] + (~rB[32:39]) + 1;
+								ALU_out[40:47] <= rA[40:47] + (~rB[40:47]) + 1;
+								ALU_out[48:55] <= rA[48:55] + (~rB[48:55]) + 1;
+								ALU_out[56:63] <= rA[56:63] + (~rB[56:63]) + 1;
 								
-					Width_16:	ALU_out[0:15] <= ID_EX_A[0:15] + (~rB[0:15]) + 1;
-								ALU_out[16:31] <= ID_EX_A[16:31] + (~rB[16:31]) + 1;
-								ALU_out[32:47] <= ID_EX_A[32:47] + (~rB[32:47]) + 1;
-								ALU_out[48:63] <= ID_EX_A[48:63] + (~rB[48:63]) + 1;
+					Width_16:	ALU_out[0:15] <= rA[0:15] + (~rB[0:15]) + 1;
+								ALU_out[16:31] <= rA[16:31] + (~rB[16:31]) + 1;
+								ALU_out[32:47] <= rA[32:47] + (~rB[32:47]) + 1;
+								ALU_out[48:63] <= rA[48:63] + (~rB[48:63]) + 1;
 					
 					
 					
-					Width_32:	ALU_out[0:31] <= ID_EX_A[0:31] + (~rB[0:31]) + 1;
-								ALU_out[32:63] <= ID_EX_A[32:63] + (~rB[32:63]) + 1;
+					Width_32:	ALU_out[0:31] <= rA[0:31] + (~rB[0:31]) + 1;
+								ALU_out[32:63] <= rA[32:63] + (~rB[32:63]) + 1;
 					
 					
 					
-					Width_64:	ALU_out[0:63] <= ID_EX_A[0:63] + (~rB[0:63]) + 1;
+					Width_64:	ALU_out[0:63] <= rA[0:63] + (~rB[0:63]) + 1;
 					
 				endcase
 			end
 			
 			VMULEU: begin
 				case(ID_EX_Instr[24:25])
-					Width_8:    ALU_out[0:15] <= ID_EX_A[0:7] * rB[0:7];
-								ALU_out[16:31] <= ID_EX_A[16:23] * rB[16:23];
-								ALU_out[32:47] <= ID_EX_A[32:39] * rB[32:39];
-								ALU_out[48:63] <= ID_EX_A[48:54] * rB[48:54];
+					Width_8:    ALU_out[0:15] <= rA[0:7] * rB[0:7];
+								ALU_out[16:31] <= rA[16:23] * rB[16:23];
+								ALU_out[32:47] <= rA[32:39] * rB[32:39];
+								ALU_out[48:63] <= rA[48:54] * rB[48:54];
 								
 					
-					Width_16: 	ALU_out[0:31] <= ID_EX_A[0:15] * rB[0:15];
-								ALU_out[32:63] <= ID_EX_A[32:47] * rB[32:47];
+					Width_16: 	ALU_out[0:31] <= rA[0:15] * rB[0:15];
+								ALU_out[32:63] <= rA[32:47] * rB[32:47];
 								
-					Width_32:	ALU_out[0:63] <= ID_EX_A[0:31] * rB[0:31];
+					Width_32:	ALU_out[0:63] <= rA[0:31] * rB[0:31];
 				endcase
 			end
 			
 			VMULOU: begin
 				case(ID_EX_Instr[24:25])
-					Width_8:    ALU_out[0:15] <= ID_EX_A[8:15] * rB[8:15];
-								ALU_out[16:31] <= ID_EX_A[24:31] * rB[24:31];
-								ALU_out[32:47] <= ID_EX_A[40:47] * rB[40:47];
-								ALU_out[48:63] <= ID_EX_A[55:63] * rB[55:63];
+					Width_8:    ALU_out[0:15] <= rA[8:15] * rB[8:15];
+								ALU_out[16:31] <= rA[24:31] * rB[24:31];
+								ALU_out[32:47] <= rA[40:47] * rB[40:47];
+								ALU_out[48:63] <= rA[55:63] * rB[55:63];
 					
-					Width_16:	ALU_out[0:31] <= ID_EX_A[16:31] * rB[16:31];
-								ALU_out[32:63] <= ID_EX_A[48:63] * rB[48:63];
+					Width_16:	ALU_out[0:31] <= rA[16:31] * rB[16:31];
+								ALU_out[32:63] <= rA[48:63] * rB[48:63];
 								
-					Width_32:	ALU_out[0:63] <= ID_EX_A[32:63] * rB[32:63];				//Width_64 is not possible as 64x64 multiplication not supported
+					Width_32:	ALU_out[0:63] <= rA[32:63] * rB[32:63];				//Width_64 is not possible as 64x64 multiplication not supported
 				endcase
 				
 			end
@@ -155,24 +155,24 @@ case(ID_EX_Instr[0:5])
 			
 			VRTTH: begin	
 				case(ID_EX_Instr[24:25])
-					Width_8:	ALU_out[0:7] <= {ID_EX_A[4:7], ID_EX_A[0:3]};
-								ALU_out[8:15] <= {ID_EX_A[12:15], ID_EX_A[8:11]};
-								ALU_out[16:23] <= {ID_EX_A[20:23], ID_EX_A[16:19]};
-								ALU_out[24:31] <= {ID_EX_A[28:31], ID_EX_A[24:27]};
-								ALU_out[32:39] <= {ID_EX_A[36:39], ID_EX_A[32:35]};
-								ALU_out[40:47] <= {ID_EX_A[44:47], ID_EX_A[40:43]};
-								ALU_out[48:55] <= {ID_EX_A[52:55], ID_EX_A[48:51]};
-								ALU_out[56:63] <= {ID_EX_A[60:63], ID_EX_A[56:59]};
+					Width_8:	ALU_out[0:7] <= {rA[4:7], rA[0:3]};
+								ALU_out[8:15] <= {rA[12:15], rA[8:11]};
+								ALU_out[16:23] <= {rA[20:23], rA[16:19]};
+								ALU_out[24:31] <= {rA[28:31], rA[24:27]};
+								ALU_out[32:39] <= {rA[36:39], rA[32:35]};
+								ALU_out[40:47] <= {rA[44:47], rA[40:43]};
+								ALU_out[48:55] <= {rA[52:55], rA[48:51]};
+								ALU_out[56:63] <= {rA[60:63], rA[56:59]};
 						
-					Width_16:	ALU_out[0:15] <= {ID_EX_A[8:15], ID_EX_A[0:7]};
-								ALU_out[16:31] <= {ID_EX_A[24:31], ID_EX_A[16:23]};
-								ALU_out[32:47] <= {ID_EX_A[40:47], ID_EX_A[32:39]};
-								ALU_out[48:63] <= {ID_EX_A[56:63], ID_EX_A[48:55]};
+					Width_16:	ALU_out[0:15] <= {rA[8:15], rA[0:7]};
+								ALU_out[16:31] <= {rA[24:31], rA[16:23]};
+								ALU_out[32:47] <= {rA[40:47], rA[32:39]};
+								ALU_out[48:63] <= {rA[56:63], rA[48:55]};
 							'
-					Width_32:	ALU_out[0:31] <= {ID_EX_A[16:31], ID_EX_A[0:15]};
-								ALU_out[32:63] <= {ID_EX_A[48:63], ID_EX_A[32:47]};
+					Width_32:	ALU_out[0:31] <= {rA[16:31], rA[0:15]};
+								ALU_out[32:63] <= {rA[48:63], rA[32:47]};
 							
-					Width_64: 	ALU_out[0:63] <= {ID_EX_A[32:63], ID_EX_A[0:31]};
+					Width_64: 	ALU_out[0:63] <= {rA[32:63], rA[0:31]};
 					
 				endcase
 				
@@ -181,28 +181,28 @@ case(ID_EX_Instr[0:5])
 			
 			VDIV: begin				//USE DESIGNWARE and divide by 0 condition pending
 				case(ID_EX_Instr[24:25])
-					Width_8: 	ALU_out[0:7] <= ID_EX_A[0:7] / rB[0:7];
-								ALU_out[8:15] <= ID_EX_A[8:15] / rB[8:15];
-								ALU_out[16:23] <= ID_EX_A[16:23] / rB[16:23];
-								ALU_out[24:31] <= ID_EX_A[24:31] / rB[24:31];
-								ALU_out[32:39] <= ID_EX_A[32:39] / rB[32:39];
-								ALU_out[40:47] <= ID_EX_A[40:47] / rB[40:47];
-								ALU_out[48:55] <= ID_EX_A[48:55] / rB[48:55];
-								ALU_out[56:63] <= ID_EX_A[56:63] / rB[56:63];
+					Width_8: 	ALU_out[0:7] <= rA[0:7] / rB[0:7];
+								ALU_out[8:15] <= rA[8:15] / rB[8:15];
+								ALU_out[16:23] <= rA[16:23] / rB[16:23];
+								ALU_out[24:31] <= rA[24:31] / rB[24:31];
+								ALU_out[32:39] <= rA[32:39] / rB[32:39];
+								ALU_out[40:47] <= rA[40:47] / rB[40:47];
+								ALU_out[48:55] <= rA[48:55] / rB[48:55];
+								ALU_out[56:63] <= rA[56:63] / rB[56:63];
 								
-					Width_16:	ALU_out[0:15] <= ID_EX_A[0:15] / rB[0:15];
-								ALU_out[16:31] <= ID_EX_A[16:31] / rB[16:31];
-								ALU_out[32:47] <= ID_EX_A[32:47] / rB[32:47];
-								ALU_out[48:63] <= ID_EX_A[48:63] / rB[48:63];
+					Width_16:	ALU_out[0:15] <= rA[0:15] / rB[0:15];
+								ALU_out[16:31] <= rA[16:31] / rB[16:31];
+								ALU_out[32:47] <= rA[32:47] / rB[32:47];
+								ALU_out[48:63] <= rA[48:63] / rB[48:63];
 					
 					
 					
-					Width_32:	ALU_out[0:31] <= ID_EX_A[0:31] / rB[0:31];
-								ALU_out[32:63] <= ID_EX_A[32:63] / rB[32:63];
+					Width_32:	ALU_out[0:31] <= rA[0:31] / rB[0:31];
+								ALU_out[32:63] <= rA[32:63] / rB[32:63];
 				
 				
 				
-					Width_64:	ALU_out[0:63] <= ID_EX_A[0:63] / rB[0:63];
+					Width_64:	ALU_out[0:63] <= rA[0:63] / rB[0:63];
 					
 				endcase
 				
@@ -210,56 +210,56 @@ case(ID_EX_Instr[0:5])
 			
 			VMOD: begin
 				case(ID_EX_Instr[24:25])
-					Width_8: 	ALU_out[0:7] <= ID_EX_A[0:7] % rB[0:7];
-								ALU_out[8:15] <= ID_EX_A[8:15] % rB[8:15];
-								ALU_out[16:23] <= ID_EX_A[16:23] % rB[16:23];
-								ALU_out[24:31] <= ID_EX_A[24:31] % rB[24:31];
-								ALU_out[32:39] <= ID_EX_A[32:39] % rB[32:39];
-								ALU_out[40:47] <= ID_EX_A[40:47] % rB[40:47];
-								ALU_out[48:55] <= ID_EX_A[48:55] % rB[48:55];
-								ALU_out[56:63] <= ID_EX_A[56:63] % rB[56:63];
-								ALU_out[16:31] <= ID_EX_A[16:31] % rB[16:31];
-								ALU_out[32:47] <= ID_EX_A[32:47] % rB[32:47];
-								ALU_out[48:63] <= ID_EX_A[48:63] % rB[48:63];
+					Width_8: 	ALU_out[0:7] <= rA[0:7] % rB[0:7];
+								ALU_out[8:15] <= rA[8:15] % rB[8:15];
+								ALU_out[16:23] <= rA[16:23] % rB[16:23];
+								ALU_out[24:31] <= rA[24:31] % rB[24:31];
+								ALU_out[32:39] <= rA[32:39] % rB[32:39];
+								ALU_out[40:47] <= rA[40:47] % rB[40:47];
+								ALU_out[48:55] <= rA[48:55] % rB[48:55];
+								ALU_out[56:63] <= rA[56:63] % rB[56:63];
+								ALU_out[16:31] <= rA[16:31] % rB[16:31];
+								ALU_out[32:47] <= rA[32:47] % rB[32:47];
+								ALU_out[48:63] <= rA[48:63] % rB[48:63];
 					
 					
 					
-					Width_32:	ALU_out[0:31] <= ID_EX_A[0:31] % rB[0:31];
-								ALU_out[32:63] <= ID_EX_A[32:63] % rB[32:63];
+					Width_32:	ALU_out[0:31] <= rA[0:31] % rB[0:31];
+								ALU_out[32:63] <= rA[32:63] % rB[32:63];
 				
 				
 				
-					Width_64:	ALU_out[0:63] <= ID_EX_A[0:63] % rB[0:63];
+					Width_64:	ALU_out[0:63] <= rA[0:63] % rB[0:63];
 					
 				endcase
 			end
 			
 			VSQEU: begin
 				case(ID_EX_Instr[24:25])
-					Width_8:    ALU_out[0:15] <= ID_EX_A[0:7] * ID_EX_A[0:7];
-								ALU_out[16:31] <= ID_EX_A[16:23] * ID_EX_A[16:23];
-								ALU_out[32:47] <= ID_EX_A[32:39] * ID_EX_A[32:39];
-								ALU_out[48:63] <= ID_EX_A[48:54] * ID_EX_A[48:54];
+					Width_8:    ALU_out[0:15] <= rA[0:7] * rA[0:7];
+								ALU_out[16:31] <= rA[16:23] * rA[16:23];
+								ALU_out[32:47] <= rA[32:39] * rA[32:39];
+								ALU_out[48:63] <= rA[48:54] * rA[48:54];
 								
 					
-					Width_16: 	ALU_out[0:31] <= ID_EX_A[0:15] * ID_EX_A[0:15];
-								ALU_out[32:63] <= ID_EX_A[32:47] * ID_EX_A[32:47];
+					Width_16: 	ALU_out[0:31] <= rA[0:15] * rA[0:15];
+								ALU_out[32:63] <= rA[32:47] * rA[32:47];
 								
-					Width_32:	ALU_out[0:63] <= ID_EX_A[0:31] * ID_EX_A[0:31];
+					Width_32:	ALU_out[0:63] <= rA[0:31] * rA[0:31];
 				endcase
 			end
 				
 			VSQOU: begin
 				case(ID_EX_Instr[24:25])
-					Width_8:    ALU_out[0:15] <= ID_EX_A[8:15] * ID_EX_A[8:15];
-								ALU_out[16:31] <= ID_EX_A[24:31] * ID_EX_A[24:31];
-								ALU_out[32:47] <= ID_EX_A[40:47] * ID_EX_A[40:47];
-								ALU_out[48:63] <= ID_EX_A[55:63] * ID_EX_A[55:63];
+					Width_8:    ALU_out[0:15] <= rA[8:15] * rA[8:15];
+								ALU_out[16:31] <= rA[24:31] * rA[24:31];
+								ALU_out[32:47] <= rA[40:47] * rA[40:47];
+								ALU_out[48:63] <= rA[55:63] * rA[55:63];
 					
-					Width_16:	ALU_out[0:31] <= ID_EX_A[16:31] * ID_EX_A[16:31];
-								ALU_out[32:63] <= ID_EX_A[48:63] * ID_EX_A[48:63];
+					Width_16:	ALU_out[0:31] <= rA[16:31] * rA[16:31];
+								ALU_out[32:63] <= rA[48:63] * rA[48:63];
 								
-					Width_32:	ALU_out[0:63] <= ID_EX_A[32:63] * ID_EX_A[32:63];				//Width_64 is not possible as 64x64 multiplication not supported
+					Width_32:	ALU_out[0:63] <= rA[32:63] * rA[32:63];				//Width_64 is not possible as 64x64 multiplication not supported
 				endcase
 			end
 			
@@ -280,7 +280,6 @@ case(ID_EX_Instr[0:5])
 		// end
 
 		//Extra comment
-		//Extra comment 2
 		
 	end
 endcase
