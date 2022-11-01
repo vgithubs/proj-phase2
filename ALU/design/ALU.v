@@ -213,7 +213,7 @@ wire [0:63] ALU_64bit_sqrt_p1;
 DW_sqrt #(8, 0) dwsq1(rA_8bit_p1, ALU_8bit_sqrt_p1);
 DW_sqrt #(8, 0) dwsq2(rA_8bit_p2, ALU_8bit_sqrt_p2);
 DW_sqrt #(8, 0) dwsq3(rA_8bit_p3, ALU_8bit_sqrt_p3);
-DW_sqrt #(8, 0) dwsq4(rA_8bit_p4 ALU_8bit_sqrt_p4);
+DW_sqrt #(8, 0) dwsq4(rA_8bit_p4, ALU_8bit_sqrt_p4);
 DW_sqrt #(8, 0) dwsq5(rA_8bit_p5, ALU_8bit_sqrt_p5);
 DW_sqrt #(8, 0) dwsq6(rA_8bit_p6, ALU_8bit_sqrt_p6);
 DW_sqrt #(8, 0) dwsq7(rA_8bit_p7, ALU_8bit_sqrt_p7);
