@@ -43,8 +43,8 @@ wire [0:31] ALU_32bit_p1, ALU_32bit_p2;
 reg [0:63] rA_64bit_p1,rB_64bit_p1;
 wire [0:63] ALU_64bit_p1;
 
-//for adder (should this be reg??)
-wire [0:6] carry_in;
+//for adder (should this be reg??) (Yes)
+reg [0:6] carry_in;
 wire [0:6] carry_out;
 
 //8bit adders
