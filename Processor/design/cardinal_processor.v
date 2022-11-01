@@ -1,56 +1,63 @@
-`timescale 1 ns / 10 ps												//wrEn  signal define pending on branch taken//ppp field operation during write back
-module cardinal_processor(Clock, Reset);
+module cardinal_processor(Clock, Reset, Instr_Addr, Instruction, Mem_Addr, Data_Out, Data_In);
+
 input Clock;
 input Reset;
+
+//Imem
+input [0:31] Instruction;
+output [0:7] Instr_Addr;
+
+//Dmem
+input [0:63] Data_In;
+output [0:63] Data_Out;
+output [0:7] Mem_Addr;
 
 parameter   VAND = 6'b000001, VOR =  6'b000010, VXOR = 6'b000011, VNOT = 6'b000100, VMOV = 6'b000101,					//Instruction op_code depending on INSTR[26:31] bits
 			VADD = 6'b000110, VSUB = 6'b000111, VMULEU =   6'b001000, VMULOU = 6'b001001, VSLL = 001010,
 			VSRL = 6'b001011, VSRA = 6'b001100, VRTTH = 6'b001101, VDIV = 6'b001110, VMOD = 6'b001111,
 			VSQEU = 6'b010000, VSQOU = 6'b010001, VSQRT = 6'b010010, VNOP = 6'b000000;
-			
 
 parameter R_ALU = 6'b101010, LOAD = 6'b100000, STORE = 6'b100001, BRANCH_EZ = 6'b100010; BRANCH_NZ = 6'b100011, NOP = 6'b111100;			//Type of instruction depending on INSTR[0:5] bits
 
 parameter Width_8 = 2'b00, Width_16 = 2'b01, Width_32 = 2'b10, Width_64 = 2'b11;  
+
 // IF stage signals
-reg [0:31] PC;		//positive edge triggered synchronous reset, at reset 32'h0000_0000
-
-reg [0:31] i_memory [0:255]; // instruction memory 256x32				//asynchronous instruction memory - Read operations only(Add condition??????)
-
-reg [0:31] IF_ID_Instr;		//IF ID Stage Register
-reg [0:31] IF_ID_PC;
-
-
-wire [0:31] IF_PC_Adder;
-wire [0:31] mux_PC_out;
-
+reg [0:7] PC; 	
+reg [0:31] IF_ID;	//IF ID Stage Register (Incoming Instruction)
+reg WBFF; //Wrist band FF for flushing on stall and branch
+wire [0:7] PC_next; 
+wire [0:7] Next_Addr; //Mux output -> either branch output or PC+1
 	
 //ID stage signals
-reg [0:63] reg_file [0:31] ; // register file 32x64
-reg [0:31] ID_EX_Instr;
-reg [0:63] ID_EX_A;
-reg [0:63] ID_EX_B;
-reg [0:31] ID_EX_Imm;
+wire flush; //Input to WBFF in IF
+reg stall; //HDU_Br output
+reg [0:63] ID_EX_rA_data;
+reg [0:63] ID_EX_rB_data;
+reg [0:15] ID_EX; //[0:4] rD_Addr, [5:9] PPPWW, [10:15] ALU_case;
+	//Control signals
+	//ALU_op - if ALU_op
+	//Reg_Wr - if write to register in WB
+	//Mem_Rd - identify load (required for 2 clk stalls)
+	//Mem_Wr - identify store (load-store dependency check?)
+	//Branch - identify branch
+	//Mem_to_Reg - Choosing between ALU_data or Mem_data in WB stage
+	reg ALU_op, Mem_Rd, Mem_Wr, Branch, Reg_Wr, Mem_to_Reg;
+reg BEZ;
+reg BNEZ;						
+reg_file rf(.clk(clock), .rst(reset), .wr_en(EX_MEM[8]), .ppp(IF_ID[21:23]), .addr_r1(IF_ID[11:15]), .addr_r2(IF_ID[16:20]), 
+	.data_r1(ID_EX_rA_data), .data_r2(ID_EX_rB_data), .in_addr(EX_MEM[3:7]), .in_data(WB_data));
 
-
-wire ID_EX_BEZ_Comp;
-wire ID_EX_BNEZ_Comp;
-wire ID_EX_branch_Comp;
-
-wire [0:31] ID_EX_branch_addr;													//Computed branch address PC + Immediate address							
 
 //EX-MEM stage signals
-reg [0:31] EX_MEM_WB_Instr;
-reg [0:63] EX_MEM_WB_mem_data;
-reg [0:63] EX_MEM_WB_reg_data;
-
-reg [0:63] d_memory [0:255];		//data memory 256x64
-
-
-wire [0:63] ALU_out;
+reg [0:9] EX_MEM; // [0:2] ppp, [3:7] rD_Addr, Reg_Wr, Mem_to_Reg;
+reg [0:63] EX_MEM_mem_data;
+reg [0:63] EX_MEM_reg_data;
 
 //WB stage signals
+reg [0:63] WB_data; //selection betweeen mem_data and reg_data using Mem_to_Reg
 
+
+//Continue past this
 
 
 //ID stage
@@ -67,13 +74,9 @@ assign ID_EX_branch_Comp = ID_EX_BEZ_Comp || ID_EX_BNEZ_Comp;
 
 
 //IF stage																		
-assign IF_PC_Adder = PC + 4;															
-
-assign ID_EX_branch_addr = {{16[IF_ID_Instr[16]}, {IF_ID_Instr[16:31]}} << 2;		//Branch address computation
-
+assign PC_next = PC + 1'b1;														
 assign mux_PC_out = ID_EX_branch_Comp ? ID_EX_branch_addr : IF_ID_PC;		//Mux to select next instruction PC + 4 or the address from BEZ
 
-//assign IF_ID_Instr = i_memory[PC];								//Load asynchronously from instruction memory????????
 
 
 
