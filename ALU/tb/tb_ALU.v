@@ -65,7 +65,7 @@ module tb_ALU;
 		rA_64bit_val = 64'hFFFFFFFF_FFFFFFFF;
 		rB_64bit_val = 64'h00000000_11111111;
 		R_ins = 6'b000110;
-		WW = 10;
+		WW = 00;
 
 	/*	//VSUB WW field is 10, 32 bit Operand width,
 		#10; 
