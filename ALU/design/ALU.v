@@ -161,20 +161,21 @@ always @(*) begin
 									rB_16bit_p1 = rB_64bit_val[0:31];
 									ALU_out[0:31] = ALU_32bit_p1;
 
-									rA_32bit_p2 = rA_32bit_val[32:63];
-									rB_32bit_p2 = rB_32bit_val[32:63];
+									rA_32bit_p2 = rA_64bit_val[32:63];
+									rB_32bit_p2 = rB_64bit_val[32:63];
 									ALU_out[32:63] = ALU_32bit_p2;
 
 						end
 
 						Width_64:	begin
 									
-									rA_64bit_p1 = rA_32bit_val[0:63];
-									rB_64bit_p1 = rB_32bit_val[0:63];
+									rA_64bit_p1 = rA_64bit_val[0:63];
+									rB_64bit_p1 = rB_64bit_val[0:63];
 									ALU_out[0:63] = ALU_64bit_p1;
 						end
 				endcase
 				end
+		endcase
 									
 		end
 	endcase
