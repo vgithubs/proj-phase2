@@ -1,11 +1,13 @@
 `timescale 1 ns / 10 ps						//For  modules [31:0] but giving [0:31] check pending
 
-//`include "./include/sim_ver/DW_sqrt.v"
+
 
 
 `include "./include/sim_ver/DW01_add.v"
 `include "./include/sim_ver/DW_div.v"
+`include "./include/sim_ver/DW_div_function.inc"
 `include "./include/sim_ver/DW02_mult.v"
+`include "./include/sim_ver/DW_sqrt.v"
 
 module ALU(rA_64bit_val, rB_64bit_val, R_ins, Op_code, WW, ALU_out);
 
