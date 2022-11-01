@@ -178,7 +178,7 @@ module tb_ALU;
 		rA_64bit_val = 	64'h00000040_00000001;		
 		rB_64bit_val = 64'd10;
 		R_ins = 6'b010000;
-		WW = 11;
+		WW = 10;
 
 		//VSQOU	
 		#10;
@@ -186,7 +186,7 @@ module tb_ALU;
 		rA_64bit_val = 64'h00000040_00000001;		
 		rB_64bit_val = 64'd10;
 		R_ins = 6'b010001;
-		WW = 11;
+		WW = 10;
 
 		//VSQRT
 		Op_code = 6'b101010;
