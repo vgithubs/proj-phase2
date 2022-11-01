@@ -65,7 +65,7 @@ DW01_add #(32) dwad14(rA_32bit_p2,rB_32bit_p2 ,0,ALU_32bit_p2,CO);
 DW01_add #(64) dwad15(rA_64bit_p1,rB_64bit_p1 ,0,ALU_64bit_p1,CO);
 
 always @(*) begin		
-	
+
 	//case(ID_EX_Instr[0:5])
 	case(Op_code) 
 		R_ALU: begin
@@ -158,7 +158,7 @@ always @(*) begin
 						Width_32:  begin
 									
 									rA_32bit_p1 = rA_64bit_val[0:31];
-									rB_16bit_p1 = rB_64bit_val[0:31];
+									rB_32bit_p1 = rB_64bit_val[0:31];
 									ALU_out[0:31] = ALU_32bit_p1;
 
 									rA_32bit_p2 = rA_64bit_val[32:63];
