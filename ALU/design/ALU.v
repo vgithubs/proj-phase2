@@ -3,7 +3,7 @@
 `include "./include/sim_ver/DW_sqrt.v"
 `include "./include/sim_ver/DW01_add.v"
 `include "./include/sim_ver/DW02_mult.v"
-`include "./include/sim_ver/DW_div.v"
+//`include "./include/sim_ver/DW_div.v"
 
 
 
@@ -21,7 +21,7 @@ parameter   VAND = 6'b000001, VOR =  6'b000010, VXOR = 6'b000011, VNOT = 6'b0001
 			VSQEU = 6'b010000, VSQOU = 6'b010001, VSQRT = 6'b010010, VNOP = 6'b000000;
 			
 
-parameter R_ALU = 6'b101010, LOAD = 6'b100000, STORE = 6'b100001, BRANCH_EZ = 6'b100010; BRANCH_NZ = 6'b100011, NOP = 6'b111100;	//Type of instruction depending on INSTR[0:5] bits Op_code
+parameter R_ALU = 6'b101010, LOAD = 6'b100000, STORE = 6'b100001, BRANCH_EZ = 6'b100010, BRANCH_NZ = 6'b100011, NOP = 6'b111100;	//Type of instruction depending on INSTR[0:5] bits Op_code
 
 parameter Width_8 = 2'b00, Width_16 = 2'b01, Width_32 = 2'b10, Width_64 = 2'b11;  //Width depending on WW
 
