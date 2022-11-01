@@ -30,7 +30,7 @@ parameter Width_8 = 2'b00, Width_16 = 2'b01, Width_32 = 2'b10, Width_64 = 2'b11;
 //For 8bit adders
 reg [0:7] rA_8bit_p1, rB_8bit_p1, rA_8bit_p2, rB_8bit_p2, rA_8bit_p3, rB_8bit_p3,  rA_8bit_p4, rB_8bit_p4, rA_8bit_p5, rB_8bit_p5, rA_8bit_p6, rB_8bit_p6, rA_8bit_p7, rB_8bit_p7, rA_8bit_p8, rB_8bit_p8;
 wire [0:7] ALU_8bit_p1, ALU_8bit_p2, ALU_8bit_p3, ALU_8bit_p4, ALU_8bit_p5, ALU_8bit_p6, ALU_8bit_p7, ALU_8bit_p8;
-
+wire [0:63] ALU_8bit;
 //For 16 bit adders
 reg [0:15] rA_16bit_p1, rB_16bit_p1, rA_16bit_p2, rB_16bit_p2, rA_16bit_p3, rB_16bit_p3,  rA_16bit_p4, rB_16bit_p4;
 wire [0:15] ALU_16bit_p1, ALU_16bit_p2, ALU_16bit_p3, ALU_16bit_p4;
@@ -48,14 +48,15 @@ reg [0:6] carry_in;
 wire [0:6] carry_out;
 
 //8bit adders
-DW01_add #(8) add1 (.A(rA_64bit_val[0:7]), .B(rB_64bit_val[0:7]), .CI(carry_in[0]), .SUM(ALU_out[0:7]), .CO()); //MSB
-DW01_add #(8) add2 (.A(rA_64bit_val[8:15]), .B(rB_64bit_val[8:15]), .CI(carry_in[1]), .SUM(ALU_out[8:15]), .CO(carry_out[0]));
-DW01_add #(8) add3 (.A(rA_64bit_val[16:23]), .B(rB_64bit_val[16:23]), .CI(carry_in[2]), .SUM(ALU_out[16:23]), .CO(carry_out[1]));
-DW01_add #(8) add4 (.A(rA_64bit_val[24:31]), .B(rB_64bit_val[24:31]), .CI(carry_in[3]), .SUM(ALU_out[24:31]), .CO(carry_out[2]));
-DW01_add #(8) add5 (.A(rA_64bit_val[32:39]), .B(rB_64bit_val[32:39]), .CI(carry_in[4]), .SUM(ALU_out[32:39]), .CO(carry_out[3]));
-DW01_add #(8) add6 (.A(rA_64bit_val[40:47]), .B(rB_64bit_val[40:47]), .CI(carry_in[5]), .SUM(ALU_out[40:47]), .CO(carry_out[4]));
-DW01_add #(8) add7 (.A(rA_64bit_val[48:55]), .B(rB_64bit_val[48:55]), .CI(carry_in[6]), .SUM(ALU_out[48:55]), .CO(carry_out[5]));
-DW01_add #(8) add8 (.A(rA_64bit_val[56:63]), .B(rB_64bit_val[56:63]), .CI(0), .SUM(ALU_out[56:63]), .CO(carry_out[6])); //LSB
+//DW01_add #(8) add1 (.A(rA_64bit_val[0:7]), .B(rB_64bit_val[0:7]), .CI(carry_in[0]), .SUM(ALU_out[0:7]), .CO()); //MSB
+DW01_add #(8) add1 (.A(rA_64bit_val[0:7]), .B(rB_64bit_val[0:7]), .CI(carry_in[0]), .SUM(ALU_8bit[0:7]), .CO()); //MSB
+DW01_add #(8) add2 (.A(rA_64bit_val[8:15]), .B(rB_64bit_val[8:15]), .CI(carry_in[1]), .SUM(ALU_8bit[8:15]), .CO(carry_out[0]));
+DW01_add #(8) add3 (.A(rA_64bit_val[16:23]), .B(rB_64bit_val[16:23]), .CI(carry_in[2]), .SUM(ALU_8bit[16:23]), .CO(carry_out[1]));
+DW01_add #(8) add4 (.A(rA_64bit_val[24:31]), .B(rB_64bit_val[24:31]), .CI(carry_in[3]), .SUM(ALU_8bit[24:31]), .CO(carry_out[2]));
+DW01_add #(8) add5 (.A(rA_64bit_val[32:39]), .B(rB_64bit_val[32:39]), .CI(carry_in[4]), .SUM(ALU_8bit[32:39]), .CO(carry_out[3]));
+DW01_add #(8) add6 (.A(rA_64bit_val[40:47]), .B(rB_64bit_val[40:47]), .CI(carry_in[5]), .SUM(ALU_8bit[40:47]), .CO(carry_out[4]));
+DW01_add #(8) add7 (.A(rA_64bit_val[48:55]), .B(rB_64bit_val[48:55]), .CI(carry_in[6]), .SUM(ALU_8bit[48:55]), .CO(carry_out[5]));
+DW01_add #(8) add8 (.A(rA_64bit_val[56:63]), .B(rB_64bit_val[56:63]), .CI(0), .SUM(ALU_8bit[56:63]), .CO(carry_out[6])); //LSB
 
 // //8 8 bit adders
 // DW01_add #(8) dwad1(.rA_8bit_p1,rB_8bit_p1 ,0,ALU_8bit_p1,CO);	
@@ -120,35 +121,43 @@ always @(*) begin
 
 									rA_8bit_p1 = rA_64bit_val[0:7];
 									rB_8bit_p1 = rB_64bit_val[0:7];
-									ALU_out[0:7] = ALU_8bit_p1;
+								//	ALU_out[0:7] = ALU_8bit_p1;
+									ALU_out[0:7] = ALU_8bit[0:7];
 
 									rA_8bit_p2 = rA_64bit_val[8:15];
 									rB_8bit_p2 = rB_64bit_val[8:15];
-									ALU_out[8:15] = ALU_8bit_p2;
+								//	ALU_out[8:15] = ALU_8bit_p2;
+									ALU_out[8:15] = ALU_8bit[8:15];
 
 									rA_8bit_p3 = rA_64bit_val[16:23];
 									rB_8bit_p3 = rB_64bit_val[16:23];
-									ALU_out[16:23] = ALU_8bit_p3;
+								//	ALU_out[16:23] = ALU_8bit_p3;
+									ALU_out[16:23] = ALU_8bit[16:23];
 
 									rA_8bit_p4 = rA_64bit_val[24:31];
 									rB_8bit_p4 = rB_64bit_val[24:31];
-									ALU_out[24:31] = ALU_8bit_p4;
+								//	ALU_out[24:31] = ALU_8bit_p4;
+									ALU_out[24:31] = ALU_8bit[24:31];
 
 									rA_8bit_p5 = rA_64bit_val[32:39];
 									rB_8bit_p5 = rB_64bit_val[32:39];
-									ALU_out[32:39] = ALU_8bit_p5;
+								//	ALU_out[32:39] = ALU_8bit_p5;
+									ALU_out[32:39] = ALU_8bit[32:39];
 
 									rA_8bit_p6 = rA_64bit_val[40:47];
 									rB_8bit_p6 = rB_64bit_val[40:47];
-									ALU_out[40:47] = ALU_8bit_p6;
+								//	ALU_out[40:47] = ALU_8bit_p6;
+									ALU_out[40:47] = ALU_8bit[40:47];
 
 									rA_8bit_p7 = rA_64bit_val[48:55];
 									rB_8bit_p7 = rB_64bit_val[48:55];
-									ALU_out[48:55] = ALU_8bit_p7;
+								//	ALU_out[48:55] = ALU_8bit_p7;
+									ALU_out[48:55] = ALU_8bit[48:55];
 
 									rA_8bit_p8 = rA_64bit_val[56:63];
 									rB_8bit_p8 = rB_64bit_val[56:63];
-									ALU_out[56:63] = ALU_8bit_p8;
+								//	ALU_out[56:63] = ALU_8bit_p8;
+									ALU_out[56:63] = ALU_8bit[56:63];
 
 						end
 
