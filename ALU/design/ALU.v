@@ -1,10 +1,10 @@
 `timescale 1 ns / 10 ps						//For  modules [31:0] but giving [0:31] check pending
 
-`include "./include/sim_ver/DW_sqrt.v"
-`include "./include/sim_ver/DW01_add.v"
-`include "./include/sim_ver/DW02_mult.v"
+//`include "./include/sim_ver/DW_sqrt.v"
+//`include "./include/sim_ver/DW02_mult.v"
 //`include "./include/sim_ver/DW_div.v"
 
+`include "./include/sim_ver/DW01_add.v"
 
 
 module ALU(rA_64bit_val, rB_64bit_val, R_ins, Op_code, WW, ALU_out);
@@ -67,7 +67,7 @@ DW01_add #(64) dwad15(rA_64bit_p1,rB_64bit_p1 ,0,ALU_64bit_p1,CO);
 always @(*) begin		
 
 	//case(ID_EX_Instr[0:5])
-	case(Op_code)
+	case(Op_code) 
 		R_ALU: begin
 			
 			//case(ID_EX_Instr[26:31])	
@@ -226,16 +226,7 @@ always @(*) begin
 				
 				
 				
-				
-			
-																								//Branch and branch not equal to zero what if not taken?
-			// LOAD, STORE: begin
-				// ALU_out = rA_64bit_val+ ID_EX_Imm;
-			// end
-
-			//Extra comment
-			
-			//Load, store, branch, nop pending, in each case for width decide for default								*/
+									
 		end
 	endcase
 end
