@@ -133,14 +133,6 @@ always @(*) begin
 									rB_8bit_p8 = rB_64bit_val[56:63];
 									ALU_out[56:63] = ALU_8bit_p8;
 
-								/*	DW01_add dwad1(rA_64bit_val[0:7],rB_64bit_val[0:7],0,ALU_out[0:7],CO);
-									DW01_add dwad2(rA_64bit_val[8:15],rB_64bit_val[8:15],0,ALU_out[8:15],CO);
-									DW01_add dwad3(rA_64bit_val[16:23],rB_64bit_val[16:23],0,ALU_out[16:23],CO);
-									DW01_add dwad4(rA_64bit_val[24:31],rB_64bit_val[24:31],0,ALU_out[24:31],CO);
-									DW01_add dwad5(rA_64bit_val[32:39],rB_64bit_val[32:39],0,ALU_out[32:39],CO);
-									DW01_add dwad6(rA_64bit_val[40:47],rB_64bit_val[40:47],0,ALU_out[40:47],CO);
-									DW01_add dwad7(rA_64bit_val[48:55],rB_64bit_val[48:55],0,ALU_out[48:55],CO);
-									DW01_add dwad8(rA_64bit_val[56:63],rB_64bit_val[56:63],0,ALU_out[56:63],CO);*/
 						end
 
 						Width_16:	begin
@@ -161,10 +153,6 @@ always @(*) begin
 									rB_16bit_p4 = rB_64bit_val[48:63];
 									ALU_out[48:63] = ALU_16bit_p4;
 
-								/*	DW01_add dwad9(rA_64bit_val[0:15],rB_64bit_val[0:15],0,ALU_out[0:15],CO);
-									DW01_add dwad10(rA_64bit_val[16:31],rB_64bit_val[16:31],0,ALU_out[16:31],CO);
-									DW01_add dwad11(rA_64bit_val[32:47],rB_64bit_val[32:47],0,ALU_out[32:47],CO);
-									DW01_add dwad12(rA_64bit_val[48:63],rB_64bit_val[48:63],0,ALU_out[48:63],CO);*/
 						end
 
 						Width_32:  begin
@@ -177,9 +165,6 @@ always @(*) begin
 									rB_32bit_p2 = rB_32bit_val[32:63];
 									ALU_out[32:63] = ALU_32bit_p2;
 
-								/*	DW01_add dwad13(rA_64bit_val[0:31],rB_64bit_val[0:31],0,ALU_out[0:31],CO);
-									DW01_add dwad14(rA_64bit_val[32:63],rB_64bit_val[32:63],0,ALU_out[32:63],CO);*/
-
 						end
 
 						Width_64:	begin
@@ -187,45 +172,9 @@ always @(*) begin
 									rA_64bit_p1 = rA_32bit_val[0:63];
 									rB_64bit_p1 = rB_32bit_val[0:63];
 									ALU_out[0:63] = ALU_64bit_p1;
-
-
-								/*	DW01_add dwad15(rA_64bit_val[0:63],rB_64bit_val[0:63],0,ALU_out[0:63],CO);*/
 						end
-
-					/*	Width_8: 	begin
-									ALU_out[0:7] = rA_64bit_val[0:7] + rB_64bit_val[0:7];
-									ALU_out[8:15] = rA_64bit_val[8:15] + rB_64bit_val[8:15];
-									ALU_out[16:23] = rA_64bit_val[16:23] + rB_64bit_val[16:23];
-									ALU_out[24:31] = rA_64bit_val[24:31]+ rB_64bit_val[24:31];
-									ALU_out[32:39] = rA_64bit_val[32:39] + rB_64bit_val[32:39];
-									ALU_out[40:47] = rA_64bit_val[40:47] + rB_64bit_val[40:47];
-									ALU_out[48:55] = rA_64bit_val[48:55] + rB_64bit_val[48:55];
-									ALU_out[56:63] = rA_64bit_val[56:63] + rB_64bit_val[56:63];
-						end
-									
-						Width_16:	begin
-									ALU_out[0:15] = rA_64bit_val[0:15] + rB_64bit_val[0:15];
-									ALU_out[16:31] = rA_64bit_val[16:31] + rB_64bit_val[16:31];
-									ALU_out[32:47] = rA_64bit_val[32:47] + rB_64bit_val[32:47];
-									ALU_out[48:63] = rA_64bit_val[48:63] + rB_64bit_val[48:63];
-						end
-						
-						
-						Width_32:	begin
-									ALU_out[0:31] = rA_64bit_val[0:31] + rB_64bit_val[0:31];
-									ALU_out[32:63] = rA_64bit_val[32:63] + rB_64bit_val[32:63];
-						end
-						
-						
-						Width_64:	begin
-									ALU_out[0:63] = rA_64bit_val[0:63] + rB_64bit_val[0:63];
-						end*/
-						
 				endcase
 				end
-				
-				
-				
 									
 		end
 	endcase
