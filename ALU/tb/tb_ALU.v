@@ -93,7 +93,7 @@ module tb_ALU;
 
 
 
-	/*	//VSUB WW field is 10, 32 bit Operand width,
+		//VSUB WW field is 10, 32 bit Operand width,
 		#10; 
 		Op_code = 6'b101010;
 		rA_64bit_val = 64'hFFFFFFFF_FFFFFFFF;
@@ -193,7 +193,7 @@ module tb_ALU;
 		rA_64bit_val = 64'h00000040_00000001;		
 		rB_64bit_val = 64'd10;
 		R_ins = 6'b010010;
-		WW = 11;					*/
+		WW = 11;					
 
 		#20 $finish;
 	end

@@ -1,11 +1,11 @@
 `timescale 1 ns / 10 ps						//For  modules [31:0] but giving [0:31] check pending
 
 //`include "./include/sim_ver/DW_sqrt.v"
-//`include "./include/sim_ver/DW02_mult.v"
-//`include "./include/sim_ver/DW_div.v"
+
 
 `include "./include/sim_ver/DW01_add.v"
-
+`include "./include/sim_ver/DW_div.v"
+`include "./include/sim_ver/DW02_mult.v"
 
 module ALU(rA_64bit_val, rB_64bit_val, R_ins, Op_code, WW, ALU_out);
 
@@ -104,15 +104,15 @@ wire [0:7] ALU_8bit_mult_p1, ALU_8bit_mult_p2, ALU_8bit_mult_p3, ALU_8bit_mult_p
 wire [0:15] ALU_16bit_mult_p1, ALU_16bit_mult_p2;
 wire [0:31] ALU_32bit_mult_p1;
 // 8bit 
-DW02_mult dwm1(rA_8bit_p1,rB_8bit_p1,0,ALU_8bit_mult_p1);
-DW02_mult dwm2(rA_8bit_p2,rB_8bit_p2,0,ALU_8bit_mult_p2);
-DW02_mult dwm3(rA_8bit_p3,rB_8bit_p3,0,ALU_8bit_mult_p3);
-DW02_mult dwm4(rA_8bit_p4,rB_8bit_p4,0,ALU_8bit_mult_p4);
+DW02_mult #(8, 8) dwm1(rA_8bit_p1,rB_8bit_p1,0,ALU_8bit_mult_p1);
+DW02_mult #(8, 8) dwm2(rA_8bit_p2,rB_8bit_p2,0,ALU_8bit_mult_p2);
+DW02_mult #(8, 8) dwm3(rA_8bit_p3,rB_8bit_p3,0,ALU_8bit_mult_p3);
+DW02_mult #(8, 8) dwm4(rA_8bit_p4,rB_8bit_p4,0,ALU_8bit_mult_p4);
 //16 bit
-DW02_mult dwm5(rA_16bit_p1,rB_16bit_p1,0,ALU_16bit_mult_p1);
-DW02_mult dwm6(rA_16bit_p2,rB_16bit_p2,0,ALU_16bit_mult_p2);
+DW02_mult #(16, 16) dwm5(rA_16bit_p1,rB_16bit_p1,0,ALU_16bit_mult_p1);
+DW02_mult #(16, 16) dwm6(rA_16bit_p2,rB_16bit_p2,0,ALU_16bit_mult_p2);
 //32 bit
-DW02_mult dwm7(rA_32bit_p1,rB_32bit_p1,0,ALU_32bit_mult_p1);
+DW02_mult #(32, 32) dwm7(rA_32bit_p1,rB_32bit_p1,0,ALU_32bit_mult_p1);
 
 
 
@@ -122,17 +122,17 @@ wire [0:7] ALU_8bit_mult_odd_p1, ALU_8bit_mult_odd_p2, ALU_8bit_mult_odd_p3, ALU
 wire [0:15] ALU_16bit_mult_odd_p1, ALU_16bit_mult_odd_p2;
 wire [0:31] ALU_32bit_mult_odd_p1;
 //8 bit
-DW02_mult dwm8(rA_8bit_p1,rB_8bit_p1,0,ALU_8bit_mult_odd_p1);
-DW02_mult dwm9(rA_8bit_p2,rB_8bit_p2,0,ALU_8bit_mult_odd_p2);
-DW02_mult dwm10(rA_8bit_p3,rB_8bit_p3,0,ALU_8bit_mult_odd_p3);
-DW02_mult dwm11(rA_8bit_p4,rB_8bit_p4,0,ALU_8bit_mult_odd_p4);	
+DW02_mult #(8, 8) dwm8(rA_8bit_p1,rB_8bit_p1,0,ALU_8bit_mult_odd_p1);
+DW02_mult #(8, 8) dwm9(rA_8bit_p2,rB_8bit_p2,0,ALU_8bit_mult_odd_p2);
+DW02_mult #(8, 8) dwm10(rA_8bit_p3,rB_8bit_p3,0,ALU_8bit_mult_odd_p3);
+DW02_mult #(8, 8) dwm11(rA_8bit_p4,rB_8bit_p4,0,ALU_8bit_mult_odd_p4);	
 
 //16bit
-DW02_mult dwm12(rA_16bit_p1,rB_16bit_p1,0,ALU_16bit_mult_odd_p1);
-DW02_mult dwm13(rA_16bit_p2,rB_16bit_p2,0,ALU_16bit_mult_odd_p2);
+DW02_mult #(16, 16) dwm12(rA_16bit_p1,rB_16bit_p1,0,ALU_16bit_mult_odd_p1);
+DW02_mult #(16, 16) dwm13(rA_16bit_p2,rB_16bit_p2,0,ALU_16bit_mult_odd_p2);
 
 //32 bit
-DW02_mult dwm14(rA_32bit_p1,rB_32bit_p1,0,ALU_32bit_mult_odd_p1);
+DW02_mult #(32, 32) dwm14(rA_32bit_p1,rB_32bit_p1,0,ALU_32bit_mult_odd_p1);
 
 
 
@@ -145,27 +145,27 @@ wire [0:31] ALU_32bit_div_p1, ALU_32bit_div_p2;
 wire [0:63] ALU_64bit_div_p1;
 
 //For  8 bit
-DW_div dwdivi1(rA_8bit_p1,rB_8bit_p1, ALU_8bit_div_p1, remainder, divide_by_0);
-DW_div dwdivi2(rA_8bit_p2,rB_8bit_p2, ALU_8bit_div_p2, remainder, divide_by_0);
-DW_div dwdivi3(rA_8bit_p3,rB_8bit_p3, ALU_8bit_div_p3, remainder, divide_by_0);
-DW_div dwdivi4(rA_8bit_p4,rB_8bit_p4, ALU_8bit_div_p4, remainder, divide_by_0);
-DW_div dwdivi5(rA_8bit_p5,rB_8bit_p5, ALU_8bit_div_p5, remainder, divide_by_0);
-DW_div dwdivi6(rA_8bit_p6,rB_8bit_p6, ALU_8bit_div_p6, remainder, divide_by_0);
-DW_div dwdivi7(rA_8bit_p7,rB_8bit_p7, ALU_8bit_div_p7, remainder, divide_by_0);
-DW_div dwdivi8(rA_8bit_p8,rB_8bit_p8, ALU_8bit_div_p8, remainder, divide_by_0);
+DW_div  #(8, 8, 0, 1) dwdivi1(rA_8bit_p1,rB_8bit_p1, ALU_8bit_div_p1, remainder, divide_by_0);
+DW_div #(8, 8, 0, 1) dwdivi2(rA_8bit_p2,rB_8bit_p2, ALU_8bit_div_p2, remainder, divide_by_0);
+DW_div #(8, 8, 0, 1) dwdivi3(rA_8bit_p3,rB_8bit_p3, ALU_8bit_div_p3, remainder, divide_by_0);
+DW_div #(8, 8, 0, 1) dwdivi4(rA_8bit_p4,rB_8bit_p4, ALU_8bit_div_p4, remainder, divide_by_0);
+DW_div #(8, 8, 0, 1) dwdivi5(rA_8bit_p5,rB_8bit_p5, ALU_8bit_div_p5, remainder, divide_by_0);
+DW_div #(8, 8, 0, 1) dwdivi6(rA_8bit_p6,rB_8bit_p6, ALU_8bit_div_p6, remainder, divide_by_0);
+DW_div #(8, 8, 0, 1) dwdivi7(rA_8bit_p7,rB_8bit_p7, ALU_8bit_div_p7, remainder, divide_by_0);
+DW_div #(8, 8, 0, 1) dwdivi8(rA_8bit_p8,rB_8bit_p8, ALU_8bit_div_p8, remainder, divide_by_0);
 
 //For 16 bit
-DW_div dwdivi9(rA_16bit_p1,rB_16bit_p1, ALU_16bit_div_p1, remainder, divide_by_0);
-DW_div dwdivi10(rA_16bit_p2,rB_16bit_p2, ALU_16bit_div_p2, remainder, divide_by_0);
-DW_div dwdivi11(rA_16bit_p3,rB_16bit_p3, ALU_16bit_div_p3, remainder, divide_by_0);
-DW_div dwdivi12(rA_16bit_p4,rB_16bit_p4, ALU_16bit_div_p4, remainder, divide_by_0);
+DW_div #(16, 16, 0, 1) dwdivi9(rA_16bit_p1,rB_16bit_p1, ALU_16bit_div_p1, remainder, divide_by_0);
+DW_div #(16, 16, 0, 1) dwdivi10(rA_16bit_p2,rB_16bit_p2, ALU_16bit_div_p2, remainder, divide_by_0);
+DW_div #(16, 16, 0, 1) dwdivi11(rA_16bit_p3,rB_16bit_p3, ALU_16bit_div_p3, remainder, divide_by_0);
+DW_div #(16, 16, 0, 1) dwdivi12(rA_16bit_p4,rB_16bit_p4, ALU_16bit_div_p4, remainder, divide_by_0);
 
 //For  32 bit
-DW_div dwdivi13(rA_32bit_p1,rB_32bit_p1, ALU_32bit_div_p1, remainder, divide_by_0);
-DW_div dwdivi14(rA_32bit_p2,rB_32bit_p2, ALU_32bit_div_p2, remainder, divide_by_0);
+DW_div #(32, 32, 0, 1) dwdivi13(rA_32bit_p1,rB_32bit_p1, ALU_32bit_div_p1, remainder, divide_by_0);
+DW_div #(32, 32, 0, 1) dwdivi14(rA_32bit_p2,rB_32bit_p2, ALU_32bit_div_p2, remainder, divide_by_0);
 
 //For 64 bit
-DW_div dwdivi15(rA_64bit_p1,rB_64bit_p1, ALU_64bit_div_p1, remainder, divide_by_0);
+DW_div #(64, 64, 0, 1) dwdivi15(rA_64bit_p1,rB_64bit_p1, ALU_64bit_div_p1, remainder, divide_by_0);
 
 
 //***Square Even***
@@ -174,15 +174,15 @@ wire [0:7] ALU_8bit_sqe_p1, ALU_8bit_sqe_p2, ALU_8bit_sqe_p3, ALU_8bit_sqe_p4;
 wire [0:15] ALU_16bit_sqe_p1, ALU_16bit_sqe_p2;
 wire [0:31] ALU_32bit_sqe_p1;
 //For 8 bit
-DW02_mult dwm15(rA_8bit_p1,rA_8bit_p1,0,ALU_8bit_sqe_p1);
-DW02_mult dwm16(rA_8bit_p2,rA_8bit_p2,0,ALU_8bit_sqe_p2);
-DW02_mult dwm17(rA_8bit_p3,rA_8bit_p3,0,ALU_8bit_sqe_p3);
-DW02_mult dwm18(rA_8bit_p4,rA_8bit_p4,0,ALU_8bit_sqe_p4);
+DW02_mult #(8, 8) dwm15(rA_8bit_p1,rA_8bit_p1,0,ALU_8bit_sqe_p1);
+DW02_mult #(8, 8) dwm16(rA_8bit_p2,rA_8bit_p2,0,ALU_8bit_sqe_p2);
+DW02_mult #(8, 8) dwm17(rA_8bit_p3,rA_8bit_p3,0,ALU_8bit_sqe_p3);
+DW02_mult #(8, 8) dwm18(rA_8bit_p4,rA_8bit_p4,0,ALU_8bit_sqe_p4);
 //For 16 bit
-DW02_mult dwm19(rA_16bit_p1,rA_16bit_p1,0,ALU_16bit_sqe_p1);
-DW02_mult dwm20(rA_16bit_p2,rA_16bit_p2,0,ALU_16bit_sqe_p2);
+DW02_mult #(16, 16) dwm19(rA_16bit_p1,rA_16bit_p1,0,ALU_16bit_sqe_p1);
+DW02_mult #(16, 16) dwm20(rA_16bit_p2,rA_16bit_p2,0,ALU_16bit_sqe_p2);
 //For 32 bit
-DW02_mult dwm21(rA_32bit_p1,rA_32bit_p1,0,ALU_32bit_sqe_p1);
+DW02_mult #(32, 32) dwm21(rA_32bit_p1,rA_32bit_p1,0,ALU_32bit_sqe_p1);
 
 
 //***Square Odd***
@@ -191,15 +191,15 @@ wire [0:7] ALU_8bit_sqo_p1, ALU_8bit_sqo_p2, ALU_8bit_sqo_p3, ALU_8bit_sqo_p4;
 wire [0:15] ALU_16bit_sqo_p1, ALU_16bit_sqo_p2;
 wire [0:31] ALU_32bit_sqo_p1;
 //For 8 bit
-DW02_mult dwm22(rA_8bit_p1,rA_8bit_p1,0,ALU_8bit_sqo_p1);
-DW02_mult dwm23(rA_8bit_p2,rA_8bit_p2,0,ALU_8bit_sqo_p2);
-DW02_mult dwm24(rA_8bit_p3,rA_8bit_p3,0,ALU_8bit_sqo_p3);
-DW02_mult dwm25(rA_8bit_p4,rA_8bit_p4,0,ALU_8bit_sqo_p4);
+DW02_mult #(8, 8) dwm22(rA_8bit_p1,rA_8bit_p1,0,ALU_8bit_sqo_p1);
+DW02_mult #(8, 8) dwm23(rA_8bit_p2,rA_8bit_p2,0,ALU_8bit_sqo_p2);
+DW02_mult #(8, 8) dwm24(rA_8bit_p3,rA_8bit_p3,0,ALU_8bit_sqo_p3);
+DW02_mult #(8, 8) dwm25(rA_8bit_p4,rA_8bit_p4,0,ALU_8bit_sqo_p4);
 //For 16  bit
-DW02_mult dwm26(rA_16bit_p1,rA_16bit_p1,0,ALU_16bit_sqo_p1);
-DW02_mult dwm27(rA_16bit_p2,rA_16bit_p2,0,ALU_16bit_sqo_p2);
+DW02_mult #(16, 16) dwm26(rA_16bit_p1,rA_16bit_p1,0,ALU_16bit_sqo_p1);
+DW02_mult #(16, 16) dwm27(rA_16bit_p2,rA_16bit_p2,0,ALU_16bit_sqo_p2);
 //For 32 bit
-DW02_mult dwm28(rA_32bit_p1,rA_32bit_p1,0,ALU_32bit_sqo_p1);
+DW02_mult #(32, 32) dwm28(rA_32bit_p1,rA_32bit_p1,0,ALU_32bit_sqo_p1);
 
 
 
