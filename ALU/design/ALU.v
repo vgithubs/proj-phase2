@@ -35,7 +35,7 @@ wire [0:15] ALU_16bit_p1, ALU_16bit_p2, ALU_16bit_p3, ALU_16bit_p4;
 
 //For 32 bit adders
 reg [0:31] rA_32bit_p1,rB_32bit_p1, rA_32bit_p2,rB_32bit_p2;
-reg [0:31] ALU_32bit_p1, ALU_32bit_p2; 
+wire [0:31] ALU_32bit_p1, ALU_32bit_p2; 
 
 //For 64 bit adder
 reg [0:63] rA_64bit_p1,rB_64bit_p1;
