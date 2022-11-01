@@ -1,301 +1,88 @@
 ncvlog(64): 15.20-s079: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
-TOOL:	ncvlog(64)	15.20-s079: Started on Oct 31, 2022 at 14:11:46 PDT
+TOOL:	ncvlog(64)	15.20-s079: Started on Nov 01, 2022 at 08:43:12 PDT
 ncvlog
     -STATUS
     -MESSAGES
     -UPDATE
     -INCDIR ./include
     -work work
-    ./design/ALU.v
+    ./tb/tb_clock_syn.v
 
-file: ./design/ALU.v
-	module work.DW_sqrt
+file: ./tb/tb_clock_syn.v
+	module work.AND2X1
 		errors: 0, warnings: 0
-	module work.DW01_add
+	module work.AND2X2
 		errors: 0, warnings: 0
-	module work.DW02_mult
+	module work.AOI21X1
 		errors: 0, warnings: 0
-`include "DW_div_function.inc"
-                             |
-ncvlog: *E,COFILX (./include/sim_ver/DW_div.v,56|29): cannot open include file 'DW_div_function.inc'.
-(`include file: ./include/sim_ver/DW_div.v line 56, file: ./design/ALU.v line 6)
-	module work.DW_div
-		errors: 1, warnings: 0
-parameter R_ALU = 6'b101010, LOAD = 6'b100000, STORE = 6'b100001, BRANCH_EZ = 6'b100010; BRANCH_NZ = 6'b100011, NOP = 6'b111100;	//Type of instruction depending on INSTR[0:5] bits Op_code
-                                                                                                   |
-ncvlog: *E,EXPLPA (./design/ALU.v,24|99): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
-parameter R_ALU = 6'b101010, LOAD = 6'b100000, STORE = 6'b100001, BRANCH_EZ = 6'b100010; BRANCH_NZ = 6'b100011, NOP = 6'b111100;	//Type of instruction depending on INSTR[0:5] bits Op_code
-                                                                                                                    |
-ncvlog: *E,EXPLPA (./design/ALU.v,24|116): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
-								DW01_add dwad1(rA_64bit_val[0:7],rB_64bit_val[0:7],0,ALU_out[0:7],CO);
-								             |
-ncvlog: *E,MISEXX (./design/ALU.v,67|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW01_add dwad2(rA_64bit_val[8:15],rB_64bit_val[8:15],0,ALU_out[8:15],CO);
-								             |
-ncvlog: *E,MISEXX (./design/ALU.v,68|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW01_add dwad3(rA_64bit_val[16:23],rB_64bit_val[16:23],0,ALU_out[16:23],CO);
-								             |
-ncvlog: *E,MISEXX (./design/ALU.v,69|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW01_add dwad4(rA_64bit_val[24:31],rB_64bit_val[24:31],0,ALU_out[24:31],CO);
-								             |
-ncvlog: *E,MISEXX (./design/ALU.v,70|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW01_add dwad5(rA_64bit_val[32:39],rB_64bit_val[32:39],0,ALU_out[32:39],CO);
-								             |
-ncvlog: *E,MISEXX (./design/ALU.v,71|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW01_add dwad6(rA_64bit_val[40:47],rB_64bit_val[40:47],0,ALU_out[40:47],CO);
-								             |
-ncvlog: *E,MISEXX (./design/ALU.v,72|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW01_add dwad7(rA_64bit_val[48:55],rB_64bit_val[48:55],0,ALU_out[48:55],CO);
-								             |
-ncvlog: *E,MISEXX (./design/ALU.v,73|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW01_add dwad8(rA_64bit_val[56:63],rB_64bit_val[56:63],0,ALU_out[56:63],CO);
-								             |
-ncvlog: *E,MISEXX (./design/ALU.v,74|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW01_add dwad9(rA_64bit_val[0:15],rB_64bit_val[0:15],0,ALU_out[0:15],CO);
-								             |
-ncvlog: *E,MISEXX (./design/ALU.v,78|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW01_add dwad10(rA_64bit_val[16:31],rB_64bit_val[16:31],0,ALU_out[16:31],CO);
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,79|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW01_add dwad11(rA_64bit_val[32:47],rB_64bit_val[32:47],0,ALU_out[32:47],CO);
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,80|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW01_add dwad12(rA_64bit_val[48:63],rB_64bit_val[48:63],0,ALU_out[48:63],CO);
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,81|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW01_add dwad13(rA_64bit_val[0:31],rB_64bit_val[0:31],0,ALU_out[0:31],CO);
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,85|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW01_add dwad14(rA_64bit_val[32:63],rB_64bit_val[32:63],0,ALU_out[32:63],CO);
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,86|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW01_add dwad15(rA_64bit_val[0:63],rB_64bit_val[0:63],0,ALU_out[0:63],CO);
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,91|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-							DW01_add dwad16(rA_64bit_val[0:7],~rB_64bit_val[0:7],1,ALU_out[0:7],CO);
-							              |
-ncvlog: *E,MISEXX (./design/ALU.v,131|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-							DW01_add dwad17(rA_64bit_val[8:15],~rB_64bit_val[8:15],1,ALU_out[8:15],CO);
-							              |
-ncvlog: *E,MISEXX (./design/ALU.v,132|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-							DW01_add dwad18(rA_64bit_val[16:23],~rB_64bit_val[16:23],1,ALU_out[16:23],CO);
-							              |
-ncvlog: *E,MISEXX (./design/ALU.v,133|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-							DW01_add dwad19(rA_64bit_val[24:31],~rB_64bit_val[24:31],1,ALU_out[24:31],CO);
-							              |
-ncvlog: *E,MISEXX (./design/ALU.v,134|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-							DW01_add dwad20(rA_64bit_val[32:39],~rB_64bit_val[32:39],1,ALU_out[32:39],CO);
-							              |
-ncvlog: *E,MISEXX (./design/ALU.v,135|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-							DW01_add dwad21(rA_64bit_val[40:47],~rB_64bit_val[40:47],1,ALU_out[40:47],CO);
-							              |
-ncvlog: *E,MISEXX (./design/ALU.v,136|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-							DW01_add dwad22(rA_64bit_val[48:55],~rB_64bit_val[48:55],1,ALU_out[48:55],CO);
-							              |
-ncvlog: *E,MISEXX (./design/ALU.v,137|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-							DW01_add dwad23(rA_64bit_val[56:63],~rB_64bit_val[56:63],1,ALU_out[56:63],CO);
-							              |
-ncvlog: *E,MISEXX (./design/ALU.v,138|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-							DW01_add dwad24(rA_64bit_val[0:15],~rB_64bit_val[0:15],1,ALU_out[0:15],CO);
-							              |
-ncvlog: *E,MISEXX (./design/ALU.v,142|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-							DW01_add dwad25(rA_64bit_val[16:31],~rB_64bit_val[16:31],1,ALU_out[16:31],CO);
-							              |
-ncvlog: *E,MISEXX (./design/ALU.v,143|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-							DW01_add dwad26(rA_64bit_val[32:47],~rB_64bit_val[32:47],1,ALU_out[32:47],CO);
-							              |
-ncvlog: *E,MISEXX (./design/ALU.v,144|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-							DW01_add dwad27(rA_64bit_val[48:63],~rB_64bit_val[48:63],1,ALU_out[48:63],CO);
-							              |
-ncvlog: *E,MISEXX (./design/ALU.v,145|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-							DW01_add dwad28(rA_64bit_val[0:31],~rB_64bit_val[0:31],1,ALU_out[0:31],CO);
-							              |
-ncvlog: *E,MISEXX (./design/ALU.v,149|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-							DW01_add dwad29(rA_64bit_val[32:63],~rB_64bit_val[32:63],1,ALU_out[32:63],CO);
-							              |
-ncvlog: *E,MISEXX (./design/ALU.v,150|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-							DW01_add dwad30(rA_64bit_val[0:63],~rB_64bit_val[0:63],1,ALU_out[0:63],CO);
-							              |
-ncvlog: *E,MISEXX (./design/ALU.v,154|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-						DW02_mult dwm1(rA_64bit_val[0:7],rB_64bit_val[0:7],0,ALU_out[0:15]);
-						             |
-ncvlog: *E,MISEXX (./design/ALU.v,194|19): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-						DW02_mult dwm2(rA_64bit_val[16:23],rB_64bit_val[16:23],0,ALU_out[16:31]);
-						             |
-ncvlog: *E,MISEXX (./design/ALU.v,195|19): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-						DW02_mult dwm3(rA_64bit_val[32:39],rB_64bit_val[32:39],0,ALU_out[32:47]);
-						             |
-ncvlog: *E,MISEXX (./design/ALU.v,196|19): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-						DW02_mult dwm4(rA_64bit_val[48:54],rB_64bit_val[48:54],0,ALU_out[48:63]);	
-						             |
-ncvlog: *E,MISEXX (./design/ALU.v,197|19): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-						DW02_mult dwm5(rA_64bit_val[0:15],rB_64bit_val[0:15],0,ALU_out[0:31]);
-						             |
-ncvlog: *E,MISEXX (./design/ALU.v,201|19): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-						DW02_mult dwm6(rA_64bit_val[32:47],rB_64bit_val[32:47],0,ALU_out[32:63]);
-						             |
-ncvlog: *E,MISEXX (./design/ALU.v,202|19): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-						DW02_mult dwm7(rA_64bit_val[0:31],rB_64bit_val[0:31],0,ALU_out[0:63]);
-						             |
-ncvlog: *E,MISEXX (./design/ALU.v,206|19): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-						DW02_mult dwm8(rA_64bit_val[8:15],rB_64bit_val[8:15],0,ALU_out[0:15]);
-						             |
-ncvlog: *E,MISEXX (./design/ALU.v,233|19): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-						DW02_mult dwm9(rA_64bit_val[24:31],rB_64bit_val[24:31],0,ALU_out[16:31]);
-						             |
-ncvlog: *E,MISEXX (./design/ALU.v,234|19): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-						DW02_mult dwm10(rA_64bit_val[40:47],rB_64bit_val[40:47],0,ALU_out[32:47]);
-						              |
-ncvlog: *E,MISEXX (./design/ALU.v,235|20): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-						DW02_mult dwm11(rA_64bit_val[55:63],rB_64bit_val[55:63],0,ALU_out[48:63]);	
-						              |
-ncvlog: *E,MISEXX (./design/ALU.v,236|20): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-						DW02_mult dwm12(rA_64bit_val[16:31],rB_64bit_val[16:31],0,ALU_out[0:31]);
-						              |
-ncvlog: *E,MISEXX (./design/ALU.v,240|20): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-						DW02_mult dwm13(rA_64bit_val[48:63],rB_64bit_val[48:63],0,ALU_out[32:63]);
-						              |
-ncvlog: *E,MISEXX (./design/ALU.v,241|20): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-						DW02_mult dwm14(rA_64bit_val[32:63],rB_64bit_val[32:63],0,ALU_out[0:63]);
-						              |
-ncvlog: *E,MISEXX (./design/ALU.v,245|20): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_div dwdivi1(rA_64bit_val[0:7], rB_64bit_val[0:7], ALU_out[0:7], remainder, divide_by_0);
-								             |
-ncvlog: *E,MISEXX (./design/ALU.v,327|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_div dwdivi2(rA_64bit_val[8:15], rB_64bit_val[8:15], ALU_out[8:15], remainder, divide_by_0);
-								             |
-ncvlog: *E,MISEXX (./design/ALU.v,328|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_div dwdivi3(rA_64bit_val[16:23], rB_64bit_val[16:23], ALU_out[16:23], remainder, divide_by_0);
-								             |
-ncvlog: *E,MISEXX (./design/ALU.v,329|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_div dwdivi4(rA_64bit_val[24:31], rB_64bit_val[24:31], ALU_out[24:31], remainder, divide_by_0);
-								             |
-ncvlog: *E,MISEXX (./design/ALU.v,330|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_div dwdivi5(rA_64bit_val[32:39], rB_64bit_val[32:39], ALU_out[32:39], remainder, divide_by_0);
-								             |
-ncvlog: *E,MISEXX (./design/ALU.v,331|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_div dwdivi6(rA_64bit_val[40:47], rB_64bit_val[40:47], ALU_out[40:47], remainder, divide_by_0);
-								             |
-ncvlog: *E,MISEXX (./design/ALU.v,332|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_div dwdivi7(rA_64bit_val[48:55], rB_64bit_val[48:55], ALU_out[48:55], remainder, divide_by_0);
-								             |
-ncvlog: *E,MISEXX (./design/ALU.v,333|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_div dwdivi8(rA_64bit_val[56:63], rB_64bit_val[56:63], ALU_out[56:63], remainder, divide_by_0);
-								             |
-ncvlog: *E,MISEXX (./design/ALU.v,334|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_div dwdivi9(rA_64bit_val[0:15], rB_64bit_val[0:15], ALU_out[0:15], remainder, divide_by_0);
-								             |
-ncvlog: *E,MISEXX (./design/ALU.v,338|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_div dwdivi10(rA_64bit_val[16:31], rB_64bit_val[16:31], ALU_out[16:31], remainder, divide_by_0);
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,339|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_div dwdivi11(rA_64bit_val[32:47], rB_64bit_val[32:47], ALU_out[32:47], remainder, divide_by_0);
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,340|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_div dwdivi12(rA_64bit_val[48:63], rB_64bit_val[48:63], ALU_out[48:63], remainder, divide_by_0);
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,341|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_div dwdivi13(rA_64bit_val[0:31], rB_64bit_val[0:31], ALU_out[0:31], remainder, divide_by_0);
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,347|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_div dwdivi14(rA_64bit_val[32:63], rB_64bit_val[32:63], ALU_out[32:63], remainder, divide_by_0);
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,348|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_div dwdivi15(rA_64bit_val[0:63], rB_64bit_val[0:63], ALU_out[0:63], remainder, divide_by_0);
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,353|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW02_mult dwm15(rA_64bit_val[0:7],rA_64bit_val[0:7],0,ALU_out[0:15]);
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,422|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW02_mult dwm16(rA_64bit_val[16:23],rA_64bit_val[16:23],0,ALU_out[16:31]);
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,423|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW02_mult dwm17(rA_64bit_val[32:39],rA_64bit_val[32:39],0,ALU_out[32:47]);
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,424|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW02_mult dwm18(rA_64bit_val[48:54],rA_64bit_val[48:54],0,ALU_out[48:63]);
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,425|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW02_mult dwm19(rA_64bit_val[0:15],rA_64bit_val[0:15],0,ALU_out[0:31]);
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,430|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW02_mult dwm20(rA_64bit_val[32:47],rA_64bit_val[32:47],0,ALU_out[32:63]);
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,431|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW02_mult dwm21(rA_64bit_val[0:31],rA_64bit_val[0:31],0,ALU_out[0:63]);
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,435|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW02_mult dwm22(rA_64bit_val[8:15],rA_64bit_val[8:15],0,ALU_out[0:15]);
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,461|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW02_mult dwm23(rA_64bit_val[24:31],rA_64bit_val[24:31],0,ALU_out[16:31]);
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,462|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW02_mult dwm24(rA_64bit_val[40:47],rA_64bit_val[40:47],0,ALU_out[32:47]);
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,463|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW02_mult dwm25(rA_64bit_val[55:63],rA_64bit_val[55:63],0,ALU_out[48:63]);
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,464|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW02_mult dwm26(rA_64bit_val[16:31],rA_64bit_val[16:31],0,ALU_out[0:31]);
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,468|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW02_mult dwm27(rA_64bit_val[48:63],rA_64bit_val[48:63],0,ALU_out[32:63]);
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,469|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW02_mult dwm28(rA_64bit_val[32:63],rA_64bit_val[32:63],0,ALU_out[0:63]);				//Width_64 is not possible as 64x64 multiplication not supported
-								              |
-ncvlog: *E,MISEXX (./design/ALU.v,473|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-					  			DW_sqrt dwsq1(rA_64bit_val[0:7], ALU_out[0:7]);
-					  			            |
-ncvlog: *E,MISEXX (./design/ALU.v,498|22): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_sqrt dwsq2(rA_64bit_val[8:15], ALU_out[8:15]);
-								            |
-ncvlog: *E,MISEXX (./design/ALU.v,499|20): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_sqrt dwsq3(rA_64bit_val[16:23], ALU_out[16:23]);
-								            |
-ncvlog: *E,MISEXX (./design/ALU.v,500|20): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_sqrt dwsq4(rA_64bit_val[24:31], ALU_out[24:31]);
-								            |
-ncvlog: *E,MISEXX (./design/ALU.v,501|20): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_sqrt dwsq5(rA_64bit_val[32:39], ALU_out[32:39]);
-								            |
-ncvlog: *E,MISEXX (./design/ALU.v,502|20): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_sqrt dwsq6(rA_64bit_val[40:47], ALU_out[40:47]);
-								            |
-ncvlog: *E,MISEXX (./design/ALU.v,503|20): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_sqrt dwsq7(rA_64bit_val[48:55], ALU_out[48:55]);
-								            |
-ncvlog: *E,MISEXX (./design/ALU.v,504|20): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_sqrt dwsq8(rA_64bit_val[56:63], ALU_out[56:63]);
-								            |
-ncvlog: *E,MISEXX (./design/ALU.v,505|20): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_sqrt dwsq9(rA_64bit_val[0:15], ALU_out[0:15]);
-								            |
-ncvlog: *E,MISEXX (./design/ALU.v,511|20): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_sqrt dwsq10(rA_64bit_val[16:31], ALU_out[16:31]);
-								             |
-ncvlog: *E,MISEXX (./design/ALU.v,512|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_sqrt dwsq11(rA_64bit_val[32:47], ALU_out[32:47]);
-								             |
-ncvlog: *E,MISEXX (./design/ALU.v,513|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_sqrt dwsq12(rA_64bit_val[48:63], ALU_out[48:63]);
-								             |
-ncvlog: *E,MISEXX (./design/ALU.v,514|21): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_sqrt dw_sqrt13(rA_64bit_val[0:31], ALU_out[0:31]);	
-								                |
-ncvlog: *E,MISEXX (./design/ALU.v,518|24): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_sqrt dw_sqrt14(rA_64bit_val[32:63], ALU_out[32:63]);
-								                |
-ncvlog: *E,MISEXX (./design/ALU.v,519|24): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-								DW_sqrt dw_sqrt15(rA_64bit_val[0:63], ALU_out[0:63]);
-								                |
-ncvlog: *E,MISEXX (./design/ALU.v,523|24): expecting an '=' or '<=' sign in an assignment [9.2(IEEE)].
-	end
-	  |
-ncvlog: *E,ILLPRI (./design/ALU.v,541|3): illegal expression primary [4.2(IEEE)].
-	module work.ALU
-		errors: 91, warnings: 0
-ncvlog: Memory Usage - 21.4M program + 28.3M data = 49.7M total
-ncvlog: CPU Usage - 0.0s system + 0.0s user = 0.1s total (0.1s, 61.6% cpu)
-TOOL:	ncvlog(64)	15.20-s079: Exiting on Oct 31, 2022 at 14:11:46 PDT  (total: 00:00:00)
+	module work.AOI22X1
+		errors: 0, warnings: 0
+	module work.BUFX2
+		errors: 0, warnings: 0
+	module work.BUFX4
+		errors: 0, warnings: 0
+	module work.CLKBUF1
+		errors: 0, warnings: 0
+	module work.CLKBUF2
+		errors: 0, warnings: 0
+	module work.CLKBUF3
+		errors: 0, warnings: 0
+	module work.DFFNEGX1
+		errors: 0, warnings: 0
+	module work.DFFPOSX1
+		errors: 0, warnings: 0
+	module work.DFFSR
+		errors: 0, warnings: 0
+	module work.FAX1
+		errors: 0, warnings: 0
+	module work.HAX1
+		errors: 0, warnings: 0
+	module work.INVX1
+		errors: 0, warnings: 0
+	module work.INVX2
+		errors: 0, warnings: 0
+	module work.INVX4
+		errors: 0, warnings: 0
+	module work.INVX8
+		errors: 0, warnings: 0
+	module work.LATCH
+		errors: 0, warnings: 0
+	module work.MUX2X1
+		errors: 0, warnings: 0
+	module work.NAND2X1
+		errors: 0, warnings: 0
+	module work.NAND3X1
+		errors: 0, warnings: 0
+	module work.NOR2X1
+		errors: 0, warnings: 0
+	module work.NOR3X1
+		errors: 0, warnings: 0
+	module work.OAI21X1
+		errors: 0, warnings: 0
+	module work.OAI22X1
+		errors: 0, warnings: 0
+	module work.OR2X1
+		errors: 0, warnings: 0
+	module work.OR2X2
+		errors: 0, warnings: 0
+	module work.TBUFX1
+		errors: 0, warnings: 0
+	module work.TBUFX2
+		errors: 0, warnings: 0
+	module work.XNOR2X1
+		errors: 0, warnings: 0
+	module work.XOR2X1
+		errors: 0, warnings: 0
+	primitive work.udp_dff
+		errors: 0, warnings: 0
+	primitive work.udp_tlat
+		errors: 0, warnings: 0
+	primitive work.udp_rslat
+		errors: 0, warnings: 0
+	primitive work.udp_mux2
+		errors: 0, warnings: 0
+	module work.tb_syn
+		errors: 0, warnings: 0
+ncvlog: Memory Usage - 21.4M program + 28.3M data = 49.6M total
+ncvlog: CPU Usage - 0.0s system + 0.0s user = 0.1s total (0.1s, 59.1% cpu)
+TOOL:	ncvlog(64)	15.20-s079: Exiting on Nov 01, 2022 at 08:43:12 PDT  (total: 00:00:00)

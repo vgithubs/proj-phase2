@@ -51,13 +51,13 @@ module tb_ALU;
 		R_ins = 6'b000101;
 		WW = 10;
 
-		//VADD WW field is 10, 32 bit Operand width, 
+		//VADD WW field is 00, 
 		#10;
 		Op_code = 6'b101010;
-		rA_64bit_val = 64'hFFFFFFFF_00000000;
-		rB_64bit_val = 64'h00000000_11111111;
+		rA_64bit_val = 64'd5;
+		rB_64bit_val = 64'd10;
 		R_ins = 6'b000110;
-		WW = 10;
+		WW = 00;
 
 		//VADD WW field is 00, 8 bit Operand width, 
 		#10;
@@ -65,9 +65,35 @@ module tb_ALU;
 		rA_64bit_val = 64'hFFFFFFFF_FFFFFFFF;
 		rB_64bit_val = 64'h00000000_11111111;
 		R_ins = 6'b000110;
+		WW = 00;
+
+		//VADD WW field is 01, 16 bit Operand width, 
+		#10;
+		Op_code = 6'b101010;
+		rA_64bit_val = 64'hFFFFFFFF_FFFFFFFF;
+		rB_64bit_val = 64'h00000000_11111111;
+		R_ins = 6'b000110;
+		WW = 01;
+
+		//VADD WW field is 10, 32 bit Operand width, 
+		#10;
+		Op_code = 6'b101010;
+		rA_64bit_val = 64'hFFFFFFFF_FFFFFFFF;
+		rB_64bit_val = 64'h00000000_11111111;
+		R_ins = 6'b000110;
 		WW = 10;
 
-	/*	//VSUB WW field is 10, 32 bit Operand width,
+		//VADD WW field is 11, 64 bit Operand width, 
+		#10;
+		Op_code = 6'b101010;
+		rA_64bit_val = 64'hFFFFFFFF_FFFFFFFF;
+		rB_64bit_val = 64'h00000000_11111111;
+		R_ins = 6'b000110;
+		WW = 11;
+
+
+
+		//VSUB WW field is 10, 32 bit Operand width,
 		#10; 
 		Op_code = 6'b101010;
 		rA_64bit_val = 64'hFFFFFFFF_FFFFFFFF;
@@ -149,7 +175,7 @@ module tb_ALU;
 		//VSQEU
 		#10;
 		Op_code = 6'b101010;
-		rA_64bit_val = 64'h00000040_00000001;		
+		rA_64bit_val = 	64'h00000040_00000001;		
 		rB_64bit_val = 64'd10;
 		R_ins = 6'b010000;
 		WW = 11;
@@ -167,7 +193,7 @@ module tb_ALU;
 		rA_64bit_val = 64'h00000040_00000001;		
 		rB_64bit_val = 64'd10;
 		R_ins = 6'b010010;
-		WW = 11;					*/
+		WW = 11;					
 
 		#20 $finish;
 	end
