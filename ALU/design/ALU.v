@@ -25,6 +25,7 @@ parameter R_ALU = 6'b101010, LOAD = 6'b100000, STORE = 6'b100001, BRANCH_EZ = 6'
 
 parameter Width_8 = 2'b00, Width_16 = 2'b01, Width_32 = 2'b10, Width_64 = 2'b11;  //Width depending on WW
 
+//****ADDER****
 //For 8bit adders
 reg [0:7] rA_8bit_p1, rB_8bit_p1, rA_8bit_p2, rB_8bit_p2, rA_8bit_p3, rB_8bit_p3,  rA_8bit_p4, rB_8bit_p4, rA_8bit_p5, rB_8bit_p5, rA_8bit_p6, rB_8bit_p6, rA_8bit_p7, rB_8bit_p7, rA_8bit_p8, rB_8bit_p8;
 wire [0:7] ALU_8bit_p1, ALU_8bit_p2, ALU_8bit_p3, ALU_8bit_p4, ALU_8bit_p5, ALU_8bit_p6, ALU_8bit_p7, ALU_8bit_p8;
@@ -63,6 +64,172 @@ DW01_add #(32) dwad14(rA_32bit_p2,rB_32bit_p2 ,0,ALU_32bit_p2,CO);
 
 //For 64 bit adder
 DW01_add #(64) dwad15(rA_64bit_p1,rB_64bit_p1 ,0,ALU_64bit_p1,CO);
+
+
+//****SUBTRACT****
+//For 8  16  32 64
+wire [0:7] ALU_8bit_sub_p1, ALU_8bit_sub_p2, ALU_8bit_sub_p3, ALU_8bit_sub_p4, ALU_8bit_sub_p5, ALU_8bit_sub_p6, ALU_8bit_sub_p7, ALU_8bit_sub_p8;
+wire [0:15] ALU_16bit_sub_p1, ALU_16bit_sub_p2, ALU_16bit_sub_p3, ALU_16bit_sub_p4;
+wire [0:31] ALU_32bit_sub_p1, ALU_32bit_sub_p2;
+wire [0:63] ALU_64bit_sub_p1;
+
+//8 8 bit subtract
+DW01_add #(8) dwad16(rA_8bit_p1,~rB_8bit_p1,1,ALU_8bit_sub_p1,CO);
+DW01_add #(8) dwad17(rA_8bit_p2,~rB_8bit_p2,1,ALU_8bit_sub_p2,CO);
+DW01_add #(8) dwad18(rA_8bit_p3,~rB_8bit_p3,1,ALU_8bit_sub_p3,CO);
+DW01_add #(8) dwad19(rA_8bit_p4,~rB_8bit_p4,1,ALU_8bit_sub_p4,CO);
+DW01_add #(8) dwad20(rA_8bit_p5,~rB_8bit_p5,1,ALU_8bit_sub_p5,CO);
+DW01_add #(8) dwad21(rA_8bit_p6,~rB_8bit_p6,1,ALU_8bit_sub_p6,CO);
+DW01_add #(8) dwad22(rA_8bit_p7,~rB_8bit_p7,1,ALU_8bit_sub_p7,CO);
+DW01_add #(8) dwad23(rA_8bit_p8,~rB_8bit_p8,1,ALU_8bit_sub_p8,CO);
+
+//4 16 bit subtract
+DW01_add #(16) dwad24(rA_16bit_p1,~rB_16bit_p1,1,ALU_16bit_sub_p1,CO);
+DW01_add #(16) dwad25(rA_16bit_p2,~rB_16bit_p2,1,ALU_16bit_sub_p2,CO);
+DW01_add #(16) dwad26(rA_16bit_p3,~rB_16bit_p3,1,ALU_16bit_sub_p3,CO);
+DW01_add #(16) dwad27(rA_16bit_p4,~rB_16bit_p4,1,ALU_16bit_sub_p4,CO);
+
+//2 32 bit subtract
+DW01_add #(32) dwad28(rA_32bit_p1,~rB_32bit_p1,1,ALU_32bit_sub_p1,CO);
+DW01_add #(32) dwad29(rA_32bit_p2,~rB_32bit_p2,1,ALU_32bit_sub_p2,CO);
+
+//For 64 bit subtract
+DW01_add #(64) dwad30(rA_64bit_p1,~rB_64bit_p1,1,ALU_64bit_sub_p1,CO);
+
+
+//***Multiply Even****
+
+//For 8  16  32
+wire [0:7] ALU_8bit_mult_p1, ALU_8bit_mult_p2, ALU_8bit_mult_p3, ALU_8bit_mult_p4;
+wire [0:15] ALU_16bit_mult_p1, ALU_16bit_mult_p2;
+wire [0:31] ALU_32bit_mult_p1;
+// 8bit 
+DW02_mult dwm1(rA_8bit_p1,rB_8bit_p1,0,ALU_8bit_mult_p1);
+DW02_mult dwm2(rA_8bit_p2,rB_8bit_p2,0,ALU_8bit_mult_p2);
+DW02_mult dwm3(rA_8bit_p3,rB_8bit_p3,0,ALU_8bit_mult_p3);
+DW02_mult dwm4(rA_8bit_p4,rB_8bit_p4,0,ALU_8bit_mult_p4);
+//16 bit
+DW02_mult dwm5(rA_16bit_p1,rB_16bit_p1,0,ALU_16bit_mult_p1);
+DW02_mult dwm6(rA_16bit_p2,rB_16bit_p2,0,ALU_16bit_mult_p2);
+//32 bit
+DW02_mult dwm7(rA_32bit_p1,rB_32bit_p1,0,ALU_32bit_mult_p1);
+
+
+
+//***Multiply Odd***
+//For 8  16  32
+wire [0:7] ALU_8bit_mult_odd_p1, ALU_8bit_mult_odd_p2, ALU_8bit_mult_odd_p3, ALU_8bit_mult_odd_p4;
+wire [0:15] ALU_16bit_mult_odd_p1, ALU_16bit_mult_odd_p2;
+wire [0:31] ALU_32bit_mult_odd_p1;
+//8 bit
+DW02_mult dwm8(rA_8bit_p1,rB_8bit_p1,0,ALU_8bit_mult_odd_p1);
+DW02_mult dwm9(rA_8bit_p2,rB_8bit_p2,0,ALU_8bit_mult_odd_p2);
+DW02_mult dwm10(rA_8bit_p3,rB_8bit_p3,0,ALU_8bit_mult_odd_p3);
+DW02_mult dwm11(rA_8bit_p4,rB_8bit_p4,0,ALU_8bit_mult_odd_p4);	
+
+//16bit
+DW02_mult dwm12(rA_16bit_p1,rB_16bit_p1,0,ALU_16bit_mult_odd_p1);
+DW02_mult dwm13(rA_16bit_p2,rB_16bit_p2,0,ALU_16bit_mult_odd_p2);
+
+//32 bit
+DW02_mult dwm14(rA_32bit_p1,rB_32bit_p1,0,ALU_32bit_mult_odd_p1);
+
+
+
+//***Division***
+
+//For 8 16 32 64 bits
+wire [0:7] ALU_8bit_div_p1, ALU_8bit_div_p2, ALU_8bit_div_p3, ALU_8bit_div_p4, ALU_8bit_div_p5, ALU_8bit_div_p6, ALU_8bit_div_p7, ALU_8bit_div_p8;
+wire [0:15] ALU_16bit_div_p1, ALU_16bit_div_p2, ALU_16bit_div_p3, ALU_16bit_div_p4;
+wire [0:31] ALU_32bit_div_p1, ALU_32bit_div_p2;
+wire [0:63] ALU_64bit_div_p1;
+
+//For  8 bit
+DW_div dwdivi1(rA_8bit_p1,rB_8bit_p1, ALU_8bit_div_p1, remainder, divide_by_0);
+DW_div dwdivi2(rA_8bit_p2,rB_8bit_p2, ALU_8bit_div_p2, remainder, divide_by_0);
+DW_div dwdivi3(rA_8bit_p3,rB_8bit_p3, ALU_8bit_div_p3, remainder, divide_by_0);
+DW_div dwdivi4(rA_8bit_p4,rB_8bit_p4, ALU_8bit_div_p4, remainder, divide_by_0);
+DW_div dwdivi5(rA_8bit_p5,rB_8bit_p5, ALU_8bit_div_p5, remainder, divide_by_0);
+DW_div dwdivi6(rA_8bit_p6,rB_8bit_p6, ALU_8bit_div_p6, remainder, divide_by_0);
+DW_div dwdivi7(rA_8bit_p7,rB_8bit_p7, ALU_8bit_div_p7, remainder, divide_by_0);
+DW_div dwdivi8(rA_8bit_p8,rB_8bit_p8, ALU_8bit_div_p8, remainder, divide_by_0);
+
+//For 16 bit
+DW_div dwdivi9(rA_16bit_p1,rB_16bit_p1, ALU_16bit_div_p1, remainder, divide_by_0);
+DW_div dwdivi10(rA_16bit_p2,rB_16bit_p2, ALU_16bit_div_p2, remainder, divide_by_0);
+DW_div dwdivi11(rA_16bit_p3,rB_16bit_p3, ALU_16bit_div_p3, remainder, divide_by_0);
+DW_div dwdivi12(rA_16bit_p4,rB_16bit_p4, ALU_16bit_div_p4, remainder, divide_by_0);
+
+//For  32 bit
+DW_div dwdivi13(rA_32bit_p1,rB_32bit_p1, ALU_32bit_div_p1, remainder, divide_by_0);
+DW_div dwdivi14(rA_32bit_p2,rB_32bit_p2, ALU_32bit_div_p2, remainder, divide_by_0);
+
+//For 64 bit
+DW_div dwdivi15(rA_64bit_p1,rB_64bit_p1, ALU_64bit_div_p1, remainder, divide_by_0);
+
+
+//***Square Even***
+//For 8  16  32
+wire [0:7] ALU_8bit_sqe_p1, ALU_8bit_sqe_p2, ALU_8bit_sqe_p3, ALU_8bit_sqe_p4;
+wire [0:15] ALU_16bit_sqe_p1, ALU_16bit_sqe_p2;
+wire [0:31] ALU_32bit_sqe_p1;
+//For 8 bit
+DW02_mult dwm15(rA_8bit_p1,rA_8bit_p1,0,ALU_8bit_sqe_p1);
+DW02_mult dwm16(rA_8bit_p2,rA_8bit_p2,0,ALU_8bit_sqe_p2);
+DW02_mult dwm17(rA_8bit_p3,rA_8bit_p3,0,ALU_8bit_sqe_p3);
+DW02_mult dwm18(rA_8bit_p4,rA_8bit_p4,0,ALU_8bit_sqe_p4);
+//For 16 bit
+DW02_mult dwm19(rA_16bit_p1,rA_16bit_p1,0,ALU_16bit_sqe_p1);
+DW02_mult dwm20(rA_16bit_p2,rA_16bit_p2,0,ALU_16bit_sqe_p2);
+//For 32 bit
+DW02_mult dwm21(rA_32bit_p1,rA_32bit_p1,0,ALU_32bit_sqe_p1);
+
+
+//***Square Odd***
+//For 8  16  32
+wire [0:7] ALU_8bit_sqo_p1, ALU_8bit_sqo_p2, ALU_8bit_sqo_p3, ALU_8bit_sqo_p4;
+wire [0:15] ALU_16bit_sqo_p1, ALU_16bit_sqo_p2;
+wire [0:31] ALU_32bit_sqo_p1;
+//For 8 bit
+DW02_mult dwm22(rA_8bit_p1,rA_8bit_p1,0,ALU_8bit_sqo_p1);
+DW02_mult dwm23(rA_8bit_p2,rA_8bit_p2,0,ALU_8bit_sqo_p2);
+DW02_mult dwm24(rA_8bit_p3,rA_8bit_p3,0,ALU_8bit_sqo_p3);
+DW02_mult dwm25(rA_8bit_p4,rA_8bit_p4,0,ALU_8bit_sqo_p4);
+//For 16  bit
+DW02_mult dwm26(rA_16bit_p1,rA_16bit_p1,0,ALU_16bit_sqo_p1);
+DW02_mult dwm27(rA_16bit_p2,rA_16bit_p2,0,ALU_16bit_sqo_p2);
+//For 32 bit
+DW02_mult dwm28(rA_32bit_p1,rA_32bit_p1,0,ALU_32bit_sqo_p1);
+
+
+
+//***Square Root***
+//For 8 16 32 64 bits
+wire [0:7] ALU_8bit_sqrt_p1, ALU_8bit_sqrt_p2, ALU_8bit_sqrt_p3, ALU_8bit_sqrt_p4, ALU_8bit_sqrt_p5, ALU_8bit_sqrt_p6, ALU_8bit_sqrtv_p7, ALU_8bit_sqrt_p8;
+wire [0:15] ALU_16bit_sqrt_p1, ALU_16bit_sqrt_p2, ALU_16bit_sqrt_p3, ALU_16bit_sqrt_p4;
+wire [0:31] ALU_32bit_sqrt_p1, ALU_32bit_sqrt_p2;
+wire [0:63] ALU_64bit_sqrt_p1;
+//For 8 bit
+DW_sqrt #(8, 0) dwsq1(rA_8bit_p1, ALU_8bit_sqrt_p1);
+DW_sqrt #(8, 0) dwsq2(rA_8bit_p2, ALU_8bit_sqrt_p2);
+DW_sqrt #(8, 0) dwsq3(rA_8bit_p3, ALU_8bit_sqrt_p3);
+DW_sqrt #(8, 0) dwsq4(rA_8bit_p4 ALU_8bit_sqrt_p4);
+DW_sqrt #(8, 0) dwsq5(rA_8bit_p5, ALU_8bit_sqrt_p5);
+DW_sqrt #(8, 0) dwsq6(rA_8bit_p6, ALU_8bit_sqrt_p6);
+DW_sqrt #(8, 0) dwsq7(rA_8bit_p7, ALU_8bit_sqrt_p7);
+DW_sqrt #(8, 0) dwsq8(rA_8bit_p8, ALU_8bit_sqrt_p8);
+//For 16 bit
+DW_sqrt #(16, 0) dwsq9(rA_16bit_p1, ALU_16bit_sqrt_p1);
+DW_sqrt #(16, 0) dwsq10(rA_16bit_p2, ALU_16bit_sqrt_p2);
+DW_sqrt #(16, 0) dwsq11(rA_16bit_p3, ALU_16bit_sqrt_p3);
+DW_sqrt #(16, 0) dwsq12(rA_16bit_p4, ALU_16bit_sqrt_p4);
+//For 32 bit
+DW_sqrt #(32, 0) dw_sqrt13(rA_32bit_p1, ALU_32bit_sqrt_p1);	
+DW_sqrt #(32, 0) dw_sqrt14(rA_32bit_p2, ALU_32bit_sqrt_p2);
+//For 64 bit
+DW_sqrt #(64, 0) dw_sqrt15(rA_64bit_p1, ALU_64bit_sqrt_p1);
+
+
 
 always @(*) begin		
 
@@ -175,6 +342,512 @@ always @(*) begin
 						end
 				endcase
 				end
+
+
+				VSUB: begin											
+				//case(ID_EX_Instr[24:25])						//Depending on WW field					//Check if to add designware module for 2's complement, also check if carry is discarded?????
+				case(WW)	
+					Width_8:	begin
+							//	DW01_add dwadder(A,B,CI,SUM,CO);
+									rA_8bit_p1 = rA_64bit_val[0:7];
+									rB_8bit_p1 = rB_64bit_val[0:7];
+									ALU_out[0:7] = ALU_8bit_sub_p1;
+
+									rA_8bit_p2 = rA_64bit_val[8:15];
+									rB_8bit_p2 = rB_64bit_val[8:15];
+									ALU_out[8:15] = ALU_8bit_sub_p2;
+
+									rA_8bit_p3 = rA_64bit_val[16:23];
+									rB_8bit_p3 = rB_64bit_val[16:23];
+									ALU_out[16:23] = ALU_8bit_sub_p3;
+
+									rA_8bit_p4 = rA_64bit_val[24:31];
+									rB_8bit_p4 = rB_64bit_val[24:31];
+									ALU_out[24:31] = ALU_8bit_sub_p4;
+
+									rA_8bit_p5 = rA_64bit_val[32:39];
+									rB_8bit_p5 = rB_64bit_val[32:39];
+									ALU_out[32:39] = ALU_8bit_sub_p5;
+
+									rA_8bit_p6 = rA_64bit_val[40:47];
+									rB_8bit_p6 = rB_64bit_val[40:47];
+									ALU_out[40:47] = ALU_8bit_sub_p6;
+
+									rA_8bit_p7 = rA_64bit_val[48:55];
+									rB_8bit_p7 = rB_64bit_val[48:55];
+									ALU_out[48:55] = ALU_8bit_sub_p7;
+
+									rA_8bit_p8 = rA_64bit_val[56:63];
+									rB_8bit_p8 = rB_64bit_val[56:63];
+									ALU_out[56:63] = ALU_8bit_sub_p8;
+					end
+
+					Width_16:	begin
+									rA_16bit_p1 = rA_64bit_val[0:15];
+									rB_16bit_p1 = rB_64bit_val[0:15];
+									ALU_out[0:15] = ALU_16bit_sub_p1;
+
+									rA_16bit_p2 = rA_64bit_val[16:31];
+									rB_16bit_p2 = rB_64bit_val[16:31];
+									ALU_out[16:31] = ALU_16bit_sub_p2;
+
+									rA_16bit_p3 = rA_64bit_val[32:47];
+									rB_16bit_p3 = rB_64bit_val[32:47];
+									ALU_out[32:47] = ALU_16bit_sub_p3;
+
+									rA_16bit_p4 = rA_64bit_val[48:63];
+									rB_16bit_p4 = rB_64bit_val[48:63];
+									ALU_out[48:63] = ALU_16bit_sub_p4;
+					end
+
+					Width_32:  begin
+									rA_32bit_p1 = rA_64bit_val[0:31];
+									rB_32bit_p1 = rB_64bit_val[0:31];
+									ALU_out[0:31] = ALU_32bit_sub_p1;
+
+									rA_32bit_p2 = rA_64bit_val[32:63];
+									rB_32bit_p2 = rB_64bit_val[32:63];
+									ALU_out[32:63] = ALU_32bit_sub_p2;
+							
+					end
+
+					Width_64:	begin
+									rA_64bit_p1 = rA_64bit_val[0:63];
+									rB_64bit_p1 = rB_64bit_val[0:63];
+									ALU_out[0:63] = ALU_64bit_sub_p1;
+					end
+					
+				endcase
+			end
+
+			VMULEU: begin
+			//	case(ID_EX_Instr[24:25])
+				case(WW)
+					Width_8:	begin
+						//DW02_mult(A,B,TC,PRODUCT), TC: '0' => unsigned multiplication
+
+						rA_8bit_p1 = rA_64bit_val[0:7];
+						rB_8bit_p1 = rB_64bit_val[0:7];
+						ALU_out[0:15] = ALU_8bit_mult_p1;
+
+						rA_8bit_p2 = rA_64bit_val[16:23];
+						rB_8bit_p2 = rB_64bit_val[16:23];
+						ALU_out[16:31] = ALU_8bit_mult_p2;
+
+						rA_8bit_p3 = rA_64bit_val[32:39];
+						rB_8bit_p3 = rB_64bit_val[32:39];
+						ALU_out[32:47] = ALU_8bit_mult_p3;
+
+						rA_8bit_p4 = rA_64bit_val[48:54];
+						rB_8bit_p4 = rB_64bit_val[48:54];
+						ALU_out[48:63] = ALU_8bit_mult_p4;
+
+					end
+
+					Width_16:	begin
+
+						rA_16bit_p1 = rA_64bit_val[0:15];
+						rB_16bit_p1 = rB_64bit_val[0:15];
+						ALU_out[0:31] = ALU_16bit_mult_p1;
+
+						rA_16bit_p2 = rA_64bit_val[32:47];
+						rB_16bit_p2 = rB_64bit_val[32:47];
+						ALU_out[32:63] = ALU_16bit_mult_p2;
+					end
+
+					Width_32:  begin
+						rA_32bit_p1 = rA_64bit_val[0:31];
+						rB_32bit_p1 = rB_64bit_val[0:31];
+						ALU_out[0:63] = ALU_32bit_mult_p1;
+					end
+
+				endcase
+			end
+			
+
+			VMULOU: begin
+			//	case(ID_EX_Instr[24:25])
+				case(WW)
+					Width_8:	begin
+						//DW02_mult(A,B,TC,PRODUCT), TC: '0' => unsigned multiplication
+						rA_8bit_p1 = rA_64bit_val[8:15];
+						rB_8bit_p1 = rB_64bit_val[8:15];
+						ALU_out[0:15] = ALU_8bit_mult_odd_p1;
+
+						rA_8bit_p2 = rA_64bit_val[24:31];
+						rB_8bit_p2 = rB_64bit_val[24:31];
+						ALU_out[16:31] = ALU_8bit_mult_odd_p2;
+
+						rA_8bit_p3 = rA_64bit_val[40:47];
+						rB_8bit_p3 = rB_64bit_val[40:47];
+						ALU_out[32:47] = ALU_8bit_mult_odd_p3;
+
+						rA_8bit_p4 = rA_64bit_val[55:63];
+						rB_8bit_p4 = rB_64bit_val[55:63];
+						ALU_out[48:63] = ALU_8bit_mult_odd_p4;
+
+					end
+
+					Width_16:	begin
+
+						rA_16bit_p1 = rA_64bit_val[16:31];
+						rB_16bit_p1 = rB_64bit_val[16:31];
+						ALU_out[0:31] = ALU_16bit_mult_odd_p1;
+
+						rA_16bit_p2 = rA_64bit_val[48:63];
+						rB_16bit_p2 = rB_64bit_val[48:63];
+						ALU_out[32:63] = ALU_16bit_mult_odd_p2;
+					end
+
+					Width_32:  begin
+						rA_32bit_p1 = rA_64bit_val[32:63];
+						rB_32bit_p1 = rB_64bit_val[32:63];
+						ALU_out[0:63] = ALU_32bit_mult_odd_p1;
+					end
+				
+				endcase
+				
+			end
+
+
+
+					
+	/*		VSLL: begin
+				case(ID_EX_Instr[24:25])
+				
+				endcase
+			
+			end
+			
+			
+			VSRL: begin
+				case(ID_EX_Instr[24:25])
+				
+				endcase
+			end
+			
+			VSRA: begin
+				case(ID_EX_Instr[24:25])
+				
+				endcase
+			end	*/
+
+
+
+			VRTTH: begin	
+				//case(ID_EX_Instr[24:25])
+				case(WW)
+					Width_8:	begin
+								ALU_out[0:7] = {rA_64bit_val[4:7], rA_64bit_val[0:3]};
+								ALU_out[8:15] = {rA_64bit_val[12:15], rA_64bit_val[8:11]};
+								ALU_out[16:23] = {rA_64bit_val[20:23], rA_64bit_val[16:19]};
+								ALU_out[24:31] = {rA_64bit_val[28:31], rA_64bit_val[24:27]};
+								ALU_out[32:39] = {rA_64bit_val[36:39], rA_64bit_val[32:35]};
+								ALU_out[40:47] = {rA_64bit_val[44:47], rA_64bit_val[40:43]};
+								ALU_out[48:55] = {rA_64bit_val[52:55], rA_64bit_val[48:51]};
+								ALU_out[56:63] = {rA_64bit_val[60:63], rA_64bit_val[56:59]};
+					end
+						
+					Width_16:	begin
+								ALU_out[0:15] = {rA_64bit_val[8:15], rA_64bit_val[0:7]};
+								ALU_out[16:31] = {rA_64bit_val[24:31], rA_64bit_val[16:23]};
+								ALU_out[32:47] = {rA_64bit_val[40:47], rA_64bit_val[32:39]};
+								ALU_out[48:63] = {rA_64bit_val[56:63], rA_64bit_val[48:55]};
+					end
+							
+					Width_32:	begin
+								ALU_out[0:31] = {rA_64bit_val[16:31], rA_64bit_val[0:15]};
+								ALU_out[32:63] = {rA_64bit_val[48:63], rA_64bit_val[32:47]};
+					end
+							
+					Width_64: 	begin
+								ALU_out[0:63] = {rA_64bit_val[32:63], rA_64bit_val[0:31]};
+					end
+					
+				endcase
+				
+				
+			end	
+
+
+			VDIV: begin				//USE DESIGNWARE and divide by 0 condition pending
+				//case(ID_EX_Instr[24:25])
+				case(WW)
+					Width_8: 	begin
+							//	DW_div dwdivision(a, b, quotient, remainder, divide_by_0);
+
+								rA_8bit_p1 = rA_64bit_val[0:7];
+								rB_8bit_p1 = rB_64bit_val[0:7];
+								ALU_out[0:7] = ALU_8bit_div_p1;
+
+								rA_8bit_p2 = rA_64bit_val[8:15];
+								rB_8bit_p2 = rB_64bit_val[8:15];
+								ALU_out[8:15] = ALU_8bit_div_p2;
+
+								rA_8bit_p3 = rA_64bit_val[16:23];
+								rB_8bit_p3 = rB_64bit_val[16:23];
+								ALU_out[16:23] = ALU_8bit_div_p3;
+
+								rA_8bit_p4 = rA_64bit_val[24:31];
+								rB_8bit_p4 = rB_64bit_val[24:31];
+								ALU_out[24:31] = ALU_8bit_div_p4;
+
+								rA_8bit_p5 = rA_64bit_val[32:39];
+								rB_8bit_p5 = rB_64bit_val[32:39];
+								ALU_out[32:39] = ALU_8bit_div_p5;
+
+								rA_8bit_p6 = rA_64bit_val[40:47];
+								rB_8bit_p6 = rB_64bit_val[40:47];
+								ALU_out[40:47] = ALU_8bit_div_p6;
+
+								rA_8bit_p7 = rA_64bit_val[48:55];
+								rB_8bit_p7 = rB_64bit_val[48:55];
+								ALU_out[48:55] = ALU_8bit_div_p7;
+
+								rA_8bit_p8 = rA_64bit_val[56:63];
+								rB_8bit_p8 = rB_64bit_val[56:63];
+								ALU_out[56:63] = ALU_8bit_div_p8;
+					end
+								
+					Width_16:	begin
+
+								rA_16bit_p1 = rA_64bit_val[0:15];
+								rB_16bit_p1 = rB_64bit_val[0:15];
+								ALU_out[0:15] = ALU_16bit_div_p1;
+
+								rA_16bit_p2 = rA_64bit_val[16:31];
+								rB_16bit_p2 = rB_64bit_val[16:31];
+								ALU_out[16:31] = ALU_16bit_div_p2;
+
+								rA_16bit_p3 = rA_64bit_val[32:47];
+								rB_16bit_p3 = rB_64bit_val[32:47];
+								ALU_out[32:47] = ALU_16bit_div_p3;
+
+								rA_16bit_p4 = rA_64bit_val[48:63];
+								rB_16bit_p4 = rB_64bit_val[48:63];
+								ALU_out[48:63] = ALU_16bit_div_p4;
+
+					end
+					
+					
+					
+					Width_32:	begin
+
+								rA_32bit_p1 = rA_64bit_val[0:31];
+								rB_32bit_p1 = rB_64bit_val[0:31];
+								ALU_out[0:31] = ALU_32bit_div_p1;
+
+								rA_32bit_p2 = rA_64bit_val[32:63];
+								rB_32bit_p2 = rB_64bit_val[32:63];
+								ALU_out[32:63] = ALU_32bit_div_p2;
+					end
+				
+				
+					Width_64:	begin
+
+								rA_64bit_p1 = rA_64bit_val[0:63];
+								rB_64bit_p1 = rB_64bit_val[0:63];
+								ALU_out[0:63] = ALU_64bit_div_p1;
+								
+					end
+					
+				endcase
+				
+			end
+
+
+			VMOD: begin															
+			//	case(ID_EX_Instr[24:25])
+				case(WW)
+					Width_8: 	begin
+								ALU_out[0:7] = rA_64bit_val[0:7] % rB_64bit_val[0:7];
+								ALU_out[8:15] = rA_64bit_val[8:15] % rB_64bit_val[8:15];
+								ALU_out[16:23] = rA_64bit_val[16:23] % rB_64bit_val[16:23];
+								ALU_out[24:31] = rA_64bit_val[24:31] % rB_64bit_val[24:31];
+								ALU_out[32:39] = rA_64bit_val[32:39] % rB_64bit_val[32:39];
+								ALU_out[40:47] = rA_64bit_val[40:47] % rB_64bit_val[40:47];
+								ALU_out[48:55] = rA_64bit_val[48:55] % rB_64bit_val[48:55];
+								ALU_out[56:63] = rA_64bit_val[56:63] % rB_64bit_val[56:63];
+					end
+					
+					
+					Width_32:	begin
+								ALU_out[0:31] = rA_64bit_val[0:31] % rB_64bit_val[0:31];
+								ALU_out[32:63] = rA_64bit_val[32:63] % rB_64bit_val[32:63];
+					end
+				
+				
+					Width_64:	begin
+								ALU_out[0:63] = rA_64bit_val[0:63] % rB_64bit_val[0:63];
+					end
+					
+				endcase
+			end
+
+
+			VSQEU: begin
+				//case(ID_EX_Instr[24:25])
+				case(WW)
+					Width_8:   begin
+
+								rA_8bit_p1 = rA_64bit_val[0:7];
+								
+								ALU_out[0:15] = ALU_8bit_sqe_p1;
+
+								rA_8bit_p2 = rA_64bit_val[16:23];
+								
+								ALU_out[16:31] = ALU_8bit_sqe_p2;
+
+								rA_8bit_p3 = rA_64bit_val[32:39];
+								
+								ALU_out[32:47] = ALU_8bit_sqe_p3;
+
+								rA_8bit_p4 = rA_64bit_val[48:54];
+								
+								ALU_out[48:63] = ALU_8bit_sqe_p4;
+					end
+								
+					
+					Width_16: 	begin
+
+								rA_16bit_p1 = rA_64bit_val[0:15];
+								
+								ALU_out[0:31] = ALU_16bit_sqe_p1;
+
+								rA_16bit_p2 = rA_64bit_val[32:47];
+								
+								ALU_out[32:63] = ALU_16bit_sqe_p2;
+
+						
+					end
+
+					Width_32:	begin
+
+								rA_32bit_p1 = rA_64bit_val[0:31];
+								ALU_out[0:63] = ALU_32bit_sqe_p1;
+								
+					end
+
+				endcase
+			end
+
+
+
+			VSQOU: begin
+			//	case(ID_EX_Instr[24:25])
+				case(WW)
+					Width_8:	begin
+
+
+								rA_8bit_p1 = rA_64bit_val[8:15];
+								
+								ALU_out[0:15] = ALU_8bit_sqo_p1;
+
+								rA_8bit_p2 = rA_64bit_val[24:31];
+							
+								ALU_out[16:31] = ALU_8bit_sqo_p2;
+
+								rA_8bit_p3 = rA_64bit_val[40:47];
+								
+								ALU_out[32:47] = ALU_8bit_sqo_p3;
+
+								rA_8bit_p4 = rA_64bit_val[55:63];
+								
+								ALU_out[48:63] = ALU_8bit_sqo_p4;
+
+					end
+					
+					Width_16:	begin
+
+
+								rA_16bit_p1 = rA_64bit_val[16:31];
+								
+								ALU_out[0:31] = ALU_16bit_sqo_p1;
+
+								rA_16bit_p2 = rA_64bit_val[48:63];
+								
+								ALU_out[32:63] = ALU_16bit_sqo_p2;
+						
+					end
+								
+					Width_32:	begin
+								rA_32bit_p1 = rA_64bit_val[32:63];
+								
+								ALU_out[0:63] = ALU_32bit_sqo_p1;		//Width_64 is not possible as 64x64 multiplication not supported
+					end
+				
+				endcase
+			end
+
+
+			VSQRT: begin
+				//case(ID_EX_Instr[24:25])
+				case(WW)
+					Width_8:  begin
+
+
+								rA_8bit_p1 = rA_64bit_val[0:7];
+								ALU_out[0:7] = ALU_8bit_sqrt_p1;
+
+								rA_8bit_p2 = rA_64bit_val[8:15];
+								ALU_out[8:15] = ALU_8bit_sqrt_p2;
+
+								rA_8bit_p3 = rA_64bit_val[16:23];
+								ALU_out[16:23] = ALU_8bit_sqrt_p3;
+
+								rA_8bit_p4 = rA_64bit_val[24:31];
+								ALU_out[24:31] = ALU_8bit_sqrt_p4;
+
+								rA_8bit_p5 = rA_64bit_val[32:39];
+								ALU_out[32:39] = ALU_8bit_sqrt_p5;
+
+								rA_8bit_p6 = rA_64bit_val[40:47];
+								ALU_out[40:47] = ALU_8bit_sqrt_p6;
+
+								rA_8bit_p7 = rA_64bit_val[48:55];
+								ALU_out[48:55] = ALU_8bit_sqrt_p7;
+
+								rA_8bit_p8 = rA_64bit_val[56:63];
+								ALU_out[56:63] = ALU_8bit_sqrt_p8;
+
+					end
+
+					
+					Width_16:	begin
+
+
+								rA_16bit_p1 = rA_64bit_val[0:15];
+								ALU_out[0:15] = ALU_16bit_sqrt_p1;
+								rA_16bit_p2 = rA_64bit_val[16:31];
+								ALU_out[16:31] = ALU_16bit_sqrt_p2;
+
+								rA_16bit_p3 = rA_64bit_val[32:47];
+								ALU_out[32:47] = ALU_16bit_sqrt_p3;
+
+								rA_16bit_p4 = rA_64bit_val[48:63];
+								ALU_out[48:63] = ALU_16bit_sqrt_p4;
+
+					end
+								
+					Width_32:	begin
+
+								rA_32bit_p1 = rA_64bit_val[0:31];
+								ALU_out[0:31] = ALU_32bit_sqrt_p1;
+
+								rA_32bit_p2 = rA_64bit_val[32:63];
+								ALU_out[32:63] = ALU_32bit_sqrt_p2;
+
+					end			
+
+					Width_64:	begin
+								rA_64bit_p1 = rA_64bit_val[0:63];
+								ALU_out[0:63] = ALU_64bit_sqrt_p1;
+					end
+				endcase
+				
+			
+			end
+
 		endcase
 									
 		end
