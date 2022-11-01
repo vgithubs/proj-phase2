@@ -4,7 +4,7 @@ module tb_ALU;
 	reg [0:63] rA_64bit_val, rB_64bit_val;
 	reg [0:5] R_ins, Op_code;
 	reg [0:1] WW;
-	wire ALU_out;
+	wire [0:63] ALU_out;
 
 	ALU alu_one(rA_64bit_val, rB_64bit_val, R_ins, Op_code, WW, ALU_out);
 

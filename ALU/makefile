@@ -41,9 +41,9 @@
 
 
 # top level module
-TOP = tb_clock
+TOP = tb_ALU
 TOP_SYN = tb_syn
-DESIGN_NAME = frequency_divider_by3
+DESIGN_NAME = ALU
 
 # List of the design files
 DESIGN_FILES = ./design/*.v
@@ -53,6 +53,10 @@ NETLIST_FILES = ./netlist/*.v
 TB_FILES = ./tb/*.v
 
 INCLUDE_DIRECTORY = ./include
+
+
+INCLUDE_DW_DIR = ./include/sim_ver
+
 
 # GUI simulation script file for pre-synthesis design
 SIM_SCRIPT_FILE_GUI = ./scripts/runscript.tcl

@@ -12,8 +12,8 @@ module ALU(rA_64bit_val, rB_64bit_val, R_ins, Op_code, WW, ALU_out);
 input [0:63] rA_64bit_val, rB_64bit_val;
 input [0:5] R_ins, Op_code;
 input [0:1] WW;
-output ALU_out;
-
+output [0:63] ALU_out;
+reg [0:63] ALU_out;
 
 parameter   VAND = 6'b000001, VOR =  6'b000010, VXOR = 6'b000011, VNOT = 6'b000100, VMOV = 6'b000101,			//Instruction from R type depending on INSTR[26:31] bits R_ins
 			VADD = 6'b000110, VSUB = 6'b000111, VMULEU =  6'b001000, VMULOU = 6'b001001, VSLL = 001010,
@@ -27,7 +27,9 @@ parameter Width_8 = 2'b00, Width_16 = 2'b01, Width_32 = 2'b10, Width_64 = 2'b11;
 
 
 //rA_64bit_val= ID_EX_Instr[11:15];			
-//rB_64bit_val = ID_EX_Instr[16:20];			
+//rB_64bit_val = ID_EX_Instr[16:20];	
+
+always @(*) begin		
 
 //case(ID_EX_Instr[0:5])
 case(Op_code)
@@ -385,7 +387,7 @@ case(Op_code)
 				
 			end
 			
-			VMOD: begin																//Can be combined with VDIV remainder as output modulus, check later
+			VMOD: begin															
 			//	case(ID_EX_Instr[24:25])
 				case(WW)
 					Width_8: 	begin
@@ -537,4 +539,6 @@ case(Op_code)
 		
 		//Load, store, branch, nop pending, in each case for width decide for default
 	end
-endcase
+	endcase
+end
+endmodule
