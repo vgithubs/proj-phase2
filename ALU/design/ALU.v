@@ -4,8 +4,8 @@
 
 
 `include "./include/sim_ver/DW01_add.v"
-`include "./include/sim_ver/DW_div.v"
-`include "./include/sim_ver/DW_div_function.inc"
+//`include "./include/sim_ver/DW_div.v"
+//`include "./include/sim_ver/DW_div_function.inc"
 `include "./include/sim_ver/DW02_mult.v"
 `include "./include/sim_ver/DW_sqrt.v"
 
@@ -137,7 +137,7 @@ DW02_mult #(16, 16) dwm13(rA_16bit_p2,rB_16bit_p2,0,ALU_16bit_mult_odd_p2);
 DW02_mult #(32, 32) dwm14(rA_32bit_p1,rB_32bit_p1,0,ALU_32bit_mult_odd_p1);
 
 
-
+/*
 //***Division***
 
 //For 8 16 32 64 bits
@@ -169,7 +169,7 @@ DW_div #(32, 32, 0, 1) dwdivi14(rA_32bit_p2,rB_32bit_p2, ALU_32bit_div_p2, remai
 //For 64 bit
 DW_div #(64, 64, 0, 1) dwdivi15(rA_64bit_p1,rB_64bit_p1, ALU_64bit_div_p1, remainder, divide_by_0);
 
-
+*/
 //***Square Even***
 //For 8  16  32
 wire [0:7] ALU_8bit_sqe_p1, ALU_8bit_sqe_p2, ALU_8bit_sqe_p3, ALU_8bit_sqe_p4;
@@ -514,15 +514,29 @@ always @(*) begin
 
 
 					
-	/*		VSLL: begin
-				case(ID_EX_Instr[24:25])
-				
+/*			VSLL: begin
+				case(WW)
+					Width_8: begin
+						ALU_out[0:63] =  
+					end
+
+					Width_16: begin
+
+					end
+
+					Width_32: begin
+						ALU_out[0:63] = rA_64bit_val << 6;
+					end
+
+					Width_64: begin
+						ALU_out[0:63] = rA_64bit_val << 6;
+					end
 				endcase
 			
 			end
 			
 			
-			VSRL: begin
+		VSRL: begin
 				case(ID_EX_Instr[24:25])
 				
 				endcase
@@ -572,10 +586,41 @@ always @(*) begin
 			end	
 
 
-			VDIV: begin				//USE DESIGNWARE and divide by 0 condition pending
+		VDIV: begin				//USE DESIGNWARE and divide by 0 condition pending
 				//case(ID_EX_Instr[24:25])
 				case(WW)
+
+
 					Width_8: 	begin
+								ALU_out[0:7] = rA_64bit_val[0:7] / rB_64bit_val[0:7];
+								ALU_out[8:15] = rA_64bit_val[8:15] / rB_64bit_val[8:15];
+								ALU_out[16:23] = rA_64bit_val[16:23] / rB_64bit_val[16:23];
+								ALU_out[24:31] = rA_64bit_val[24:31] / rB_64bit_val[24:31];
+								ALU_out[32:39] = rA_64bit_val[32:39] / rB_64bit_val[32:39];
+								ALU_out[40:47] = rA_64bit_val[40:47] / rB_64bit_val[40:47];
+								ALU_out[48:55] = rA_64bit_val[48:55] / rB_64bit_val[48:55];
+								ALU_out[56:63] = rA_64bit_val[56:63] / rB_64bit_val[56:63];
+					end
+								
+					Width_16:	begin
+								ALU_out[0:15] = rA_64bit_val[0:15] / rB_64bit_val[0:15];
+								ALU_out[16:31] = rA_64bit_val[16:31] / rB_64bit_val[16:31];
+								ALU_out[32:47] = rA_64bit_val[32:47] / rB_64bit_val[32:47];
+								ALU_out[48:63] = rA_64bit_val[48:63] / rB_64bit_val[48:63];
+					end
+					
+					
+					
+					Width_32:	begin
+								ALU_out[0:31] = rA_64bit_val[0:31] / rB_64bit_val[0:31];
+								ALU_out[32:63] = rA_64bit_val[32:63] / rB_64bit_val[32:63];
+					end
+				
+				
+					Width_64:	begin
+								ALU_out[0:63] = rA_64bit_val[0:63] / rB_64bit_val[0:63];
+					end
+				/*	Width_8: 	begin
 							//	DW_div dwdivision(a, b, quotient, remainder, divide_by_0);
 
 								rA_8bit_p1 = rA_64bit_val[0:7];
@@ -651,7 +696,7 @@ always @(*) begin
 								rB_64bit_p1 = rB_64bit_val[0:63];
 								ALU_out[0:63] = ALU_64bit_div_p1;
 								
-					end
+					end*/
 					
 				endcase
 				
