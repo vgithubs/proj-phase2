@@ -659,7 +659,8 @@ always @(*) begin
 					end
 
 					Width_64: begin
-						ALU_out[0:63] = rA_64bit_val[0:63] << 6;	//Left  shift by  6 bits as width is 64 bits
+						ALU_out[0:63] = rA_64bit_val[0:63] << rB_64bit_val[58:63];
+						//ALU_out[0:63] = rA_64bit_val[0:63] << 6;	//Left  shift by  6 bits as width is 64 bits
 					end
 				endcase
 			end
