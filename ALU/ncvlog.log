@@ -1,5 +1,5 @@
 ncvlog(64): 15.20-s079: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
-TOOL:	ncvlog(64)	15.20-s079: Started on Nov 01, 2022 at 08:43:12 PDT
+TOOL:	ncvlog(64)	15.20-s079: Started on Nov 02, 2022 at 03:20:11 PDT
 ncvlog
     -STATUS
     -MESSAGES
@@ -84,5 +84,5 @@ file: ./tb/tb_clock_syn.v
 	module work.tb_syn
 		errors: 0, warnings: 0
 ncvlog: Memory Usage - 21.4M program + 28.3M data = 49.6M total
-ncvlog: CPU Usage - 0.0s system + 0.0s user = 0.1s total (0.1s, 59.1% cpu)
-TOOL:	ncvlog(64)	15.20-s079: Exiting on Nov 01, 2022 at 08:43:12 PDT  (total: 00:00:00)
+ncvlog: CPU Usage - 0.0s system + 0.0s user = 0.1s total (0.1s, 49.7% cpu)
+TOOL:	ncvlog(64)	15.20-s079: Exiting on Nov 02, 2022 at 03:20:11 PDT  (total: 00:00:00)

@@ -36,6 +36,10 @@ elaborate DW02_mult.v
 analyze -format verilog /include/sim_ver/DW_div.v
 elaborate DW_div.v
 
+analyze -format verilog /include/sim_ver/DW_shifter.v
+elaborate DW_shifter.v
+
+
 # Setting $design_name as current working design.
 # Use this command before setting any constraints.
 current_design $design_name ;

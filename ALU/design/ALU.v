@@ -30,6 +30,7 @@ parameter R_ALU = 6'b101010, LOAD = 6'b100000, STORE = 6'b100001, BRANCH_EZ = 6'
 
 parameter Width_8 = 2'b00, Width_16 = 2'b01, Width_32 = 2'b10, Width_64 = 2'b11;  //Width depending on WW
 
+
 //****ADDER****
 //For 8bit adders
 reg [0:7] rA_8bit_p1, rB_8bit_p1, rA_8bit_p2, rB_8bit_p2, rA_8bit_p3, rB_8bit_p3,  rA_8bit_p4, rB_8bit_p4, rA_8bit_p5, rB_8bit_p5, rA_8bit_p6, rB_8bit_p6, rA_8bit_p7, rB_8bit_p7, rA_8bit_p8, rB_8bit_p8;
@@ -210,10 +211,7 @@ DW02_mult #(32, 32) dwm28(rA_32bit_p1,rA_32bit_p1,0,ALU_32bit_sqo_p1);
 
 //***Square Root***
 //For 8 16 32 64 bits
-//wire [0:7] ALU_8bit_sqrt_p1, ALU_8bit_sqrt_p2, ALU_8bit_sqrt_p3, ALU_8bit_sqrt_p4, ALU_8bit_sqrt_p5, ALU_8bit_sqrt_p6, ALU_8bit_sqrtv_p7, ALU_8bit_sqrt_p8;
-//wire [0:15] ALU_16bit_sqrt_p1, ALU_16bit_sqrt_p2, ALU_16bit_sqrt_p3, ALU_16bit_sqrt_p4;
-//wire [0:31] ALU_32bit_sqrt_p1, ALU_32bit_sqrt_p2;
-//wire [0:63] ALU_64bit_sqrt_p1;
+
 wire [0:3] ALU_8bit_sqrt_p1, ALU_8bit_sqrt_p2, ALU_8bit_sqrt_p3, ALU_8bit_sqrt_p4, ALU_8bit_sqrt_p5, ALU_8bit_sqrt_p6, ALU_8bit_sqrtv_p7, ALU_8bit_sqrt_p8;
 wire [0:7] ALU_16bit_sqrt_p1, ALU_16bit_sqrt_p2, ALU_16bit_sqrt_p3, ALU_16bit_sqrt_p4;
 wire [0:15] ALU_32bit_sqrt_p1, ALU_32bit_sqrt_p2;
@@ -249,26 +247,50 @@ wire [0:7] ALU_8bit_shift_p1, ALU_8bit_shift_p2, ALU_8bit_shift_p3, ALU_8bit_shi
 wire [0:15] ALU_16bit_shift_p1, ALU_16bit_shift_p2, ALU_16bit_shift_p3, ALU_16bit_shift_p4;
 wire [0:31] ALU_32bit_shift_p1, ALU_32bit_shift_p2;
 wire [0:63] ALU_64bit_shift_p1;
-//For  8 bit
-//DW_shifter #(data_width, sh_width) dwshift1(data_in, data_tc, sh, sh_tc, sh_mode, data_out);
-DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift1(rA_8bit_p1, 0, 3'b010, 0, 1, ALU_8bit_shift_p1);
-DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift2(rA_8bit_p2, 0, 3'b010, 0, 1, ALU_8bit_shift_p2);
-DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift3(rA_8bit_p3, 0, 3'b010, 0, 1, ALU_8bit_shift_p3);
-DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift4(rA_8bit_p4, 0, 3'b010, 0, 1, ALU_8bit_shift_p4);
-DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift5(rA_8bit_p5, 0, 3'b010, 0, 1, ALU_8bit_shift_p5);
-DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift6(rA_8bit_p6, 0, 3'b010, 0, 1, ALU_8bit_shift_p6);
-DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift7(rA_8bit_p7, 0, 3'b010, 0, 1, ALU_8bit_shift_p7);
-DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift8(rA_8bit_p8, 0, 3'b010, 0, 1, ALU_8bit_shift_p8);
+
+
+reg [0:2]amt_to_shift_8b_p1, amt_to_shift_8b_p2, amt_to_shift_8b_p3, amt_to_shift_8b_p4, amt_to_shift_8b_p5, amt_to_shift_8b_p6, amt_to_shift_8b_p7, amt_to_shift_8b_p8;
+reg [0:3]amt_to_shift_16b_p1, amt_to_shift_16b_p2, amt_to_shift_16b_p3, amt_to_shift_16b_p4;
+reg [0:4]amt_to_shift_32b_p1;
+reg [0:4]amt_to_shift_32b_p2;
+reg [0:5]amt_to_shift;
+
+//FOr 8 bit
+DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift1(rA_8bit_p1, 0,(~((~amt_to_shift_8b_p1) + 1)), 0, 1, ALU_8bit_shift_p1);
+DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift2(rA_8bit_p2, 0, (~((~amt_to_shift_8b_p2) + 1)), 0, 1, ALU_8bit_shift_p2);
+DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift3(rA_8bit_p3, 0, (~((~amt_to_shift_8b_p3) + 1)), 0, 1, ALU_8bit_shift_p3);
+DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift4(rA_8bit_p4, 0, (~((~amt_to_shift_8b_p4) + 1)), 0, 1, ALU_8bit_shift_p4);
+DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift5(rA_8bit_p5, 0, (~((~amt_to_shift_8b_p5) + 1)), 0, 1, ALU_8bit_shift_p5);
+DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift6(rA_8bit_p6, 0, (~((~amt_to_shift_8b_p6) + 1)), 0, 1, ALU_8bit_shift_p6);
+DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift7(rA_8bit_p7, 0, (~((~amt_to_shift_8b_p7) + 1)), 0, 1, ALU_8bit_shift_p7);
+DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift8(rA_8bit_p8, 0, (~((~amt_to_shift_8b_p8) + 1)), 0, 1, ALU_8bit_shift_p8);
+
 //For 16 bit
-DW_shifter #(.data_width(16), .sh_width(4), .inv_mode(2)) dwshift9(rA_16bit_p1, 0, 3'b010, 0, 1, ALU_16bit_shift_p1);
-DW_shifter #(.data_width(16), .sh_width(4), .inv_mode(2)) dwshift10(rA_16bit_p2, 0, 3'b010, 0, 1, ALU_16bit_shift_p2);
-DW_shifter #(.data_width(16), .sh_width(4), .inv_mode(2)) dwshift11(rA_16bit_p3, 0, 3'b010, 0, 1, ALU_16bit_shift_p3);
-DW_shifter #(.data_width(16), .sh_width(4), .inv_mode(2)) dwshift12(rA_16bit_p4, 0, 3'b010, 0, 1, ALU_16bit_shift_p4);
+
+DW_shifter #(.data_width(16), .sh_width(4), .inv_mode(2)) dwshift9(rA_16bit_p1, 0, (~((~amt_to_shift_16b_p1) + 1)), 0, 1, ALU_16bit_shift_p1);
+DW_shifter #(.data_width(16), .sh_width(4), .inv_mode(2)) dwshift10(rA_16bit_p2, 0, (~((~amt_to_shift_16b_p2) + 1)), 0, 1, ALU_16bit_shift_p2);
+DW_shifter #(.data_width(16), .sh_width(4), .inv_mode(2)) dwshift11(rA_16bit_p3, 0, (~((~amt_to_shift_16b_p3) + 1)), 0, 1, ALU_16bit_shift_p3);
+DW_shifter #(.data_width(16), .sh_width(4), .inv_mode(2)) dwshift12(rA_16bit_p4, 0, (~((~amt_to_shift_16b_p4) + 1)), 0, 1, ALU_16bit_shift_p4);
+
+
 //For 32 bit
-DW_shifter #(.data_width(32), .sh_width(5), .inv_mode(2)) dwshift13(rA_32bit_p1, 0, 3'b010, 0, 1, ALU_32bit_shift_p1);
-DW_shifter #(.data_width(32), .sh_width(5), .inv_mode(2)) dwshift14(rA_32bit_p2, 0, 3'b010, 0, 1, ALU_32bit_shift_p2);
+
+DW_shifter #(.data_width(32), .sh_width(5), .inv_mode(2)) dwshift13(rA_32bit_p1, 0, (~((~amt_to_shift_32b_p1) + 1)), 0, 1, ALU_32bit_shift_p1);
+DW_shifter #(.data_width(32), .sh_width(5), .inv_mode(2)) dwshift14(rA_32bit_p2, 0, (~((~amt_to_shift_32b_p2) + 1)), 0, 1, ALU_32bit_shift_p2);
+
 //For 64 bit
-DW_shifter #(.data_width(64), .sh_width(6), .inv_mode(2)) dwshift15(rA_64bit_p1, 0, 3'b010, 0, 1, ALU_64bit_shift_p1);
+
+
+DW_shifter #(.data_width(64), .sh_width(6), .inv_mode(2)) dwshift15(rA_64bit_p1, 0, (~((~amt_to_shift) + 1)), 0, 1, ALU_64bit_shift_p1); //8 bit with rB
+//101010 shift by 42, 22 010110
+//110110 shift by 54, 10 001010 
+//011111 shift by 31, 33 100001
+//therefore 42xor111111 + 1?
+//54xor111111+1?
+//31xor111111+1??????
+//DO THIS FOR ALL
+//Therefore sh should be rB[27:31] xor 11111 + 1 (for 32 bit). Do similar for 8, 16, 64. Enjoy!!
+
 
 
 always @(*) begin		
@@ -479,46 +501,6 @@ always @(*) begin
 								ALU_out[0:63] = rA_64bit_val[0:31] * rB_64bit_val[0:31];
 					end
 
-
-
-				/*	Width_8:	begin
-						//DW02_mult(A,B,TC,PRODUCT), TC: '0' => unsigned multiplication
-
-						rA_8bit_p1 = rA_64bit_val[0:7];
-						rB_8bit_p1 = rB_64bit_val[0:7];
-						ALU_out[0:15] = ALU_8bit_mult_p1;
-
-						rA_8bit_p2 = rA_64bit_val[16:23];
-						rB_8bit_p2 = rB_64bit_val[16:23];
-						ALU_out[16:31] = ALU_8bit_mult_p2;
-
-						rA_8bit_p3 = rA_64bit_val[32:39];
-						rB_8bit_p3 = rB_64bit_val[32:39];
-						ALU_out[32:47] = ALU_8bit_mult_p3;
-
-						rA_8bit_p4 = rA_64bit_val[48:54];
-						rB_8bit_p4 = rB_64bit_val[48:54];
-						ALU_out[48:63] = ALU_8bit_mult_p4;
-
-					end
-
-					Width_16:	begin
-
-						rA_16bit_p1 = rA_64bit_val[0:15];
-						rB_16bit_p1 = rB_64bit_val[0:15];
-						ALU_out[0:31] = ALU_16bit_mult_p1;
-
-						rA_16bit_p2 = rA_64bit_val[32:47];
-						rB_16bit_p2 = rB_64bit_val[32:47];
-						ALU_out[32:63] = ALU_16bit_mult_p2;
-					end
-
-					Width_32:  begin
-						rA_32bit_p1 = rA_64bit_val[0:31];
-						rB_32bit_p1 = rB_64bit_val[0:31];
-						ALU_out[0:63] = ALU_32bit_mult_p1;
-					end*/
-
 				endcase
 			end
 			
@@ -573,63 +555,63 @@ always @(*) begin
 			VSLL: begin
 				case(WW)
 					Width_8: begin
-						ALU_out[0:7] =  rA_64bit_val[0:7]  << 3;	  //Left  shift by  3 bits as width is 8 bits
-						ALU_out[8:15] =  rA_64bit_val[8:15]  << 3;
-						ALU_out[16:23] =  rA_64bit_val[16:23]  << 3;
-						ALU_out[24:31] =  rA_64bit_val[24:31]  << 3;
-						ALU_out[32:39] =  rA_64bit_val[32:39]  << 3;
-						ALU_out[40:47] =  rA_64bit_val[40:47]  << 3;
-						ALU_out[48:55] =  rA_64bit_val[48:55]  << 3;
-						ALU_out[56:63] =  rA_64bit_val[56:63]  << 3;
+						ALU_out[0:7] =  rA_64bit_val[0:7]  << rB_64bit_val[5:7];	  //Left  shift by  3 bits as width is 8 bits
+						ALU_out[8:15] =  rA_64bit_val[8:15]  << rB_64bit_val[13:15];
+						ALU_out[16:23] =  rA_64bit_val[16:23]  << rB_64bit_val[21:23];
+						ALU_out[24:31] =  rA_64bit_val[24:31]  << rB_64bit_val[29:31];
+						ALU_out[32:39] =  rA_64bit_val[32:39]  << rB_64bit_val[37:39];
+						ALU_out[40:47] =  rA_64bit_val[40:47]  << rB_64bit_val[45:47];
+						ALU_out[48:55] =  rA_64bit_val[48:55]  << rB_64bit_val[53:55];
+						ALU_out[56:63] =  rA_64bit_val[56:63]  << rB_64bit_val[61:63];
 					end
 
 					Width_16: begin
-						ALU_out[0:15] =  rA_64bit_val[0:7]  << 4;	  //Left  shift by  4 bits as width is 16 bits
-						ALU_out[16:31] =  rA_64bit_val[16:31]  << 4;
-						ALU_out[32:47] =  rA_64bit_val[32:47]  << 4;
-						ALU_out[48:63] =  rA_64bit_val[48:63]  << 4;
+						ALU_out[0:15] =  rA_64bit_val[0:15]  << rB_64bit_val[12:15];	  //Left  shift by  4 bits as width is 16 bits
+						ALU_out[16:31] =  rA_64bit_val[16:31]  << rB_64bit_val[28:31];
+						ALU_out[32:47] =  rA_64bit_val[32:47]  << rB_64bit_val[44:47];
+						ALU_out[48:63] =  rA_64bit_val[48:63]  << rB_64bit_val[60:63];
 						
 					end
 
 					Width_32: begin
-						ALU_out[0:31] =  rA_64bit_val[0:31]  << 5;	  //Left  shift by  5 bits as width is 32 bits
-						ALU_out[32:63] =  rA_64bit_val[32:63]  << 5;
+						ALU_out[0:31] =  rA_64bit_val[0:31]  << rB_64bit_val[27:31];		//Left  shift by  5 bits as width is 32 bits
+						ALU_out[32:63] =  rA_64bit_val[32:63]  << rB_64bit_val[59:63];
 					end
 
 					Width_64: begin
-						ALU_out[0:63] = rA_64bit_val[0:63] << 6;	//Left  shift by  6 bits as width is 64 bits
+						ALU_out[0:63] = rA_64bit_val[0:63] << rB_64bit_val[58:63];
 					end
 				endcase
 			end
 			
 		VSRL: begin
 				case(WW)
+
 					Width_8: begin
-						ALU_out[0:7] =  rA_64bit_val[0:7]  >> 3;	  //Right shift by  3 bits as width is 8 bits
-						ALU_out[8:15] =  rA_64bit_val[8:15]  >> 3;
-						ALU_out[16:23] =  rA_64bit_val[16:23]  >> 3;
-						ALU_out[24:31] =  rA_64bit_val[24:31]  >> 3;
-						ALU_out[32:39] =  rA_64bit_val[32:39]  >> 3;
-						ALU_out[40:47] =  rA_64bit_val[40:47]  >> 3;
-						ALU_out[48:55] =  rA_64bit_val[48:55]  >> 3;
-						ALU_out[56:63] =  rA_64bit_val[56:63]  >> 3;
+						ALU_out[0:7] =  rA_64bit_val[0:7]  >> rB_64bit_val[5:7];	  //Right shift by  3 bits as width is 8 bits
+						ALU_out[8:15] =  rA_64bit_val[8:15]  >> rB_64bit_val[13:15];
+						ALU_out[16:23] =  rA_64bit_val[16:23]  >> rB_64bit_val[21:23];
+						ALU_out[24:31] =  rA_64bit_val[24:31]  >> rB_64bit_val[29:31];
+						ALU_out[32:39] =  rA_64bit_val[32:39]  >> rB_64bit_val[37:39];
+						ALU_out[40:47] =  rA_64bit_val[40:47]  >> rB_64bit_val[45:47];
+						ALU_out[48:55] =  rA_64bit_val[48:55]  >> rB_64bit_val[53:55];
+						ALU_out[56:63] =  rA_64bit_val[56:63]  >> rB_64bit_val[61:63];
 					end
 
 					Width_16: begin
-						ALU_out[0:15] =  rA_64bit_val[0:7]  >> 4;	  //Right shift by  4 bits as width is 16 bits
-						ALU_out[16:31] =  rA_64bit_val[16:31]  >> 4;
-						ALU_out[32:47] =  rA_64bit_val[32:47]  >> 4;
-						ALU_out[48:63] =  rA_64bit_val[48:63]  >> 4;
-						
+						ALU_out[0:15] =  rA_64bit_val[0:15]  >> rB_64bit_val[12:15];	  //Right shift by 4 bits as width is 16 bits
+						ALU_out[16:31] =  rA_64bit_val[16:31]  >> rB_64bit_val[28:31];
+						ALU_out[32:47] =  rA_64bit_val[32:47]  >> rB_64bit_val[44:47];
+						ALU_out[48:63] =  rA_64bit_val[48:63]  >> rB_64bit_val[60:63];
 					end
 
 					Width_32: begin
-						ALU_out[0:31] =  rA_64bit_val[0:31]  >> 5;	  //Right shift by  5 bits as width is 32 bits
-						ALU_out[32:63] =  rA_64bit_val[32:63]  >> 5;
+						ALU_out[0:31] =  rA_64bit_val[0:31]  >> rB_64bit_val[27:31];		//Right shift by  5 bits as width is 32 bits
+						ALU_out[32:63] =  rA_64bit_val[32:63]  >> rB_64bit_val[59:63];
 					end
 
 					Width_64: begin
-						ALU_out[0:63] = rA_64bit_val[0:63] >> 6;	//Right shift by  6 bits as width is 64 bits
+						ALU_out[0:63] = rA_64bit_val[0:63] >> rB_64bit_val[58:63];
 					end
 				endcase
 			end
@@ -639,56 +621,73 @@ always @(*) begin
 					Width_8: begin
 					//	DW_shifter(data_in, data_tc, sh, sh_tc, sh_mode, data_out);
 						rA_8bit_p1 = rA_64bit_val[0:7];
+						amt_to_shift_8b_p1 = rB_64bit_val[5:7];
 						ALU_out[0:7] = ALU_8bit_shift_p1;
 
 						rA_8bit_p2 = rA_64bit_val[8:15];
+						amt_to_shift_8b_p2 = rB_64bit_val[13:15];
 						ALU_out[8:15] = ALU_8bit_shift_p2;
 
 						rA_8bit_p3 = rA_64bit_val[16:23];
+						amt_to_shift_8b_p3 = rB_64bit_val[21:23];
 						ALU_out[16:23] = ALU_8bit_shift_p3;
 
 						rA_8bit_p4 = rA_64bit_val[24:31];
+						amt_to_shift_8b_p4 = rB_64bit_val[29:31];
 						ALU_out[24:31] = ALU_8bit_shift_p4;
 
 						rA_8bit_p5 = rA_64bit_val[32:39];
+						amt_to_shift_8b_p5 = rB_64bit_val[37:39];
 						ALU_out[32:39] = ALU_8bit_shift_p5;
 
 						rA_8bit_p6 = rA_64bit_val[40:47];
+						amt_to_shift_8b_p6 = rB_64bit_val[45:47];
 						ALU_out[40:47] = ALU_8bit_shift_p6;
 
 						rA_8bit_p7 = rA_64bit_val[48:55];
+						amt_to_shift_8b_p7 = rB_64bit_val[53:55];
 						ALU_out[48:55] = ALU_8bit_shift_p7;
 
 						rA_8bit_p8 = rA_64bit_val[56:63];
+						amt_to_shift_8b_p8 = rB_64bit_val[61:63];
 						ALU_out[56:63] = ALU_8bit_shift_p8;
 					end
 
 					Width_16: begin
 						rA_16bit_p1 = rA_64bit_val[0:15];
+						amt_to_shift_16b_p1 = rB_64bit_val[12:15];
 						ALU_out[0:15] = ALU_16bit_shift_p1;
 
 						rA_16bit_p2 = rA_64bit_val[16:31];
+						amt_to_shift_16b_p2 = rB_64bit_val[28:31];
 						ALU_out[16:31] = ALU_16bit_shift_p2;
 
 						rA_16bit_p3 = rA_64bit_val[32:47];
+						amt_to_shift_16b_p3 = rB_64bit_val[44:47];
 						ALU_out[32:47] =ALU_16bit_shift_p3;
 
 						rA_16bit_p4 = rA_64bit_val[48:63];
+						amt_to_shift_16b_p4 = rB_64bit_val[60:63];
 						ALU_out[48:63] = ALU_16bit_shift_p4;
 					end
 
 					Width_32: begin
 						rA_32bit_p1 = rA_64bit_val[0:31];
+					//	amt_to_shift_32b_p1 = 5'b00101;
+						amt_to_shift_32b_p1 = rB_64bit_val[27:31];
 						ALU_out[0:31] = ALU_32bit_shift_p1;
 
 						rA_32bit_p2 = rA_64bit_val[32:63];
+						amt_to_shift_32b_p2 = rB_64bit_val[59:63];
 						ALU_out[32:63] = ALU_32bit_shift_p2;
 
 					end
 
 					Width_64:  begin
 						rA_64bit_p1 = rA_64bit_val[0:63];
+						amt_to_shift = rB_64bit_val[58:63];
 						ALU_out[0:63] = ALU_64bit_shift_p1;
+						
 					end
 				endcase
 			end	
@@ -696,7 +695,6 @@ always @(*) begin
 
 
 			VRTTH: begin	
-				//case(ID_EX_Instr[24:25])
 				case(WW)
 					Width_8:	begin
 								ALU_out[0:7] = {rA_64bit_val[4:7], rA_64bit_val[0:3]};
@@ -849,7 +847,6 @@ always @(*) begin
 
 
 			VMOD: begin															
-			//	case(ID_EX_Instr[24:25])
 				case(WW)
 					Width_8: 	begin
 								ALU_out[0:7] = rA_64bit_val[0:7] % rB_64bit_val[0:7];
@@ -878,7 +875,6 @@ always @(*) begin
 
 
 			VSQEU: begin
-				//case(ID_EX_Instr[24:25])
 				case(WW)
 					Width_8:   begin
 
@@ -926,7 +922,7 @@ always @(*) begin
 
 
 			VSQOU: begin
-			//	case(ID_EX_Instr[24:25])
+				
 				case(WW)
 					Width_8:	begin
 
