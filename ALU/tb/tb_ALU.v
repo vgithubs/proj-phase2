@@ -282,7 +282,7 @@ module tb_ALU;
 		#10;
 		Op_code = 6'b101010;
 		rA_64bit_val = 64'hF0E1F2A2_01010101;		
-		rB_64bit_val = 64'd10;
+		rB_64bit_val = 64'h02020202_02020202;
 		R_ins = 6'b001100;
 		WW = 00;
 
@@ -290,7 +290,7 @@ module tb_ALU;
 		#10;
 		Op_code = 6'b101010;
 		rA_64bit_val = 64'hF0E1F2A2_01010101;		
-		rB_64bit_val = 64'd00030003_00030003;
+		rB_64bit_val = 64'h00030003_00030003;
 		R_ins = 6'b001100;
 		WW = 01;
 
