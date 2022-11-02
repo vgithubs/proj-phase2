@@ -8,7 +8,10 @@
 //`include "./include/sim_ver/DW_div_function.inc"
 `include "./include/sim_ver/DW02_mult.v"
 `include "./include/sim_ver/DW_sqrt.v"
+
+/*
 `include "./include/sim_ver/DW_shifter.v"
+*/
 //`include "./include/sim_ver/DW_shifter_function.inc"
 
 
@@ -239,7 +242,7 @@ DW_sqrt #(64, 0) dw_sqrt15(rA_64bit_p1, ALU_64bit_sqrt_p1);
 
 
 
-
+/*
 
 //***
 //For 8 16 32 64
@@ -291,7 +294,7 @@ DW_shifter #(.data_width(64), .sh_width(6), .inv_mode(2)) dwshift15(rA_64bit_p1,
 //DO THIS FOR ALL
 //Therefore sh should be rB[27:31] xor 11111 + 1 (for 32 bit). Do similar for 8, 16, 64. Enjoy!!
 
-
+*/
 
 always @(*) begin		
 
@@ -616,7 +619,7 @@ always @(*) begin
 				endcase
 			end
 			
-			VSRA: begin
+		/*	VSRA: begin
 				case(WW)
 					Width_8: begin
 					//	DW_shifter(data_in, data_tc, sh, sh_tc, sh_mode, data_out);
@@ -691,7 +694,7 @@ always @(*) begin
 					end
 				endcase
 			end	
-
+*/
 
 
 			VRTTH: begin	
