@@ -425,7 +425,25 @@ always @(*) begin
 			VMULEU: begin
 			//	case(ID_EX_Instr[24:25])
 				case(WW)
-					Width_8:	begin
+					Width_8:    begin
+								ALU_out[0:15] = rA_64bit_val[0:7] * rB_64bit_val[0:7];
+								ALU_out[16:31] = rA_64bit_val[16:23] * rB_64bit_val[16:23];
+								ALU_out[32:47] = rA_64bit_val[32:39] * rB_64bit_val[32:39];
+								ALU_out[48:63] = rA_64bit_val[48:54] * rB_64bit_val[48:54];
+					end		
+					
+					Width_16: 	begin
+								ALU_out[0:31] = rA_64bit_val[0:15] * rB_64bit_val[0:15];
+								ALU_out[32:63] = rA_64bit_val[32:47] * rB_64bit_val[32:47];
+					end
+								
+					Width_32:	begin
+								ALU_out[0:63] = rA_64bit_val[0:31] * rB_64bit_val[0:31];
+					end
+
+
+
+				/*	Width_8:	begin
 						//DW02_mult(A,B,TC,PRODUCT), TC: '0' => unsigned multiplication
 
 						rA_8bit_p1 = rA_64bit_val[0:7];
@@ -461,7 +479,7 @@ always @(*) begin
 						rA_32bit_p1 = rA_64bit_val[0:31];
 						rB_32bit_p1 = rB_64bit_val[0:31];
 						ALU_out[0:63] = ALU_32bit_mult_p1;
-					end
+					end*/
 
 				endcase
 			end
