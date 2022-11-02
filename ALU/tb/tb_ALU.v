@@ -229,6 +229,21 @@ module tb_ALU;
 		R_ins = 6'b010010;
 		WW = 10;
 
+		//VSLL
+		#10;
+		Op_code = 6'b101010;
+		rA_64bit_val = 64'h00000640_00040001;		
+		rB_64bit_val = 64'd10;
+		R_ins = 6'b001010;
+		WW = 00;
+
+		//VSRL
+		#10;
+		Op_code = 6'b101010;
+		rA_64bit_val = 64'h00000640_00040001;		
+		rB_64bit_val = 64'd10;
+		R_ins = 6'b001011;
+		WW = 10;
 
 
 		#20 $finish;

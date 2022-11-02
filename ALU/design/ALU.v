@@ -8,6 +8,7 @@
 //`include "./include/sim_ver/DW_div_function.inc"
 `include "./include/sim_ver/DW02_mult.v"
 `include "./include/sim_ver/DW_sqrt.v"
+`include "./include/sim_ver/DW_shifter.v"
 
 module ALU(rA_64bit_val, rB_64bit_val, R_ins, Op_code, WW, ALU_out);
 
@@ -18,7 +19,7 @@ output [0:63] ALU_out;
 reg [0:63] ALU_out;
 
 parameter   VAND = 6'b000001, VOR =  6'b000010, VXOR = 6'b000011, VNOT = 6'b000100, VMOV = 6'b000101,			//Instruction from R type depending on INSTR[26:31] bits R_ins
-			VADD = 6'b000110, VSUB = 6'b000111, VMULEU =  6'b001000, VMULOU = 6'b001001, VSLL = 001010,
+			VADD = 6'b000110, VSUB = 6'b000111, VMULEU =  6'b001000, VMULOU = 6'b001001, VSLL = 6'b001010,
 			VSRL = 6'b001011, VSRA = 6'b001100, VRTTH = 6'b001101, VDIV = 6'b001110, VMOD = 6'b001111,
 			VSQEU = 6'b010000, VSQOU = 6'b010001, VSQRT = 6'b010010, VNOP = 6'b000000;
 			
@@ -536,35 +537,70 @@ always @(*) begin
 
 
 					
-/*			VSLL: begin
+			VSLL: begin
 				case(WW)
 					Width_8: begin
-						ALU_out[0:63] =  
+						ALU_out[0:7] =  rA_64bit_val[0:7]  << 3;	  //Left  shift by  3 bits as width is 8 bits
+						ALU_out[8:15] =  rA_64bit_val[8:15]  << 3;
+						ALU_out[16:23] =  rA_64bit_val[16:23]  << 3;
+						ALU_out[24:31] =  rA_64bit_val[24:31]  << 3;
+						ALU_out[32:39] =  rA_64bit_val[32:39]  << 3;
+						ALU_out[40:47] =  rA_64bit_val[40:47]  << 3;
+						ALU_out[48:55] =  rA_64bit_val[48:55]  << 3;
+						ALU_out[56:63] =  rA_64bit_val[56:63]  << 3;
 					end
 
 					Width_16: begin
-
+						ALU_out[0:15] =  rA_64bit_val[0:7]  << 4;	  //Left  shift by  4 bits as width is 16 bits
+						ALU_out[16:31] =  rA_64bit_val[16:31]  << 4;
+						ALU_out[32:47] =  rA_64bit_val[32:47]  << 4;
+						ALU_out[48:63] =  rA_64bit_val[48:63]  << 4;
+						
 					end
 
 					Width_32: begin
-						ALU_out[0:63] = rA_64bit_val << 6;
+						ALU_out[0:31] =  rA_64bit_val[0:31]  << 5;	  //Left  shift by  5 bits as width is 32 bits
+						ALU_out[32:63] =  rA_64bit_val[32:63]  << 5;
 					end
 
 					Width_64: begin
-						ALU_out[0:63] = rA_64bit_val << 6;
+						ALU_out[0:63] = rA_64bit_val[0:63] << 6;	//Left  shift by  6 bits as width is 64 bits
 					end
 				endcase
 			
-			end
-			
-			
 		VSRL: begin
-				case(ID_EX_Instr[24:25])
-				
+				case(WW)
+					Width_8: begin
+						ALU_out[0:7] =  rA_64bit_val[0:7]  >> 3;	  //Right shift by  3 bits as width is 8 bits
+						ALU_out[8:15] =  rA_64bit_val[8:15]  >> 3;
+						ALU_out[16:23] =  rA_64bit_val[16:23]  >> 3;
+						ALU_out[24:31] =  rA_64bit_val[24:31]  >> 3;
+						ALU_out[32:39] =  rA_64bit_val[32:39]  >> 3;
+						ALU_out[40:47] =  rA_64bit_val[40:47]  >> 3;
+						ALU_out[48:55] =  rA_64bit_val[48:55]  >> 3;
+						ALU_out[56:63] =  rA_64bit_val[56:63]  >> 3;
+					end
+
+					Width_16: begin
+						ALU_out[0:15] =  rA_64bit_val[0:7]  >> 4;	  //Right shift by  4 bits as width is 16 bits
+						ALU_out[16:31] =  rA_64bit_val[16:31]  >> 4;
+						ALU_out[32:47] =  rA_64bit_val[32:47]  >> 4;
+						ALU_out[48:63] =  rA_64bit_val[48:63]  >> 4;
+						
+					end
+
+					Width_32: begin
+						ALU_out[0:31] =  rA_64bit_val[0:31]  >> 5;	  //Right shift by  5 bits as width is 32 bits
+						ALU_out[32:63] =  rA_64bit_val[32:63]  >> 5;
+					end
+
+					Width_64: begin
+						ALU_out[0:63] = rA_64bit_val[0:63] >> 6;	//Right shift by  6 bits as width is 64 bits
+					end
 				endcase
 			end
 			
-			VSRA: begin
+	/*		VSRA: begin
 				case(ID_EX_Instr[24:25])
 				
 				endcase
