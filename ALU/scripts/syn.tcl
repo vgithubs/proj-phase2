@@ -24,20 +24,20 @@ set link_library [list * gscl45nm.db dw_foundation.sldb standard.sldb]
 read_verilog ./src/${design_name}.v ;
 
 
-analyze -format verilog /include/sim_ver/DW_sqrt.v
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_sqrt.v
 elaborate DW01_sqrt
 
-analyze -format verilog /include/sim_ver/DW01_add.v
-elaborate DW01_add.v
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW01_add.v
+elaborate DW01_add
 
-analyze -format verilog /include/sim_ver/DW02_mult.v
-elaborate DW02_mult.v
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW02_mult.v
+elaborate DW02_mult
 
-analyze -format verilog /include/sim_ver/DW_div.v
-elaborate DW_div.v
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div.v
+elaborate DW_div
 
-analyze -format verilog /include/sim_ver/DW_shifter.v
-elaborate DW_shifter.v
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter.v
+elaborate DW_shifter
 
 
 # Setting $design_name as current working design.

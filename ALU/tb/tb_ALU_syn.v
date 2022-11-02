@@ -389,13 +389,13 @@ module tb_ALU;
 
 		#20 $finish;
 
-
+		end
 		initial begin
 		$sdf_annotate("./netlist/ALU.sdf", alu_one,,"sdf.log","MAXIMUM","1.0:1.0:1.0", "FROM_MAXIMUM");	//http://www.pldworld.com/_hdl/2/_ref/se_html/manual_html/c_sdf10.html
 		$enable_warnings;
 		$log("ncsim.log");
-	end
-	end
+		end
+	
 endmodule
 
 
