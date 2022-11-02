@@ -271,7 +271,8 @@ DW_shifter #(.data_width(32), .sh_width(5), .inv_mode(2)) dwshift14(rA_32bit_p2,
 //For 64 bit
 DW_shifter #(.data_width(64), .sh_width(6), .inv_mode(2)) dwshift15(rA_64bit_p1, 0, 4'b000101, 0, 1, ALU_64bit_shift_p1); */
 
-reg [0:5]amt_to_shift_32b_p1, amt_to_shift_32b_p2;
+reg [0:5]amt_to_shift_32b_p1;
+reg [0:5]amt_to_shift_32b_p2;
 reg [0:6]amt_to_shift;
 
 DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift1(rA_8bit_p1, 0, 3'b010, 0, 1, ALU_8bit_shift_p1);
@@ -723,17 +724,14 @@ always @(*) begin
 						ALU_out[0:31] = ALU_32bit_shift_p1;
 
 						rA_32bit_p2 = rA_64bit_val[32:63];
-					//	amt_to_shift_32b_p2 = 5'b00101;
-						amt_to_shift_32b_p2 = rB_64_bit_val[59:63];
+						amt_to_shift_32b_p2 = rB_64bit_val[59:63];
 						ALU_out[32:63] = ALU_32bit_shift_p2;
 
 					end
 
 					Width_64:  begin
 						rA_64bit_p1 = rA_64bit_val[0:63];
-					//	amt_to_shift = rB_64_bit_val[58:63];
 						amt_to_shift = rB_64bit_val[58:63];
-						//amt_to_shift = 6'b001000;
 						ALU_out[0:63] = ALU_64bit_shift_p1;
 						
 					end
