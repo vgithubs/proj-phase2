@@ -25,7 +25,7 @@ read_verilog ./src/${design_name}.v ;
 
 
 analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_sqrt.v
-elaborate DW01_sqrt
+elaborate DW_sqrt
 
 analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW01_add.v
 elaborate DW01_add
