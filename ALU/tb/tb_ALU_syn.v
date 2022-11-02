@@ -1,7 +1,7 @@
 `include "./include/gscl45nm.v"
 
 
-module tb_ALU;
+module tb_ALU_syn;
 	reg [0:63] rA_64bit_val, rB_64bit_val;
 	reg [0:5] R_ins, Op_code;
 	reg [0:1] WW;
@@ -247,7 +247,7 @@ module tb_ALU;
 		WW = 10;
 
 
-		//VSRA
+	/*	//VSRA
 		#10;
 		Op_code = 6'b101010;
 		rA_64bit_val = 64'h00000640_00040001;		
@@ -320,7 +320,7 @@ module tb_ALU;
 	//	rB_64bit_val = 64'h00000000_00000008;
 		rB_64bit_val = 64'h00000000_00000006;
 		R_ins = 6'b001100;
-		WW = 11;
+		WW = 11;*/
 
 		//VSLL
 		#10;
