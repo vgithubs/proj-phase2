@@ -9,7 +9,7 @@ module tb_ALU;
 	ALU alu_one(rA_64bit_val, rB_64bit_val, R_ins, Op_code, WW, ALU_out);
 
 	initial begin
-		$monitor($time,"rA_64bit_val = %b, rB_64bit_val = %b, R_ins = %b, Op_code = %b, WW = %b, ALU_out = %b" ,rA_64bit_val, rB_64bit_val, R_ins, Op_code, WW, ALU_out);
+		$monitor($time,"rA_64bit_val = %h, rB_64bit_val = %h, R_ins = %b, Op_code = %b, WW = %b, ALU_out = %h" ,rA_64bit_val, rB_64bit_val, R_ins, Op_code, WW, ALU_out);
 		
 		//VAND of decimal numbers 15 and 14, WW field doesn't matter, o/p is 14								
 		#10;
@@ -295,11 +295,19 @@ module tb_ALU;
 		WW = 01;
 
 
+	//	//VSRA
+	//	#10;
+	//	Op_code = 6'b101010;
+	//	rA_64bit_val = 64'hF0E1F2A2_01010101;		
+	//	rB_64bit_val = 64'd10;
+	//	R_ins = 6'b001100;
+	//	WW = 10;
+
 		//VSRA
 		#10;
 		Op_code = 6'b101010;
 		rA_64bit_val = 64'hF0E1F2A2_01010101;		
-		rB_64bit_val = 64'd10;
+		rB_64bit_val = 64'h00000005_00000005;
 		R_ins = 6'b001100;
 		WW = 10;
 
@@ -308,7 +316,8 @@ module tb_ALU;
 		#10;
 		Op_code = 6'b101010;
 		rA_64bit_val = 64'hF0E1F2A2_01010101;		
-		rB_64bit_val = 64'd10;
+	//	rB_64bit_val = 64'h00000000_00000008;
+		rB_64bit_val = 64'h00000000_00000006;
 		R_ins = 6'b001100;
 		WW = 11;
 
