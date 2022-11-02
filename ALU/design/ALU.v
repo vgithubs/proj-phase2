@@ -11,6 +11,7 @@
 `include "./include/sim_ver/DW_shifter.v"
 `include "./include/sim_ver/DW_shifter_function.inc"
 
+
 module ALU(rA_64bit_val, rB_64bit_val, R_ins, Op_code, WW, ALU_out);
 
 input [0:63] rA_64bit_val, rB_64bit_val;
@@ -237,6 +238,28 @@ DW_sqrt #(32, 0) dw_sqrt14(rA_32bit_p2, ALU_32bit_sqrt_p2);
 //For 64 bit
 DW_sqrt #(64, 0) dw_sqrt15(rA_64bit_p1, ALU_64bit_sqrt_p1);
 
+
+
+
+
+
+//***
+//For 8 16 32 64
+wire [0:7] ALU_8bit_shift_p1, ALU_8bit_shift_p2, ALU_8bit_shift_p3, ALU_8bit_shift_p4, ALU_8bit_shift_p5, ALU_8bit_shift_p6, ALU_8bit_shift_p7, ALU_8bit_shift_p8;
+//wire [0:15] ALU_16bit_sub_p1, ALU_16bit_sub_p2, ALU_16bit_sub_p3, ALU_16bit_sub_p4;
+//wire [0:31] ALU_32bit_sub_p1, ALU_32bit_sub_p2;
+//wire [0:63] ALU_64bit_sub_p1;
+//For  8 bit
+//DW_shifter #(data_width, sh_width) dwshift1(data_in, data_tc, sh, sh_tc, sh_mode, data_out);
+DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift1(rA_8bit_p1, 0, 3'b011, 0, 1, ALU_8bit_shift_p1);
+DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift2(rA_8bit_p2, 0, 3'b011, 0, 1, ALU_8bit_shift_p2);
+DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift3(rA_8bit_p2, 0, 3'b011, 0, 1, ALU_8bit_shift_p3);
+DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift4(rA_8bit_p2, 0, 3'b011, 0, 1, ALU_8bit_shift_p4);
+DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift5(rA_8bit_p2, 0, 3'b011, 0, 1, ALU_8bit_shift_p5);
+DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift6(rA_8bit_p2, 0, 3'b011, 0, 1, ALU_8bit_shift_p6);
+DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift7(rA_8bit_p2, 0, 3'b011, 0, 1, ALU_8bit_shift_p7);
+DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift8(rA_8bit_p2, 0, 3'b011, 0, 1, ALU_8bit_shift_p8);
+//Fpr 16 bit
 
 
 always @(*) begin		
@@ -602,11 +625,36 @@ always @(*) begin
 				endcase
 			end
 			
-	/*		VSRA: begin
-				case(ID_EX_Instr[24:25])
-				
+			VSRA: begin
+				case(WW)
+					Width_8:
+					//	DW_shifter(data_in, data_tc, sh, sh_tc, sh_mode, data_out);
+						rA_8bit_p1 = rA_64bit_val[0:7];
+						ALU_out[0:7] = ALU_8bit_shift_p1;
+
+						rA_8bit_p2 = rA_64bit_val[8:15];
+						ALU_out[8:15] = ALU_8bit_shift_p2;
+
+						rA_8bit_p3 = rA_64bit_val[16:23];
+						ALU_out[16:23] = ALU_8bit_shift_p3;
+
+						rA_8bit_p4 = rA_64bit_val[24:31];
+						ALU_out[24:31] = ALU_8bit_shift_p4;
+
+						rA_8bit_p5 = rA_64bit_val[32:39];
+						ALU_out[32:39] = ALU_8bit_shift_p5;
+
+						rA_8bit_p6 = rA_64bit_val[40:47];
+						ALU_out[40:47] = ALU_8bit_shift_p6;
+
+						rA_8bit_p7 = rA_64bit_val[48:55];
+						ALU_out[48:55] = ALU_8bit_shift_p7;
+
+						rA_8bit_p8 = rA_64bit_val[56:63];
+						ALU_out[56:63] = ALU_8bit_shift_p8;
+	
 				endcase
-			end	*/
+			end	
 
 
 
