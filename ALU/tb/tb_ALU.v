@@ -194,7 +194,42 @@ module tb_ALU;
 		rA_64bit_val = 64'h00000040_00000001;		
 		rB_64bit_val = 64'd10;
 		R_ins = 6'b010010;
-		WW = 11;					
+		WW = 11;	
+
+
+		//VSQRT
+		#10;
+		Op_code = 6'b101010;
+		rA_64bit_val = 64'h00000040_00000001;		
+		rB_64bit_val = 64'd10;
+		R_ins = 6'b010010;
+		WW = 11;	
+
+		//VSQRT
+		#10;
+		Op_code = 6'b101010;
+		rA_64bit_val = 64'hFF01FFFF_10040001;	//last 8 square root of 16, 4, 0, 1	
+		rB_64bit_val = 64'd10;
+		R_ins = 6'b010010;
+		WW = 00;
+
+		//VSQRT
+		#10;
+		Op_code = 6'b101010;
+		rA_64bit_val = 64'h00000640_00040001;		//First  8 digits last 4 is 640 i.e. 1600 in decimal
+		rB_64bit_val = 64'd10;
+		R_ins = 6'b010010;
+		WW = 01;
+
+		//VSQRT
+		#10;
+		Op_code = 6'b101010;
+		rA_64bit_val = 64'h00000640_00040001;		//First  8 digits last 4 is 640 i.e. 1600 in decimal
+		rB_64bit_val = 64'd10;
+		R_ins = 6'b010010;
+		WW = 10;
+
+
 
 		#20 $finish;
 	end

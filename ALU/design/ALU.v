@@ -207,10 +207,14 @@ DW02_mult #(32, 32) dwm28(rA_32bit_p1,rA_32bit_p1,0,ALU_32bit_sqo_p1);
 
 //***Square Root***
 //For 8 16 32 64 bits
-wire [0:7] ALU_8bit_sqrt_p1, ALU_8bit_sqrt_p2, ALU_8bit_sqrt_p3, ALU_8bit_sqrt_p4, ALU_8bit_sqrt_p5, ALU_8bit_sqrt_p6, ALU_8bit_sqrtv_p7, ALU_8bit_sqrt_p8;
-wire [0:15] ALU_16bit_sqrt_p1, ALU_16bit_sqrt_p2, ALU_16bit_sqrt_p3, ALU_16bit_sqrt_p4;
-wire [0:31] ALU_32bit_sqrt_p1, ALU_32bit_sqrt_p2;
-wire [0:63] ALU_64bit_sqrt_p1;
+//wire [0:7] ALU_8bit_sqrt_p1, ALU_8bit_sqrt_p2, ALU_8bit_sqrt_p3, ALU_8bit_sqrt_p4, ALU_8bit_sqrt_p5, ALU_8bit_sqrt_p6, ALU_8bit_sqrtv_p7, ALU_8bit_sqrt_p8;
+//wire [0:15] ALU_16bit_sqrt_p1, ALU_16bit_sqrt_p2, ALU_16bit_sqrt_p3, ALU_16bit_sqrt_p4;
+//wire [0:31] ALU_32bit_sqrt_p1, ALU_32bit_sqrt_p2;
+//wire [0:63] ALU_64bit_sqrt_p1;
+wire [0:3] ALU_8bit_sqrt_p1, ALU_8bit_sqrt_p2, ALU_8bit_sqrt_p3, ALU_8bit_sqrt_p4, ALU_8bit_sqrt_p5, ALU_8bit_sqrt_p6, ALU_8bit_sqrtv_p7, ALU_8bit_sqrt_p8;
+wire [0:7] ALU_16bit_sqrt_p1, ALU_16bit_sqrt_p2, ALU_16bit_sqrt_p3, ALU_16bit_sqrt_p4;
+wire [0:15] ALU_32bit_sqrt_p1, ALU_32bit_sqrt_p2;
+wire [0:31] ALU_64bit_sqrt_p1;		//According to module root width
 //For 8 bit
 DW_sqrt #(8, 0) dwsq1(rA_8bit_p1, ALU_8bit_sqrt_p1);
 DW_sqrt #(8, 0) dwsq2(rA_8bit_p2, ALU_8bit_sqrt_p2);
