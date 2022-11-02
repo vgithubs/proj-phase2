@@ -8,7 +8,7 @@
 //`include "./include/sim_ver/DW_div_function.inc"
 `include "./include/sim_ver/DW02_mult.v"
 `include "./include/sim_ver/DW_sqrt.v"
-`include "./include/sim_ver/DW_shifter.v"
+//`include "./include/sim_ver/DW_shifter.v"
 
 module ALU(rA_64bit_val, rB_64bit_val, R_ins, Op_code, WW, ALU_out);
 
