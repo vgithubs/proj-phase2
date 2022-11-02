@@ -718,10 +718,12 @@ always @(*) begin
 
 					Width_32: begin
 						rA_32bit_p1 = rA_64bit_val[0:31];
+					//	amt_to_shift_32b_p1 = 5'b00101;
 						amt_to_shift_32b_p1 = rB_64bit_val[27:31];
 						ALU_out[0:31] = ALU_32bit_shift_p1;
 
 						rA_32bit_p2 = rA_64bit_val[32:63];
+					//	amt_to_shift_32b_p2 = 5'b00101;
 						amt_to_shift_32b_p2 = rB_64_bit_val[59:63];
 						ALU_out[32:63] = ALU_32bit_shift_p2;
 
