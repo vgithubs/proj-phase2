@@ -106,9 +106,9 @@ DW01_add #(64) dwad30(rA_64bit_p1,~rB_64bit_p1,1'b1,ALU_64bit_sub_p1,);
 //***Multiply Even****
 
 //For 8  16  32
-wire [0:15] ALU_8bit_mult_p1, ALU_8bit_mult_p2, ALU_8bit_mult_p3, ALU_8bit_mult_p4;
-wire [0:31] ALU_16bit_mult_p1, ALU_16bit_mult_p2;
-wire [0:63] ALU_32bit_mult_p1;
+wire [0:7] ALU_8bit_mult_p1, ALU_8bit_mult_p2, ALU_8bit_mult_p3, ALU_8bit_mult_p4;
+wire [0:15] ALU_16bit_mult_p1, ALU_16bit_mult_p2;
+wire [0:31] ALU_32bit_mult_p1;
 // 8bit 
 DW02_mult #(8, 8) dwm1(rA_8bit_p1,rB_8bit_p1,1'b0,ALU_8bit_mult_p1);
 DW02_mult #(8, 8) dwm2(rA_8bit_p2,rB_8bit_p2,1'b0,ALU_8bit_mult_p2);
@@ -124,9 +124,9 @@ DW02_mult #(32, 32) dwm7(rA_32bit_p1,rB_32bit_p1,1'b0,ALU_32bit_mult_p1);
 
 //***Multiply Odd***
 //For 8  16  32
-wire [0:15] ALU_8bit_mult_odd_p1, ALU_8bit_mult_odd_p2, ALU_8bit_mult_odd_p3, ALU_8bit_mult_odd_p4;
-wire [0:31] ALU_16bit_mult_odd_p1, ALU_16bit_mult_odd_p2;
-wire [0:63] ALU_32bit_mult_odd_p1;
+wire [0:7] ALU_8bit_mult_odd_p1, ALU_8bit_mult_odd_p2, ALU_8bit_mult_odd_p3, ALU_8bit_mult_odd_p4;
+wire [0:15] ALU_16bit_mult_odd_p1, ALU_16bit_mult_odd_p2;
+wire [0:31] ALU_32bit_mult_odd_p1;
 //8 bit
 DW02_mult #(8, 8) dwm8(rA_8bit_p1,rB_8bit_p1,1'b0,ALU_8bit_mult_odd_p1);
 DW02_mult #(8, 8) dwm9(rA_8bit_p2,rB_8bit_p2,1'b0,ALU_8bit_mult_odd_p2);
@@ -176,9 +176,9 @@ DW_div #(64, 64, 0, 1) dwdivi15(rA_64bit_p1,rB_64bit_p1, ALU_64bit_div_p1, remai
 */
 //***Square Even***
 //For 8  16  32
-wire [0:15] ALU_8bit_sqe_p1, ALU_8bit_sqe_p2, ALU_8bit_sqe_p3, ALU_8bit_sqe_p4;
-wire [0:31] ALU_16bit_sqe_p1, ALU_16bit_sqe_p2;
-wire [0:63] ALU_32bit_sqe_p1;
+wire [0:7] ALU_8bit_sqe_p1, ALU_8bit_sqe_p2, ALU_8bit_sqe_p3, ALU_8bit_sqe_p4;
+wire [0:15] ALU_16bit_sqe_p1, ALU_16bit_sqe_p2;
+wire [0:31] ALU_32bit_sqe_p1;
 //For 8 bit
 DW02_mult #(8, 8) dwm15(rA_8bit_p1,rA_8bit_p1,1'b0,ALU_8bit_sqe_p1);
 DW02_mult #(8, 8) dwm16(rA_8bit_p2,rA_8bit_p2,1'b0,ALU_8bit_sqe_p2);
@@ -193,9 +193,9 @@ DW02_mult #(32, 32) dwm21(rA_32bit_p1,rA_32bit_p1,1'b0,ALU_32bit_sqe_p1);
 
 //***Square Odd***
 //For 8  16  32
-wire [0:15] ALU_8bit_sqo_p1, ALU_8bit_sqo_p2, ALU_8bit_sqo_p3, ALU_8bit_sqo_p4;
-wire [0:31] ALU_16bit_sqo_p1, ALU_16bit_sqo_p2;
-wire [0:63] ALU_32bit_sqo_p1;
+wire [0:7] ALU_8bit_sqo_p1, ALU_8bit_sqo_p2, ALU_8bit_sqo_p3, ALU_8bit_sqo_p4;
+wire [0:15] ALU_16bit_sqo_p1, ALU_16bit_sqo_p2;
+wire [0:31] ALU_32bit_sqo_p1;
 //For 8 bit
 DW02_mult #(8, 8) dwm22(rA_8bit_p1,rA_8bit_p1,1'b0,ALU_8bit_sqo_p1);
 DW02_mult #(8, 8) dwm23(rA_8bit_p2,rA_8bit_p2,1'b0,ALU_8bit_sqo_p2);

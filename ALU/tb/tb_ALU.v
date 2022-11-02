@@ -246,7 +246,7 @@ module tb_ALU;
 		WW = 10;
 
 
-	/*	//VSRA
+		//VSRA
 		#10;
 		Op_code = 6'b101010;
 		rA_64bit_val = 64'h00000640_00040001;		
@@ -260,7 +260,7 @@ module tb_ALU;
 		rA_64bit_val = 64'h01010101_FFFFEEEE;		
 		rB_64bit_val = 64'd10;
 		R_ins = 6'b001100;
-		WW = 00; 
+		WW = 00;
 
 		//VSRA
 		#10;
@@ -319,7 +319,7 @@ module tb_ALU;
 	//	rB_64bit_val = 64'h00000000_00000008;
 		rB_64bit_val = 64'h00000000_00000006;
 		R_ins = 6'b001100;
-		WW = 11;	*/
+		WW = 11;
 
 		//VSLL
 		#10;

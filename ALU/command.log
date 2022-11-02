@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version K-2015.06-SP5-5 for linux64 -- Aug 14, 2016
-#@ # Date:   Wed Nov  2 13:04:06 2022
+#@ # Date:   Wed Nov  2 14:58:57 2022
 #@ # Run by: shivbhak@viterbi-scf2
 #@ 
 
@@ -3837,7 +3837,7 @@ source -echo -verbose /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU/scripts/s
 #@ 
 #@ 
 #@ analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_sqrt.v
-#@ elaborate DW01_sqrt
+#@ elaborate DW_sqrt
 #@ 
 #@ analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW01_add.v
 #@ elaborate DW01_add
@@ -3893,17 +3893,3 @@ source -echo -verbose /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU/scripts/s
 #@ 
 #@ # Generating timing and are report of the synthezied design.
 #@ report_timing > report/$design_name.timing ;
-#@ report_area > report/$design_name.area ;
-#@ 
-#@ # Writing synthesized gate-level verilog netlist.
-#@ # This verilog netlist will be used for post-synthesis gate-level simulation.
-#@ change_names -rules verilog -hierarchy ;
-#@ write -format verilog -hierarchy -out netlist/${design_name}_syn.v ;
-#@ 
-#@ # Writing Standard Delay Format (SDF) back-annotation file.
-#@ # This delay information can be used for post-synthesis simulation.
-#@ write_sdf netlist/${design_name}_syn.sdf;
-#@ write_sdc netlist/${design_name}_syn.sdc
-#@ 
-#@ # -- End source /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU/scripts/syn.tcl
-
