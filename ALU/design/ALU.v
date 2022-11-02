@@ -304,10 +304,10 @@ DW_shifter #(.data_width(8), .sh_width(3), .inv_mode(2)) dwshift8(rA_8bit_p8, 0,
 //DW_shifter #(.data_width(16), .sh_width(4), .inv_mode(2)) dwshift11(rA_16bit_p3, 0, 4'b0011, 0, 1, ALU_16bit_shift_p3);
 //DW_shifter #(.data_width(16), .sh_width(4), .inv_mode(2)) dwshift12(rA_16bit_p4, 0, 4'b0011, 0, 1, ALU_16bit_shift_p4);
 
-DW_shifter #(.data_width(16), .sh_width(4), .inv_mode(2)) dwshift9(rA_16bit_p1, 0, (~((~amt_to_shift_32b_p1) + 1)), 0, 1, ALU_16bit_shift_p1);
-DW_shifter #(.data_width(16), .sh_width(4), .inv_mode(2)) dwshift10(rA_16bit_p2, 0, (~((~amt_to_shift_32b_p2) + 1)), 0, 1, ALU_16bit_shift_p2);
-DW_shifter #(.data_width(16), .sh_width(4), .inv_mode(2)) dwshift11(rA_16bit_p3, 0, (~((~amt_to_shift_32b_p3) + 1)), 0, 1, ALU_16bit_shift_p3);
-DW_shifter #(.data_width(16), .sh_width(4), .inv_mode(2)) dwshift12(rA_16bit_p4, 0, (~((~amt_to_shift_32b_p4) + 1)), 0, 1, ALU_16bit_shift_p4);
+DW_shifter #(.data_width(16), .sh_width(4), .inv_mode(2)) dwshift9(rA_16bit_p1, 0, (~((~amt_to_shift_16b_p1) + 1)), 0, 1, ALU_16bit_shift_p1);
+DW_shifter #(.data_width(16), .sh_width(4), .inv_mode(2)) dwshift10(rA_16bit_p2, 0, (~((~amt_to_shift_16b_p2) + 1)), 0, 1, ALU_16bit_shift_p2);
+DW_shifter #(.data_width(16), .sh_width(4), .inv_mode(2)) dwshift11(rA_16bit_p3, 0, (~((~amt_to_shift_16b_p3) + 1)), 0, 1, ALU_16bit_shift_p3);
+DW_shifter #(.data_width(16), .sh_width(4), .inv_mode(2)) dwshift12(rA_16bit_p4, 0, (~((~amt_to_shift_16b_p4) + 1)), 0, 1, ALU_16bit_shift_p4);
 
 
 //For 32 bit
