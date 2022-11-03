@@ -1,5 +1,4 @@
-`timescale 1 ns / 10 ps						//For  modules [31:0] but giving [0:31] check pending
-
+`timescale 1 ns / 10 ps						
 
 `include "./include/sim_ver/DW01_add.v"
 `include "./include/sim_ver/DW_div.v"
@@ -70,7 +69,7 @@ DW01_add #(64) dwad15(rA_64bit_p1,rB_64bit_p1 ,1'b0,ALU_64bit_p1,);
 
 //****SUBTRACT****
 //For 8  16  32 64
-reg [0:7] rA_8bit_sub_p1, rB_8bit_sub_p1, rA_8bit_sub_p2, rB_8bit_sub_p2, rA_8bit_sub_p3, rB_8bit_sub_p3,  rA_8bit_sub_p4, rB_8bit_sub_p4, rA_8bit_sub_p5, rB_8bit_sub_p5, rA_8bit_sub_p6, rB_8bit_sub_p6, rA_8bit_sub_p7, rB_8bit_sub_p7, rA_8bit_sub_sub_p8, rB_8bit_sub_p8;
+reg [0:7] rA_8bit_sub_p1, rB_8bit_sub_p1, rA_8bit_sub_p2, rB_8bit_sub_p2, rA_8bit_sub_p3, rB_8bit_sub_p3,  rA_8bit_sub_p4, rB_8bit_sub_p4, rA_8bit_sub_p5, rB_8bit_sub_p5, rA_8bit_sub_p6, rB_8bit_sub_p6, rA_8bit_sub_p7, rB_8bit_sub_p7, rA_8bit_sub_p8, rB_8bit_sub_p8;
 wire [0:7] ALU_8bit_sub_p1, ALU_8bit_sub_p2, ALU_8bit_sub_p3, ALU_8bit_sub_p4, ALU_8bit_sub_p5, ALU_8bit_sub_p6, ALU_8bit_sub_p7, ALU_8bit_sub_p8;
 
 reg [0:15] rA_16bit_sub_p1, rB_16bit_sub_p1, rA_16bit_sub_p2, rB_16bit_sub_p2, rA_16bit_sub_p3, rB_16bit_sub_p3,  rA_16bit_sub_p4, rB_16bit_sub_p4;
@@ -108,7 +107,7 @@ DW01_add #(64) dwad30(rA_64bit_sub_p1,~rB_64bit_sub_p1,1'b1,ALU_64bit_sub_p1,);
 
 
 //For 8 16 32 64 bits
-reg [0:7] rA_8bit_div_p1, rB_8bit_div_p1, rA_8bit_div_p2, rB_8bit_div_p2, rA_8bit_div_p3, rB_8bit_div_p3,  rA_8bit_div_p4, rB_8bit_div_p4, rA_8bit_div_p5, rB_8bit_div_p5, rA_8bit_div_p6, rB_8bit_div_p6, rA_8bit_div_p7, rB_8bit_div_p7, rA_8bit_sub_div_p8, rB_8bit_div_p8;
+reg [0:7] rA_8bit_div_p1, rB_8bit_div_p1, rA_8bit_div_p2, rB_8bit_div_p2, rA_8bit_div_p3, rB_8bit_div_p3,  rA_8bit_div_p4, rB_8bit_div_p4, rA_8bit_div_p5, rB_8bit_div_p5, rA_8bit_div_p6, rB_8bit_div_p6, rA_8bit_div_p7, rB_8bit_div_p7, rA_8bit_div_p8, rB_8bit_div_p8;
 wire [0:7] ALU_8bit_div_p1, ALU_8bit_div_p2, ALU_8bit_div_p3, ALU_8bit_div_p4, ALU_8bit_div_p5, ALU_8bit_div_p6, ALU_8bit_div_p7, ALU_8bit_div_p8;
 wire [0:7] ALU_8bit_div_rem_p1, ALU_8bit_div_rem_p2, ALU_8bit_div_rem_p3, ALU_8bit_div_rem_p4, ALU_8bit_div_rem_p5, ALU_8bit_div_rem_p6, ALU_8bit_div_rem_p7, ALU_8bit_div_rem_p8; //remainder output b width 8bit
 wire ALU_8bit_div_byzero_p1, ALU_8bit_div_byzero_p2, ALU_8bit_div_byzero_p3, ALU_8bit_div_byzero_p4, ALU_8bit_div_byzero_p5, ALU_8bit_div_byzero_p6, ALU_8bit_div_byzero_p7, ALU_8bit_div_byzero_p8;
@@ -283,8 +282,6 @@ always @(*) begin
 					
 				VADD: begin		
 					case(WW)									
-					//	case(ID_EX_Instr[24:25])						//Depending on WW field
-
 						Width_8:	begin
 								//	DW01_add dwadder(A,B,CI,SUM,CO);
 
@@ -360,6 +357,39 @@ always @(*) begin
 									rB_64bit_p1 = rB_64bit_val[0:63];
 									ALU_out[0:63] = ALU_64bit_p1;
 						end
+					
+						default:
+								rA_8bit_p1 = 8'd0;
+								rB_8bit_p1 = 8'd0; 
+								rA_8bit_p2 = 8'd0;
+								rB_8bit_p2 = 8'd0;
+								rA_8bit_p3 = 8'd0;
+								rB_8bit_p3 = 8'd0;
+								rA_8bit_p4 = 8'd0;
+								rB_8bit_p4 = 8'd0;
+								rA_8bit_p5 = 8'd0;
+								rB_8bit_p5 = 8'd0;
+								rA_8bit_p6 = 8'd0;
+								rB_8bit_p6 = 8'd0;
+								rA_8bit_p7 = 8'd0;
+								rB_8bit_p7 = 8'd0;
+								rA_8bit_p8 = 8'd0;
+								rB_8bit_p8 = 8'd0;
+
+								rA_16bit_p1 = 16'd0;
+								rB_16bit_p1 = 16'd0;
+								rA_16bit_p2 = 16'd0;
+								rB_16bit_p2 = 16'd0;
+								rA_16bit_p3 = 16'd0;
+								rB_16bit_p3 = 16'd0;
+								rA_16bit_p4 = 16'd0;
+								rB_16bit_p4 = 16'd0;
+
+
+								rA_32bit_p1 = 32'd0;
+								rB_32bit_p1 = 32'd0;
+								rA_32bit_p2 = 32'd0;
+								rB_32bit_p2 = 32'd0;
 				endcase
 				end
 
