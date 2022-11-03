@@ -154,22 +154,6 @@ DW_div #(32, 32, 0, 1) dwdivi14(rA_32bit_div_p2,rB_32bit_div_p2, ALU_32bit_div_p
 DW_div #(64, 64, 0, 1) dwdivi15(rA_64bit_div_p1,rB_64bit_div_p1, ALU_64bit_div_p1, ALU_64bit_div_rem_p1, ALU_64bit_div_byzero_p1);
 
 
-/*
-//***Square Even***
-//For 8  16  32
-wire [0:15] ALU_8bit_sqe_p1, ALU_8bit_sqe_p2, ALU_8bit_sqe_p3, ALU_8bit_sqe_p4;
-wire [0:31] ALU_16bit_sqe_p1, ALU_16bit_sqe_p2;
-wire [0:63] ALU_32bit_sqe_p1;
-//For 8 bit
-DW02_mult #(8, 8) dwm15(rA_8bit_p1,rA_8bit_p1,1'b0,ALU_8bit_sqe_p1);
-DW02_mult #(8, 8) dwm16(rA_8bit_p2,rA_8bit_p2,1'b0,ALU_8bit_sqe_p2);
-DW02_mult #(8, 8) dwm17(rA_8bit_p3,rA_8bit_p3,1'b0,ALU_8bit_sqe_p3);
-DW02_mult #(8, 8) dwm18(rA_8bit_p4,rA_8bit_p4,1'b0,ALU_8bit_sqe_p4);
-//For 16 bit
-DW02_mult #(16, 16) dwm19(rA_16bit_p1,rA_16bit_p1,1'b0,ALU_16bit_sqe_p1);
-DW02_mult #(16, 16) dwm20(rA_16bit_p2,rA_16bit_p2,1'b0,ALU_16bit_sqe_p2);
-//For 32 bit
-DW02_mult #(32, 32) dwm21(rA_32bit_p1,rA_32bit_p1,1'b0,ALU_32bit_sqe_p1);
 
 
 //***Square Odd***
@@ -807,43 +791,20 @@ always @(*) begin
 			VSQEU: begin
 				case(WW)
 					Width_8:   begin
-
-								rA_8bit_p1 = rA_64bit_val[0:7];
-								
-								ALU_out[0:15] = ALU_8bit_sqe_p1;
-
-								rA_8bit_p2 = rA_64bit_val[16:23];
-								
-								ALU_out[16:31] = ALU_8bit_sqe_p2;
-
-								rA_8bit_p3 = rA_64bit_val[32:39];
-								
-								ALU_out[32:47] = ALU_8bit_sqe_p3;
-
-								rA_8bit_p4 = rA_64bit_val[48:54];
-								
-								ALU_out[48:63] = ALU_8bit_sqe_p4;
+							    ALU_out[0:15] = rA_64bit_val[0:7] * rA_64bit_val[0:7];
+								ALU_out[16:31] = rA_64bit_val[16:23] * rA_64bit_val[16:23];
+								ALU_out[32:47] = rA_64bit_val[32:39] * rA_64bit_val[32:39];
+								ALU_out[48:63] = rA_64bit_val[48:54] * rA_64bit_val[48:54];
 					end
 								
 					
 					Width_16: 	begin
-
-								rA_16bit_p1 = rA_64bit_val[0:15];
-								
-								ALU_out[0:31] = ALU_16bit_sqe_p1;
-
-								rA_16bit_p2 = rA_64bit_val[32:47];
-								
-								ALU_out[32:63] = ALU_16bit_sqe_p2;
-
-						
+								ALU_out[0:31] = rA_64bit_val[0:15] * rA_64bit_val[0:15];
+								ALU_out[32:63] = rA_64bit_val[32:47] * rA_64bit_val[32:47];
 					end
 
 					Width_32:	begin
-
-								rA_32bit_p1 = rA_64bit_val[0:31];
-								ALU_out[0:63] = ALU_32bit_sqe_p1;
-								
+								ALU_out[0:63] = rA_64bit_val[0:31] * rA_64bit_val[0:31];
 					end
 
 				endcase
