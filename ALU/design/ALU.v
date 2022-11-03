@@ -43,6 +43,11 @@ wire [0:31] ALU_32bit_p1, ALU_32bit_p2;
 reg [0:63] rA_64bit_p1,rB_64bit_p1;
 wire [0:63] ALU_64bit_p1;
 
+
+
+
+
+
 //8 8 bit adders
 DW01_add #(8) dwad1(rA_8bit_p1,rB_8bit_p1 ,1'b0,ALU_8bit_p1,);	
 DW01_add #(8) dwad2(rA_8bit_p2,rB_8bit_p2 ,1'b0,ALU_8bit_p2,);
@@ -358,7 +363,7 @@ always @(*) begin
 									ALU_out[0:63] = ALU_64bit_p1;
 						end
 					
-						default:
+						default: begin
 								rA_8bit_p1 = 8'd0;
 								rB_8bit_p1 = 8'd0; 
 								rA_8bit_p2 = 8'd0;
@@ -390,6 +395,10 @@ always @(*) begin
 								rB_32bit_p1 = 32'd0;
 								rA_32bit_p2 = 32'd0;
 								rB_32bit_p2 = 32'd0;
+
+								rA_64bit_p1 = 64'd0;
+								rB_64_bit_p1 = 64'd0;
+						end
 				endcase
 				end
 
