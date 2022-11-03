@@ -394,7 +394,7 @@ always @(*) begin
 								rB_32bit_p2 = 32'd0;
 
 								rA_64bit_p1 = 64'd0;
-								rB_64_bit_p1 = 64'd0;
+								rB_64bit_p1 = 64'd0;
 						end
 				endcase
 				end
