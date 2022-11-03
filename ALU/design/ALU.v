@@ -121,6 +121,7 @@ wire [0:15] ALU_16bit_div_rem_p1, ALU_16bit_div_rem_p2, ALU_16bit_div_rem_p3, AL
 wire ALU_16bit_div_byzero_p1, ALU_16bit_div_byzero_p2, ALU_16bit_div_byzero_p3, ALU_16bit_div_byzero_p4;
 
 reg [0:31] rA_32bit_div_p1,rB_32bit_div_p1, rA_32bit_div_p2,rB_32bit_div_p2;
+wire [0:31] ALU_32bit_div_p1, ALU_32bit_div_p2;
 wire [0:31] ALU_32bit_div_rem_p1, ALU_32bit_div_rem_p2;
 wire ALU_32bit_div_byzero_p1, ALU_32bit_div_byzero_p2;
 
