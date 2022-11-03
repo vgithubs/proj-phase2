@@ -45,9 +45,6 @@ wire [0:63] ALU_64bit_p1;
 
 
 
-
-
-
 //8 8 bit adders
 DW01_add #(8) dwad1(rA_8bit_p1,rB_8bit_p1 ,1'b0,ALU_8bit_p1,);	
 DW01_add #(8) dwad2(rA_8bit_p2,rB_8bit_p2 ,1'b0,ALU_8bit_p2,);
