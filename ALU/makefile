@@ -42,7 +42,7 @@
 
 # top level module
 TOP = tb_ALU
-TOP_SYN = tb_syn
+TOP_SYN = tb_ALU_syn
 DESIGN_NAME = ALU
 
 # List of the design files
