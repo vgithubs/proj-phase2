@@ -498,8 +498,8 @@ always @(*) begin
 						rB_8bit_p3 = rB_64bit_val[32:39];
 						ALU_out[32:47] = ALU_8bit_mult_p3;
 
-						rA_8bit_p4 = rA_64bit_val[48:54];
-						rB_8bit_p4 = rB_64bit_val[48:54];
+						rA_8bit_p4 = rA_64bit_val[48:55];
+						rB_8bit_p4 = rB_64bit_val[48:55];
 						ALU_out[48:63] = ALU_8bit_mult_p4;
 
 					end
