@@ -1,0 +1,13 @@
+(DELAYFILE
+(SDFVERSION "OVI 2.1")
+(DESIGN "DW_shifter")
+(DATE "Thu Nov  3 16:12:16 2022")
+(VENDOR "gscl45nm")
+(PROGRAM "Synopsys Design Compiler cmos")
+(VERSION "K-2015.06-SP5-5")
+(DIVIDER /)
+(VOLTAGE 1.10:1.10:1.10)
+(PROCESS "typical")
+(TEMPERATURE 27.00:27.00:27.00)
+(TIMESCALE 1ns)
+)
