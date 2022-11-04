@@ -6,10 +6,10 @@ input rst;
 //signals for write back
 input wr_en;
 input [0:2] ppp; //for selective write back as per spec (ppt page 9)
-input [0:5] in_addr;
+input [0:4] in_addr;
 input [0:63] in_data;
 
-input [0:5] addr_r1, addr_r2; //rA rB addresses from instruction
+input [0:4] addr_r1, addr_r2; //rA rB addresses from instruction
 
 output reg [0:63] data_r1; //rA data
 output reg [0:63] data_r2; //rB data

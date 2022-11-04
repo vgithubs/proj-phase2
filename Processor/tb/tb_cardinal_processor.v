@@ -121,7 +121,7 @@ begin
 	for (i=0; i<32; i=i+1) 
 	begin
 		//$fdisplay(reg0_dump_file, "Memory location #%d : %h ", i, proc_one.register_file1.data_arr[i]);
-		$fdisplay(reg0_dump_file, "Memory location #%d : %h ", i, cp.rf.data_arr[i]);
+		$fdisplay(reg0_dump_file, "%d: %b", i, cp.rf.data_arr[i]);
 	end
 	$fclose(reg0_dump_file);
 	$finish;

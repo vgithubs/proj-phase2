@@ -77,7 +77,7 @@ always @(posedge Clock) begin
 		IF_ID <= 0;
 	end
 	else begin
-		if(!stall_lw||!stall_br) begin
+		if(!stall_lw && !stall_br) begin
 			WBFF <= ~flush;
 			PC <= Next_Addr;
 			IF_ID <= Instruction;
@@ -93,7 +93,7 @@ reg_file rf(.clk(Clock), .rst(Reset), .wr_en(EX_WB[8]), .ppp(IF_ID[21:23]), .add
 //Control logic
 always @(*) begin
 	//WBFF reset on flush and power on
-	if(!WBFF) begin
+	if(WBFF) begin
 		case(IF_ID[0:5])
 			R_ALU: begin
 				ALU_op = 1; Mem_Rd = 0; Mem_Wr = 0; Branch = 0; Reg_Wr = 1; Mem_to_Reg = 0;
@@ -125,7 +125,7 @@ end
 
 
 //Stall logic
-assign stall_br = Branch && (ID_EX[0:4]==IF_ID[6:10]) && ID_EX[0:4]!=0;
+assign stall_br = Branch && (ID_EX[0:4]==IF_ID[6:10]) && (ID_EX[0:4]!=0);
 
 always @(posedge Clock) begin
 	if(!stall_lw && Mem_Rd)
@@ -135,11 +135,11 @@ end
 
 //Forwarding logic
 always @(posedge Clock) begin
-	if(Mem_Wr && (ID_EX[0:4]==IF_ID[6:10]))
+	if(Mem_Wr && (ID_EX[0:4]==IF_ID[6:10]) && (ID_EX[0:4]!=0))
 		fwd_store <= 1;
 	else fwd_store <= 0;
 
-	if((ID_EX[0:4]==IF_ID[11:15]) || (ID_EX[0:4]==IF_ID[16:20]))
+	if(((ID_EX[0:4]==IF_ID[11:15]) || (ID_EX[0:4]==IF_ID[16:20])) && (ID_EX[0:4]!=0))
 		fwd <= 1;
 	else fwd <= 0;
 end
@@ -151,12 +151,12 @@ assign DmemEn = ID_EX[26] || ID_EX[25];
 assign DmemWrEn = ID_EX[26];
 
 //ALU with forwarding
-assign EX_rA_rD = fwd ? WB_data : EX_rA_rD;
-assign EX_rB = fwd ? WB_data : EX_rB;
+assign EX_rA_rD = fwd ? WB_data : ID_EX_rA_rD_data;
+assign EX_rB = fwd ? WB_data : ID_EX_rB_data;
 ALU alu1(.rA_64bit_val(EX_rA_rD), .rB_64bit_val(EX_rB), .R_ins(ID_EX[10:15]), .Op_code(ID_EX[24]), .WW(ID_EX[8:9]), .ALU_out(ALU_out));
 
 //Dataflow
-assign WB_data = Mem_to_Reg? EX_WB_mem_data : EX_WB_reg_data;
+assign WB_data = EX_WB[9]? EX_WB_mem_data : EX_WB_reg_data;
 
 always @(posedge Clock) begin
 	if(Reset) begin
