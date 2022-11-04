@@ -58,8 +58,8 @@ always @(*) begin
 				case(ppp) 
 					3'b000: data_r1 = in_data;
 					3'b001: begin
-						data_r1[0:31] = in_data[0:31]
-						data_r1[32:63] = data_arr[in_addr][32:63]
+						data_r1[0:31] = in_data[0:31];
+						data_r1[32:63] = data_arr[in_addr][32:63];
 					end
 					3'b011: begin
 						data_r1[0:7] = in_data[0:7];
@@ -82,6 +82,7 @@ always @(*) begin
 						data_r1[56:63] = in_data[56:63];
 					end
 					default: data_r1 = in_data;
+				endcase
 			end
 			else
 				data_r1 = data_arr[addr_r1];
@@ -90,8 +91,8 @@ always @(*) begin
 				case(ppp) 
 					3'b000: data_r2 = in_data;
 					3'b001: begin
-						data_r2[0:31] = in_data[0:31]
-						data_r2[32:63] = data_arr[in_addr][32:63]
+						data_r2[0:31] = in_data[0:31];
+						data_r2[32:63] = data_arr[in_addr][32:63];
 					end
 					3'b011: begin
 						data_r2[0:7] = in_data[0:7];
@@ -114,6 +115,7 @@ always @(*) begin
 						data_r2[56:63] = in_data[56:63];
 					end
 					default: data_r2 = in_data;
+				endcase
 			end
 			else
 				data_r2 = data_arr[addr_r2];

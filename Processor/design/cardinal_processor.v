@@ -18,7 +18,7 @@ parameter   VAND = 6'b000001, VOR =  6'b000010, VXOR = 6'b000011, VNOT = 6'b0001
 			VSRL = 6'b001011, VSRA = 6'b001100, VRTTH = 6'b001101, VDIV = 6'b001110, VMOD = 6'b001111,
 			VSQEU = 6'b010000, VSQOU = 6'b010001, VSQRT = 6'b010010, VNOP = 6'b000000;
 
-parameter R_ALU = 6'b101010, LOAD = 6'b100000, STORE = 6'b100001, BRANCH_EZ = 6'b100010; BRANCH_NZ = 6'b100011, NOP = 6'b111100;			//Type of instruction depending on INSTR[0:5] bits
+parameter R_ALU = 6'b101010, LOAD = 6'b100000, STORE = 6'b100001, BRANCH_EZ = 6'b100010, BRANCH_NZ = 6'b100011, NOP = 6'b111100;			//Type of instruction depending on INSTR[0:5] bits
 
 parameter Width_8 = 2'b00, Width_16 = 2'b01, Width_32 = 2'b10, Width_64 = 2'b11;  
 
@@ -33,7 +33,8 @@ wire [0:7] Next_Addr; //Mux output -> either branch output or PC+1
 wire flush; //Input to WBFF in IF
 wire stall_br; //HDU_Br output
 reg stall_lw; //stall the pipeline for a load instr
-reg fwd,                                                           ;// Fu
+reg fwd;// Fu
+reg fwd_store;
 reg [0:63] ID_EX_rA_rD_data;
 reg [0:63] ID_EX_rB_data;
 reg [0:29] ID_EX; //[0:4] rD_Addr, [5:9] PPPWW, [10:15] ALU_case, [16:23] Immediate Address, Control Signals (remaining);
@@ -70,7 +71,7 @@ assign Next_Addr = flush ? IF_ID[24:31] : PC_next; //Switch addr on branch
 assign Instr_Addr = PC;
 
 always @(posedge Clock) begin
-	if(reset) begin
+	if(Reset) begin
 		WBFF <= 1;
 		PC <= 0;
 		IF_ID <= 0;
@@ -94,13 +95,27 @@ always @(*) begin
 	//WBFF reset on flush and power on
 	if(!WBFF) begin
 		case(IF_ID[0:5])
-			R_ALU: ALU_op = 1; Mem_Rd = 0; Mem_Wr = 0; Branch = 0; Reg_Wr = 1; Mem_to_Reg = 0;
-			LOAD: ALU_op = 0; Mem_Rd = 1; Mem_Wr = 0; Branch = 0; Reg_Wr = 1; Mem_to_Reg = 1;
-			STORE: ALU_op = 0; Mem_Rd = 0; Mem_Wr = 1; Branch = 0; Reg_Wr = 0; Mem_to_Reg = 0;
-			BRANCH_EZ: ALU_op = 0; Mem_Rd = 0; Mem_Wr = 0; Branch = 1; Reg_Wr = 0; Mem_to_Reg = 0;
-			BRANCH_NZ: ALU_op = 0; Mem_Rd = 0; Mem_Wr = 0; Branch = 1; Reg_Wr = 0; Mem_to_Reg = 0;
-			NOP: ALU_op = 0; Mem_Rd = 0; Mem_Wr = 0; Branch = 0; Reg_Wr = 0; Mem_to_Reg = 0;
-			default: ALU_op = 0; Mem_Rd = 0; Mem_Wr = 0; Branch = 0; Reg_Wr = 0; Mem_to_Reg = 0;
+			R_ALU: begin
+				ALU_op = 1; Mem_Rd = 0; Mem_Wr = 0; Branch = 0; Reg_Wr = 1; Mem_to_Reg = 0;
+			end
+			LOAD: begin
+				ALU_op = 0; Mem_Rd = 1; Mem_Wr = 0; Branch = 0; Reg_Wr = 1; Mem_to_Reg = 1;
+			end
+			STORE: begin
+				ALU_op = 0; Mem_Rd = 0; Mem_Wr = 1; Branch = 0; Reg_Wr = 0; Mem_to_Reg = 0;
+			end
+			BRANCH_EZ: begin
+				ALU_op = 0; Mem_Rd = 0; Mem_Wr = 0; Branch = 1; Reg_Wr = 0; Mem_to_Reg = 0;
+			end
+			BRANCH_NZ: begin
+				ALU_op = 0; Mem_Rd = 0; Mem_Wr = 0; Branch = 1; Reg_Wr = 0; Mem_to_Reg = 0;
+			end
+			NOP: begin
+				ALU_op = 0; Mem_Rd = 0; Mem_Wr = 0; Branch = 0; Reg_Wr = 0; Mem_to_Reg = 0;
+			end
+			default: begin
+				ALU_op = 0; Mem_Rd = 0; Mem_Wr = 0; Branch = 0; Reg_Wr = 0; Mem_to_Reg = 0;
+			end
 		endcase		
 	end
 	else begin
@@ -108,13 +123,14 @@ always @(*) begin
 	end
 end
 
+
 //Stall logic
 assign stall_br = Branch && (ID_EX[0:4]==IF_ID[6:10]) && ID_EX[0:4]!=0;
 
 always @(posedge Clock) begin
 	if(!stall_lw && Mem_Rd)
 		stall_lw <= 1;
-	else stall <= 0;
+	else stall_lw <= 0;
 end
 
 //Forwarding logic
@@ -154,10 +170,11 @@ always @(posedge Clock) begin
 	else begin
 		if(~stall_lw) begin
 			//ID_EXMEM
-			if(~stall_br)
+			if(~stall_br) begin
 				ID_EX <= {IF_ID[6:10], IF_ID[25:29], IF_ID[26:31], IF_ID[24:31], ALU_op, Mem_Rd, Mem_Wr, Branch, Reg_Wr, Mem_to_Reg}; //0:29
 				ID_EX_rA_rD_data <= rA_rD_data;
 				ID_EX_rB_data <= rB_data;
+			end
 			else begin
 				ID_EX <= 30'd0;
 				ID_EX_rA_rD_data <= 64'd0;

@@ -1,5 +1,5 @@
 ncelab(64): 15.20-s079: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
-TOOL:	ncelab(64)	15.20-s079: Started on Oct 05, 2022 at 23:56:53 PDT
+TOOL:	ncelab(64)	15.20-s079: Started on Nov 03, 2022 at 20:32:02 PDT
 ncelab
     -ACCESS +rwc
     -NCFATAL INVSUP
@@ -9,77 +9,212 @@ ncelab
     -MESSAGES
     -TIMESCALE 1ns/10ps
     -LIBVERBOSE
-    work.tb_syn
+    work.tb_cardinal_processor
 
 	Elaborating the design hierarchy:
-Resolving design unit 'frequency_divider_by3' at 'tb_syn.freq1'.
+Resolving design unit 'imem' at 'tb_cardinal_processor.IM_node0'.
 		Caching library 'work' ....... Done
 	library: 'work' views: 'module' -> found
-Resolved design unit 'frequency_divider_by3' at 'tb_syn.freq1' to 'work.frequency_divider_by3:module'.
-Resolving design unit 'DFFPOSX1' at 'tb_syn.freq1@frequency_divider_by3<module>.pos_count_reg_0_'.
+Resolved design unit 'imem' at 'tb_cardinal_processor.IM_node0' to 'work.imem:module'.
+Resolving design unit 'dmem' at 'tb_cardinal_processor.DM_node0'.
 	library: 'work' views: 'module' -> found
-Resolved design unit 'DFFPOSX1' at 'tb_syn.freq1@frequency_divider_by3<module>.pos_count_reg_0_' to 'work.DFFPOSX1:module'.
-Resolving design unit 'udp_dff' at 'tb_syn.freq1@frequency_divider_by3<module>.pos_count_reg_0_@DFFPOSX1<module>'.
-	library: 'work' views: 'module' 'udp' -> found
-Resolved design unit 'udp_dff' at 'tb_syn.freq1@frequency_divider_by3<module>.pos_count_reg_0_@DFFPOSX1<module>' to 'work.udp_dff:udp'.
-Resolved design unit 'DFFPOSX1' at 'tb_syn.freq1@frequency_divider_by3<module>.pos_count_reg_1_' to 'work.DFFPOSX1:module'.
-Resolved design unit 'udp_dff' at 'tb_syn.freq1@frequency_divider_by3<module>.pos_count_reg_1_@DFFPOSX1<module>' to 'work.udp_dff:udp'.
-Resolving design unit 'DFFNEGX1' at 'tb_syn.freq1@frequency_divider_by3<module>.neg_count_reg_0_'.
+Resolved design unit 'dmem' at 'tb_cardinal_processor.DM_node0' to 'work.dmem:module'.
+Resolving design unit 'cardinal_processor' at 'tb_cardinal_processor.cp'.
 	library: 'work' views: 'module' -> found
-Resolved design unit 'DFFNEGX1' at 'tb_syn.freq1@frequency_divider_by3<module>.neg_count_reg_0_' to 'work.DFFNEGX1:module'.
-Resolved design unit 'udp_dff' at 'tb_syn.freq1@frequency_divider_by3<module>.neg_count_reg_0_@DFFNEGX1<module>' to 'work.udp_dff:udp'.
-Resolved design unit 'DFFNEGX1' at 'tb_syn.freq1@frequency_divider_by3<module>.neg_count_reg_1_' to 'work.DFFNEGX1:module'.
-Resolved design unit 'udp_dff' at 'tb_syn.freq1@frequency_divider_by3<module>.neg_count_reg_1_@DFFNEGX1<module>' to 'work.udp_dff:udp'.
-Resolving design unit 'OAI21X1' at 'tb_syn.freq1@frequency_divider_by3<module>.U7'.
+Resolved design unit 'cardinal_processor' at 'tb_cardinal_processor.cp' to 'work.cardinal_processor:module'.
+Resolving design unit 'reg_file' at 'tb_cardinal_processor.cp@cardinal_processor<module>.rf'.
 	library: 'work' views: 'module' -> found
-Resolved design unit 'OAI21X1' at 'tb_syn.freq1@frequency_divider_by3<module>.U7' to 'work.OAI21X1:module'.
-Resolving design unit 'NOR3X1' at 'tb_syn.freq1@frequency_divider_by3<module>.U9'.
+Resolved design unit 'reg_file' at 'tb_cardinal_processor.cp@cardinal_processor<module>.rf' to 'work.reg_file:module'.
+Resolving design unit 'ALU' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1'.
 	library: 'work' views: 'module' -> found
-Resolved design unit 'NOR3X1' at 'tb_syn.freq1@frequency_divider_by3<module>.U9' to 'work.NOR3X1:module'.
-Resolved design unit 'NOR3X1' at 'tb_syn.freq1@frequency_divider_by3<module>.U10' to 'work.NOR3X1:module'.
-Resolving design unit 'NAND3X1' at 'tb_syn.freq1@frequency_divider_by3<module>.U11'.
+Resolved design unit 'ALU' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1' to 'work.ALU:module'.
+Resolving design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad1'.
 	library: 'work' views: 'module' -> found
-Resolved design unit 'NAND3X1' at 'tb_syn.freq1@frequency_divider_by3<module>.U11' to 'work.NAND3X1:module'.
-Resolved design unit 'NOR3X1' at 'tb_syn.freq1@frequency_divider_by3<module>.U12' to 'work.NOR3X1:module'.
-Resolving design unit 'BUFX2' at 'tb_syn.freq1@frequency_divider_by3<module>.U13'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad1' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad2' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad3' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad4' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad5' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad6' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad7' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad8' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad9' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad10' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad11' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad12' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad13' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad14' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad15' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad16' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad17' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad18' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad19' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad20' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad21' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad22' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad23' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad24' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad25' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad26' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad27' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad28' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad29' to 'work.DW01_add:module'.
+Resolved design unit 'DW01_add' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwad30' to 'work.DW01_add:module'.
+Resolving design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm1'.
 	library: 'work' views: 'module' -> found
-Resolved design unit 'BUFX2' at 'tb_syn.freq1@frequency_divider_by3<module>.U13' to 'work.BUFX2:module'.
-Resolving design unit 'AND2X1' at 'tb_syn.freq1@frequency_divider_by3<module>.U14'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm1' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm2' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm3' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm4' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm5' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm6' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm7' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm8' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm9' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm10' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm11' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm12' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm13' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm14' to 'work.DW02_mult:module'.
+Resolving design unit 'DW_div' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwdivi1'.
 	library: 'work' views: 'module' -> found
-Resolved design unit 'AND2X1' at 'tb_syn.freq1@frequency_divider_by3<module>.U14' to 'work.AND2X1:module'.
-Resolving design unit 'INVX1' at 'tb_syn.freq1@frequency_divider_by3<module>.U15'.
+Resolved design unit 'DW_div' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwdivi1' to 'work.DW_div:module'.
+Resolved design unit 'DW_div' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwdivi2' to 'work.DW_div:module'.
+Resolved design unit 'DW_div' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwdivi3' to 'work.DW_div:module'.
+Resolved design unit 'DW_div' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwdivi4' to 'work.DW_div:module'.
+Resolved design unit 'DW_div' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwdivi5' to 'work.DW_div:module'.
+Resolved design unit 'DW_div' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwdivi6' to 'work.DW_div:module'.
+Resolved design unit 'DW_div' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwdivi7' to 'work.DW_div:module'.
+Resolved design unit 'DW_div' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwdivi8' to 'work.DW_div:module'.
+Resolved design unit 'DW_div' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwdivi9' to 'work.DW_div:module'.
+Resolved design unit 'DW_div' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwdivi10' to 'work.DW_div:module'.
+Resolved design unit 'DW_div' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwdivi11' to 'work.DW_div:module'.
+Resolved design unit 'DW_div' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwdivi12' to 'work.DW_div:module'.
+Resolved design unit 'DW_div' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwdivi13' to 'work.DW_div:module'.
+Resolved design unit 'DW_div' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwdivi14' to 'work.DW_div:module'.
+Resolved design unit 'DW_div' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwdivi15' to 'work.DW_div:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm15' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm16' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm17' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm18' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm19' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm20' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm21' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm22' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm23' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm24' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm25' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm26' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm27' to 'work.DW02_mult:module'.
+Resolved design unit 'DW02_mult' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwm28' to 'work.DW02_mult:module'.
+Resolving design unit 'DW_sqrt' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwsq1'.
 	library: 'work' views: 'module' -> found
-Resolved design unit 'INVX1' at 'tb_syn.freq1@frequency_divider_by3<module>.U15' to 'work.INVX1:module'.
-Resolved design unit 'INVX1' at 'tb_syn.freq1@frequency_divider_by3<module>.U16' to 'work.INVX1:module'.
-Resolved design unit 'INVX1' at 'tb_syn.freq1@frequency_divider_by3<module>.U17' to 'work.INVX1:module'.
-Resolved design unit 'INVX1' at 'tb_syn.freq1@frequency_divider_by3<module>.U18' to 'work.INVX1:module'.
-Resolved design unit 'INVX1' at 'tb_syn.freq1@frequency_divider_by3<module>.U19' to 'work.INVX1:module'.
-ncelab: *W,CUSFNF: The SDF file "./netlist/frequency_divider_by3.sdf" not found..
-		$sdf_annotate("./netlist/frequency_divider_by3.sdf", freq1,,"sdf.log","MAXIMUM","1.0:1.0:1.0", "FROM_MAXIMUM");	//http://www.pldworld.com/_hdl/2/_ref/se_html/manual_html/c_sdf10.html
-		            |
-ncelab: *W,CUSSTI (./tb/tb_clock_syn.v,21|14): This SDF System Task will be Ignored..
+Resolved design unit 'DW_sqrt' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwsq1' to 'work.DW_sqrt:module'.
+Resolved design unit 'DW_sqrt' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwsq2' to 'work.DW_sqrt:module'.
+Resolved design unit 'DW_sqrt' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwsq3' to 'work.DW_sqrt:module'.
+Resolved design unit 'DW_sqrt' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwsq4' to 'work.DW_sqrt:module'.
+Resolved design unit 'DW_sqrt' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwsq5' to 'work.DW_sqrt:module'.
+Resolved design unit 'DW_sqrt' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwsq6' to 'work.DW_sqrt:module'.
+Resolved design unit 'DW_sqrt' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwsq7' to 'work.DW_sqrt:module'.
+Resolved design unit 'DW_sqrt' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwsq8' to 'work.DW_sqrt:module'.
+Resolved design unit 'DW_sqrt' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwsq9' to 'work.DW_sqrt:module'.
+Resolved design unit 'DW_sqrt' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwsq10' to 'work.DW_sqrt:module'.
+Resolved design unit 'DW_sqrt' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwsq11' to 'work.DW_sqrt:module'.
+Resolved design unit 'DW_sqrt' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwsq12' to 'work.DW_sqrt:module'.
+Resolved design unit 'DW_sqrt' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dw_sqrt13' to 'work.DW_sqrt:module'.
+Resolved design unit 'DW_sqrt' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dw_sqrt14' to 'work.DW_sqrt:module'.
+Resolved design unit 'DW_sqrt' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dw_sqrt15' to 'work.DW_sqrt:module'.
+Resolving design unit 'DW_shifter' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwshift1'.
+	library: 'work' views: 'module' -> found
+Resolved design unit 'DW_shifter' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwshift1' to 'work.DW_shifter:module'.
+Resolved design unit 'DW_shifter' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwshift2' to 'work.DW_shifter:module'.
+Resolved design unit 'DW_shifter' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwshift3' to 'work.DW_shifter:module'.
+Resolved design unit 'DW_shifter' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwshift4' to 'work.DW_shifter:module'.
+Resolved design unit 'DW_shifter' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwshift5' to 'work.DW_shifter:module'.
+Resolved design unit 'DW_shifter' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwshift6' to 'work.DW_shifter:module'.
+Resolved design unit 'DW_shifter' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwshift7' to 'work.DW_shifter:module'.
+Resolved design unit 'DW_shifter' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwshift8' to 'work.DW_shifter:module'.
+Resolved design unit 'DW_shifter' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwshift9' to 'work.DW_shifter:module'.
+Resolved design unit 'DW_shifter' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwshift10' to 'work.DW_shifter:module'.
+Resolved design unit 'DW_shifter' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwshift11' to 'work.DW_shifter:module'.
+Resolved design unit 'DW_shifter' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwshift12' to 'work.DW_shifter:module'.
+Resolved design unit 'DW_shifter' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwshift13' to 'work.DW_shifter:module'.
+Resolved design unit 'DW_shifter' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwshift14' to 'work.DW_shifter:module'.
+Resolved design unit 'DW_shifter' at 'tb_cardinal_processor.cp@cardinal_processor<module>.alu1@ALU<module>.dwshift15' to 'work.DW_shifter:module'.
+reg_file rf(.clk(Clock), .rst(Reset), .wr_en(EX_WB[8]), .ppp(IF_ID[21:23]), .addr_r1(rA_rD_addr), .addr_r2(rB_addr), 
+                                                                                              |
+ncelab: *W,CUVMPW (./design/cardinal_processor.v,90|94): port sizes differ in port connection (5/6).
+reg_file rf(.clk(Clock), .rst(Reset), .wr_en(EX_WB[8]), .ppp(IF_ID[21:23]), .addr_r1(rA_rD_addr), .addr_r2(rB_addr), 
+                                                                                                                 |
+ncelab: *W,CUVMPW (./design/cardinal_processor.v,90|113): port sizes differ in port connection (5/6).
+	.data_r1(rA_rD_data), .data_r2(rB_data), .in_addr(EX_WB[3:7]), .in_data(WB_data));
+	                                                      |
+ncelab: *W,CUVMPW (./design/cardinal_processor.v,91|55): port sizes differ in port connection (5/6).
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
-		work.DFFNEGX1:module <0x6c1d562b>
-			streams:   0, words:     0
-		work.DFFPOSX1:module <0x53561612>
-			streams:   0, words:     0
-		work.tb_syn:module <0x58239b3c>
-			streams:   7, words:  5323
+		work.ALU:module <0x766ea364>
+			streams:  63, words: 114053
+		work.DW01_add:module <0x3f15041c>
+			streams:   3, words:  1756
+		work.DW01_add:module <0x50c1220f>
+			streams:   3, words:  2401
+		work.DW01_add:module <0x65479435>
+			streams:   3, words:  1645
+		work.DW01_add:module <0x65d65f01>
+			streams:   3, words:  1620
+		work.DW02_mult:module <0x1570f299>
+			streams:   6, words:  2588
+		work.DW02_mult:module <0x6ff8ca9f>
+			streams:   6, words:  2981
+		work.DW02_mult:module <0x75d818a4>
+			streams:   6, words:  2594
+		work.DW_div:module <0x032834a1>
+			streams:   8, words: 13696
+		work.DW_div:module <0x209cabc4>
+			streams:   8, words: 13486
+		work.DW_div:module <0x67f5950e>
+			streams:   8, words: 19554
+		work.DW_div:module <0x7f4af833>
+			streams:   8, words: 13392
+		work.DW_shifter:module <0x0f1d5ae3>
+			streams:  14, words: 24306
+		work.DW_shifter:module <0x4de0475b>
+			streams:  14, words: 24500
+		work.DW_shifter:module <0x4f28a23f>
+			streams:  14, words: 49298
+		work.DW_shifter:module <0x5bd8b845>
+			streams:  14, words: 28832
+		work.DW_sqrt:module <0x51a05d73>
+			streams:   4, words:  3130
+		work.DW_sqrt:module <0x55913901>
+			streams:   4, words:  3186
+		work.DW_sqrt:module <0x5f83cfc3>
+			streams:   4, words:  3930
+		work.DW_sqrt:module <0x654f9680>
+			streams:   4, words:  3335
+		work.cardinal_processor:module <0x5d53bbff>
+			streams:  34, words: 15554
+		work.dmem:module <0x65dad686>
+			streams:   5, words:  2190
+		work.imem:module <0x43b3f676>
+			streams:   1, words:   191
+		work.reg_file:module <0x260f81c6>
+			streams:   9, words: 29350
+		work.tb_cardinal_processor:module <0x33e0a634>
+			streams:   9, words:  8083
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
 		                  Instances  Unique
-		Modules:                 18      10
-		UDPs:                     4       1
-		Primitives:              28       4
-		Timing outputs:          16       7
-		Registers:                6       5
-		Scalar wires:            25       -
-		Always blocks:            1       1
-		Initial blocks:           3       3
-		Pseudo assignments:       2       2
-		Timing checks:           24       5
+		Modules:                109      11
+		Registers:             1968     204
+		Scalar wires:           189       -
+		Expanded wires:          10       2
+		Vectored wires:         470       -
+		Always blocks:           27      13
+		Initial blocks:         105       7
+		Cont. assignments:      303      30
+		Pseudo assignments:      70      70
 		Simulation timescale:  10ps
-	Writing initial simulation snapshot: work.tb_syn:module
-TOOL:	ncelab(64)	15.20-s079: Exiting on Oct 05, 2022 at 23:56:53 PDT  (total: 00:00:00)
+	Writing initial simulation snapshot: work.tb_cardinal_processor:module
+TOOL:	ncelab(64)	15.20-s079: Exiting on Nov 03, 2022 at 20:32:03 PDT  (total: 00:00:01)

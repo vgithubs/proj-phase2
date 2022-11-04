@@ -23,6 +23,26 @@ set link_library [list * gscl45nm.db dw_foundation.sldb standard.sldb]
 # copy your verilog file into ./src/ before synthesis.
 read_verilog ./src/${design_name}.v ;
 
+
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_sqrt.v
+elaborate DW_sqrt
+
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW01_add.v
+elaborate DW01_add
+
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW02_mult.v
+elaborate DW02_mult
+
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div.v
+elaborate DW_div
+
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter.v
+elaborate DW_shifter
+
+
+
+
+
 # Setting $design_name as current working design.
 # Use this command before setting any constraints.
 current_design $design_name ;

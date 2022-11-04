@@ -1,16 +1,94 @@
 ncvlog(64): 15.20-s079: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
-TOOL:	ncvlog(64)	15.20-s079: Started on Oct 05, 2022 at 23:56:53 PDT
+TOOL:	ncvlog(64)	15.20-s079: Started on Nov 03, 2022 at 20:32:02 PDT
 ncvlog
     -STATUS
     -MESSAGES
     -UPDATE
     -INCDIR ./include
     -work work
-    ./tb/tb_clock.v
+    ./tb/tb_cardinal_processor.v
 
-file: ./tb/tb_clock.v
-	module work.tb_clock
+file: ./tb/tb_cardinal_processor.v
+	module work.dmem
 		errors: 0, warnings: 0
-ncvlog: Memory Usage - 21.4M program + 28.1M data = 49.5M total
-ncvlog: CPU Usage - 0.0s system + 0.0s user = 0.0s total (0.0s, 100.0% cpu)
-TOOL:	ncvlog(64)	15.20-s079: Exiting on Oct 05, 2022 at 23:56:53 PDT  (total: 00:00:00)
+	module work.imem
+		errors: 0, warnings: 0
+	module work.AND2X1
+		errors: 0, warnings: 0
+	module work.AND2X2
+		errors: 0, warnings: 0
+	module work.AOI21X1
+		errors: 0, warnings: 0
+	module work.AOI22X1
+		errors: 0, warnings: 0
+	module work.BUFX2
+		errors: 0, warnings: 0
+	module work.BUFX4
+		errors: 0, warnings: 0
+	module work.CLKBUF1
+		errors: 0, warnings: 0
+	module work.CLKBUF2
+		errors: 0, warnings: 0
+	module work.CLKBUF3
+		errors: 0, warnings: 0
+	module work.DFFNEGX1
+		errors: 0, warnings: 0
+	module work.DFFPOSX1
+		errors: 0, warnings: 0
+	module work.DFFSR
+		errors: 0, warnings: 0
+	module work.FAX1
+		errors: 0, warnings: 0
+	module work.HAX1
+		errors: 0, warnings: 0
+	module work.INVX1
+		errors: 0, warnings: 0
+	module work.INVX2
+		errors: 0, warnings: 0
+	module work.INVX4
+		errors: 0, warnings: 0
+	module work.INVX8
+		errors: 0, warnings: 0
+	module work.LATCH
+		errors: 0, warnings: 0
+	module work.MUX2X1
+		errors: 0, warnings: 0
+	module work.NAND2X1
+		errors: 0, warnings: 0
+	module work.NAND3X1
+		errors: 0, warnings: 0
+	module work.NOR2X1
+		errors: 0, warnings: 0
+	module work.NOR3X1
+		errors: 0, warnings: 0
+	module work.OAI21X1
+		errors: 0, warnings: 0
+	module work.OAI22X1
+		errors: 0, warnings: 0
+	module work.OR2X1
+		errors: 0, warnings: 0
+	module work.OR2X2
+		errors: 0, warnings: 0
+	module work.TBUFX1
+		errors: 0, warnings: 0
+	module work.TBUFX2
+		errors: 0, warnings: 0
+	module work.XNOR2X1
+		errors: 0, warnings: 0
+	module work.XOR2X1
+		errors: 0, warnings: 0
+	primitive work.udp_dff
+		errors: 0, warnings: 0
+	primitive work.udp_tlat
+		errors: 0, warnings: 0
+	primitive work.udp_rslat
+		errors: 0, warnings: 0
+	primitive work.udp_mux2
+		errors: 0, warnings: 0
+	module work.cardinal_processor
+		errors: 0, warnings: 0
+	module work.tb_cardinal_processor
+		errors: 0, warnings: 0
+ncvlog: Memory Usage - 21.4M program + 29.1M data = 50.4M total
+ncvlog: CPU Usage - 0.0s system + 0.0s user = 0.1s total (0.2s, 25.5% cpu)
+TOOL:	ncvlog(64)	15.20-s079: Exiting on Nov 03, 2022 at 20:32:02 PDT  (total: 00:00:00)
