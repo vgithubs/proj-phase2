@@ -1,0 +1,96 @@
+*** Message Type: info ***
+When: Tue Nov 01 02:45:10 PM PDT 2022
+SimVision started.
+Version: TOOL:  simvision(64)   15.20-s079
+User: shivbhak
+Host: viterbi-scf2.usc.edu
+Platform: Linux/x86_64/3.10.0-1160.76.1.el7.x86_64
+Started: Tue Nov 01 02:45:10 PM PDT 2022
+Command: /usr/local/cadence/INCISIVE152/tools.lnx86/simvision/bin/64bit/simvision.exe -connect dc:viterbi-scf2.usc.edu:39325 -64BIT -nocopyright
+Work Directory: /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU
+ 
+*** Message Type: info ***
+When: Tue Nov 01 02:45:14 PM PDT 2022
+Create browser window: "Design Browser 1"
+ 
+*** Message Type: info ***
+When: Tue Nov 01 02:45:38 PM PDT 2022
+Create console window: "Console"
+ 
+*** Message Type: info ***
+When: Tue Nov 01 02:45:49 PM PDT 2022
+Connect to Simulator
+      Design: work.tb_ALU
+   Languages: verilog
+   Simulator: NC-Sim
+     Version: TOOL:        ncsim(64)       15.20-s079
+        User: shivbhak
+        Host: viterbi-scf2.usc.edu
+Time Started: Tue Nov 01 02:45:01 PM PDT 2022
+  Process ID: 318087
+   Directory: /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU
+     Command: ncsim -STATUS -NOCOPYRIGHT -MESSAGES -NCFATAL INVSUP -NOWARN DLBRLK -TCL -NOLOG -NOKEY -INPUT ./scripts/runscript.tcl -GUI work.tb_ALU
+
+ 
+*** Message Type: info ***
+When: Tue Nov 01 02:45:52 PM PDT 2022
+Create utility window: "Properties"
+ 
+*** Message Type: info ***
+When: Tue Nov 01 02:46:28 PM PDT 2022
+Create waveform window: "Waveform 1"
+ 
+*** Message Type: info ***
+When: Tue Nov 01 02:47:48 PM PDT 2022
+Delete waveform window: "Waveform 1"
+ 
+*** Message Type: info ***
+When: Tue Nov 01 02:48:00 PM PDT 2022
+Delete browser window: "Design Browser 1"
+ 
+*** Message Type: info ***
+When: Tue Nov 01 02:48:10 PM PDT 2022
+Exit NC-Sim: user
+      Design: work.tb_ALU
+   Languages: verilog
+   Simulator: NC-Sim
+     Version: TOOL:        ncsim(64)       15.20-s079
+        User: shivbhak
+        Host: viterbi-scf2.usc.edu
+Time Started: Tue Nov 01 02:45:01 PM PDT 2022
+  Process ID: 318087
+   Directory: /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU
+     Command: ncsim -STATUS -NOCOPYRIGHT -MESSAGES -NCFATAL INVSUP -NOWARN DLBRLK -TCL -NOLOG -NOKEY -INPUT ./scripts/runscript.tcl -GUI work.tb_ALU
+
+ 
+*** Message Type: error ***
+When: Tue Nov 01 02:48:11 PM PDT 2022
+NC-Sim Crashed:
+      Design: work.tb_ALU
+   Languages: verilog
+   Simulator: NC-Sim
+     Version: TOOL:        ncsim(64)       15.20-s079
+        User: shivbhak
+        Host: viterbi-scf2.usc.edu
+Time Started: Tue Nov 01 02:45:01 PM PDT 2022
+  Process ID: 318087
+   Directory: /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU
+     Command: ncsim -STATUS -NOCOPYRIGHT -MESSAGES -NCFATAL INVSUP -NOWARN DLBRLK -TCL -NOLOG -NOKEY -INPUT ./scripts/runscript.tcl -GUI work.tb_ALU
+      Design: work.tb_ALU
+   Languages: verilog
+   Simulator: NC-Sim
+     Version: TOOL:    ncsim(64)       15.20-s079
+        User: shivbhak
+        Host: viterbi-scf2.usc.edu
+Time Started: Tue Nov 01 02:45:01 PM PDT 2022
+  Process ID: 318087
+   Directory: /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU
+     Command: ncsim -STATUS -NOCOPYRIGHT -MESSAGES -NCFATAL INVSUP -NOWARN DLBRLK -TCL -NOLOG -NOKEY -INPUT ./scripts/runscript.tcl -GUI work.tb_ALU
+
+Outstanding STRAP Requests:
+        strap::report enable out
+ 
+*** Message Type: info ***
+When: Tue Nov 01 02:48:18 PM PDT 2022
+SimVision Exit.
+ 

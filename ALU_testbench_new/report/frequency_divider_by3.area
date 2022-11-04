@@ -1,0 +1,30 @@
+ 
+****************************************
+Report : area
+Design : frequency_divider_by3
+Version: K-2015.06-SP5-5
+Date   : Sat Oct  1 13:39:51 2022
+****************************************
+
+Library(s) Used:
+
+    gscl45nm (File: /home/scf-22/ee577/NCSU45PDK/FreePDK45/osu_soc/lib/files/gscl45nm.db)
+
+Number of ports:                            3
+Number of nets:                            18
+Number of cells:                           16
+Number of combinational cells:             12
+Number of sequential cells:                 4
+Number of macros/black boxes:               0
+Number of buf/inv:                          6
+Number of references:                       8
+
+Combinational area:                 25.342199
+Buf/Inv area:                        9.386000
+Noncombinational area:              31.912399
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:                    57.254599
+Total area:                 undefined
+1
