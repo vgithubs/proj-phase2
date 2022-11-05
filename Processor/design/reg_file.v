@@ -43,6 +43,7 @@ always @(posedge clk) begin
 				data_arr[in_addr][40:47] <= in_data[40:47];
 				data_arr[in_addr][56:63] <= in_data[56:63];
 			end
+			default: data_arr[in_addr] <= in_data;
 			endcase
 		end 
 	end
@@ -60,6 +61,10 @@ always @(*) begin
 					3'b001: begin
 						data_r1[0:31] = in_data[0:31];
 						data_r1[32:63] = data_arr[in_addr][32:63];
+					end
+					3'b010: begin
+						data_r1[0:31] = data_arr[in_addr][0:31];
+						data_r1[32:63] = in_data[32:63];
 					end
 					3'b011: begin
 						data_r1[0:7] = in_data[0:7];
@@ -93,6 +98,10 @@ always @(*) begin
 					3'b001: begin
 						data_r2[0:31] = in_data[0:31];
 						data_r2[32:63] = data_arr[in_addr][32:63];
+					end
+					3'b010: begin
+						data_r1[0:31] = data_arr[in_addr][0:31];
+						data_r1[32:63] = in_data[32:63];
 					end
 					3'b011: begin
 						data_r2[0:7] = in_data[0:7];

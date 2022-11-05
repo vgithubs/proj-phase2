@@ -33,7 +33,7 @@ wire [0:7] Next_Addr; //Mux output -> either branch output or PC+1
 wire flush; //Input to WBFF in IF
 wire stall_br; //HDU_Br output
 reg stall_lw; //stall the pipeline for a load instr
-reg fwd;// Fu
+reg fwd_rA, fwd_rB;// Fu
 reg fwd_store;
 reg [0:63] ID_EX_rA_rD_data;
 reg [0:63] ID_EX_rB_data;
@@ -46,8 +46,8 @@ reg [0:29] ID_EX; //[0:4] rD_Addr, [5:9] PPPWW, [10:15] ALU_case, [16:23] Immedi
 //Branch - identify branch
 //Mem_to_Reg - Choosing between ALU_data or Mem_data in WB stage
 reg ALU_op, Mem_Rd, Mem_Wr, Branch, Reg_Wr, Mem_to_Reg;
-reg BEZ;
-reg BNEZ;	
+wire BEZ;
+wire BNEZ;	
 
 wire [0:7] LD_Mem_Addr, ST_Mem_Addr;
 
@@ -65,7 +65,9 @@ wire [0:63] ALU_out;
 wire [0:63] WB_data; //selection betweeen mem_data and reg_data using Mem_to_Reg
 
 assign PC_next = PC + 1'b1;
-assign flush = Branch && (BEZ || BNEZ); //IF_flush
+assign BEZ = IF_ID[6:10] == 0;
+assign BNEZ = IF_ID[6:10] != 0;
+assign flush = Branch && ((BEZ && (IF_ID[0:5]==BRANCH_EZ)) || (BNEZ && (IF_ID[0:5]==BRANCH_NZ))); //IF_flush
 assign Next_Addr = flush ? IF_ID[24:31] : PC_next; //Switch addr on branch
 
 assign Instr_Addr = PC;
@@ -87,7 +89,7 @@ end
 
 assign rA_rD_addr = (Mem_Wr || Branch) ? IF_ID[6:10] : IF_ID[11:15];
 assign rB_addr = IF_ID[16:20];
-reg_file rf(.clk(Clock), .rst(Reset), .wr_en(EX_WB[8]), .ppp(IF_ID[21:23]), .addr_r1(rA_rD_addr), .addr_r2(rB_addr), 
+reg_file rf(.clk(Clock), .rst(Reset), .wr_en(EX_WB[8]), .ppp(EX_WB[0:2]), .addr_r1(rA_rD_addr), .addr_r2(rB_addr), 
 	.data_r1(rA_rD_data), .data_r2(rB_data), .in_addr(EX_WB[3:7]), .in_data(WB_data));
 
 //Control logic
@@ -139,9 +141,12 @@ always @(posedge Clock) begin
 		fwd_store <= 1;
 	else fwd_store <= 0;
 
-	if(((ID_EX[0:4]==IF_ID[11:15]) || (ID_EX[0:4]==IF_ID[16:20])) && (ID_EX[0:4]!=0))
-		fwd <= 1;
-	else fwd <= 0;
+	if((ID_EX[0:4]==IF_ID[11:15]) && (ID_EX[0:4]!=0))
+		fwd_rA <= 1;
+	else fwd_rA <= 0;
+	if((ID_EX[0:4]==IF_ID[16:20]) && (ID_EX[0:4]!=0))
+		fwd_rB <= 1;
+	else fwd_rB <= 0;
 end
 
 //Load-Store
@@ -151,8 +156,8 @@ assign DmemEn = ID_EX[26] || ID_EX[25];
 assign DmemWrEn = ID_EX[26];
 
 //ALU with forwarding
-assign EX_rA_rD = fwd ? WB_data : ID_EX_rA_rD_data;
-assign EX_rB = fwd ? WB_data : ID_EX_rB_data;
+assign EX_rA_rD = fwd_rA ? WB_data : ID_EX_rA_rD_data;
+assign EX_rB = fwd_rB ? WB_data : ID_EX_rB_data;
 ALU alu1(.rA_64bit_val(EX_rA_rD), .rB_64bit_val(EX_rB), .R_ins(ID_EX[10:15]), .Op_code(ID_EX[24]), .WW(ID_EX[8:9]), .ALU_out(ALU_out));
 
 //Dataflow
@@ -169,21 +174,22 @@ always @(posedge Clock) begin
 	end
 	else begin
 		if(~stall_lw) begin
-			//ID_EXMEM
 			if(~stall_br) begin
-				ID_EX <= {IF_ID[6:10], IF_ID[25:29], IF_ID[26:31], IF_ID[24:31], ALU_op, Mem_Rd, Mem_Wr, Branch, Reg_Wr, Mem_to_Reg}; //0:29
+				//ID_EXMEM
+				ID_EX <= {IF_ID[6:10], IF_ID[21:25], IF_ID[26:31], IF_ID[24:31], ALU_op, Mem_Rd, Mem_Wr, Branch, Reg_Wr, Mem_to_Reg}; //0:29
 				ID_EX_rA_rD_data <= rA_rD_data;
 				ID_EX_rB_data <= rB_data;
+				//EXMEM_WB
+				EX_WB <= {ID_EX[5:7], ID_EX[0:4], ID_EX[28:29]}; // [0:2] ppp, [3:7] rD_Addr, Reg_Wr, Mem_to_Reg;
+				EX_WB_mem_data <= Data_In;
+				EX_WB_reg_data <= ALU_out;
 			end
 			else begin
 				ID_EX <= 30'd0;
 				ID_EX_rA_rD_data <= 64'd0;
 				ID_EX_rB_data <= 64'd0;
 			end
-			//EXMEM_WB
-			EX_WB <= {ID_EX[25:27], ID_EX[0:4], ID_EX[28:29]}; // [0:2] ppp, [3:7] rD_Addr, Reg_Wr, Mem_to_Reg;
-			EX_WB_mem_data <= Data_In;
-			EX_WB_reg_data <= ALU_out;
+			
 		end
 	end
 end
