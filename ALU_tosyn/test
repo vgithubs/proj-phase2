@@ -1,0 +1,48 @@
+SETUP> read library -Both -Replace  -sensitive    -Verilog /home/viterbi/08/rushikes/ee577b/prelab2/include/gscl45nm.v -nooptimize   
+// Command: read library -Both -Replace  -sensitive    -Verilog /home/viterbi/08/rushikes/ee577b/prelab2/include/gscl45nm.v -nooptimize   
+// Parsing file /home/viterbi/08/rushikes/ee577b/prelab2/include/gscl45nm.v ...
+// Warning: (RTL14) Signal has input but it has no output (occurrence:6)
+// Warning: (RTL14.1) Fanout load of the signal is removed (occurrence:1)
+// Warning: (DIR6.1) Ignored compiler directive is detected (occurrence:32)
+// Warning: (DIR6.2) Supported compiler directive is detected (occurrence:64)
+// Note: Read VERILOG library successfully
+SETUP> read design /home/viterbi/08/rushikes/ee577b/prelab2/design/frequency_divider_by3.v -Verilog -Golden   -sensitive         -continuousassignment Bidirectional   -nokeep_unreach   -nosupply 
+// Command: read design /home/viterbi/08/rushikes/ee577b/prelab2/design/frequency_divider_by3.v -Verilog -Golden   -sensitive         -continuousassignment Bidirectional   -nokeep_unreach   -nosupply 
+// Parsing file /home/viterbi/08/rushikes/ee577b/prelab2/design/frequency_divider_by3.v ...
+// Golden root module is set to 'frequency_divider_by3'
+// Warning: (RTL1.5b) Potential loss of RHS msb or carry-out bit (occurrence:2)
+// Warning: (RTL10) Both posedge and negedge are used in different always/process (occurrence:2)
+// Note: Read VERILOG design successfully
+SETUP> read design /home/viterbi/08/rushikes/ee577b/prelab2/netlist/frequency_divider_by3_syn.v -Verilog -Revised   -sensitive         -continuousassignment Bidirectional   -nokeep_unreach   -nosupply 
+// Command: read design /home/viterbi/08/rushikes/ee577b/prelab2/netlist/frequency_divider_by3_syn.v -Verilog -Revised   -sensitive         -continuousassignment Bidirectional   -nokeep_unreach   -nosupply 
+// Parsing file /home/viterbi/08/rushikes/ee577b/prelab2/netlist/frequency_divider_by3_syn.v ...
+// Revised root module is set to 'frequency_divider_by3'
+// Note: Read VERILOG design successfully
+SETUP> set system mode lec
+// Command: set system mode lec
+// Processing Golden ...
+// Modeling Golden ...
+// Processing Revised ...
+// Modeling Revised ...
+// Mapping key points ...
+================================================================================
+Mapped points: SYSTEM class
+--------------------------------------------------------------------------------
+Mapped points     PI     PO     DFF       Total   
+--------------------------------------------------------------------------------
+Golden            2      1      4         7       
+--------------------------------------------------------------------------------
+Revised           2      1      4         7       
+================================================================================
+LEC> add compared points -all
+// Command: add compared points -all
+// 5 compared points added to compare list
+LEC> compare -NONEQ_Print
+// Command: compare -NONEQ_Print
+================================================================================
+Compared points      PO     DFF       Total   
+--------------------------------------------------------------------------------
+Equivalent           1      4         5       
+================================================================================
+
+

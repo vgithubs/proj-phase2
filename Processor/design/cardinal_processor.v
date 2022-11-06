@@ -63,10 +63,11 @@ wire [0:63] ALU_out;
 
 //WB stage signals
 wire [0:63] WB_data; //selection betweeen mem_data and reg_data using Mem_to_Reg
+reg [0:63] WB_PPP_rA_rD, WB_PPP_rB; //to forward while taking PPP in consideration
 
 assign PC_next = PC + 1'b1;
-assign BEZ = IF_ID[6:10] == 0;
-assign BNEZ = IF_ID[6:10] != 0;
+assign BEZ = (rA_rD_data == 0);
+assign BNEZ = (rA_rD_data != 0);
 assign flush = Branch && ((BEZ && (IF_ID[0:5]==BRANCH_EZ)) || (BNEZ && (IF_ID[0:5]==BRANCH_NZ))); //IF_flush
 assign Next_Addr = flush ? IF_ID[24:31] : PC_next; //Switch addr on branch
 
@@ -150,15 +151,83 @@ always @(posedge Clock) begin
 end
 
 //Load-Store
-assign Data_Out = fwd_store ? WB_data : ID_EX_rA_rD_data;
+assign Data_Out = fwd_store ? WB_PPP_rA_rD : ID_EX_rA_rD_data;
 assign Mem_Addr = ID_EX[16:23];
 assign DmemEn = ID_EX[26] || ID_EX[25];
 assign DmemWrEn = ID_EX[26];
 
 //ALU with forwarding
-assign EX_rA_rD = fwd_rA ? WB_data : ID_EX_rA_rD_data;
-assign EX_rB = fwd_rB ? WB_data : ID_EX_rB_data;
+assign EX_rA_rD = fwd_rA ? WB_PPP_rA_rD : ID_EX_rA_rD_data;
+assign EX_rB = fwd_rB ? WB_PPP_rB : ID_EX_rB_data;
 ALU alu1(.rA_64bit_val(EX_rA_rD), .rB_64bit_val(EX_rB), .R_ins(ID_EX[10:15]), .Op_code(ID_EX[24]), .WW(ID_EX[8:9]), .ALU_out(ALU_out));
+
+always @(*) begin
+	case(EX_WB[0:2])
+		3'b000: begin
+			WB_PPP_rA_rD = WB_data[0:63];
+			
+			WB_PPP_rB = WB_data[0:63];
+		end
+		3'b001: begin
+			WB_PPP_rA_rD[0:31] = WB_data[0:31];
+			WB_PPP_rA_rD[32:63] = ID_EX_rA_rD_data[32:63];
+			
+			WB_PPP_rB[0:31] = WB_data[0:31];
+			WB_PPP_rB[32:63] = ID_EX_rB_data[32:63];
+		end
+		3'b010: begin
+			WB_PPP_rA_rD[0:31] = ID_EX_rA_rD_data[0:31];
+			WB_PPP_rA_rD[32:63] = WB_data[32:63];
+			
+			WB_PPP_rB[0:31] = ID_EX_rB_data[0:31];
+			WB_PPP_rB[32:63] = WB_data[32:63];
+		end
+		3'b011: begin
+			WB_PPP_rA_rD[0:7] = WB_data[0:7];
+			WB_PPP_rA_rD[8:15] = ID_EX_rA_rD_data[8:15];
+			WB_PPP_rA_rD[16:23] = WB_data[16:23];
+			WB_PPP_rA_rD[24:31] = ID_EX_rA_rD_data[24:31];
+			WB_PPP_rA_rD[32:39] = WB_data[32:39];
+			WB_PPP_rA_rD[40:47] = ID_EX_rA_rD_data[40:47];
+			WB_PPP_rA_rD[48:55] = WB_data[48:55];
+			WB_PPP_rA_rD[56:63] = ID_EX_rA_rD_data[56:63];
+
+			WB_PPP_rB[0:7] = WB_data[0:7];
+			WB_PPP_rB[8:15] = ID_EX_rB_data[8:15];
+			WB_PPP_rB[16:23] = WB_data[16:23];
+			WB_PPP_rB[24:31] = ID_EX_rB_data[24:31];
+			WB_PPP_rB[32:39] = WB_data[32:39];
+			WB_PPP_rB[40:47] = ID_EX_rB_data[40:47];
+			WB_PPP_rB[48:55] = WB_data[48:55];
+			WB_PPP_rB[56:63] = ID_EX_rB_data[56:63];
+			
+		end
+		3'b100: begin
+			WB_PPP_rA_rD[0:7] = ID_EX_rA_rD_data[0:7];
+			WB_PPP_rA_rD[8:15] = WB_data[8:15];
+			WB_PPP_rA_rD[16:23] = ID_EX_rA_rD_data[16:23];
+			WB_PPP_rA_rD[24:31] = WB_data[24:31];
+			WB_PPP_rA_rD[32:39] = ID_EX_rA_rD_data[32:39];
+			WB_PPP_rA_rD[40:47] = WB_data[40:47];
+			WB_PPP_rA_rD[48:55] = ID_EX_rA_rD_data[48:55];
+			WB_PPP_rA_rD[56:63] = WB_data[56:63];
+
+			WB_PPP_rB[0:7] = ID_EX_rB_data[0:7];
+			WB_PPP_rB[8:15] = WB_data[8:15];
+			WB_PPP_rB[16:23] = ID_EX_rB_data[16:23];
+			WB_PPP_rB[24:31] = WB_data[24:31];
+			WB_PPP_rB[32:39] = ID_EX_rB_data[32:39];
+			WB_PPP_rB[40:47] = WB_data[40:47];
+			WB_PPP_rB[48:55] = ID_EX_rB_data[48:55];
+			WB_PPP_rB[56:63] = WB_data[56:63];
+		end
+		default: begin
+			WB_PPP_rA_rD = WB_data;
+
+			WB_PPP_rB = WB_data;
+		end
+	endcase
+end
 
 //Dataflow
 assign WB_data = EX_WB[9]? EX_WB_mem_data : EX_WB_reg_data;

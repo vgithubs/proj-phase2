@@ -55,7 +55,7 @@ always @(*) begin
 		data_r2 = 64'd0;
 	end
 	else begin //IFRF - Internally Forwarding Register File
-		if(wr_en && in_addr == addr_r1) begin
+		if(wr_en && in_addr == addr_r1 && (in_addr != 0)) begin
 				case(ppp) 
 					3'b000: data_r1 = in_data;
 					3'b001: begin
@@ -92,7 +92,7 @@ always @(*) begin
 			else
 				data_r1 = data_arr[addr_r1];
 
-			if(wr_en && in_addr == addr_r2) begin
+			if(wr_en && in_addr == addr_r2 && (in_addr != 0)) begin
 				case(ppp) 
 					3'b000: data_r2 = in_data;
 					3'b001: begin

@@ -1,0 +1,20 @@
+                   0clk = 0,rst = 0,out_clk = x
+                   3clk = 1,rst = 0,out_clk = x
+                   5clk = 0,rst = 1,out_clk = x
+                   6clk = 0,rst = 1,out_clk = 0
+                   8clk = 1,rst = 1,out_clk = 0
+                  10clk = 0,rst = 1,out_clk = 0
+                  13clk = 1,rst = 1,out_clk = 0
+                  14clk = 1,rst = 1,out_clk = 1
+                  15clk = 0,rst = 1,out_clk = 1
+                  18clk = 1,rst = 1,out_clk = 1
+                  20clk = 0,rst = 1,out_clk = 1
+                  21clk = 0,rst = 1,out_clk = 0
+                  23clk = 1,rst = 1,out_clk = 0
+Simulation complete via $finish(1) at time 25 NS + 0
+./tb/tb_clock_syn.v:18 		#20 $finish;
+ncsim> 
+ncsim> ^C
+ncsim> exit
+ncsim: Memory Usage - 38.6M program + 172.1M data = 210.7M total (214.3M Peak)
+ncsim: CPU Usage - 3.1s system + 1.3s user = 4.4s total (319.5s, 1.4% cpu)
