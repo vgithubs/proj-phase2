@@ -8,8 +8,8 @@
 module ALU(rA_64bit_val, rB_64bit_val, R_ins, Op_code, WW, ALU_out);
 
 input [0:63] rA_64bit_val, rB_64bit_val;
-input [0:5] R_ins;
-input Op_code;
+input [0:5] R_ins; //Instruction type
+input Op_code; //Enable signal for ALU
 input [0:1] WW;
 output [0:63] ALU_out;
 reg [0:63] ALU_out;
@@ -18,7 +18,6 @@ parameter   VAND = 6'b000001, VOR =  6'b000010, VXOR = 6'b000011, VNOT = 6'b0001
 			VADD = 6'b000110, VSUB = 6'b000111, VMULEU =  6'b001000, VMULOU = 6'b001001, VSLL = 6'b001010,
 			VSRL = 6'b001011, VSRA = 6'b001100, VRTTH = 6'b001101, VDIV = 6'b001110, VMOD = 6'b001111,
 			VSQEU = 6'b010000, VSQOU = 6'b010001, VSQRT = 6'b010010, VNOP = 6'b000000;
-			
 
 parameter R_ALU = 1'b1; //Op_code	
 
