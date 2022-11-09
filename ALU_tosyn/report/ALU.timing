@@ -1,0 +1,168 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : ALU
+Version: K-2015.06-SP5-5
+Date   : Tue Nov  8 22:04:03 2022
+****************************************
+
+Operating Conditions: typical   Library: gscl45nm
+Wire Load Model Mode: top
+
+  Startpoint: R_ins[4] (input port)
+  Endpoint: ALU_out[0] (output port)
+  Path Group: default
+  Path Type: max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 r
+  R_ins[4] (in)                            0.00       0.00 r
+  U6361/Y (INVX1)                          0.01       0.01 f
+  U3040/Y (OR2X2)                          0.04       0.05 f
+  U2974/Y (NOR3X1)                         0.02       0.08 r
+  U2921/Y (AND2X2)                         0.05       0.13 r
+  as8/ADD_SUB (ALU_DW01_addsub_0)          0.00       0.13 r
+  as8/U6/Y (XNOR2X1)                       0.04       0.17 f
+  as8/U1_0/YC (FAX1)                       0.09       0.26 f
+  as8/U1_1/YC (FAX1)                       0.08       0.34 f
+  as8/U1_2/YC (FAX1)                       0.08       0.42 f
+  as8/U1_3/YC (FAX1)                       0.08       0.50 f
+  as8/U1_4/YC (FAX1)                       0.08       0.58 f
+  as8/U1_5/YC (FAX1)                       0.08       0.66 f
+  as8/U1_6/YC (FAX1)                       0.08       0.74 f
+  as8/U1_7/YC (FAX1)                       0.08       0.82 f
+  as8/U8/Y (XOR2X1)                        0.03       0.85 r
+  as8/CO (ALU_DW01_addsub_0)               0.00       0.85 r
+  U2984/Y (AND2X2)                         0.04       0.89 r
+  as7/CI (ALU_DW01_addsub_1)               0.00       0.89 r
+  as7/U12/Y (XNOR2X1)                      0.06       0.95 r
+  as7/U1_0/YC (FAX1)                       0.08       1.02 r
+  as7/U1_1/YC (FAX1)                       0.06       1.09 r
+  as7/U8/Y (AND2X2)                        0.03       1.12 r
+  as7/U9/Y (INVX1)                         0.02       1.13 f
+  as7/U19/Y (NAND3X1)                      0.03       1.17 r
+  as7/U7/Y (BUFX2)                         0.04       1.20 r
+  as7/U4/Y (AND2X2)                        0.03       1.23 r
+  as7/U3/Y (OR2X2)                         0.04       1.27 r
+  as7/U2/Y (OR2X2)                         0.05       1.32 r
+  as7/U1_4/YC (FAX1)                       0.07       1.39 r
+  as7/U1_5/YC (FAX1)                       0.07       1.46 r
+  as7/U1_6/YC (FAX1)                       0.07       1.54 r
+  as7/U1_7/YC (FAX1)                       0.06       1.60 r
+  as7/U25/Y (XOR2X1)                       0.03       1.64 r
+  as7/CO (ALU_DW01_addsub_1)               0.00       1.64 r
+  U6390/Y (AND2X2)                         0.04       1.67 r
+  as6/CI (ALU_DW01_addsub_2)               0.00       1.67 r
+  as6/U23/Y (XNOR2X1)                      0.03       1.71 f
+  as6/U7/Y (AND2X2)                        0.04       1.74 f
+  as6/U11/Y (OR2X2)                        0.04       1.78 f
+  as6/U10/Y (OR2X2)                        0.04       1.82 f
+  as6/U9/Y (AND2X2)                        0.03       1.85 f
+  as6/U12/Y (OR2X2)                        0.05       1.90 f
+  as6/U1_2/YC (FAX1)                       0.08       1.98 f
+  as6/U1_3/YC (FAX1)                       0.08       2.06 f
+  as6/U1_4/YC (FAX1)                       0.08       2.14 f
+  as6/U1_5/YC (FAX1)                       0.08       2.23 f
+  as6/U1_6/YC (FAX1)                       0.08       2.31 f
+  as6/U1_7/YC (FAX1)                       0.08       2.38 f
+  as6/U8/Y (XOR2X1)                        0.03       2.42 r
+  as6/CO (ALU_DW01_addsub_2)               0.00       2.42 r
+  U2982/Y (AND2X2)                         0.04       2.45 r
+  as5/CI (ALU_DW01_addsub_3)               0.00       2.45 r
+  as5/U8/Y (XNOR2X1)                       0.04       2.49 f
+  as5/U1_0/YC (FAX1)                       0.08       2.57 f
+  as5/U1_1/YC (FAX1)                       0.08       2.65 f
+  as5/U1_2/YC (FAX1)                       0.08       2.74 f
+  as5/U1_3/YC (FAX1)                       0.08       2.82 f
+  as5/U1_4/YC (FAX1)                       0.07       2.89 f
+  as5/U7/Y (AND2X2)                        0.04       2.93 f
+  as5/U5/Y (OR2X2)                         0.04       2.96 f
+  as5/U4/Y (OR2X2)                         0.04       3.00 f
+  as5/U1_6/YC (FAX1)                       0.08       3.08 f
+  as5/U1_7/YC (FAX1)                       0.08       3.16 f
+  as5/U14/Y (XOR2X1)                       0.03       3.19 r
+  as5/CO (ALU_DW01_addsub_3)               0.00       3.19 r
+  U6389/Y (AND2X2)                         0.04       3.23 r
+  as4/CI (ALU_DW01_addsub_4)               0.00       3.23 r
+  as4/U4/Y (XNOR2X1)                       0.06       3.29 r
+  as4/U1_0/YC (FAX1)                       0.08       3.36 r
+  as4/U1_1/YC (FAX1)                       0.07       3.43 r
+  as4/U1_2/YC (FAX1)                       0.07       3.51 r
+  as4/U1_3/YC (FAX1)                       0.07       3.58 r
+  as4/U1_4/YC (FAX1)                       0.07       3.66 r
+  as4/U1_5/YC (FAX1)                       0.06       3.72 r
+  as4/U11/Y (AND2X2)                       0.03       3.75 r
+  as4/U13/Y (INVX1)                        0.02       3.77 f
+  as4/U17/Y (NAND3X1)                      0.03       3.80 r
+  as4/U9/Y (BUFX2)                         0.04       3.84 r
+  as4/U1/Y (AND2X2)                        0.03       3.87 r
+  as4/U5/Y (OR2X2)                         0.04       3.91 r
+  as4/U6/Y (OR2X2)                         0.04       3.95 r
+  as4/U18/Y (XNOR2X1)                      0.03       3.98 r
+  as4/CO (ALU_DW01_addsub_4)               0.00       3.98 r
+  U2981/Y (AND2X2)                         0.04       4.02 r
+  as3/CI (ALU_DW01_addsub_5)               0.00       4.02 r
+  as3/U8/Y (XNOR2X1)                       0.04       4.06 f
+  as3/U1_0/YC (FAX1)                       0.08       4.14 f
+  as3/U1_1/YC (FAX1)                       0.08       4.22 f
+  as3/U1_2/YC (FAX1)                       0.08       4.30 f
+  as3/U1_3/YC (FAX1)                       0.08       4.38 f
+  as3/U1_4/YC (FAX1)                       0.08       4.46 f
+  as3/U1_5/YC (FAX1)                       0.08       4.54 f
+  as3/U4/Y (AND2X2)                        0.04       4.58 f
+  as3/U3/Y (OR2X2)                         0.04       4.62 f
+  as3/U5/Y (OR2X2)                         0.04       4.66 f
+  as3/U1_7/YC (FAX1)                       0.07       4.74 f
+  as3/U2/Y (XOR2X1)                        0.03       4.77 r
+  as3/CO (ALU_DW01_addsub_5)               0.00       4.77 r
+  U2983/Y (AND2X2)                         0.04       4.81 r
+  as2/CI (ALU_DW01_addsub_6)               0.00       4.81 r
+  as2/U10/Y (XNOR2X1)                      0.04       4.85 f
+  as2/U1_0/YC (FAX1)                       0.08       4.93 f
+  as2/U1_1/YC (FAX1)                       0.08       5.01 f
+  as2/U1_2/YC (FAX1)                       0.08       5.09 f
+  as2/U1_3/YC (FAX1)                       0.08       5.17 f
+  as2/U1_4/YC (FAX1)                       0.08       5.25 f
+  as2/U1_5/YC (FAX1)                       0.07       5.33 f
+  as2/U9/Y (AND2X2)                        0.04       5.36 f
+  as2/U6/Y (OR2X2)                         0.04       5.40 f
+  as2/U8/Y (OR2X2)                         0.04       5.44 f
+  as2/U1_7/YC (FAX1)                       0.07       5.51 f
+  as2/U7/Y (XOR2X1)                        0.03       5.55 r
+  as2/CO (ALU_DW01_addsub_6)               0.00       5.55 r
+  U2985/Y (AND2X2)                         0.04       5.59 r
+  as1/CI (ALU_DW01_addsub_7)               0.00       5.59 r
+  as1/U8/Y (XNOR2X1)                       0.04       5.62 f
+  as1/U1_0/YC (FAX1)                       0.08       5.70 f
+  as1/U1_1/YC (FAX1)                       0.08       5.78 f
+  as1/U1_2/YC (FAX1)                       0.08       5.87 f
+  as1/U1_3/YC (FAX1)                       0.08       5.95 f
+  as1/U1_4/YC (FAX1)                       0.08       6.03 f
+  as1/U1_5/YC (FAX1)                       0.07       6.10 f
+  as1/U12/Y (AND2X2)                       0.04       6.14 f
+  as1/U9/Y (OR2X2)                         0.04       6.18 f
+  as1/U11/Y (OR2X2)                        0.04       6.22 f
+  as1/U5/Y (XOR2X1)                        0.03       6.25 r
+  as1/SUM[7] (ALU_DW01_addsub_7)           0.00       6.25 r
+  U3027/Y (AND2X2)                         0.03       6.28 r
+  U3028/Y (INVX1)                          0.02       6.30 f
+  U7675/Y (NAND2X1)                        0.01       6.30 r
+  ALU_out[0] (out)                         0.00       6.30 r
+  data arrival time                                   6.30
+
+  max_delay                                5.00       5.00
+  output external delay                    0.00       5.00
+  data required time                                  5.00
+  -----------------------------------------------------------
+  data required time                                  5.00
+  data arrival time                                  -6.30
+  -----------------------------------------------------------
+  slack (VIOLATED)                                   -1.30
+
+
+1

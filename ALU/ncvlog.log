@@ -1,5 +1,5 @@
 ncvlog(64): 15.20-s079: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
-TOOL:	ncvlog(64)	15.20-s079: Started on Nov 02, 2022 at 13:03:49 PDT
+TOOL:	ncvlog(64)	15.20-s079: Started on Nov 03, 2022 at 18:58:09 PDT
 ncvlog
     -STATUS
     -MESSAGES
@@ -11,6 +11,6 @@ ncvlog
 file: ./tb/tb_ALU.v
 	module work.tb_ALU
 		errors: 0, warnings: 0
-ncvlog: Memory Usage - 21.4M program + 28.6M data = 50.0M total
-ncvlog: CPU Usage - 0.0s system + 0.0s user = 0.0s total (0.0s, 99.4% cpu)
-TOOL:	ncvlog(64)	15.20-s079: Exiting on Nov 02, 2022 at 13:03:49 PDT  (total: 00:00:00)
+ncvlog: Memory Usage - 21.4M program + 28.1M data = 49.5M total
+ncvlog: CPU Usage - 0.0s system + 0.0s user = 0.0s total (0.0s, 100.0% cpu)
+TOOL:	ncvlog(64)	15.20-s079: Exiting on Nov 03, 2022 at 18:58:09 PDT  (total: 00:00:00)

@@ -202,7 +202,7 @@ module tb_ALU;
 		R_ins = 6'b000111;
 		WW = 11;
 
-		//VMULEU, WW 8bit: FE01, 0000, CB34, 0000  output
+		//VMULEU, WW 8bit: FE01, 0000, CB34, 0000  
 		#10;
 		Op_code = 1'b1;
 		rA_64bit_val = 64'hFF000001_FFFFFFFF;		
@@ -259,7 +259,7 @@ module tb_ALU;
 		R_ins = 6'b001001;
 		WW = 10;
 
-		//VMULOU, WW is 10, 32 bit, output CC0F000033F10000   waveform output: CC0F0000_33F0FFFF
+		//VMULOU, WW is 10, 32 bit, output CC0F000033F10000   waveform output: CC0F0000_33F0FFFF waveform output  waveform new syn output: 0FFFFFFF_F0000000
 		#10;
 		Op_code = 1'b1;
 		rA_64bit_val =  64'hFF000000_FFFFFFFF;		
@@ -276,7 +276,7 @@ module tb_ALU;
 		R_ins = 6'b001101;
 		WW = 00;
 
-		//VRTTH, WW 16 bit, output 12FF5634_78784534
+		//VRTTH, WW 16 bit, output 12FF5634_78784563
 		#10;
 		Op_code = 1'b1;
 		rA_64bit_val = 64'hFF123456_78786345;	
@@ -309,7 +309,7 @@ module tb_ALU;
 		R_ins = 6'b001110;
 		WW = 00;
 
-		//VDIV WW 8 bits, 01_(divide_by_zero) --
+		//VDIV WW 8 bits, 01_(divide_by_zero) -- output: 01FF00FF_00FF00FF
 		#10;
 		Op_code = 1'b1;
 		rA_64bit_val = 64'hFF123456_78786345;		
@@ -346,7 +346,7 @@ module tb_ALU;
 		WW = 11;
 
 
-		//VDIV WW 64 bits, added divide by 0 case --
+		//VDIV WW 64 bits, added divide by 0 case -- output FFFFFFFF_FFFFFFFF
 		#10;
 		Op_code = 1'b1;
 		rA_64bit_val = 64'hFF12FF56_78786345;		
@@ -354,7 +354,7 @@ module tb_ALU;
 		R_ins = 6'b001110;
 		WW = 11;
 
-		//VDIV WW 32 bits, added divide by 0 case --
+		//VDIV WW 32 bits, added divide by 0 case -- output FFFFFFFF_FFFFFFFF
 		#10;
 		Op_code = 1'b1;
 		rA_64bit_val = 64'hFF12FF56_78786345;		
@@ -362,7 +362,7 @@ module tb_ALU;
 		R_ins = 6'b001110;
 		WW = 10;
 
-		//VDIV WW 32 bits, added divide by 0 case --
+		//VDIV WW 32 bits, added divide by 0 case -- output 00000001_FFFFFFFF 
 		#10;
 		Op_code = 1'b1;
 		rA_64bit_val = 64'hFF12FF56_78786345;		
@@ -370,7 +370,7 @@ module tb_ALU;
 		R_ins = 6'b001110;
 		WW = 10;
 
-		//VDIV WW 16 bits, added divide by 0 case --
+		//VDIV WW 16 bits, added divide by 0 case -- output 00010001_FFFFFFFF
 		#10;
 		Op_code = 1'b1;
 		rA_64bit_val = 64'hFF12FF56_78786345;		
@@ -378,7 +378,7 @@ module tb_ALU;
 		R_ins = 6'b001110;
 		WW = 01;
 
-		//VDIV WW 8 bits, added divide by 0 case --
+		//VDIV WW 8 bits, added divide by 0 case -- 01000109_FFFFFFFF
 		#10;
 		Op_code = 1'b1;
 		rA_64bit_val = 64'hFF12FF56_78786345;		
@@ -588,7 +588,7 @@ module tb_ALU;
 		WW = 01;
 
 
-		//VSRA, ww 10 32 bit, output FF870F95_00080808 waveform output: FFFFFFF8_00000000
+		//VSRA, ww 10 32 bit, output FF870F95_00080808
 		#10;
 		Op_code = 1'b1;
 		rA_64bit_val = 64'hF0E1F2A2_01010101;		
@@ -597,7 +597,7 @@ module tb_ALU;
 		WW = 10;
 
 		
-		//VSRA, WW 11 32 bits, output FFC387CA_88040404 waveform output: 40404040_00000000
+		//VSRA, WW 11 32 bits, output FFC387CA_88040404
 		#10;
 		Op_code = 1'b1;
 		rA_64bit_val = 64'hF0E1F2A2_01010101;		
