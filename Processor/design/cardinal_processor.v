@@ -1,3 +1,6 @@
+`include "./include/reg_file.v"
+`include "./include/ALU.v"
+
 module cardinal_processor(Clock, Reset, Instr_Addr, Instruction, Mem_Addr, Data_Out, Data_In, DmemEn, DmemWrEn);
 
 input Clock;
@@ -65,6 +68,9 @@ wire [0:63] ALU_out;
 wire [0:63] WB_data; //selection betweeen mem_data and reg_data using Mem_to_Reg
 reg [0:63] WB_PPP_rA_rD, WB_PPP_rB; //to forward while taking PPP in consideration
 
+//***
+
+//IF stage
 assign PC_next = PC + 1'b1;
 assign BEZ = (rA_rD_data == 0);
 assign BNEZ = (rA_rD_data != 0);
@@ -88,6 +94,7 @@ always @(posedge Clock) begin
 	end
 end
 
+//register file operation
 assign rA_rD_addr = (Mem_Wr || Branch) ? IF_ID[6:10] : IF_ID[11:15];
 assign rB_addr = IF_ID[16:20];
 reg_file rf(.clk(Clock), .rst(Reset), .wr_en(EX_WB[8]), .ppp(EX_WB[0:2]), .addr_r1(rA_rD_addr), .addr_r2(rB_addr), 
@@ -126,7 +133,6 @@ always @(*) begin
 	end
 end
 
-
 //Stall logic
 assign stall_br = Branch && (ID_EX[0:4]==IF_ID[6:10]) && (ID_EX[0:4]!=0);
 
@@ -150,13 +156,13 @@ always @(posedge Clock) begin
 	else fwd_rB <= 0;
 end
 
-//Load-Store
+//Load-Store in EX
 assign Data_Out = fwd_store ? WB_PPP_rA_rD : ID_EX_rA_rD_data;
 assign Mem_Addr = ID_EX[16:23];
 assign DmemEn = ID_EX[26] || ID_EX[25];
 assign DmemWrEn = ID_EX[26];
 
-//ALU with forwarding
+//ALU with forwarding (with PPP consideration)
 assign EX_rA_rD = fwd_rA ? WB_PPP_rA_rD : ID_EX_rA_rD_data;
 assign EX_rB = fwd_rB ? WB_PPP_rB : ID_EX_rB_data;
 ALU alu1(.rA_64bit_val(EX_rA_rD), .rB_64bit_val(EX_rB), .R_ins(ID_EX[10:15]), .Op_code(ID_EX[24]), .WW(ID_EX[8:9]), .ALU_out(ALU_out));
@@ -165,7 +171,7 @@ always @(*) begin
 	case(EX_WB[0:2])
 		3'b000: begin
 			WB_PPP_rA_rD = WB_data[0:63];
-			
+
 			WB_PPP_rB = WB_data[0:63];
 		end
 		3'b001: begin

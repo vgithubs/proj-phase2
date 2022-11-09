@@ -8,8 +8,8 @@
 module ALU(rA_64bit_val, rB_64bit_val, R_ins, Op_code, WW, ALU_out);
 
 input [0:63] rA_64bit_val, rB_64bit_val;
-input [0:5] R_ins; //Instruction type
-input Op_code; //Enable signal for ALU
+input [0:5] R_ins;
+input Op_code;
 input [0:1] WW;
 output [0:63] ALU_out;
 reg [0:63] ALU_out;

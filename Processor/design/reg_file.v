@@ -100,8 +100,8 @@ always @(*) begin
 						data_r2[32:63] = data_arr[in_addr][32:63];
 					end
 					3'b010: begin
-						data_r1[0:31] = data_arr[in_addr][0:31];
-						data_r1[32:63] = in_data[32:63];
+						data_r2[0:31] = data_arr[in_addr][0:31];
+						data_r2[32:63] = in_data[32:63];
 					end
 					3'b011: begin
 						data_r2[0:7] = in_data[0:7];
