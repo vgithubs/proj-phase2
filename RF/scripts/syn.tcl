@@ -65,6 +65,7 @@ compile ;
 # Generating timing and are report of the synthezied design.
 report_timing > report/$design_name.timing ;
 report_area > report/$design_name.area ;
+report_power > report/$design_name.power
 
 # Writing synthesized gate-level verilog netlist.
 # This verilog netlist will be used for post-synthesis gate-level simulation.

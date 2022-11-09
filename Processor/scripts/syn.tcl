@@ -27,17 +27,17 @@ read_verilog ./src/${design_name}.v ;
 analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_sqrt.v
 elaborate DW_sqrt
 
-analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW01_add.v
-elaborate DW01_add
-
 analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW02_mult.v
 elaborate DW02_mult
 
 analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div.v
 elaborate DW_div
 
-analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter.v
-elaborate DW_shifter
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW01_add.v
+elaborate DW01_add
+
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW01_addsub.v
+elaborate DW01_addsub
 
 
 
@@ -56,7 +56,7 @@ uniquify ;
 link ;
 
 # Create a clock with period of 5.
-create_clock -name clk -period 5.0 -waveform [list 0 2.5] [get_ports clk]
+create_clock -name clk -period 5.0 -waveform [list 0 2.5] [get_ports Clock]
 
 # Setting timing constraints for combinational logic.
 # Specifying maximum delay from inputs to outputs
@@ -69,7 +69,7 @@ set_max_delay 5.0 -from [all_inputs];
 check_design > report/$design_name.check_design ;
 
 # Perforing synthesis and optimization on the current_design.
-compile ;
+compile -gate_clock;
 
 # For better synthesis result, use "compile_ultra" command.
 # compile_ultra is doing automatic ungrouping during optimization,
@@ -85,6 +85,8 @@ compile ;
 # Generating timing and are report of the synthezied design.
 report_timing > report/$design_name.timing ;
 report_area > report/$design_name.area ;
+report_power > report/$design_name.power ;
+report_clock_gating > report/$design_name.gating;
 
 # Writing synthesized gate-level verilog netlist.
 # This verilog netlist will be used for post-synthesis gate-level simulation.

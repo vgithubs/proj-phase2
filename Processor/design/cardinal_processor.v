@@ -1,3 +1,6 @@
+`include "./include/reg_file.v"
+`include "./include/ALU.v"
+
 module cardinal_processor(Clock, Reset, Instr_Addr, Instruction, Mem_Addr, Data_Out, Data_In, DmemEn, DmemWrEn);
 
 input Clock;
