@@ -1,0 +1,577 @@
+######################################################################
+#
+# EE-577b 2020 FALL
+# : DesignCompiler synthesis script
+#   modified by Linyi Hong
+#
+# use this script as a template for synthesizing combinational logic
+#
+######################################################################
+# Setting variable for design_name. (top module name)
+set design_name $env(DESIGN_NAME);
+ALU
+## For NCSUFreePDK45nm library
+set search_path [ list .                   /home/scf-22/ee577/NCSU45PDK/FreePDK45/osu_soc/lib/files ]
+. /home/scf-22/ee577/NCSU45PDK/FreePDK45/osu_soc/lib/files
+set target_library { gscl45nm.db }
+ gscl45nm.db 
+set synthetic_library [list dw_foundation.sldb standard.sldb ]
+dw_foundation.sldb standard.sldb
+set link_library [list * gscl45nm.db dw_foundation.sldb standard.sldb]
+* gscl45nm.db dw_foundation.sldb standard.sldb
+# Reading source verilog file.
+# copy your verilog file into ./src/ before synthesis.
+read_verilog ./src/${design_name}.v ;
+Loading db file '/home/scf-22/ee577/NCSU45PDK/FreePDK45/osu_soc/lib/files/gscl45nm.db'
+Loading db file '/usr/local/synopsys/Design_Compiler/default/libraries/syn/dw_foundation.sldb'
+Loading db file '/usr/local/synopsys/Design_Compiler/default/libraries/syn/standard.sldb'
+Loading db file '/usr/local/synopsys/Design_Compiler/default/libraries/syn/gtech.db'
+  Loading link library 'gscl45nm'
+  Loading link library 'gtech'
+Loading verilog file '/home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v'
+Detecting input file type automatically (-rtl or -netlist).
+Opening include file ./include/sim_ver/DW02_mult.v
+Opening include file ./include/sim_ver/DW01_addsub.v
+Reading with Presto HDL Compiler (equivalent to -rtl option).
+Running PRESTO HDLC
+Compiling source file /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v
+Opening include file ./include/sim_ver/DW02_mult.v
+Opening include file ./include/sim_ver/DW01_addsub.v
+Warning:  /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v:610: signed to unsigned part selection occurs. (VER-318)
+Warning:  /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v:611: signed to unsigned part selection occurs. (VER-318)
+Warning:  /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v:612: signed to unsigned part selection occurs. (VER-318)
+Warning:  /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v:613: signed to unsigned part selection occurs. (VER-318)
+Warning:  /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v:614: signed to unsigned part selection occurs. (VER-318)
+Warning:  /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v:615: signed to unsigned part selection occurs. (VER-318)
+Warning:  /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v:616: signed to unsigned part selection occurs. (VER-318)
+Warning:  /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v:617: signed to unsigned part selection occurs. (VER-318)
+Warning:  /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v:618: signed to unsigned assignment occurs. (VER-318)
+Warning:  /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v:622: signed to unsigned part selection occurs. (VER-318)
+Warning:  /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v:623: signed to unsigned part selection occurs. (VER-318)
+Warning:  /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v:624: signed to unsigned part selection occurs. (VER-318)
+Warning:  /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v:625: signed to unsigned part selection occurs. (VER-318)
+Warning:  /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v:626: signed to unsigned assignment occurs. (VER-318)
+Warning:  /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v:630: signed to unsigned part selection occurs. (VER-318)
+Warning:  /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v:631: signed to unsigned part selection occurs. (VER-318)
+Warning:  /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v:632: signed to unsigned assignment occurs. (VER-318)
+Warning:  /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v:636: signed to unsigned part selection occurs. (VER-318)
+Warning:  /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v:637: signed to unsigned assignment occurs. (VER-318)
+Warning:  /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v:255: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+Warning:  /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v:300: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+Warning:  /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v:530: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+Warning:  /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v:569: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+Warning:  /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v:607: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+Warning:  /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v:652: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+
+Statistics for case statements in always block at line 153 in file
+        '/home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           230            |    auto/auto     |
+|           232            |     no/auto      |
+|           255            |    auto/auto     |
+|           300            |    auto/auto     |
+|           344            |    auto/auto     |
+|           435            |    auto/auto     |
+|           530            |    auto/auto     |
+|           569            |    auto/auto     |
+|           607            |    auto/auto     |
+|           652            |    auto/auto     |
+|           966            |    auto/auto     |
+|           1070           |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Current design is now '/home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/DW02_mult.db:DW02_mult'
+Warning:  File /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/DW01_addsub-verilog.pvl not found, or does not contain a usable description of DW01_addsub. (ELAB-320)
+Warning:  File /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/DW02_mult-verilog.pvl not found, or does not contain a usable description of DW02_mult. (ELAB-320)
+Warning:  File /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/DW02_mult-verilog.pvl not found, or does not contain a usable description of DW02_mult. (ELAB-320)
+Warning:  File /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/DW02_mult-verilog.pvl not found, or does not contain a usable description of DW02_mult. (ELAB-320)
+Loaded 3 designs.
+Current design is 'DW02_mult'.
+DW02_mult DW01_addsub ALU
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_sqrt.v
+Running PRESTO HDLC
+Compiling source file /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_sqrt.v
+Opening include file /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_sqrt_function.inc
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_sqrt_function.inc:40: Function 'DWF_sqrt_uns' with non-empty body is mapped to 'SQRT_UNS_OP'; body will be ignored. (VER-136)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_sqrt_function.inc:72: Function 'DWF_sqrt_tc' with non-empty body is mapped to 'SQRT_TC_OP'; body will be ignored. (VER-136)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_sqrt.v:72: The statements in initial blocks are ignored. (VER-281)
+Presto compilation completed successfully.
+1
+elaborate DW_sqrt
+Running PRESTO HDLC
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'DW_sqrt'.
+1
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW02_mult.v
+Running PRESTO HDLC
+Compiling source file /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW02_mult.v
+Presto compilation completed successfully.
+1
+elaborate DW02_mult
+Running PRESTO HDLC
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'DW02_mult'.
+1
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div.v
+Running PRESTO HDLC
+Compiling source file /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div.v
+Opening include file /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div_function.inc
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div_function.inc:53: Function 'DWF_div_uns' with non-empty body is mapped to 'DIV_UNS_OP'; body will be ignored. (VER-136)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div_function.inc:90: Function 'DWF_div_tc' with non-empty body is mapped to 'DIV_TC_OP'; body will be ignored. (VER-136)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div_function.inc:138: Function 'DWF_rem_uns' with non-empty body is mapped to 'REM_UNS_OP'; body will be ignored. (VER-136)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div_function.inc:174: Function 'DWF_rem_tc' with non-empty body is mapped to 'REM_TC_OP'; body will be ignored. (VER-136)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div_function.inc:220: Function 'DWF_mod_uns' with non-empty body is mapped to 'MOD_UNS_OP'; body will be ignored. (VER-136)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div_function.inc:256: Function 'DWF_mod_tc' with non-empty body is mapped to 'MOD_TC_OP'; body will be ignored. (VER-136)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div.v:104: The statements in initial blocks are ignored. (VER-281)
+Presto compilation completed successfully.
+1
+elaborate DW_div
+Running PRESTO HDLC
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'DW_div'.
+1
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW01_addsub.v
+Running PRESTO HDLC
+Compiling source file /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW01_addsub.v
+Presto compilation completed successfully.
+1
+elaborate DW01_addsub
+Running PRESTO HDLC
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'DW01_addsub'.
+1
+# Setting $design_name as current working design.
+# Use this command before setting any constraints.
+current_design $design_name ;
+Current design is 'ALU'.
+{ALU}
+# If you have multiple instances of the same module,
+# use this so that DesignCompiler optimizes each instance separately.
+uniquify ;
+1
+# Linking your design into the cells in standard cell libraries.
+# This command checks whether your design can be compiled
+link ;
+
+  Linking design 'ALU'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (7 designs)               /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/src/ALU.db, etc
+  gscl45nm (library)          /home/scf-22/ee577/NCSU45PDK/FreePDK45/osu_soc/lib/files/gscl45nm.db
+  dw_foundation.sldb (library) /usr/local/synopsys/Design_Compiler/default/libraries/syn/dw_foundation.sldb
+
+1
+# Create a clock with period of 5.
+# create_clock -name clk -period 5.0 -waveform [list 0 2.5] [get_ports clk]
+# Setting timing constraints for combinational logic.
+# Specifying maximum delay from inputs to outputs
+set_max_delay 5.0 -to [all_outputs];
+1
+set_max_delay 5.0 -from [all_inputs];
+1
+# "check_design" checks the internal representation of the
+# current design for consistency and issues error and
+# warning messages as appropriate.
+check_design > report/$design_name.check_design ;
+# Perforing synthesis and optimization on the current_design.
+compile ;
+Information: Checking out the license 'DesignWare'. (SEC-104)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | K-2015.06-DWBB_201506.5.2
+                                                               |     *     |
+| Licensed DW Building Blocks        | K-2015.06-DWBB_201506.5.2
+                                                               |     *     |
+============================================================================
+
+
+Information: There are 12 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'ALU'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Implementation Selection
+  ----------------------------------
+  Mapping 'ALU_DW02_mult_0'
+  Mapping 'ALU_DW02_mult_1'
+  Mapping 'ALU_DW02_mult_2'
+  Mapping 'ALU_DW02_mult_3'
+  Mapping 'ALU_DW02_mult_4'
+  Mapping 'ALU_DW02_mult_5'
+  Mapping 'ALU_DW02_mult_6'
+  Processing 'ALU_DW01_addsub_0'
+  Processing 'ALU_DW01_addsub_1'
+  Processing 'ALU_DW01_addsub_2'
+  Processing 'ALU_DW01_addsub_3'
+  Processing 'ALU_DW01_addsub_4'
+  Processing 'ALU_DW01_addsub_5'
+  Processing 'ALU_DW01_addsub_6'
+  Processing 'ALU_DW01_addsub_7'
+  Mapping 'DW_rightsh'
+Information: Added key list 'DesignWare' to design 'ALU'. (DDB-72)
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+
+  Beginning Mapping Optimizations  (Medium effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+  Mapping Optimization (Phase 2)
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:09   38874.0      1.93      25.0      16.5                          
+    0:00:09   38874.0      1.93      25.0      16.5                          
+    0:00:10   40945.0      1.18       9.0      12.1                          
+    0:00:10   40945.0      1.18       9.0      12.1                          
+    0:00:10   40945.0      1.18       9.0      12.1                          
+    0:00:10   40945.0      1.18       9.0      12.1                          
+    0:00:11   40945.0      1.18       9.0      12.1                          
+    0:00:12   38442.7      1.40      13.5      11.0                          
+    0:00:12   38501.8      1.20       9.2      11.0                          
+    0:00:13   38482.6      1.16       8.7      11.0                          
+    0:00:13   38486.8      1.16       8.7      11.0                          
+    0:00:13   38482.6      1.16       8.7      11.0                          
+    0:00:13   38486.8      1.16       8.7      11.0                          
+    0:00:13   38482.6      1.16       8.7      11.0                          
+    0:00:13   38486.8      1.16       8.7      11.0                          
+    0:00:13   38482.6      1.16       8.7      11.0                          
+    0:00:13   38486.8      1.16       8.7      11.0                          
+    0:00:14   38486.8      1.16       8.7      11.0                          
+    0:00:14   38486.8      1.16       8.7      11.0                          
+    0:00:14   38486.8      1.16       8.7      11.0                          
+    0:00:15   38903.6      1.16       8.7      10.2                          
+    0:00:17   39259.3      1.16       8.8       9.6                          
+    0:00:18   39613.6      1.16       8.8       9.1                          
+    0:00:19   39947.3      1.16       8.8       8.6                          
+    0:00:20   40245.3      1.16       8.9       8.2                          
+    0:00:20   40519.4      1.16       8.9       7.8                          
+    0:00:21   40783.1      1.16       8.9       7.4                          
+    0:00:21   41034.2      1.16       8.9       7.1                          
+    0:00:22   41283.4      1.19       9.0       6.8                          
+    0:00:22   41515.2      1.19       9.0       6.5                          
+    0:00:23   41735.3      1.19       9.0       6.2                          
+    0:00:23   41943.2      1.19       9.0       6.0                          
+    0:00:24   42139.9      1.19       9.0       5.7                          
+    0:00:24   42305.0      1.19       9.0       5.5                          
+    0:00:25   42457.1      1.19       9.0       5.4                          
+    0:00:25   42564.1      1.19       9.0       5.2                          
+    0:00:25   42564.1      1.19       9.0       5.2                          
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:25   42564.1      1.19       9.0       5.2                          
+    0:00:25   42631.7      1.11       8.4       5.4 ALU_out[0]               
+    0:00:26   42735.9      1.01       6.8       5.6 ALU_out[0]               
+    0:00:26   42748.5      0.97       6.6       5.6 ALU_out[0]               
+    0:00:26   42747.6      0.94       6.5       5.6 ALU_out[0]               
+    0:00:26   42755.1      0.91       6.4       5.6 ALU_out[0]               
+    0:00:26   42762.6      0.91       6.2       5.6 ALU_out[0]               
+    0:00:26   42826.4      0.87       5.8       5.7 ALU_out[0]               
+    0:00:26   42826.4      0.85       5.8       5.7 ALU_out[0]               
+    0:00:27   42824.6      0.85       5.7       5.7 ALU_out[0]               
+    0:00:27   42826.9      0.83       5.6       5.7 ALU_out[0]               
+    0:00:27   42842.4      0.83       5.6       5.7 ALU_out[0]               
+    0:00:27   42861.2      0.82       5.5       5.7 ALU_out[0]               
+    0:00:27   42865.9      0.80       5.3       5.7 ALU_out[0]               
+    0:00:27   42868.2      0.79       5.3       5.7 ALU_out[0]               
+    0:00:27   42868.2      0.79       5.3       5.7 ALU_out[0]               
+    0:00:28   42870.6      0.78       5.2       5.7                          
+    0:00:28   42870.6      0.78       5.2       5.7                          
+
+
+  Beginning Design Rule Fixing  (max_capacitance)
+  ----------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:28   42870.6      0.78       5.2       5.7                          
+    0:00:28   42908.6      0.78       5.1       5.7 dwm7/net10935            
+    0:00:28   43017.0      0.78       5.1       5.6 dwm7/net10265            
+    0:00:28   43081.7      0.78       5.1       5.6 dwm7/net9612             
+    0:00:28   43123.5      0.78       5.1       5.5 dwm7/net9627             
+    0:00:28   43167.6      0.78       5.1       5.5 dwm7/net10771            
+    0:00:28   43233.8      0.78       5.1       5.4 dwm7/net38621            
+    0:00:28   43304.2      0.78       5.1       5.4 dwm7/net38723            
+    0:00:28   43415.9      0.78       5.1       5.4 dwm7/net10768            
+    0:00:28   43547.8      0.78       5.1       5.3 dwm7/net38736            
+    0:00:28   43605.5      0.78       5.1       5.3 dwm7/net38744            
+    0:00:30   43607.4      0.78       5.1       5.3 dwm7/net10861            
+    0:00:30   43605.9      0.78       5.1       5.3 dwm7/net10723            
+    0:00:30   43610.2      0.78       5.1       5.3 net29766                 
+    0:00:30   43699.8      0.78       5.1       5.2 net29775                 
+    0:00:31   43878.6      0.78       5.1       5.1 n1175                    
+    0:00:31   44054.6      0.78       5.1       4.9 net29415                 
+    0:00:31   44289.2      0.78       5.1       4.8 n1299                    
+    0:00:31   44469.9      0.78       5.1       4.7 net28971                 
+    0:00:31   44814.9      0.78       5.1       4.6 n1298                    
+    0:00:31   45150.4      0.78       5.1       4.6 n1998                    
+    0:00:31   45339.5      0.78       5.1       4.5 net28705                 
+    0:00:31   45456.4      0.78       5.1       4.5 N1444                    
+    0:00:31   45628.6      0.78       5.1       4.4 net29177                 
+    0:00:31   45811.7      0.78       5.1       4.3 net29695                 
+    0:00:31   45953.9      0.78       5.1       4.2 net29148                 
+    0:00:31   46083.4      0.78       5.1       4.2 N1418                    
+    0:00:31   46202.1      0.78       5.1       4.1 net29581                 
+    0:00:32   46329.8      0.78       5.1       4.1 net29497                 
+    0:00:32   46431.6      0.78       5.1       4.0 n1992                    
+    0:00:32   46592.6      0.78       5.1       3.9 N1083                    
+    0:00:32   46716.5      0.78       5.1       3.9 net29848                 
+    0:00:32   46834.3      0.78       5.1       3.9 net29853                 
+    0:00:32   47018.2      0.78       5.1       3.8 net28915                 
+    0:00:32   47225.7      0.78       5.1       3.7 net30009                 
+    0:00:32   47370.2      0.78       5.1       3.7 n2040                    
+    0:00:32   47534.0      0.78       5.1       3.7 net28923                 
+    0:00:32   47652.7      0.78       5.1       3.6 n422                     
+    0:00:32   47772.9      0.78       5.1       3.6 net28699                 
+    0:00:33   47896.8      0.78       5.1       3.6 net29548                 
+    0:00:33   48036.1      0.78       5.1       3.6 n728                     
+    0:00:33   48175.5      0.78       5.1       3.6 n1291                    
+    0:00:33   48314.9      0.78       5.1       3.6 n1653                    
+    0:00:33   48454.3      0.78       5.1       3.6 n1978                    
+    0:00:33   48534.5      0.78       5.0       3.6 net29575                 
+    0:00:33   48616.7      0.78       5.0       3.5 n1781                    
+    0:00:33   48658.4      0.78       5.0       3.5 net39975                 
+    0:00:33   48717.6      0.78       5.0       3.4 net41141                 
+    0:00:33   48776.7      0.78       5.0       3.3 net41498                 
+    0:00:33   48834.4      0.78       5.0       3.3 net41879                 
+    0:00:34   48848.5      0.78       5.0       3.3 net28826                 
+    0:00:36   48850.4      0.78       5.0       3.3 dwm7/n1669               
+    0:00:36   48845.7      0.77       5.0       3.3 dwm7/net39200            
+    0:00:38   48847.1      0.77       5.0       3.3 net29975                 
+    0:00:38   48847.1      0.77       5.0       3.3 net28819                 
+    0:00:40   48847.1      0.77       4.9       3.3 ALU_out[0]               
+    0:00:40   48842.9      0.77       4.9       3.3 ALU_out[0]               
+    0:00:40   48842.9      0.76       4.9       3.3 ALU_out[0]               
+    0:00:40   48842.9      0.76       4.9       3.3 as7/net38640             
+    0:00:41   48839.1      0.76       4.9       3.3 as7/net38629             
+    0:00:42   48841.9      0.76       4.9       3.3 net28994                 
+    0:00:43   48841.5      0.76       4.9       3.3 net44579                 
+    0:00:45   48841.0      0.76       4.9       3.2 net29562                 
+    0:00:46   48841.0      0.76       4.9       3.2 ALU_out[0]               
+    0:00:47   48850.4      0.85       5.8       3.2 as7/carry[4]             
+    0:00:48   49030.6      1.59      15.7       3.1 dwm7/n1669               
+    0:00:48   49112.7      1.73      18.5       3.0 as7/net38640             
+    0:00:48   49219.7      1.81      20.0       2.9 dwm7/net38601            
+    0:00:49   49308.9      2.08      24.8       2.8 as5/net38571             
+    0:00:51   49313.6      2.08      24.8       2.8 net30018                 
+    0:00:51   49400.9      2.18      26.5       2.8 net28854                 
+    0:00:52   49465.6      2.18      26.7       2.7 net30019                 
+    0:00:52   49467.5      2.18      26.7       2.7 N927                     
+    0:00:54   49469.9      2.18      26.7       2.7 net29826                 
+    0:00:54   49474.5      2.15      25.9       2.7 ALU_out[0]               
+    0:00:54   49447.8      2.02      23.8       2.7 ALU_out[0]               
+    0:00:55   49431.4      1.96      22.7       2.7 ALU_out[0]               
+    0:00:55   49398.5      1.91      21.8       2.7 ALU_out[0]               
+    0:00:55   49392.4      1.89      21.5       2.7 ALU_out[0]               
+    0:00:55   49361.4      1.82      20.3       2.7 ALU_out[0]               
+    0:00:55   49345.5      1.78      19.4       2.7 ALU_out[0]               
+    0:00:55   49341.7      1.75      18.9       2.7 ALU_out[0]               
+    0:00:55   49333.3      1.73      18.4       2.7 ALU_out[0]               
+    0:00:55   49331.4      1.70      17.9       2.7 ALU_out[0]               
+    0:00:55   49379.7      1.70      17.8       2.7 ALU_out[0]               
+    0:00:56   49371.3      1.68      17.5       2.7 ALU_out[0]               
+    0:00:56   49353.9      1.63      16.6       2.7 ALU_out[0]               
+    0:00:56   49351.1      1.61      16.4       2.7 ALU_out[0]               
+    0:00:56   49347.4      1.58      16.0       2.7 ALU_out[0]               
+    0:00:56   49338.0      1.56      15.7       2.7 ALU_out[0]               
+    0:00:56   49361.4      1.56      15.6       2.7 ALU_out[0]               
+    0:00:56   49349.7      1.53      15.3       2.7 ALU_out[0]               
+    0:00:56   49401.3      1.52      15.1       2.7 ALU_out[0]               
+    0:00:56   49404.6      1.51      15.0       2.7 ALU_out[0]               
+    0:00:56   49401.3      1.51      14.9       2.7 ALU_out[0]               
+    0:00:56   49405.6      1.50      14.8       2.7 ALU_out[0]               
+    0:00:57   49406.0      1.49      14.7       2.7 ALU_out[0]               
+    0:00:57   49395.2      1.47      14.2       2.7 ALU_out[0]               
+    0:00:57   49398.0      1.45      14.0       2.7 ALU_out[0]               
+    0:00:57   49403.7      1.45      13.9       2.7 ALU_out[0]               
+    0:00:57   49409.3      1.44      13.7       2.7 ALU_out[0]               
+    0:00:57   49408.4      1.44      13.7       2.7 ALU_out[0]               
+    0:00:57   49411.2      1.44      13.7       2.7 ALU_out[0]               
+    0:00:58   49416.4      1.43      13.6       2.7 ALU_out[0]               
+    0:00:58   49419.2      1.43      13.5       2.7 ALU_out[0]               
+    0:01:01   49421.5      1.43      13.5       2.7 net49082                 
+    0:01:01   49419.6      1.43      13.5       2.7 net29599                 
+    0:01:03   49419.6      1.43      13.5       2.7 ALU_out[0]               
+    0:01:04   49423.9      1.42      13.4       2.7 ALU_out[0]               
+    0:01:04   49426.2      1.42      13.4       2.7 ALU_out[0]               
+    0:01:04   49432.3      1.41      13.3       2.7 ALU_out[0]               
+    0:01:04   49438.9      1.40      13.2       2.7 ALU_out[0]               
+    0:01:04   49447.3      1.39      13.0       2.7 ALU_out[0]               
+    0:01:04   49442.6      1.38      12.9       2.7 ALU_out[0]               
+    0:01:04   49450.6      1.36      12.7       2.7 ALU_out[0]               
+    0:01:04   49453.0      1.36      12.7       2.7 ALU_out[0]               
+    0:01:05   49455.3      1.36      12.6       2.7                          
+    0:01:05   49469.4      1.36      12.3       2.7                          
+    0:01:05   49470.8      1.36      12.2       2.7                          
+    0:01:05   49470.8      1.36      12.2       2.7                          
+
+
+  Beginning Area-Recovery Phase  (cleanup)
+  -----------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:01:05   49470.8      1.36      12.2       2.7                          
+    0:01:05   49470.8      1.36      12.2       2.7                          
+    0:01:06   46953.5      1.36      12.0       2.7                          
+    0:01:06   45666.2      1.36      11.8       2.7                          
+    0:01:07   45087.5      1.36      12.0       2.7                          
+    0:01:07   44950.5      1.36      12.0       2.7                          
+    0:01:07   44878.7      1.36      12.2       2.7                          
+    0:01:07   44821.4      1.36      12.2       2.7                          
+    0:01:07   44788.1      1.36      12.2       2.7                          
+    0:01:08   44755.3      1.36      12.2       2.7                          
+    0:01:08   44734.1      1.36      12.2       2.7                          
+    0:01:08   44716.8      1.36      12.2       2.7                          
+    0:01:08   44702.7      1.36      12.2       2.7                          
+    0:01:08   44688.6      1.36      12.2       2.7                          
+    0:01:08   44674.1      1.36      12.2       2.7                          
+    0:01:08   44653.9      1.36      12.2       2.7                          
+    0:01:08   44653.9      1.36      12.2       2.7                          
+    0:01:08   44653.9      1.36      12.2       2.7                          
+    0:01:09   44336.6      1.36      12.2       2.7                          
+    0:01:09   44317.4      1.36      12.2       2.7                          
+    0:01:09   44317.4      1.36      12.2       2.7                          
+    0:01:09   44317.4      1.36      12.2       2.7                          
+    0:01:09   44317.4      1.36      12.2       2.7                          
+    0:01:09   44317.4      1.36      12.2       2.7                          
+    0:01:09   44317.4      1.36      12.2       2.7                          
+    0:01:09   44318.3      1.36      12.2       2.7 ALU_out[0]               
+    0:01:09   44324.0      1.32      11.9       2.7 ALU_out[0]               
+    0:01:09   44322.1      1.32      11.9       2.7 ALU_out[0]               
+    0:01:09   44322.6      1.31      11.7       2.7                          
+    0:01:09   44318.3      1.31      11.7       2.7                          
+    0:01:09   44309.0      1.31      11.7       2.7                          
+    0:01:09   44303.3      1.31      11.7       2.7                          
+    0:01:10   44298.2      1.31      11.7       2.7                          
+    0:01:10   44295.8      1.31      11.7       2.7                          
+    0:01:10   44287.4      1.31      11.7       2.7                          
+    0:01:10   44277.0      1.31      11.7       2.7                          
+    0:01:10   44268.6      1.31      11.7       2.7                          
+    0:01:10   44263.9      1.31      11.7       2.7                          
+    0:01:10   44228.7      1.31      11.7       2.7                          
+    0:01:10   44195.9      1.31      11.7       2.7                          
+    0:01:10   44177.1      1.31      11.7       2.7                          
+    0:01:10   44090.7      1.31      11.6       2.7                          
+    0:01:11   43987.5      1.31      11.4       2.7                          
+    0:01:11   43985.6      1.31      11.4       2.7                          
+    0:01:11   43980.0      1.31      11.4       2.7                          
+    0:01:11   43968.2      1.31      11.3       2.7                          
+    0:01:11   43965.0      1.31      11.3       2.7                          
+    0:01:11   43965.4      1.31      11.3       2.7                          
+    0:01:11   43965.4      1.31      11.3       2.7 ALU_out[0]               
+    0:01:11   43965.4      1.31      11.3       2.7 ALU_out[0]               
+    0:01:11   43968.2      1.31      11.3       2.7 ALU_out[0]               
+    0:01:12   43971.1      1.30      11.3       2.7                          
+Loading db file '/home/scf-22/ee577/NCSU45PDK/FreePDK45/osu_soc/lib/files/gscl45nm.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+1
+# For better synthesis result, use "compile_ultra" command.
+# compile_ultra is doing automatic ungrouping during optimization,
+# therefore sometimes it's hard to figure out the critical path 
+# from the synthesized netlist.
+# So, use "compile" command for now.
+# Writing the synthesis result into Synopsys db format.
+# You can read the saved db file into DesignCompiler later using
+# "read_db" command for further analysis (timing, area...).
+#write -xg_force_db -format db -hierarchy -out db/$design_name.db ;
+# Generating timing and are report of the synthezied design.
+report_timing > report/$design_name.timing ;
+report_area > report/$design_name.area ;
+report_power > report/$design_name.power ;
+# Writing synthesized gate-level verilog netlist.
+# This verilog netlist will be used for post-synthesis gate-level simulation.
+change_names -rules verilog -hierarchy ;
+1
+write -format verilog -hierarchy -out netlist/${design_name}_syn.v ;
+Writing verilog file '/home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/netlist/ALU_syn.v'.
+1
+# Writing Standard Delay Format (SDF) back-annotation file.
+# This delay information can be used for post-synthesis simulation.
+write_sdf netlist/${design_name}_syn.sdf;
+Information: Annotated 'cell' delays are assumed to include load delay. (UID-282)
+Information: Writing timing information to file '/home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/netlist/ALU_syn.sdf'. (WT-3)
+1
+write_sdc netlist/${design_name}_syn.sdc
+1
+1
+dc_shell> quit
+
+Thank you...
+

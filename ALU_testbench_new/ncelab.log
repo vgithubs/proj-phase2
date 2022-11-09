@@ -1,5 +1,5 @@
 ncelab(64): 15.20-s079: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
-TOOL:	ncelab(64)	15.20-s079: Started on Nov 04, 2022 at 13:39:49 PDT
+TOOL:	ncelab(64)	15.20-s079: Started on Nov 05, 2022 at 00:53:26 PDT
 ncelab
     -ACCESS +rwc
     -NCFATAL INVSUP
@@ -131,8 +131,8 @@ Resolved design unit 'DW_shifter' at 'tb_ALU.alu_one@ALU<module>.dwshift14' to '
 Resolved design unit 'DW_shifter' at 'tb_ALU.alu_one@ALU<module>.dwshift15' to 'work.DW_shifter:module'.
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
-		work.ALU:module <0x077167ea>
-			streams:  93, words: 117246
+		work.ALU:module <0x31045185>
+			streams:  93, words: 117159
 		work.DW01_add:module <0x3f15041c>
 			streams:   3, words:  1756
 		work.DW01_add:module <0x50c1220f>
@@ -172,7 +172,7 @@ Resolved design unit 'DW_shifter' at 'tb_ALU.alu_one@ALU<module>.dwshift15' to '
 		work.DW_sqrt:module <0x654f9680>
 			streams:   4, words:  3335
 		work.tb_ALU:module <0x58732c84>
-			streams:   7, words: 72885
+			streams:   7, words: 75895
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
@@ -187,4 +187,4 @@ Resolved design unit 'DW_shifter' at 'tb_ALU.alu_one@ALU<module>.dwshift15' to '
 		Pseudo assignments:      97      97
 		Simulation timescale:  10ps
 	Writing initial simulation snapshot: work.tb_ALU:module
-TOOL:	ncelab(64)	15.20-s079: Exiting on Nov 04, 2022 at 13:39:50 PDT  (total: 00:00:01)
+TOOL:	ncelab(64)	15.20-s079: Exiting on Nov 05, 2022 at 00:53:27 PDT  (total: 00:00:01)

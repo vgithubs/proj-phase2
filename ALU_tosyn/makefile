@@ -42,7 +42,7 @@
 
 # top level module
 TOP = tb_ALU
-TOP_SYN = tb_ALY_syn
+TOP_SYN = tb_ALU_syn
 DESIGN_NAME = ALU
 
 # List of the design files
@@ -55,6 +55,8 @@ TB_FILES = ./tb/*.v
 INCLUDE_DIRECTORY = ./include
 
 INCLUDE_DW_DIR = ./include/sim_ver
+
+#INCLUDE_DW_DIR = /usr/local/synopsys/2011.09/dw/sim_ver
 
 # GUI simulation script file for pre-synthesis design
 SIM_SCRIPT_FILE_GUI = ./scripts/runscript.tcl

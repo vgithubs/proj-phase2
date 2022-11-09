@@ -26,17 +26,16 @@ read_verilog ./src/${design_name}.v ;
 analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_sqrt.v
 elaborate DW_sqrt
 
-analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW01_add.v
-elaborate DW01_add
-
 analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW02_mult.v
 elaborate DW02_mult
 
 analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div.v
 elaborate DW_div
 
-analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter.v
-elaborate DW_shifter
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW01_addsub.v
+elaborate DW01_addsub
+
+
 
 # Setting $design_name as current working design.
 # Use this command before setting any constraints.
@@ -51,7 +50,7 @@ uniquify ;
 link ;
 
 # Create a clock with period of 5.
-create_clock -name clk -period 5.0 -waveform [list 0 2.5] [get_ports clk]
+# create_clock -name clk -period 5.0 -waveform [list 0 2.5] [get_ports clk]
 
 # Setting timing constraints for combinational logic.
 # Specifying maximum delay from inputs to outputs
@@ -80,6 +79,7 @@ compile ;
 # Generating timing and are report of the synthezied design.
 report_timing > report/$design_name.timing ;
 report_area > report/$design_name.area ;
+report_power > report/$design_name.power ;
 
 # Writing synthesized gate-level verilog netlist.
 # This verilog netlist will be used for post-synthesis gate-level simulation.

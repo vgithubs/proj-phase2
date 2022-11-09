@@ -1,30 +1,37 @@
-Error: Width mismatch on port 'sh' of reference to 'DW_shifter' in 'ALU'. (LINK-3)
-Error: Unable to match ports of cell dwshift1 ('DW_shifter') to 'DW_shifter_data_width8_sh_width3_inv_mode2'. (LINK-25)
-Error: Width mismatch on port 'sh' of reference to 'DW_shifter' in 'ALU'. (LINK-3)
-Error: Unable to match ports of cell dwshift2 ('DW_shifter') to 'DW_shifter_data_width8_sh_width3_inv_mode2'. (LINK-25)
-Error: Width mismatch on port 'sh' of reference to 'DW_shifter' in 'ALU'. (LINK-3)
-Error: Unable to match ports of cell dwshift3 ('DW_shifter') to 'DW_shifter_data_width8_sh_width3_inv_mode2'. (LINK-25)
-Error: Width mismatch on port 'sh' of reference to 'DW_shifter' in 'ALU'. (LINK-3)
-Error: Unable to match ports of cell dwshift4 ('DW_shifter') to 'DW_shifter_data_width8_sh_width3_inv_mode2'. (LINK-25)
-Error: Width mismatch on port 'sh' of reference to 'DW_shifter' in 'ALU'. (LINK-3)
-Error: Unable to match ports of cell dwshift5 ('DW_shifter') to 'DW_shifter_data_width8_sh_width3_inv_mode2'. (LINK-25)
-Error: Width mismatch on port 'sh' of reference to 'DW_shifter' in 'ALU'. (LINK-3)
-Error: Unable to match ports of cell dwshift6 ('DW_shifter') to 'DW_shifter_data_width8_sh_width3_inv_mode2'. (LINK-25)
-Error: Width mismatch on port 'sh' of reference to 'DW_shifter' in 'ALU'. (LINK-3)
-Error: Unable to match ports of cell dwshift7 ('DW_shifter') to 'DW_shifter_data_width8_sh_width3_inv_mode2'. (LINK-25)
-Error: Width mismatch on port 'sh' of reference to 'DW_shifter' in 'ALU'. (LINK-3)
-Error: Unable to match ports of cell dwshift8 ('DW_shifter') to 'DW_shifter_data_width8_sh_width3_inv_mode2'. (LINK-25)
-Error: Width mismatch on port 'sh' of reference to 'DW_shifter' in 'ALU'. (LINK-3)
-Error: Unable to match ports of cell dwshift9 ('DW_shifter') to 'DW_shifter_data_width16_sh_width4_inv_mode2'. (LINK-25)
-Error: Width mismatch on port 'sh' of reference to 'DW_shifter' in 'ALU'. (LINK-3)
-Error: Unable to match ports of cell dwshift10 ('DW_shifter') to 'DW_shifter_data_width16_sh_width4_inv_mode2'. (LINK-25)
-Error: Width mismatch on port 'sh' of reference to 'DW_shifter' in 'ALU'. (LINK-3)
-Error: Unable to match ports of cell dwshift11 ('DW_shifter') to 'DW_shifter_data_width16_sh_width4_inv_mode2'. (LINK-25)
-Error: Width mismatch on port 'sh' of reference to 'DW_shifter' in 'ALU'. (LINK-3)
-Error: Unable to match ports of cell dwshift12 ('DW_shifter') to 'DW_shifter_data_width16_sh_width4_inv_mode2'. (LINK-25)
-Error: Width mismatch on port 'sh' of reference to 'DW_shifter' in 'ALU'. (LINK-3)
-Error: Unable to match ports of cell dwshift13 ('DW_shifter') to 'DW_shifter_data_width32_sh_width5_inv_mode2'. (LINK-25)
-Error: Width mismatch on port 'sh' of reference to 'DW_shifter' in 'ALU'. (LINK-3)
-Error: Unable to match ports of cell dwshift14 ('DW_shifter') to 'DW_shifter_data_width32_sh_width5_inv_mode2'. (LINK-25)
-Error: Width mismatch on port 'sh' of reference to 'DW_shifter' in 'ALU'. (LINK-3)
-Error: Unable to match ports of cell dwshift15 ('DW_shifter') to 'DW_shifter_data_width64_sh_width6_inv_mode2'. (LINK-25)
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : DW_shifter
+Version: K-2015.06-SP5-5
+Date   : Thu Nov  3 16:12:16 2022
+****************************************
+
+Operating Conditions: typical   Library: gscl45nm
+Wire Load Model Mode: top
+
+  Startpoint: data_out[0] (internal pin)
+  Endpoint: data_out[0]
+            (output port)
+  Path Group: default
+  Path Type: max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  data_out[0] (out)                        0.00       0.00 r
+  data arrival time                                   0.00
+
+  max_delay                                5.00       5.00
+  output external delay                    0.00       5.00
+  data required time                                  5.00
+  -----------------------------------------------------------
+  data required time                                  5.00
+  data arrival time                                   0.00
+  -----------------------------------------------------------
+  slack (MET)                                         5.00
+
+
+1
