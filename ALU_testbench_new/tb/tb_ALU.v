@@ -599,6 +599,22 @@ module tb_ALU;
 		WW = 00;
 	
 
+		//VSRA, WW 16bit, output: FCF8FCE8_00000000 
+		#10;
+		Op_code = 1'b1;
+		rA_64bit_val = 64'h024486c9_66666666;		
+		rB_64bit_val = 64'h00000000_0000000f;
+		R_ins = 6'b001100;
+		WW = 01;
+
+		//VSRA, WW 16bit, output: 0488_E1B2_3333_CCCC
+		#10;
+		Op_code = 1'b1;
+		rA_64bit_val = 64'h024486c9_66666666;		
+		rB_64bit_val = 64'h000F0002_0001000f;
+		R_ins = 6'b001100;
+		WW = 01;
+
 
 		#20 $finish;
 		
