@@ -7,11 +7,24 @@ module tb_ALU;
 	reg [0:1] WW;
 	wire [0:63] ALU_out;
 
-	ALU alu_one(rA_64bit_val, rB_64bit_val, R_ins, Op_code, WW, ALU_out);
+	reg Clock;
+	reg Reset;
+
+	initial begin
+	Clock = 1'b0;
+	end
+
+	always begin
+		#2 Clock = ~Clock;
+	end
+
+	ALU alu_one(rA_64bit_val, rB_64bit_val, R_ins, Op_code, WW, ALU_out, Reset, Clock); 		//Added Reset Clock for Division pipeline
 
 	initial begin
 		$monitor($time,"rA_64bit_val = %h, rB_64bit_val = %h, R_ins = %b, Op_code = %b, WW = %b, ALU_out = %h" ,rA_64bit_val, rB_64bit_val, R_ins, Op_code, WW, ALU_out);
 		
+		//Clock = 1'b1;
+		Reset = 1'b1;		//Reset active low for division module
 		//VAND of decimal numbers 15 and 14, WW field doesn't matter, o/p is 14	  -						
 		#10;
 		Op_code = 1'b1;

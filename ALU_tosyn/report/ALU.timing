@@ -1,4 +1,5 @@
 Information: Updating design information... (UID-85)
+Warning: Design 'ALU' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
  
 ****************************************
 Report : timing
@@ -7,162 +8,423 @@ Report : timing
         -max_paths 1
 Design : ALU
 Version: K-2015.06-SP5-5
-Date   : Tue Nov  8 22:04:03 2022
+Date   : Wed Nov  9 13:21:42 2022
 ****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
 
 Operating Conditions: typical   Library: gscl45nm
 Wire Load Model Mode: top
 
-  Startpoint: R_ins[4] (input port)
-  Endpoint: ALU_out[0] (output port)
+  Startpoint: WW[0] (input port)
+  Endpoint: dwpipe15/U_DIV/clk_r_REG660_S1
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  input external delay                                    0.00       0.00 f
+  WW[0] (in)                                              0.00       0.00 f
+  U7244/Y (AND2X2)                                        0.03       0.03 f
+  U12272/Y (NAND3X1)                                      0.03       0.06 r
+  U10822/Y (INVX1)                                        0.03       0.09 f
+  U3937/Y (AND2X2)                                        0.04       0.13 f
+  U3821/Y (INVX2)                                         0.03       0.17 r
+  U4203/Y (OR2X2)                                         0.05       0.21 r
+  U3831/Y (INVX2)                                         0.03       0.24 f
+  dwpipe15/b[16] (ALU_DW_div_pipe_0)                      0.00       0.24 f
+  dwpipe15/U_DIV/b[16] (ALU_DW_div_15)                    0.00       0.24 f
+  dwpipe15/U_DIV/U11807/Y (INVX8)                         0.02       0.27 r
+  dwpipe15/U_DIV/U6496/Y (INVX1)                          0.02       0.28 f
+  dwpipe15/U_DIV/U1412/Y (INVX1)                          0.23       0.51 r
+  dwpipe15/U_DIV/u_add_B7/A[19] (ALU_DW01_sub_0)          0.00       0.51 r
+  dwpipe15/U_DIV/u_add_B7/U905/Y (AND2X1)                 0.01       0.52 r
+  dwpipe15/U_DIV/u_add_B7/U1000/Y (INVX1)                 0.02       0.55 f
+  dwpipe15/U_DIV/u_add_B7/U2204/Y (OAI21X1)               0.05       0.59 r
+  dwpipe15/U_DIV/u_add_B7/U1821/Y (INVX1)                 0.03       0.62 f
+  dwpipe15/U_DIV/u_add_B7/U1297/Y (AND2X2)                0.04       0.65 f
+  dwpipe15/U_DIV/u_add_B7/U1298/Y (INVX1)                 0.00       0.65 r
+  dwpipe15/U_DIV/u_add_B7/U2203/Y (OAI21X1)               0.02       0.67 f
+  dwpipe15/U_DIV/u_add_B7/U2188/Y (OAI21X1)               0.05       0.72 r
+  dwpipe15/U_DIV/u_add_B7/U1069/Y (OR2X1)                 0.05       0.77 r
+  dwpipe15/U_DIV/u_add_B7/U1070/Y (INVX1)                 0.02       0.79 f
+  dwpipe15/U_DIV/u_add_B7/U2154/Y (AOI21X1)               0.02       0.80 r
+  dwpipe15/U_DIV/u_add_B7/U910/Y (INVX1)                  0.02       0.82 f
+  dwpipe15/U_DIV/u_add_B7/U908/Y (OAI21X1)                0.02       0.84 r
+  dwpipe15/U_DIV/u_add_B7/U909/Y (INVX2)                  0.03       0.87 f
+  dwpipe15/U_DIV/u_add_B7/U915/Y (INVX2)                  0.03       0.90 r
+  dwpipe15/U_DIV/u_add_B7/U914/Y (INVX8)                  0.03       0.93 f
+  dwpipe15/U_DIV/u_add_B7/U2121/Y (AOI22X1)               0.04       0.96 r
+  dwpipe15/U_DIV/u_add_B7/U1136/Y (BUFX2)                 0.04       1.00 r
+  dwpipe15/U_DIV/u_add_B7/U2120/Y (XNOR2X1)               0.11       1.12 r
+  dwpipe15/U_DIV/u_add_B7/DIFF[43] (ALU_DW01_sub_0)       0.00       1.12 r
+  dwpipe15/U_DIV/u_add_PartRem_20_7/B[43] (ALU_DW01_add_197)
+                                                          0.00       1.12 r
+  dwpipe15/U_DIV/u_add_PartRem_20_7/U184/Y (AND2X1)       0.03       1.15 r
+  dwpipe15/U_DIV/u_add_PartRem_20_7/U231/Y (NAND3X1)      0.01       1.16 f
+  dwpipe15/U_DIV/u_add_PartRem_20_7/U151/Y (INVX1)        0.00       1.16 r
+  dwpipe15/U_DIV/u_add_PartRem_20_7/U152/Y (INVX1)        0.01       1.17 f
+  dwpipe15/U_DIV/u_add_PartRem_20_7/U230/Y (NOR3X1)       0.05       1.22 r
+  dwpipe15/U_DIV/u_add_PartRem_20_7/U229/Y (NAND3X1)      0.02       1.24 f
+  dwpipe15/U_DIV/u_add_PartRem_20_7/U129/Y (BUFX2)        0.03       1.28 f
+  dwpipe15/U_DIV/u_add_PartRem_20_7/U210/Y (NOR3X1)       0.06       1.34 r
+  dwpipe15/U_DIV/u_add_PartRem_20_7/CO (ALU_DW01_add_197)
+                                                          0.00       1.34 r
+  dwpipe15/U_DIV/U13223/Y (OAI21X1)                       0.03       1.37 f
+  dwpipe15/U_DIV/U1410/Y (INVX2)                          0.02       1.39 r
+  dwpipe15/U_DIV/U13246/Y (MUX2X1)                        0.04       1.42 f
+  dwpipe15/U_DIV/U7431/Y (INVX4)                          0.04       1.46 r
+  dwpipe15/U_DIV/u_add_PartRem_19_2/A[4] (ALU_DW01_add_199)
+                                                          0.00       1.46 r
+  dwpipe15/U_DIV/u_add_PartRem_19_2/U213/Y (OR2X2)        0.04       1.50 r
+  dwpipe15/U_DIV/u_add_PartRem_19_2/U185/Y (INVX1)        0.02       1.52 f
+  dwpipe15/U_DIV/u_add_PartRem_19_2/U269/Y (OAI21X1)      0.05       1.57 r
+  dwpipe15/U_DIV/u_add_PartRem_19_2/U133/Y (OR2X2)        0.04       1.61 r
+  dwpipe15/U_DIV/u_add_PartRem_19_2/U267/Y (OAI21X1)      0.02       1.63 f
+  dwpipe15/U_DIV/u_add_PartRem_19_2/U263/Y (OAI21X1)      0.04       1.67 r
+  dwpipe15/U_DIV/u_add_PartRem_19_2/U262/Y (NAND3X1)      0.02       1.69 f
+  dwpipe15/U_DIV/u_add_PartRem_19_2/U155/Y (BUFX2)        0.03       1.72 f
+  dwpipe15/U_DIV/u_add_PartRem_19_2/U138/Y (OR2X2)        0.04       1.76 f
+  dwpipe15/U_DIV/u_add_PartRem_19_2/U139/Y (INVX1)        0.00       1.75 r
+  dwpipe15/U_DIV/u_add_PartRem_19_2/CO (ALU_DW01_add_199)
+                                                          0.00       1.75 r
+  dwpipe15/U_DIV/U13019/Y (INVX1)                         0.02       1.77 f
+  dwpipe15/U_DIV/U1963/Y (OR2X2)                          0.04       1.81 f
+  dwpipe15/U_DIV/U13253/Y (OAI21X1)                       0.02       1.83 r
+  dwpipe15/U_DIV/U6585/Y (INVX1)                          0.02       1.85 f
+  dwpipe15/U_DIV/U12970/Y (AND2X2)                        0.04       1.90 f
+  dwpipe15/U_DIV/U7445/Y (INVX8)                          0.02       1.92 r
+  dwpipe15/U_DIV/U13299/Y (OR2X2)                         0.04       1.96 r
+  dwpipe15/U_DIV/U13300/Y (OAI21X1)                       0.02       1.98 f
+  dwpipe15/U_DIV/U13301/Y (NOR3X1)                        0.03       2.00 r
+  dwpipe15/U_DIV/U1000/Y (MUX2X1)                         0.03       2.04 f
+  dwpipe15/U_DIV/U11893/Y (INVX4)                         0.04       2.07 r
+  dwpipe15/U_DIV/u_add_PartRem_18_2/A[4] (ALU_DW01_add_206)
+                                                          0.00       2.07 r
+  dwpipe15/U_DIV/u_add_PartRem_18_2/U177/Y (OR2X2)        0.04       2.11 r
+  dwpipe15/U_DIV/u_add_PartRem_18_2/U221/Y (INVX1)        0.02       2.13 f
+  dwpipe15/U_DIV/u_add_PartRem_18_2/U343/Y (OAI21X1)      0.04       2.17 r
+  dwpipe15/U_DIV/u_add_PartRem_18_2/U163/Y (INVX1)        0.03       2.20 f
+  dwpipe15/U_DIV/u_add_PartRem_18_2/U341/Y (OAI21X1)      0.02       2.22 r
+  dwpipe15/U_DIV/u_add_PartRem_18_2/U340/Y (OAI21X1)      0.02       2.24 f
+  dwpipe15/U_DIV/u_add_PartRem_18_2/U170/Y (OR2X2)        0.04       2.28 f
+  dwpipe15/U_DIV/u_add_PartRem_18_2/U168/Y (OAI21X1)      0.04       2.32 r
+  dwpipe15/U_DIV/u_add_PartRem_18_2/U169/Y (INVX2)        0.02       2.34 f
+  dwpipe15/U_DIV/u_add_PartRem_18_2/U227/Y (OR2X2)        0.04       2.38 f
+  dwpipe15/U_DIV/u_add_PartRem_18_2/U244/Y (INVX1)        0.00       2.38 r
+  dwpipe15/U_DIV/u_add_PartRem_18_2/U178/Y (OR2X2)        0.05       2.43 r
+  dwpipe15/U_DIV/u_add_PartRem_18_2/CO (ALU_DW01_add_206)
+                                                          0.00       2.43 r
+  dwpipe15/U_DIV/U12978/Y (AND2X2)                        0.03       2.46 r
+  dwpipe15/U_DIV/U6545/Y (INVX1)                          0.02       2.48 f
+  dwpipe15/U_DIV/U12912/Y (AND2X2)                        0.04       2.52 f
+  dwpipe15/U_DIV/U7385/Y (INVX1)                          0.02       2.54 r
+  dwpipe15/U_DIV/U13333/Y (OAI21X1)                       0.02       2.56 f
+  dwpipe15/U_DIV/U13334/Y (NOR3X1)                        0.05       2.61 r
+  dwpipe15/U_DIV/U13335/Y (MUX2X1)                        0.04       2.64 f
+  dwpipe15/U_DIV/U258/Y (INVX4)                           0.04       2.68 r
+  dwpipe15/U_DIV/u_add_PartRem_17_3/A[11] (ALU_DW01_add_214)
+                                                          0.00       2.68 r
+  dwpipe15/U_DIV/u_add_PartRem_17_3/U347/Y (OR2X2)        0.05       2.73 r
+  dwpipe15/U_DIV/u_add_PartRem_17_3/U362/Y (INVX1)        0.02       2.74 f
+  dwpipe15/U_DIV/u_add_PartRem_17_3/U423/Y (OAI21X1)      0.05       2.79 r
+  dwpipe15/U_DIV/u_add_PartRem_17_3/U360/Y (INVX1)        0.03       2.82 f
+  dwpipe15/U_DIV/u_add_PartRem_17_3/U255/Y (AND2X2)       0.03       2.85 f
+  dwpipe15/U_DIV/u_add_PartRem_17_3/U256/Y (INVX1)        0.00       2.84 r
+  dwpipe15/U_DIV/u_add_PartRem_17_3/U421/Y (OAI21X1)      0.01       2.86 f
+  dwpipe15/U_DIV/u_add_PartRem_17_3/U418/Y (OAI21X1)      0.05       2.90 r
+  dwpipe15/U_DIV/u_add_PartRem_17_3/U222/Y (OR2X2)        0.05       2.95 r
+  dwpipe15/U_DIV/u_add_PartRem_17_3/U223/Y (INVX1)        0.02       2.97 f
+  dwpipe15/U_DIV/u_add_PartRem_17_3/U410/Y (AOI21X1)      0.02       2.98 r
+  dwpipe15/U_DIV/u_add_PartRem_17_3/U205/Y (INVX1)        0.02       3.01 f
+  dwpipe15/U_DIV/u_add_PartRem_17_3/U204/Y (NOR3X1)       0.02       3.03 r
+  dwpipe15/U_DIV/u_add_PartRem_17_3/U179/Y (INVX1)        0.03       3.05 f
+  dwpipe15/U_DIV/u_add_PartRem_17_3/U210/Y (OR2X2)        0.04       3.09 f
+  dwpipe15/U_DIV/u_add_PartRem_17_3/U211/Y (INVX1)        0.00       3.09 r
+  dwpipe15/U_DIV/u_add_PartRem_17_3/CO (ALU_DW01_add_214)
+                                                          0.00       3.09 r
+  dwpipe15/U_DIV/U12916/Y (INVX1)                         0.01       3.11 f
+  dwpipe15/U_DIV/U12412/Y (OR2X2)                         0.04       3.14 f
+  dwpipe15/U_DIV/U12413/Y (INVX1)                         0.00       3.14 r
+  dwpipe15/U_DIV/U7275/Y (AND2X2)                         0.04       3.18 r
+  dwpipe15/U_DIV/U299/Y (INVX4)                           0.03       3.21 f
+  dwpipe15/U_DIV/U3208/Y (OR2X2)                          0.05       3.26 f
+  dwpipe15/U_DIV/U6965/Y (INVX1)                          0.00       3.26 r
+  dwpipe15/U_DIV/U13454/Y (NOR3X1)                        0.02       3.29 f
+  dwpipe15/U_DIV/U1357/Y (AND2X2)                         0.05       3.34 f
+  dwpipe15/U_DIV/u_add_PartRem_16_3/A[3] (ALU_DW01_add_221)
+                                                          0.00       3.34 f
+  dwpipe15/U_DIV/u_add_PartRem_16_3/U224/Y (OR2X2)        0.04       3.38 f
+  dwpipe15/U_DIV/u_add_PartRem_16_3/U493/Y (AOI21X1)      0.03       3.41 r
+  dwpipe15/U_DIV/u_add_PartRem_16_3/U261/Y (BUFX2)        0.03       3.45 r
+  dwpipe15/U_DIV/u_add_PartRem_16_3/U492/Y (AOI21X1)      0.01       3.45 f
+  dwpipe15/U_DIV/u_add_PartRem_16_3/U264/Y (BUFX2)        0.04       3.49 f
+  dwpipe15/U_DIV/u_add_PartRem_16_3/U288/Y (INVX1)        0.00       3.49 r
+  dwpipe15/U_DIV/u_add_PartRem_16_3/U262/Y (OR2X2)        0.03       3.53 r
+  dwpipe15/U_DIV/u_add_PartRem_16_3/U263/Y (INVX1)        0.02       3.54 f
+  dwpipe15/U_DIV/u_add_PartRem_16_3/U488/Y (AOI21X1)      0.03       3.57 r
+  dwpipe15/U_DIV/u_add_PartRem_16_3/U290/Y (INVX1)        0.02       3.59 f
+  dwpipe15/U_DIV/u_add_PartRem_16_3/U479/Y (OAI21X1)      0.04       3.63 r
+  dwpipe15/U_DIV/u_add_PartRem_16_3/U230/Y (INVX1)        0.03       3.66 f
+  dwpipe15/U_DIV/u_add_PartRem_16_3/U467/Y (AOI22X1)      0.04       3.70 r
+  dwpipe15/U_DIV/u_add_PartRem_16_3/U259/Y (BUFX2)        0.04       3.73 r
+  dwpipe15/U_DIV/u_add_PartRem_16_3/U231/Y (OR2X2)        0.04       3.78 r
+  dwpipe15/U_DIV/u_add_PartRem_16_3/U232/Y (INVX1)        0.02       3.80 f
+  dwpipe15/U_DIV/u_add_PartRem_16_3/CO (ALU_DW01_add_221)
+                                                          0.00       3.80 f
+  dwpipe15/U_DIV/U13456/Y (AOI22X1)                       0.04       3.84 r
+  dwpipe15/U_DIV/U5603/Y (BUFX2)                          0.04       3.88 r
+  dwpipe15/U_DIV/U13457/Y (AND2X2)                        0.04       3.91 r
+  dwpipe15/U_DIV/U165/Y (AND2X2)                          0.04       3.95 r
+  dwpipe15/U_DIV/U301/Y (INVX1)                           0.03       3.98 f
+  dwpipe15/U_DIV/U2581/Y (OR2X2)                          0.05       4.03 f
+  dwpipe15/U_DIV/U8578/Y (INVX1)                          0.00       4.03 r
+  dwpipe15/U_DIV/U13545/Y (NOR3X1)                        0.02       4.05 f
+  dwpipe15/U_DIV/U356/Y (AND2X2)                          0.04       4.08 f
+  dwpipe15/U_DIV/U2111/Y (INVX1)                          0.01       4.09 r
+  dwpipe15/U_DIV/U1387/Y (INVX1)                          0.02       4.11 f
+  dwpipe15/U_DIV/u_add_PartRem_15_2/A[3] (ALU_DW01_add_227)
+                                                          0.00       4.11 f
+  dwpipe15/U_DIV/u_add_PartRem_15_2/U280/Y (AND2X2)       0.04       4.14 f
+  dwpipe15/U_DIV/u_add_PartRem_15_2/U316/Y (INVX1)        0.01       4.15 r
+  dwpipe15/U_DIV/u_add_PartRem_15_2/U515/Y (OAI21X1)      0.02       4.16 f
+  dwpipe15/U_DIV/u_add_PartRem_15_2/U514/Y (AOI21X1)      0.02       4.18 r
+  dwpipe15/U_DIV/u_add_PartRem_15_2/U255/Y (BUFX2)        0.03       4.21 r
+  dwpipe15/U_DIV/u_add_PartRem_15_2/U513/Y (AOI21X1)      0.01       4.22 f
+  dwpipe15/U_DIV/u_add_PartRem_15_2/U260/Y (BUFX2)        0.04       4.26 f
+  dwpipe15/U_DIV/u_add_PartRem_15_2/U275/Y (AND2X2)       0.04       4.29 f
+  dwpipe15/U_DIV/u_add_PartRem_15_2/U509/Y (AOI21X1)      0.03       4.32 r
+  dwpipe15/U_DIV/u_add_PartRem_15_2/U426/Y (INVX1)        0.02       4.35 f
+  dwpipe15/U_DIV/u_add_PartRem_15_2/U500/Y (OAI21X1)      0.05       4.39 r
+  dwpipe15/U_DIV/u_add_PartRem_15_2/U421/Y (INVX1)        0.02       4.42 f
+  dwpipe15/U_DIV/u_add_PartRem_15_2/U256/Y (AND2X2)       0.03       4.45 f
+  dwpipe15/U_DIV/u_add_PartRem_15_2/U257/Y (INVX1)        0.00       4.45 r
+  dwpipe15/U_DIV/u_add_PartRem_15_2/U492/Y (AOI21X1)      0.02       4.47 f
+  dwpipe15/U_DIV/u_add_PartRem_15_2/CO (ALU_DW01_add_227)
+                                                          0.00       4.47 f
+  dwpipe15/U_DIV/U7245/Y (INVX1)                          0.01       4.48 r
+  dwpipe15/U_DIV/U49/Y (INVX1)                            0.02       4.50 f
+  dwpipe15/U_DIV/U13551/Y (AOI22X1)                       0.03       4.52 r
+  dwpipe15/U_DIV/U5026/Y (BUFX2)                          0.04       4.56 r
+  dwpipe15/U_DIV/U13552/Y (OR2X2)                         0.04       4.60 r
+  dwpipe15/U_DIV/U6263/Y (INVX1)                          0.01       4.61 f
+  dwpipe15/U_DIV/U12855/Y (AND2X2)                        0.04       4.66 f
+  dwpipe15/U_DIV/U12856/Y (INVX8)                         0.03       4.68 r
+  dwpipe15/U_DIV/U8830/Y (OR2X2)                          0.04       4.73 r
+  dwpipe15/U_DIV/U8831/Y (INVX1)                          0.02       4.74 f
+  dwpipe15/U_DIV/U13599/Y (NOR3X1)                        0.04       4.78 r
+  dwpipe15/U_DIV/U5783/Y (AND2X2)                         0.03       4.81 r
+  dwpipe15/U_DIV/U1833/Y (INVX2)                          0.03       4.84 f
+  dwpipe15/U_DIV/U1832/Y (INVX8)                          0.02       4.86 r
+  dwpipe15/U_DIV/u_add_PartRem_14_3/A[15] (ALU_DW01_add_235)
+                                                          0.00       4.86 r
+  dwpipe15/U_DIV/u_add_PartRem_14_3/U534/Y (OR2X2)        0.04       4.91 r
+  dwpipe15/U_DIV/u_add_PartRem_14_3/U283/Y (INVX1)        0.02       4.93 f
+  dwpipe15/U_DIV/u_add_PartRem_14_3/U656/Y (OAI21X1)      0.04       4.97 r
+  dwpipe15/U_DIV/u_add_PartRem_14_3/U293/Y (INVX1)        0.03       4.99 f
+  dwpipe15/U_DIV/u_add_PartRem_14_3/U395/Y (AND2X2)       0.03       5.03 f
+  dwpipe15/U_DIV/u_add_PartRem_14_3/U396/Y (INVX1)        0.00       5.02 r
+  dwpipe15/U_DIV/u_add_PartRem_14_3/U654/Y (OAI21X1)      0.01       5.04 f
+  dwpipe15/U_DIV/u_add_PartRem_14_3/U653/Y (OAI21X1)      0.02       5.05 r
+  dwpipe15/U_DIV/u_add_PartRem_14_3/U308/Y (OR2X2)        0.04       5.09 r
+  dwpipe15/U_DIV/u_add_PartRem_14_3/U309/Y (INVX1)        0.02       5.11 f
+  dwpipe15/U_DIV/u_add_PartRem_14_3/U646/Y (AOI21X1)      0.02       5.13 r
+  dwpipe15/U_DIV/u_add_PartRem_14_3/U344/Y (BUFX2)        0.04       5.16 r
+  dwpipe15/U_DIV/u_add_PartRem_14_3/U365/Y (INVX1)        0.02       5.18 f
+  dwpipe15/U_DIV/u_add_PartRem_14_3/U299/Y (OR2X2)        0.04       5.22 f
+  dwpipe15/U_DIV/u_add_PartRem_14_3/U635/Y (AOI21X1)      0.03       5.24 r
+  dwpipe15/U_DIV/u_add_PartRem_14_3/CO (ALU_DW01_add_235)
+                                                          0.00       5.24 r
+  dwpipe15/U_DIV/U13000/Y (INVX1)                         0.02       5.27 f
+  dwpipe15/U_DIV/U327/Y (AND2X2)                          0.03       5.30 f
+  dwpipe15/U_DIV/U4745/Y (INVX1)                          0.00       5.30 r
+  dwpipe15/U_DIV/U13661/Y (OAI21X1)                       0.01       5.31 f
+  dwpipe15/U_DIV/U3261/Y (AND2X2)                         0.03       5.34 f
+  dwpipe15/U_DIV/U3262/Y (INVX1)                          0.00       5.34 r
+  dwpipe15/U_DIV/U3263/Y (AND2X2)                         0.03       5.37 r
+  dwpipe15/U_DIV/U11271/Y (INVX1)                         0.02       5.39 f
+  dwpipe15/U_DIV/U13662/Y (NAND3X1)                       0.03       5.41 r
+  dwpipe15/U_DIV/U5750/Y (BUFX2)                          0.04       5.46 r
+  dwpipe15/U_DIV/U1275/Y (INVX1)                          0.02       5.48 f
+  dwpipe15/U_DIV/U4756/Y (AND2X2)                         0.03       5.51 f
+  dwpipe15/U_DIV/U4757/Y (INVX1)                          0.00       5.51 r
+  dwpipe15/U_DIV/U13769/Y (OAI21X1)                       0.01       5.52 f
+  dwpipe15/U_DIV/U13770/Y (NOR3X1)                        0.02       5.54 r
+  dwpipe15/U_DIV/U5709/Y (AND2X2)                         0.04       5.58 r
+  dwpipe15/U_DIV/U232/Y (INVX2)                           0.03       5.61 f
+  dwpipe15/U_DIV/U1299/Y (INVX4)                          0.02       5.63 r
+  dwpipe15/U_DIV/u_add_PartRem_13_2/A[4] (ALU_DW01_add_241)
+                                                          0.00       5.63 r
+  dwpipe15/U_DIV/u_add_PartRem_13_2/U264/Y (OR2X2)        0.04       5.67 r
+  dwpipe15/U_DIV/u_add_PartRem_13_2/U282/Y (INVX1)        0.02       5.69 f
+  dwpipe15/U_DIV/u_add_PartRem_13_2/U291/Y (OAI21X1)      0.04       5.72 r
+  dwpipe15/U_DIV/u_add_PartRem_13_2/U290/Y (INVX1)        0.02       5.75 f
+  dwpipe15/U_DIV/u_add_PartRem_13_2/U697/Y (AOI21X1)      0.03       5.78 r
+  dwpipe15/U_DIV/u_add_PartRem_13_2/U369/Y (BUFX2)        0.04       5.81 r
+  dwpipe15/U_DIV/u_add_PartRem_13_2/U638/Y (OAI21X1)      0.02       5.83 f
+  dwpipe15/U_DIV/u_add_PartRem_13_2/U390/Y (XNOR2X1)      0.03       5.86 f
+  dwpipe15/U_DIV/u_add_PartRem_13_2/SUM[6] (ALU_DW01_add_241)
+                                                          0.00       5.86 f
+  dwpipe15/U_DIV/U18543/Y (INVX1)                         0.00       5.86 r
+  dwpipe15/U_DIV/U18542/Y (NOR2X1)                        0.01       5.87 f
+  dwpipe15/U_DIV/U12891/Y (BUFX2)                         0.08       5.95 f
+  dwpipe15/U_DIV/clk_r_REG660_S1/D (DFFPOSX1)             0.00       5.95 f
+  data arrival time                                                  5.95
+
+  max_delay                                               5.00       5.00
+  library setup time                                     -0.07       4.93
+  data required time                                                 4.93
+  --------------------------------------------------------------------------
+  data required time                                                 4.93
+  data arrival time                                                 -5.95
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -1.02
+
+
+  Startpoint: R_ins[3] (input port)
+  Endpoint: ALU_out[1] (output port)
   Path Group: default
   Path Type: max
 
   Point                                    Incr       Path
   -----------------------------------------------------------
   input external delay                     0.00       0.00 r
-  R_ins[4] (in)                            0.00       0.00 r
-  U6361/Y (INVX1)                          0.01       0.01 f
-  U3040/Y (OR2X2)                          0.04       0.05 f
-  U2974/Y (NOR3X1)                         0.02       0.08 r
-  U2921/Y (AND2X2)                         0.05       0.13 r
-  as8/ADD_SUB (ALU_DW01_addsub_0)          0.00       0.13 r
-  as8/U6/Y (XNOR2X1)                       0.04       0.17 f
-  as8/U1_0/YC (FAX1)                       0.09       0.26 f
-  as8/U1_1/YC (FAX1)                       0.08       0.34 f
-  as8/U1_2/YC (FAX1)                       0.08       0.42 f
-  as8/U1_3/YC (FAX1)                       0.08       0.50 f
-  as8/U1_4/YC (FAX1)                       0.08       0.58 f
-  as8/U1_5/YC (FAX1)                       0.08       0.66 f
-  as8/U1_6/YC (FAX1)                       0.08       0.74 f
-  as8/U1_7/YC (FAX1)                       0.08       0.82 f
-  as8/U8/Y (XOR2X1)                        0.03       0.85 r
-  as8/CO (ALU_DW01_addsub_0)               0.00       0.85 r
-  U2984/Y (AND2X2)                         0.04       0.89 r
-  as7/CI (ALU_DW01_addsub_1)               0.00       0.89 r
-  as7/U12/Y (XNOR2X1)                      0.06       0.95 r
-  as7/U1_0/YC (FAX1)                       0.08       1.02 r
-  as7/U1_1/YC (FAX1)                       0.06       1.09 r
-  as7/U8/Y (AND2X2)                        0.03       1.12 r
-  as7/U9/Y (INVX1)                         0.02       1.13 f
-  as7/U19/Y (NAND3X1)                      0.03       1.17 r
-  as7/U7/Y (BUFX2)                         0.04       1.20 r
-  as7/U4/Y (AND2X2)                        0.03       1.23 r
-  as7/U3/Y (OR2X2)                         0.04       1.27 r
-  as7/U2/Y (OR2X2)                         0.05       1.32 r
-  as7/U1_4/YC (FAX1)                       0.07       1.39 r
-  as7/U1_5/YC (FAX1)                       0.07       1.46 r
-  as7/U1_6/YC (FAX1)                       0.07       1.54 r
-  as7/U1_7/YC (FAX1)                       0.06       1.60 r
-  as7/U25/Y (XOR2X1)                       0.03       1.64 r
-  as7/CO (ALU_DW01_addsub_1)               0.00       1.64 r
-  U6390/Y (AND2X2)                         0.04       1.67 r
-  as6/CI (ALU_DW01_addsub_2)               0.00       1.67 r
-  as6/U23/Y (XNOR2X1)                      0.03       1.71 f
-  as6/U7/Y (AND2X2)                        0.04       1.74 f
-  as6/U11/Y (OR2X2)                        0.04       1.78 f
-  as6/U10/Y (OR2X2)                        0.04       1.82 f
-  as6/U9/Y (AND2X2)                        0.03       1.85 f
-  as6/U12/Y (OR2X2)                        0.05       1.90 f
-  as6/U1_2/YC (FAX1)                       0.08       1.98 f
-  as6/U1_3/YC (FAX1)                       0.08       2.06 f
-  as6/U1_4/YC (FAX1)                       0.08       2.14 f
-  as6/U1_5/YC (FAX1)                       0.08       2.23 f
-  as6/U1_6/YC (FAX1)                       0.08       2.31 f
-  as6/U1_7/YC (FAX1)                       0.08       2.38 f
-  as6/U8/Y (XOR2X1)                        0.03       2.42 r
-  as6/CO (ALU_DW01_addsub_2)               0.00       2.42 r
-  U2982/Y (AND2X2)                         0.04       2.45 r
-  as5/CI (ALU_DW01_addsub_3)               0.00       2.45 r
-  as5/U8/Y (XNOR2X1)                       0.04       2.49 f
-  as5/U1_0/YC (FAX1)                       0.08       2.57 f
-  as5/U1_1/YC (FAX1)                       0.08       2.65 f
-  as5/U1_2/YC (FAX1)                       0.08       2.74 f
-  as5/U1_3/YC (FAX1)                       0.08       2.82 f
-  as5/U1_4/YC (FAX1)                       0.07       2.89 f
-  as5/U7/Y (AND2X2)                        0.04       2.93 f
-  as5/U5/Y (OR2X2)                         0.04       2.96 f
-  as5/U4/Y (OR2X2)                         0.04       3.00 f
-  as5/U1_6/YC (FAX1)                       0.08       3.08 f
-  as5/U1_7/YC (FAX1)                       0.08       3.16 f
-  as5/U14/Y (XOR2X1)                       0.03       3.19 r
-  as5/CO (ALU_DW01_addsub_3)               0.00       3.19 r
-  U6389/Y (AND2X2)                         0.04       3.23 r
-  as4/CI (ALU_DW01_addsub_4)               0.00       3.23 r
-  as4/U4/Y (XNOR2X1)                       0.06       3.29 r
-  as4/U1_0/YC (FAX1)                       0.08       3.36 r
-  as4/U1_1/YC (FAX1)                       0.07       3.43 r
-  as4/U1_2/YC (FAX1)                       0.07       3.51 r
-  as4/U1_3/YC (FAX1)                       0.07       3.58 r
-  as4/U1_4/YC (FAX1)                       0.07       3.66 r
-  as4/U1_5/YC (FAX1)                       0.06       3.72 r
-  as4/U11/Y (AND2X2)                       0.03       3.75 r
-  as4/U13/Y (INVX1)                        0.02       3.77 f
-  as4/U17/Y (NAND3X1)                      0.03       3.80 r
-  as4/U9/Y (BUFX2)                         0.04       3.84 r
-  as4/U1/Y (AND2X2)                        0.03       3.87 r
-  as4/U5/Y (OR2X2)                         0.04       3.91 r
-  as4/U6/Y (OR2X2)                         0.04       3.95 r
-  as4/U18/Y (XNOR2X1)                      0.03       3.98 r
-  as4/CO (ALU_DW01_addsub_4)               0.00       3.98 r
-  U2981/Y (AND2X2)                         0.04       4.02 r
-  as3/CI (ALU_DW01_addsub_5)               0.00       4.02 r
-  as3/U8/Y (XNOR2X1)                       0.04       4.06 f
-  as3/U1_0/YC (FAX1)                       0.08       4.14 f
-  as3/U1_1/YC (FAX1)                       0.08       4.22 f
-  as3/U1_2/YC (FAX1)                       0.08       4.30 f
-  as3/U1_3/YC (FAX1)                       0.08       4.38 f
-  as3/U1_4/YC (FAX1)                       0.08       4.46 f
-  as3/U1_5/YC (FAX1)                       0.08       4.54 f
-  as3/U4/Y (AND2X2)                        0.04       4.58 f
-  as3/U3/Y (OR2X2)                         0.04       4.62 f
-  as3/U5/Y (OR2X2)                         0.04       4.66 f
-  as3/U1_7/YC (FAX1)                       0.07       4.74 f
-  as3/U2/Y (XOR2X1)                        0.03       4.77 r
-  as3/CO (ALU_DW01_addsub_5)               0.00       4.77 r
-  U2983/Y (AND2X2)                         0.04       4.81 r
-  as2/CI (ALU_DW01_addsub_6)               0.00       4.81 r
-  as2/U10/Y (XNOR2X1)                      0.04       4.85 f
-  as2/U1_0/YC (FAX1)                       0.08       4.93 f
-  as2/U1_1/YC (FAX1)                       0.08       5.01 f
-  as2/U1_2/YC (FAX1)                       0.08       5.09 f
-  as2/U1_3/YC (FAX1)                       0.08       5.17 f
-  as2/U1_4/YC (FAX1)                       0.08       5.25 f
-  as2/U1_5/YC (FAX1)                       0.07       5.33 f
-  as2/U9/Y (AND2X2)                        0.04       5.36 f
-  as2/U6/Y (OR2X2)                         0.04       5.40 f
-  as2/U8/Y (OR2X2)                         0.04       5.44 f
-  as2/U1_7/YC (FAX1)                       0.07       5.51 f
-  as2/U7/Y (XOR2X1)                        0.03       5.55 r
-  as2/CO (ALU_DW01_addsub_6)               0.00       5.55 r
-  U2985/Y (AND2X2)                         0.04       5.59 r
-  as1/CI (ALU_DW01_addsub_7)               0.00       5.59 r
-  as1/U8/Y (XNOR2X1)                       0.04       5.62 f
-  as1/U1_0/YC (FAX1)                       0.08       5.70 f
-  as1/U1_1/YC (FAX1)                       0.08       5.78 f
-  as1/U1_2/YC (FAX1)                       0.08       5.87 f
-  as1/U1_3/YC (FAX1)                       0.08       5.95 f
-  as1/U1_4/YC (FAX1)                       0.08       6.03 f
-  as1/U1_5/YC (FAX1)                       0.07       6.10 f
-  as1/U12/Y (AND2X2)                       0.04       6.14 f
-  as1/U9/Y (OR2X2)                         0.04       6.18 f
-  as1/U11/Y (OR2X2)                        0.04       6.22 f
-  as1/U5/Y (XOR2X1)                        0.03       6.25 r
-  as1/SUM[7] (ALU_DW01_addsub_7)           0.00       6.25 r
-  U3027/Y (AND2X2)                         0.03       6.28 r
-  U3028/Y (INVX1)                          0.02       6.30 f
-  U7675/Y (NAND2X1)                        0.01       6.30 r
-  ALU_out[0] (out)                         0.00       6.30 r
-  data arrival time                                   6.30
+  R_ins[3] (in)                            0.00       0.00 r
+  U8855/Y (INVX1)                          0.01       0.01 f
+  U3921/Y (AND2X2)                         0.03       0.04 f
+  U3920/Y (AND2X2)                         0.04       0.08 f
+  U3911/Y (AND2X2)                         0.03       0.11 f
+  U8488/Y (INVX1)                          0.00       0.11 r
+  U3812/Y (OR2X2)                          0.06       0.17 r
+  U8860/Y (INVX8)                          0.04       0.21 f
+  U12265/Y (AOI22X1)                       0.05       0.26 r
+  U4763/Y (BUFX2)                          0.03       0.29 r
+  U4157/Y (AND2X2)                         0.03       0.32 r
+  U4158/Y (INVX1)                          0.01       0.34 f
+  dwm7/B[1] (ALU_DW02_mult_0)              0.00       0.34 f
+  dwm7/U2819/Y (INVX1)                     0.02       0.35 r
+  dwm7/U2757/Y (INVX4)                     0.04       0.39 f
+  dwm7/U2620/YC (HAX1)                     0.06       0.46 f
+  dwm7/U2619/YC (FAX1)                     0.08       0.54 f
+  dwm7/U2618/YC (FAX1)                     0.08       0.62 f
+  dwm7/U2617/YC (FAX1)                     0.08       0.70 f
+  dwm7/U2616/YC (FAX1)                     0.08       0.78 f
+  dwm7/U2615/YC (FAX1)                     0.08       0.86 f
+  dwm7/U2614/YC (FAX1)                     0.08       0.95 f
+  dwm7/U2613/YC (FAX1)                     0.08       1.03 f
+  dwm7/U2685/Y (AND2X2)                    0.04       1.07 f
+  dwm7/U2684/Y (OR2X2)                     0.05       1.12 f
+  dwm7/U2683/Y (OR2X2)                     0.05       1.17 f
+  dwm7/U2687/Y (AND2X2)                    0.04       1.21 f
+  dwm7/U2674/Y (OR2X2)                     0.05       1.26 f
+  dwm7/U2673/Y (OR2X2)                     0.05       1.31 f
+  dwm7/U2610/YC (FAX1)                     0.08       1.39 f
+  dwm7/U2609/YC (FAX1)                     0.08       1.47 f
+  dwm7/U2608/YC (FAX1)                     0.08       1.55 f
+  dwm7/U2607/YC (FAX1)                     0.08       1.63 f
+  dwm7/U2606/YC (FAX1)                     0.08       1.71 f
+  dwm7/U2605/YC (FAX1)                     0.08       1.80 f
+  dwm7/U2604/YS (FAX1)                     0.15       1.95 r
+  dwm7/U4478/Y (AOI21X1)                   0.05       1.99 f
+  dwm7/U3044/Y (BUFX2)                     0.04       2.03 f
+  dwm7/U4477/Y (XNOR2X1)                   0.04       2.07 f
+  dwm7/U2810/Y (AND2X2)                    0.04       2.12 f
+  dwm7/U2811/Y (INVX1)                     0.00       2.11 r
+  dwm7/U3039/Y (NAND3X1)                   0.02       2.13 f
+  dwm7/U2990/Y (INVX1)                     0.01       2.14 r
+  dwm7/U2991/Y (INVX1)                     0.02       2.15 f
+  dwm7/U2701/Y (AND2X2)                    0.04       2.19 f
+  dwm7/U2682/Y (OR2X2)                     0.04       2.24 f
+  dwm7/U2681/Y (OR2X2)                     0.05       2.29 f
+  dwm7/U271/YC (FAX1)                      0.08       2.36 f
+  dwm7/U270/YC (FAX1)                      0.08       2.45 f
+  dwm7/U269/YC (FAX1)                      0.08       2.53 f
+  dwm7/U268/YC (FAX1)                      0.08       2.61 f
+  dwm7/U267/YC (FAX1)                      0.08       2.69 f
+  dwm7/U266/YC (FAX1)                      0.08       2.77 f
+  dwm7/U265/YC (FAX1)                      0.08       2.85 f
+  dwm7/U264/YC (FAX1)                      0.08       2.93 f
+  dwm7/U263/YC (FAX1)                      0.08       3.02 f
+  dwm7/U262/YC (FAX1)                      0.08       3.10 f
+  dwm7/U261/YC (FAX1)                      0.08       3.18 f
+  dwm7/U2695/Y (AND2X2)                    0.04       3.23 f
+  dwm7/U2672/Y (OR2X2)                     0.05       3.27 f
+  dwm7/U2671/Y (OR2X2)                     0.05       3.32 f
+  dwm7/U2697/Y (AND2X2)                    0.04       3.36 f
+  dwm7/U2678/Y (OR2X2)                     0.04       3.40 f
+  dwm7/U2677/Y (OR2X2)                     0.05       3.45 f
+  dwm7/U258/YC (FAX1)                      0.08       3.53 f
+  dwm7/U257/YC (FAX1)                      0.08       3.61 f
+  dwm7/U256/YC (FAX1)                      0.08       3.69 f
+  dwm7/U255/YC (FAX1)                      0.08       3.77 f
+  dwm7/U254/YC (FAX1)                      0.08       3.86 f
+  dwm7/U253/YC (FAX1)                      0.08       3.94 f
+  dwm7/U252/YC (FAX1)                      0.08       4.02 f
+  dwm7/U251/YC (FAX1)                      0.08       4.10 f
+  dwm7/U250/YC (FAX1)                      0.08       4.18 f
+  dwm7/U249/YC (FAX1)                      0.08       4.26 f
+  dwm7/U248/YC (FAX1)                      0.08       4.34 f
+  dwm7/U247/YC (FAX1)                      0.08       4.43 f
+  dwm7/U246/YC (FAX1)                      0.08       4.51 f
+  dwm7/U245/YC (FAX1)                      0.08       4.59 f
+  dwm7/U244/YC (FAX1)                      0.08       4.67 f
+  dwm7/U243/YC (FAX1)                      0.08       4.75 f
+  dwm7/U242/YC (FAX1)                      0.08       4.83 f
+  dwm7/U241/YC (FAX1)                      0.08       4.91 f
+  dwm7/U240/YC (FAX1)                      0.08       5.00 f
+  dwm7/U239/YC (FAX1)                      0.08       5.08 f
+  dwm7/U238/YC (FAX1)                      0.08       5.16 f
+  dwm7/U2718/Y (AND2X2)                    0.04       5.19 f
+  dwm7/U2719/Y (INVX1)                     0.00       5.19 r
+  dwm7/U3028/Y (NAND3X1)                   0.01       5.20 f
+  dwm7/U2994/Y (INVX1)                     0.01       5.21 r
+  dwm7/U2995/Y (INVX1)                     0.02       5.23 f
+  dwm7/U2699/Y (AND2X2)                    0.04       5.27 f
+  dwm7/U2680/Y (OR2X2)                     0.04       5.31 f
+  dwm7/U2679/Y (OR2X2)                     0.05       5.36 f
+  dwm7/U235/YC (FAX1)                      0.08       5.44 f
+  dwm7/U234/YC (FAX1)                      0.08       5.52 f
+  dwm7/U2690/Y (AND2X2)                    0.04       5.57 f
+  dwm7/U2670/Y (OR2X2)                     0.05       5.61 f
+  dwm7/U2669/Y (OR2X2)                     0.05       5.66 f
+  dwm7/U2692/Y (AND2X2)                    0.04       5.70 f
+  dwm7/U2676/Y (OR2X2)                     0.04       5.74 f
+  dwm7/U2675/Y (OR2X2)                     0.05       5.79 f
+  dwm7/U231/YC (FAX1)                      0.08       5.87 f
+  dwm7/U230/YC (FAX1)                      0.08       5.95 f
+  dwm7/U2753/Y (AND2X2)                    0.04       5.99 f
+  dwm7/U2754/Y (INVX1)                     0.00       5.99 r
+  dwm7/U3012/Y (NAND3X1)                   0.01       6.00 f
+  dwm7/U2755/Y (BUFX2)                     0.04       6.04 f
+  dwm7/U3021/Y (XOR2X1)                    0.03       6.07 f
+  dwm7/PRODUCT[62] (ALU_DW02_mult_0)       0.00       6.07 f
+  U3914/Y (AND2X1)                         0.03       6.10 f
+  U3862/Y (OR2X2)                          0.04       6.14 f
+  U3822/Y (NOR3X1)                         0.02       6.16 r
+  U3823/Y (INVX2)                          0.02       6.18 f
+  U4439/Y (OR2X2)                          0.05       6.23 f
+  U4440/Y (INVX1)                          0.00       6.23 r
+  U4856/Y (AND2X2)                         0.03       6.26 r
+  U4857/Y (INVX1)                          0.01       6.27 f
+  U3912/Y (AND2X2)                         0.04       6.31 f
+  U3868/Y (OR2X2)                          0.04       6.35 f
+  U3869/Y (INVX1)                          0.00       6.35 r
+  U3829/Y (AND2X1)                         0.03       6.37 r
+  U7638/Y (INVX1)                          0.02       6.40 f
+  U14139/Y (NOR3X1)                        0.04       6.43 r
+  U10574/Y (INVX1)                         0.02       6.45 f
+  ALU_out[1] (out)                         0.00       6.45 f
+  data arrival time                                   6.45
 
   max_delay                                5.00       5.00
   output external delay                    0.00       5.00
   data required time                                  5.00
   -----------------------------------------------------------
   data required time                                  5.00
-  data arrival time                                  -6.30
+  data arrival time                                  -6.45
   -----------------------------------------------------------
-  slack (VIOLATED)                                   -1.30
+  slack (VIOLATED)                                   -1.45
 
 
 1

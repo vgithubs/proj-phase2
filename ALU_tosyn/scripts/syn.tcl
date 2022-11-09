@@ -35,6 +35,12 @@ elaborate DW_div
 analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW01_addsub.v
 elaborate DW01_addsub
 
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div_pipe.v
+elaborate DW_div_pipe
+
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_sqrt_pipe.v
+elaborate DW_sqrt_pipe
+
 
 
 # Setting $design_name as current working design.
@@ -50,7 +56,8 @@ uniquify ;
 link ;
 
 # Create a clock with period of 5.
-# create_clock -name clk -period 5.0 -waveform [list 0 2.5] [get_ports clk]
+create_clock -name clk -period 5.0 -waveform [list 0 2.5] [get_ports Clock]
+
 
 # Setting timing constraints for combinational logic.
 # Specifying maximum delay from inputs to outputs
