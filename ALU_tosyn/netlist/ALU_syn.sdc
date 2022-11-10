@@ -1,11 +1,12 @@
 ###################################################################
 
-# Created by write_sdc on Tue Nov  8 22:04:04 2022
+# Created by write_sdc on Wed Nov  9 13:22:06 2022
 
 ###################################################################
 set sdc_version 2.0
 
 set_units -time ns -resistance kOhm -capacitance pF -voltage V -current uA
+create_clock [get_ports Clock]  -name clk  -period 5  -waveform {0 2.5}
 set_max_delay 5  -to [get_ports {ALU_out[0]}]
 set_max_delay 5  -to [get_ports {ALU_out[1]}]
 set_max_delay 5  -to [get_ports {ALU_out[2]}]
@@ -134,4 +135,5 @@ set_max_delay 5  -from [list [get_ports {rA_64bit_val[0]}] [get_ports {rA_64bit_
 {rB_64bit_val[61]}] [get_ports {rB_64bit_val[62]}] [get_ports                  \
 {rB_64bit_val[63]}] [get_ports {R_ins[0]}] [get_ports {R_ins[1]}] [get_ports   \
 {R_ins[2]}] [get_ports {R_ins[3]}] [get_ports {R_ins[4]}] [get_ports           \
-{R_ins[5]}] [get_ports Op_code] [get_ports {WW[0]}] [get_ports {WW[1]}]]
+{R_ins[5]}] [get_ports Op_code] [get_ports {WW[0]}] [get_ports {WW[1]}]        \
+[get_ports Reset] [get_ports Clock]]

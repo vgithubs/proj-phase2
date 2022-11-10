@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version K-2015.06-SP5-5 for linux64 -- Aug 14, 2016
-#@ # Date:   Tue Nov  8 22:02:49 2022
+#@ # Date:   Wed Nov  9 12:02:36 2022
 #@ # Run by: shivbhak@viterbi-scf2
 #@ 
 
@@ -3847,6 +3847,12 @@ source -echo -verbose /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/scr
 #@ analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW01_addsub.v
 #@ elaborate DW01_addsub
 #@ 
+#@ analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div_pipe.v
+#@ elaborate DW_div_pipe
+#@ 
+#@ analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_sqrt_pipe.v
+#@ elaborate DW_sqrt_pipe
+#@ 
 #@ 
 #@ 
 #@ # Setting $design_name as current working design.
@@ -3862,7 +3868,8 @@ source -echo -verbose /home/viterbi/07/shivbhak/EE577b/proj-phase2/ALU_tosyn/scr
 #@ link ;
 #@ 
 #@ # Create a clock with period of 5.
-#@ # create_clock -name clk -period 5.0 -waveform [list 0 2.5] [get_ports clk]
+#@ create_clock -name clk -period 5.0 -waveform [list 0 2.5] [get_ports Clock]
+#@ 
 #@ 
 #@ # Setting timing constraints for combinational logic.
 #@ # Specifying maximum delay from inputs to outputs

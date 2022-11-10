@@ -1,14 +1,14 @@
 Loading db file '/home/scf-22/ee577/NCSU45PDK/FreePDK45/osu_soc/lib/files/gscl45nm.db'
 Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
-Warning: There is no defined clock in the design. (PWR-80)
 Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
  
 ****************************************
 Report : power
         -analysis_effort low
 Design : ALU
 Version: K-2015.06-SP5-5
-Date   : Tue Nov  8 22:04:04 2022
+Date   : Wed Nov  9 13:21:53 2022
 ****************************************
 
 
@@ -30,14 +30,13 @@ Power-specific unit information :
     Leakage Power Units = 1nW
 
 
-  Cell Internal Power  =   4.9461 mW   (64%)
-  Net Switching Power  =   2.8030 mW   (36%)
+  Cell Internal Power  =  11.9122 mW   (94%)
+  Net Switching Power  = 774.6047 uW    (6%)
                          ---------
-Total Dynamic Power    =   7.7491 mW  (100%)
+Total Dynamic Power    =  12.6868 mW  (100%)
 
-Cell Leakage Power     = 212.2589 uW
+Cell Leakage Power     =   2.2646 mW
 
-Information: report_power power group summary does not include estimated clock tree power. (PWR-789)
 
                  Internal         Switching           Leakage            Total
 Power Group      Power            Power               Power              Power   (   %    )  Attrs
@@ -46,9 +45,9 @@ io_pad             0.0000            0.0000            0.0000            0.0000 
 memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
 clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
-register           0.0000            0.0000            0.0000            0.0000  (   0.00%)
+register          10.9985        1.2564e-02        2.1452e+05           11.2256  (  75.08%)
 sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
-combinational      4.9461            2.8030        2.1226e+05            7.9613  ( 100.00%)
+combinational      0.9138            0.7620        2.0500e+06            3.7258  (  24.92%)
 --------------------------------------------------------------------------------------------------
-Total              4.9461 mW         2.8030 mW     2.1226e+05 nW         7.9613 mW
+Total             11.9122 mW         0.7745 mW     2.2646e+06 nW        14.9514 mW
 1
