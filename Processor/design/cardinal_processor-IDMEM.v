@@ -30,17 +30,10 @@ reg [0:7] PC;
 reg [0:31] IF_ID;	//IF ID Stage Register (Incoming Instruction)
 reg WBFF; //Wrist band FF for flushing on stall and branch
 wire [0:7] PC_next; 
-reg [0:7] Next_Addr; //Mux output -> either branch output or PC+1
-reg [0:7] PC_checkpoint;
-wire [0:7] Pred_Addr;
-reg IF_ID_pred;
-wire [0:1] pred_actual;
-wire Prediction;
-wire BIF;
+wire [0:7] Next_Addr; //Mux output -> either branch output or PC+1
 
 //ID stage signals
-reg flush; //Input to WBFF in IF
-wire taken;
+wire flush; //Input to WBFF in IF
 wire stall_br_st; //HDU_Br output
 //reg stall_lw; //stall the pipeline for a load instr
 reg fwd_rA, fwd_rB;// Fu
@@ -81,42 +74,8 @@ reg [0:63] WB_PPP_rA_rD, WB_PPP_rB; //to forward while taking PPP in considerati
 assign PC_next = PC + 1'b1;
 assign BEZ = (rA_rD_data == 0);
 assign BNEZ = (rA_rD_data != 0);
-assign taken = Branch && ((BEZ && (IF_ID[0:5]==BRANCH_EZ)) || (BNEZ && (IF_ID[0:5]==BRANCH_NZ))); //IF_flush
-assign BIF = (Instruction[0:5]==BRANCH_EZ) || (Instruction[0:5]==BRANCH_NZ);
-assign Pred_Addr = Prediction ? Instruction[24:31] : PC_next;
-assign pred_actual = {IF_ID_pred, taken};
-
-//Branch Pred
-Branch_Predictor bp(.Clock(Clock), .Reset(Reset), .Instruction(Instruction), .pred_actual(pred_actual), .Prediction(Prediction));
-
-always @(*) begin
-	if(Branch) begin
-		case(pred_actual)
-			2'b01: flush = 1'b1;
-			2'b10: flush = 1'b1;
-			default: flush = 1'b0;
-		endcase
-	end
-	else flush = 1'b0;
-end
-
-always @(posedge Clock) begin
-	if(BIF)
-		PC_checkpoint <= PC_next;
-end
-
-always @(*) begin
-	if(Branch) begin
-		case(pred_actual)
-			2'b00: Next_Addr = PC_next;
-			2'b01: Next_Addr = IF_ID[24:31];
-			2'b10: Next_Addr = PC_checkpoint;
-			2'b11: Next_Addr = PC_next;
-			default: Next_Addr = PC_next;
-		endcase
-	end
-	else Next_Addr = PC_next;
-end
+assign flush = Branch && ((BEZ && (IF_ID[0:5]==BRANCH_EZ)) || (BNEZ && (IF_ID[0:5]==BRANCH_NZ))); //IF_flush
+assign Next_Addr = flush ? IF_ID[24:31] : PC_next; //Switch addr on branch
 
 assign Instr_Addr = PC;
 
@@ -128,13 +87,9 @@ always @(posedge Clock) begin
 	end
 	else begin
 		if(!stall_br_st) begin
-			WBFF = ~flush;
+			WBFF <= ~flush;
+			PC <= Next_Addr;
 			IF_ID <= Instruction;
-			IF_ID_pred <= Prediction;
-			if(BIF) begin
-				PC <= Pred_Addr;
-			end
-			else PC <= Next_Addr;
 		end
 	end
 end
@@ -179,7 +134,7 @@ always @(*) begin
 end
 
 //Stall logic
-assign stall_br_st = (Branch || Mem_Wr) && (ID_EX[0:4]==IF_ID[6:10]) && (ID_EX[0:4]!=0) && (ID_EX[28]==1'b1);
+assign stall_br_st = (Branch || Mem_Wr) && (ID_EX[0:4]==IF_ID[6:10]) && (ID_EX[0:4]!=0);
 
 //Forwarding logic
 always @(posedge Clock) begin

@@ -73,8 +73,8 @@ initial begin
 end
 	
 initial begin
-	$readmemh("imem_1.fill", IM_node0.MEM); 	// loading instruction memory into node0
-	$readmemh("dmem.fill", DM_node0.MEM); 	// loading data memory into node0
+	$readmemh("imem_3.fill", IM_node0.MEM); 	// loading instruction memory into node0
+	$readmemh("dmem_3.fill", DM_node0.MEM); 	// loading data memory into node0
 	
 	Clock <= 0;				// initialize Clock
 	Reset <= 1'b1;				// reset the CPU 

@@ -30,21 +30,14 @@ reg [0:7] PC;
 reg [0:31] IF_ID;	//IF ID Stage Register (Incoming Instruction)
 reg WBFF; //Wrist band FF for flushing on stall and branch
 wire [0:7] PC_next; 
-reg [0:7] Next_Addr; //Mux output -> either branch output or PC+1
-reg [0:7] PC_checkpoint;
-wire [0:7] Pred_Addr;
-reg IF_ID_pred;
-wire [0:1] pred_actual;
-wire Prediction;
-wire BIF;
+wire [0:7] Next_Addr; //Mux output -> either branch output or PC+1
 
 //ID stage signals
-reg flush; //Input to WBFF in IF
-wire taken;
-wire stall_br_st; //HDU_Br output
-//reg stall_lw; //stall the pipeline for a load instr
+wire flush; //Input to WBFF in IF
+wire stall_br; //HDU_Br output
+reg stall_lw; //stall the pipeline for a load instr
 reg fwd_rA, fwd_rB;// Fu
-//reg fwd_store;
+reg fwd_store;
 reg [0:63] ID_EX_rA_rD_data;
 reg [0:63] ID_EX_rB_data;
 reg [0:29] ID_EX; //[0:4] rD_Addr, [5:9] PPPWW, [10:15] ALU_case, [16:23] Immediate Address, Control Signals (remaining);
@@ -81,42 +74,8 @@ reg [0:63] WB_PPP_rA_rD, WB_PPP_rB; //to forward while taking PPP in considerati
 assign PC_next = PC + 1'b1;
 assign BEZ = (rA_rD_data == 0);
 assign BNEZ = (rA_rD_data != 0);
-assign taken = Branch && ((BEZ && (IF_ID[0:5]==BRANCH_EZ)) || (BNEZ && (IF_ID[0:5]==BRANCH_NZ))); //IF_flush
-assign BIF = (Instruction[0:5]==BRANCH_EZ) || (Instruction[0:5]==BRANCH_NZ);
-assign Pred_Addr = Prediction ? Instruction[24:31] : PC_next;
-assign pred_actual = {IF_ID_pred, taken};
-
-//Branch Pred
-Branch_Predictor bp(.Clock(Clock), .Reset(Reset), .Instruction(Instruction), .pred_actual(pred_actual), .Prediction(Prediction));
-
-always @(*) begin
-	if(Branch) begin
-		case(pred_actual)
-			2'b01: flush = 1'b1;
-			2'b10: flush = 1'b1;
-			default: flush = 1'b0;
-		endcase
-	end
-	else flush = 1'b0;
-end
-
-always @(posedge Clock) begin
-	if(BIF)
-		PC_checkpoint <= PC_next;
-end
-
-always @(*) begin
-	if(Branch) begin
-		case(pred_actual)
-			2'b00: Next_Addr = PC_next;
-			2'b01: Next_Addr = IF_ID[24:31];
-			2'b10: Next_Addr = PC_checkpoint;
-			2'b11: Next_Addr = PC_next;
-			default: Next_Addr = PC_next;
-		endcase
-	end
-	else Next_Addr = PC_next;
-end
+assign flush = Branch && ((BEZ && (IF_ID[0:5]==BRANCH_EZ)) || (BNEZ && (IF_ID[0:5]==BRANCH_NZ))); //IF_flush
+assign Next_Addr = flush ? IF_ID[24:31] : PC_next; //Switch addr on branch
 
 assign Instr_Addr = PC;
 
@@ -127,14 +86,10 @@ always @(posedge Clock) begin
 		IF_ID <= 0;
 	end
 	else begin
-		if(!stall_br_st) begin
-			WBFF = ~flush;
+		if(!stall_lw && !stall_br) begin
+			WBFF <= ~flush;
+			PC <= Next_Addr;
 			IF_ID <= Instruction;
-			IF_ID_pred <= Prediction;
-			if(BIF) begin
-				PC <= Pred_Addr;
-			end
-			else PC <= Next_Addr;
 		end
 	end
 end
@@ -179,11 +134,21 @@ always @(*) begin
 end
 
 //Stall logic
-assign stall_br_st = (Branch || Mem_Wr) && (ID_EX[0:4]==IF_ID[6:10]) && (ID_EX[0:4]!=0) && (ID_EX[28]==1'b1);
+assign stall_br = Branch && (ID_EX[0:4]==IF_ID[6:10]) && (ID_EX[0:4]!=0);
+
+always @(posedge Clock) begin
+	if(!stall_lw && Mem_Rd)
+		stall_lw <= 1;
+	else stall_lw <= 0;
+end
 
 //Forwarding logic
 always @(posedge Clock) begin
-    if((ID_EX[0:4]==IF_ID[11:15]) && (ID_EX[0:4]!=0))
+	if(Mem_Wr && (ID_EX[0:4]==IF_ID[6:10]) && (ID_EX[0:4]!=0))
+		fwd_store <= 1;
+	else fwd_store <= 0;
+
+	if((ID_EX[0:4]==IF_ID[11:15]) && (ID_EX[0:4]!=0))
 		fwd_rA <= 1;
 	else fwd_rA <= 0;
 	if((ID_EX[0:4]==IF_ID[16:20]) && (ID_EX[0:4]!=0))
@@ -192,12 +157,10 @@ always @(posedge Clock) begin
 end
 
 //Load-Store in EX
-//forwarding for store just like branch
-
-assign Data_Out = rA_rD_data;
-assign Mem_Addr = IF_ID[24:31];
-assign DmemEn = Mem_Rd || Mem_Wr;
-assign DmemWrEn = Mem_Wr;
+assign Data_Out = fwd_store ? WB_PPP_rA_rD : ID_EX_rA_rD_data;
+assign Mem_Addr = ID_EX[16:23];
+assign DmemEn = ID_EX[26] || ID_EX[25];
+assign DmemWrEn = ID_EX[26];
 
 //ALU with forwarding (with PPP consideration)
 assign EX_rA_rD = fwd_rA ? WB_PPP_rA_rD : ID_EX_rA_rD_data;
@@ -273,7 +236,7 @@ always @(*) begin
 end
 
 //Dataflow
-assign WB_data = EX_WB[9]? EX_WB_mem_data : EX_WB_reg_data; //EX_WB[9] = Mem_to_Reg
+assign WB_data = EX_WB[9]? EX_WB_mem_data : EX_WB_reg_data;
 
 always @(posedge Clock) begin
 	if(Reset) begin
@@ -285,24 +248,25 @@ always @(posedge Clock) begin
 		EX_WB_reg_data <= 0;
 	end
 	else begin
-		if(~stall_br_st) begin
-			//ID_EXMEM
-			ID_EX <= {IF_ID[6:10], IF_ID[21:25], IF_ID[26:31], IF_ID[24:31], ALU_op, Mem_Rd, Mem_Wr, Branch, Reg_Wr, Mem_to_Reg}; //0:29
-			ID_EX_rA_rD_data <= rA_rD_data;
-			ID_EX_rB_data <= rB_data;
-			//EXMEM_WB
-			EX_WB <= {ID_EX[5:7], ID_EX[0:4], ID_EX[28:29]}; // [0:2] ppp, [3:7] rD_Addr, Reg_Wr, Mem_to_Reg;
-			EX_WB_mem_data <= Data_In;
-			EX_WB_reg_data <= ALU_out;
-		end
-		else begin
-			ID_EX <= 30'd0;
-			ID_EX_rA_rD_data <= 64'd0;
-			ID_EX_rB_data <= 64'd0;
-		end
+		if(~stall_lw) begin
+			if(~stall_br) begin
+				//ID_EXMEM
+				ID_EX <= {IF_ID[6:10], IF_ID[21:25], IF_ID[26:31], IF_ID[24:31], ALU_op, Mem_Rd, Mem_Wr, Branch, Reg_Wr, Mem_to_Reg}; //0:29
+				ID_EX_rA_rD_data <= rA_rD_data;
+				ID_EX_rB_data <= rB_data;
+				//EXMEM_WB
+				EX_WB <= {ID_EX[5:7], ID_EX[0:4], ID_EX[28:29]}; // [0:2] ppp, [3:7] rD_Addr, Reg_Wr, Mem_to_Reg;
+				EX_WB_mem_data <= Data_In;
+				EX_WB_reg_data <= ALU_out;
+			end
+			else begin
+				ID_EX <= 30'd0;
+				ID_EX_rA_rD_data <= 64'd0;
+				ID_EX_rB_data <= 64'd0;
+			end
 			
 		end
 	end
-
+end
 
 endmodule
