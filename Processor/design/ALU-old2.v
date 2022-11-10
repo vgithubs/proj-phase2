@@ -1,20 +1,15 @@
 //`include "./include/sim_ver/DW01_add.v"
-//`include "./include/sim_ver/DW_div.v"
+`include "./include/sim_ver/DW_div.v"
 `include "./include/sim_ver/DW02_mult.v"
-//`include "./include/sim_ver/DW_sqrt.v"
+`include "./include/sim_ver/DW_sqrt.v"
 //`include "./include/sim_ver/DW_shifter.v"
 `include "./include/sim_ver/DW01_addsub.v"
-`include "./include/sim_ver/DW_div_pipe.v"
-`include "./include/sim_ver/DW_sqrt_pipe.v"
 
-module ALU(rA_64bit_val, rB_64bit_val, R_ins, Op_code, WW, ALU_out, Reset, Clock);
-
-input Clock;
-input Reset;		//Added for division pipeline
+module ALUx(rA_64bit_val, rB_64bit_val, R_ins, Op_code, WW, ALU_out);
 
 input [0:63] rA_64bit_val, rB_64bit_val;
-input [0:5] R_ins;
-input Op_code;
+input [0:5] R_ins; //Instruction type
+input Op_code; //Enable signal for ALU
 input [0:1] WW;
 output [0:63] ALU_out;
 reg [0:63] ALU_out;
@@ -80,7 +75,7 @@ DW02_mult #(16, 16) dwm6(rA_16bit_p2,rB_16bit_p2,1'b0,ALU_16bit_mult_p2);
 DW02_mult #(32, 32) dwm7(rA_32bit_p1,rB_32bit_p1,1'b0,ALU_32bit_mult_p1);
 
 
-// // Divider for Quotient and Mod
+// Divider for Quotient and Mod
 reg [0:7] rA_8bit_div_p1, rB_8bit_div_p1, rA_8bit_div_p2, rB_8bit_div_p2, rA_8bit_div_p3, rB_8bit_div_p3,  rA_8bit_div_p4, rB_8bit_div_p4, rA_8bit_div_p5, rB_8bit_div_p5, rA_8bit_div_p6, rB_8bit_div_p6, rA_8bit_div_p7, rB_8bit_div_p7, rA_8bit_div_p8, rB_8bit_div_p8;
 wire [0:7] ALU_8bit_div_p1, ALU_8bit_div_p2, ALU_8bit_div_p3, ALU_8bit_div_p4, ALU_8bit_div_p5, ALU_8bit_div_p6, ALU_8bit_div_p7, ALU_8bit_div_p8;
 reg [0:15] rA_16bit_div_p1, rB_16bit_div_p1, rA_16bit_div_p2, rB_16bit_div_p2, rA_16bit_div_p3, rB_16bit_div_p3,  rA_16bit_div_p4, rB_16bit_div_p4;
@@ -102,40 +97,29 @@ wire zero_16bit_div_p1, zero_16bit_div_p2, zero_16bit_div_p3, zero_16bit_div_p4;
 wire zero_32bit_div_p1, zero_32bit_div_p2;
 wire zero_64bit_div_p1;
 
-// DW_div_pipe #(inst_a_width, inst_b_width, inst_tc_mode, inst_rem_mode, inst_num_stages, inst_stall_mode, inst_rst_mode) 
-// U1 (.clk(inst_clk), .rst_n(inst_rst_n), .en(inst_en), .a(inst_a), .b(inst_b), .quotient(quotient_inst), .remainder(remainder_inst), .divide_by_0(divide_by_0_inst) );
-//1 bit input clock
-//1 bit input reset active-low
-//1 bit input enable: 1 for enable register if stall = 1, 0 = stall
-//a: Dividend,  b: Divisor
-//Parameters: inst_tc_mode: 0 unsigned, rem_mode: 0 modulus, inst_num_stages: Number of pipeline stages, stall_mode: 1, reset mode: 2 synchronous reset
+//For  8 bit
+//DW_div  #(8, 8, 0, 1) dwdivi1(rA_8bit_p1,rB_8bit_p1, ALU_8bit_div_p1, remainder, divide_by_0); parameters 8,8,0,0 tc_mode: unsigned, rem_mode:0 a mod b
+DW_div #(8, 8, 0, 0) dwdivi1(.a(rA_8bit_div_p1), .b(rB_8bit_div_p1), .quotient(ALU_8bit_div_p1), .remainder(rem_8bit_div_p1), .divide_by_0());
+DW_div #(8, 8, 0, 0) dwdivi2(.a(rA_8bit_div_p2), .b(rB_8bit_div_p2), .quotient(ALU_8bit_div_p2), .remainder(rem_8bit_div_p2), .divide_by_0());
+DW_div #(8, 8, 0, 0) dwdivi3(.a(rA_8bit_div_p3), .b(rB_8bit_div_p3), .quotient(ALU_8bit_div_p3), .remainder(rem_8bit_div_p3), .divide_by_0());
+DW_div #(8, 8, 0, 0) dwdivi4(.a(rA_8bit_div_p4), .b(rB_8bit_div_p4), .quotient(ALU_8bit_div_p4), .remainder(rem_8bit_div_p4), .divide_by_0());
+DW_div #(8, 8, 0, 0) dwdivi5(.a(rA_8bit_div_p5), .b(rB_8bit_div_p5), .quotient(ALU_8bit_div_p5), .remainder(rem_8bit_div_p5), .divide_by_0());
+DW_div #(8, 8, 0, 0) dwdivi6(.a(rA_8bit_div_p6), .b(rB_8bit_div_p6), .quotient(ALU_8bit_div_p6), .remainder(rem_8bit_div_p6), .divide_by_0());
+DW_div #(8, 8, 0, 0) dwdivi7(.a(rA_8bit_div_p7), .b(rB_8bit_div_p7), .quotient(ALU_8bit_div_p7), .remainder(rem_8bit_div_p7), .divide_by_0());
+DW_div #(8, 8, 0, 0) dwdivi8(.a(rA_8bit_div_p8), .b(rB_8bit_div_p8), .quotient(ALU_8bit_div_p8), .remainder(rem_8bit_div_p8), .divide_by_0());
 
-// //For  8 bit
+// //For 16 bit
+DW_div #(16, 16, 0, 0) dwdivi9(.a(rA_16bit_div_p1),.b(rB_16bit_div_p1), .quotient(ALU_16bit_div_p1), .remainder(rem_16bit_div_p1), .divide_by_0());
+DW_div #(16, 16, 0, 0) dwdivi10(.a(rA_16bit_div_p2),.b(rB_16bit_div_p2), .quotient(ALU_16bit_div_p2), .remainder(rem_16bit_div_p2), .divide_by_0());
+DW_div #(16, 16, 0, 0) dwdivi11(.a(rA_16bit_div_p3),.b(rB_16bit_div_p3), .quotient(ALU_16bit_div_p3), .remainder(rem_16bit_div_p3), .divide_by_0());
+DW_div #(16, 16, 0, 0) dwdivi12(.a(rA_16bit_div_p4),.b(rB_16bit_div_p4), .quotient(ALU_16bit_div_p4), .remainder(rem_16bit_div_p4), .divide_by_0());
 
-DW_div_pipe #(8, 8, 0, 0, 3, 1, 2) dwpipe1 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_8bit_div_p1), .b(rB_8bit_div_p1), .quotient(ALU_8bit_div_p1), .remainder(rem_8bit_div_p1), .divide_by_0() );
-DW_div_pipe #(8, 8, 0, 0, 3, 1, 2) dwpipe2 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_8bit_div_p2), .b(rB_8bit_div_p2), .quotient(ALU_8bit_div_p2), .remainder(rem_8bit_div_p2), .divide_by_0() );
-DW_div_pipe #(8, 8, 0, 0, 3, 1, 2) dwpipe3 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_8bit_div_p3), .b(rB_8bit_div_p3), .quotient(ALU_8bit_div_p3), .remainder(rem_8bit_div_p3), .divide_by_0() );
-DW_div_pipe #(8, 8, 0, 0, 3, 1, 2) dwpipe4 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_8bit_div_p4), .b(rB_8bit_div_p4), .quotient(ALU_8bit_div_p4), .remainder(rem_8bit_div_p4), .divide_by_0() );
-DW_div_pipe #(8, 8, 0, 0, 3, 1, 2) dwpipe5 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_8bit_div_p5), .b(rB_8bit_div_p5), .quotient(ALU_8bit_div_p5), .remainder(rem_8bit_div_p5), .divide_by_0() );
-DW_div_pipe #(8, 8, 0, 0, 3, 1, 2) dwpipe6 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_8bit_div_p6), .b(rB_8bit_div_p6), .quotient(ALU_8bit_div_p6), .remainder(rem_8bit_div_p6), .divide_by_0() );
-DW_div_pipe #(8, 8, 0, 0, 3, 1, 2) dwpipe7 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_8bit_div_p7), .b(rB_8bit_div_p7), .quotient(ALU_8bit_div_p7), .remainder(rem_8bit_div_p7), .divide_by_0() );
-DW_div_pipe #(8, 8, 0, 0, 3, 1, 2) dwpipe8 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_8bit_div_p8), .b(rB_8bit_div_p8), .quotient(ALU_8bit_div_p8), .remainder(rem_8bit_div_p8), .divide_by_0() );
-
-//For 16 bit
-
-DW_div_pipe #(16, 16, 0, 0, 3, 1, 2) dwpipe9 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_16bit_div_p1), .b(rB_16bit_div_p1), .quotient(ALU_16bit_div_p1), .remainder(rem_16bit_div_p1), .divide_by_0() );
-DW_div_pipe #(16, 16, 0, 0, 3, 1, 2) dwpipe10 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_16bit_div_p2), .b(rB_16bit_div_p2), .quotient(ALU_16bit_div_p2), .remainder(rem_16bit_div_p2), .divide_by_0() );
-DW_div_pipe #(16, 16, 0, 0, 3, 1, 2) dwpipe11 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_16bit_div_p3), .b(rB_16bit_div_p3), .quotient(ALU_16bit_div_p3), .remainder(rem_16bit_div_p3), .divide_by_0() );
-DW_div_pipe #(16, 16, 0, 0, 3, 1, 2) dwpipe12 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_16bit_div_p4), .b(rB_16bit_div_p4), .quotient(ALU_16bit_div_p4), .remainder(rem_16bit_div_p4), .divide_by_0() );
-
-//For 32 bit
-DW_div_pipe #(32, 32, 0, 0, 3, 1, 2) dwpipe13 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_32bit_div_p1), .b(rB_32bit_div_p1), .quotient(ALU_32bit_div_p1), .remainder(rem_32bit_div_p1), .divide_by_0() );
-DW_div_pipe #(32, 32, 0, 0, 3, 1, 2) dwpipe14 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_32bit_div_p2), .b(rB_32bit_div_p2), .quotient(ALU_32bit_div_p2), .remainder(rem_32bit_div_p2), .divide_by_0() );
+//For  32 bit
+DW_div #(32, 32, 0, 0) dwdivi13(.a(rA_32bit_div_p1),.b(rB_32bit_div_p1), .quotient(ALU_32bit_div_p1), .remainder(rem_32bit_div_p1), .divide_by_0());
+DW_div #(32, 32, 0, 0) dwdivi14(.a(rA_32bit_div_p2),.b(rB_32bit_div_p2), .quotient(ALU_32bit_div_p2), .remainder(rem_32bit_div_p2), .divide_by_0());
 
 //For 64 bit
-DW_div_pipe #(64, 64, 0, 0, 3, 1, 2) dwpipe15 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_64bit_div_p1), .b(rB_64bit_div_p1), .quotient(ALU_64bit_div_p1), .remainder(rem_64bit_div_p1), .divide_by_0() );
-
-
+DW_div #(64, 64, 0, 0) dwdivi15(.a(rA_64bit_div_p1),.b(rB_64bit_div_p1), .quotient(ALU_64bit_div_p1), .remainder(rem_64bit_div_p1), .divide_by_0());
 
 
 //***Square Root***
@@ -145,109 +129,25 @@ wire [0:3] ALU_8bit_sqrt_p1, ALU_8bit_sqrt_p2, ALU_8bit_sqrt_p3, ALU_8bit_sqrt_p
 wire [0:7] ALU_16bit_sqrt_p1, ALU_16bit_sqrt_p2, ALU_16bit_sqrt_p3, ALU_16bit_sqrt_p4;
 wire [0:15] ALU_32bit_sqrt_p1, ALU_32bit_sqrt_p2;
 wire [0:31] ALU_64bit_sqrt_p1;		//According to module root width
-
-// DW_sqrt #(8, 0) dwsq1(rA_8bit_p1, ALU_8bit_sqrt_p1);
-// DW_sqrt #(8, 0) dwsq2(rA_8bit_p2, ALU_8bit_sqrt_p2);
-// DW_sqrt_pipe #(inst_width, inst_tc_mode, inst_num_stages, inst_stall_mode, inst_rst_mode) 
-// U1 (.clk(inst_clk), .rst_n(inst_rst_n),.en(inst_en), .a(inst_a), .root(root_inst) );
-// //For 8 bit
-DW_sqrt_pipe #(8, 1'b0, 3, 0, 2) dwsqpi1 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_8bit_p1), .root(ALU_8bit_sqrt_p1) );
-DW_sqrt_pipe #(8, 1'b0, 3, 0, 2) dwsqpi2 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_8bit_p2), .root(ALU_8bit_sqrt_p2) );
-DW_sqrt_pipe #(8, 1'b0, 3, 0, 2) dwsqpi3 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_8bit_p3), .root(ALU_8bit_sqrt_p3) );
-DW_sqrt_pipe #(8, 1'b0, 3, 0, 2) dwsqpi4 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_8bit_p4), .root(ALU_8bit_sqrt_p4) );
-DW_sqrt_pipe #(8, 1'b0, 3, 0, 2) dwsqpi5 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_8bit_p5), .root(ALU_8bit_sqrt_p5) );
-DW_sqrt_pipe #(8, 1'b0, 3, 0, 2) dwsqpi6 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_8bit_p6), .root(ALU_8bit_sqrt_p6) );
-DW_sqrt_pipe #(8, 1'b0, 3, 0, 2) dwsqpi7 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_8bit_p7), .root(ALU_8bit_sqrt_p7) );
-DW_sqrt_pipe #(8, 1'b0, 3, 0, 2) dwsqpi8 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_8bit_p8), .root(ALU_8bit_sqrt_p8) );
-
-
+//For 8 bit
+DW_sqrt #(8, 0) dwsq1(rA_8bit_p1, ALU_8bit_sqrt_p1);
+DW_sqrt #(8, 0) dwsq2(rA_8bit_p2, ALU_8bit_sqrt_p2);
+DW_sqrt #(8, 0) dwsq3(rA_8bit_p3, ALU_8bit_sqrt_p3);
+DW_sqrt #(8, 0) dwsq4(rA_8bit_p4, ALU_8bit_sqrt_p4);
+DW_sqrt #(8, 0) dwsq5(rA_8bit_p5, ALU_8bit_sqrt_p5);
+DW_sqrt #(8, 0) dwsq6(rA_8bit_p6, ALU_8bit_sqrt_p6);
+DW_sqrt #(8, 0) dwsq7(rA_8bit_p7, ALU_8bit_sqrt_p7);
+DW_sqrt #(8, 0) dwsq8(rA_8bit_p8, ALU_8bit_sqrt_p8);
 //For 16 bit
-DW_sqrt_pipe #(16, 1'b0, 3, 0, 2) dwsqpi9 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_16bit_p1), .root(ALU_16bit_sqrt_p1) );
-DW_sqrt_pipe #(16, 1'b0, 3, 0, 2) dwsqpi10 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_16bit_p2), .root(ALU_16bit_sqrt_p2) );
-DW_sqrt_pipe #(16, 1'b0, 3, 0, 2) dwsqpi11 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_16bit_p3), .root(ALU_16bit_sqrt_p3) );
-DW_sqrt_pipe #(16, 1'b0, 3, 0, 2) dwsqpi12 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_16bit_p4), .root(ALU_16bit_sqrt_p4) );
-
-
+DW_sqrt #(16, 0) dwsq9(rA_16bit_p1, ALU_16bit_sqrt_p1);
+DW_sqrt #(16, 0) dwsq10(rA_16bit_p2, ALU_16bit_sqrt_p2);
+DW_sqrt #(16, 0) dwsq11(rA_16bit_p3, ALU_16bit_sqrt_p3);
+DW_sqrt #(16, 0) dwsq12(rA_16bit_p4, ALU_16bit_sqrt_p4);
 //For 32 bit
-DW_sqrt_pipe #(32, 1'b0, 3, 0, 2) dwsqpi13 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_32bit_p1), .root(ALU_32bit_sqrt_p1) );
-DW_sqrt_pipe #(32, 1'b0, 3, 0, 2) dwsqpi14 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_32bit_p2), .root(ALU_32bit_sqrt_p2) );
-
+DW_sqrt #(32, 0) dw_sqrt13(rA_32bit_p1, ALU_32bit_sqrt_p1);	
+DW_sqrt #(32, 0) dw_sqrt14(rA_32bit_p2, ALU_32bit_sqrt_p2);
 //For 64 bit
-DW_sqrt_pipe #(64, 1'b0, 3, 0, 2) dwsqpi15 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_64bit_p1), .root(ALU_64bit_sqrt_p1) );
-
-// // Divider for Quotient and Mod
-// reg [0:7] rA_8bit_div_p1, rB_8bit_div_p1, rA_8bit_div_p2, rB_8bit_div_p2, rA_8bit_div_p3, rB_8bit_div_p3,  rA_8bit_div_p4, rB_8bit_div_p4, rA_8bit_div_p5, rB_8bit_div_p5, rA_8bit_div_p6, rB_8bit_div_p6, rA_8bit_div_p7, rB_8bit_div_p7, rA_8bit_div_p8, rB_8bit_div_p8;
-// wire [0:7] ALU_8bit_div_p1, ALU_8bit_div_p2, ALU_8bit_div_p3, ALU_8bit_div_p4, ALU_8bit_div_p5, ALU_8bit_div_p6, ALU_8bit_div_p7, ALU_8bit_div_p8;
-// reg [0:15] rA_16bit_div_p1, rB_16bit_div_p1, rA_16bit_div_p2, rB_16bit_div_p2, rA_16bit_div_p3, rB_16bit_div_p3,  rA_16bit_div_p4, rB_16bit_div_p4;
-// wire [0:15] ALU_16bit_div_p1, ALU_16bit_div_p2, ALU_16bit_div_p3, ALU_16bit_div_p4;
-// reg [0:31] rA_32bit_div_p1,rB_32bit_div_p1, rA_32bit_div_p2,rB_32bit_div_p2;
-// wire [0:31] ALU_32bit_div_p1, ALU_32bit_div_p2;
-// reg [0:63] rA_64bit_div_p1,rB_64bit_div_p1;
-// wire [0:63] ALU_64bit_div_p1;
-
-
-// wire [0:7] rem_8bit_div_p1, rem_8bit_div_p2, rem_8bit_div_p3, rem_8bit_div_p4, rem_8bit_div_p5, rem_8bit_div_p6, rem_8bit_div_p7, rem_8bit_div_p8;
-// wire [0:15] rem_16bit_div_p1, rem_16bit_div_p2, rem_16bit_div_p3, rem_16bit_div_p4;
-// wire [0:31] rem_32bit_div_p1, rem_32bit_div_p2;
-// wire [0:63] rem_64bit_div_p1;
-
-
-// wire zero_8bit_div_p1, zero_8bit_div_p2, zero_8bit_div_p3, zero_8bit_div_p4, zero_8bit_div_p5, zero_8bit_div_p6, zero_8bit_div_p7, zero_8bit_div_p8;
-// wire zero_16bit_div_p1, zero_16bit_div_p2, zero_16bit_div_p3, zero_16bit_div_p4;
-// wire zero_32bit_div_p1, zero_32bit_div_p2;
-// wire zero_64bit_div_p1;
-
-// //For  8 bit
-// //DW_div  #(8, 8, 0, 1) dwdivi1(rA_8bit_p1,rB_8bit_p1, ALU_8bit_div_p1, remainder, divide_by_0); parameters 8,8,0,0 tc_mode: unsigned, rem_mode:0 a mod b
-// DW_div #(8, 8, 0, 0) dwdivi1(.a(rA_8bit_div_p1), .b(rB_8bit_div_p1), .quotient(ALU_8bit_div_p1), .remainder(rem_8bit_div_p1), .divide_by_0());
-// DW_div #(8, 8, 0, 0) dwdivi2(.a(rA_8bit_div_p2), .b(rB_8bit_div_p2), .quotient(ALU_8bit_div_p2), .remainder(rem_8bit_div_p2), .divide_by_0());
-// DW_div #(8, 8, 0, 0) dwdivi3(.a(rA_8bit_div_p3), .b(rB_8bit_div_p3), .quotient(ALU_8bit_div_p3), .remainder(rem_8bit_div_p3), .divide_by_0());
-// DW_div #(8, 8, 0, 0) dwdivi4(.a(rA_8bit_div_p4), .b(rB_8bit_div_p4), .quotient(ALU_8bit_div_p4), .remainder(rem_8bit_div_p4), .divide_by_0());
-// DW_div #(8, 8, 0, 0) dwdivi5(.a(rA_8bit_div_p5), .b(rB_8bit_div_p5), .quotient(ALU_8bit_div_p5), .remainder(rem_8bit_div_p5), .divide_by_0());
-// DW_div #(8, 8, 0, 0) dwdivi6(.a(rA_8bit_div_p6), .b(rB_8bit_div_p6), .quotient(ALU_8bit_div_p6), .remainder(rem_8bit_div_p6), .divide_by_0());
-// DW_div #(8, 8, 0, 0) dwdivi7(.a(rA_8bit_div_p7), .b(rB_8bit_div_p7), .quotient(ALU_8bit_div_p7), .remainder(rem_8bit_div_p7), .divide_by_0());
-// DW_div #(8, 8, 0, 0) dwdivi8(.a(rA_8bit_div_p8), .b(rB_8bit_div_p8), .quotient(ALU_8bit_div_p8), .remainder(rem_8bit_div_p8), .divide_by_0());
-
-// // //For 16 bit
-// DW_div #(16, 16, 0, 0) dwdivi9(.a(rA_16bit_div_p1),.b(rB_16bit_div_p1), .quotient(ALU_16bit_div_p1), .remainder(rem_16bit_div_p1), .divide_by_0());
-// DW_div #(16, 16, 0, 0) dwdivi10(.a(rA_16bit_div_p2),.b(rB_16bit_div_p2), .quotient(ALU_16bit_div_p2), .remainder(rem_16bit_div_p2), .divide_by_0());
-// DW_div #(16, 16, 0, 0) dwdivi11(.a(rA_16bit_div_p3),.b(rB_16bit_div_p3), .quotient(ALU_16bit_div_p3), .remainder(rem_16bit_div_p3), .divide_by_0());
-// DW_div #(16, 16, 0, 0) dwdivi12(.a(rA_16bit_div_p4),.b(rB_16bit_div_p4), .quotient(ALU_16bit_div_p4), .remainder(rem_16bit_div_p4), .divide_by_0());
-
-// //For  32 bit
-// DW_div #(32, 32, 0, 0) dwdivi13(.a(rA_32bit_div_p1),.b(rB_32bit_div_p1), .quotient(ALU_32bit_div_p1), .remainder(rem_32bit_div_p1), .divide_by_0());
-// DW_div #(32, 32, 0, 0) dwdivi14(.a(rA_32bit_div_p2),.b(rB_32bit_div_p2), .quotient(ALU_32bit_div_p2), .remainder(rem_32bit_div_p2), .divide_by_0());
-
-// //For 64 bit
-// DW_div #(64, 64, 0, 0) dwdivi15(.a(rA_64bit_div_p1),.b(rB_64bit_div_p1), .quotient(ALU_64bit_div_p1), .remainder(rem_64bit_div_p1), .divide_by_0());
-
-
-//***Square Root***
-//For 8 16 32 64 bits
-
-// wire [0:3] ALU_8bit_sqrt_p1, ALU_8bit_sqrt_p2, ALU_8bit_sqrt_p3, ALU_8bit_sqrt_p4, ALU_8bit_sqrt_p5, ALU_8bit_sqrt_p6, ALU_8bit_sqrt_p7, ALU_8bit_sqrt_p8;
-// wire [0:7] ALU_16bit_sqrt_p1, ALU_16bit_sqrt_p2, ALU_16bit_sqrt_p3, ALU_16bit_sqrt_p4;
-// wire [0:15] ALU_32bit_sqrt_p1, ALU_32bit_sqrt_p2;
-// wire [0:31] ALU_64bit_sqrt_p1;		//According to module root width
-// //For 8 bit
-// DW_sqrt #(8, 0) dwsq1(rA_8bit_p1, ALU_8bit_sqrt_p1);
-// DW_sqrt #(8, 0) dwsq2(rA_8bit_p2, ALU_8bit_sqrt_p2);
-// DW_sqrt #(8, 0) dwsq3(rA_8bit_p3, ALU_8bit_sqrt_p3);
-// DW_sqrt #(8, 0) dwsq4(rA_8bit_p4, ALU_8bit_sqrt_p4);
-// DW_sqrt #(8, 0) dwsq5(rA_8bit_p5, ALU_8bit_sqrt_p5);
-// DW_sqrt #(8, 0) dwsq6(rA_8bit_p6, ALU_8bit_sqrt_p6);
-// DW_sqrt #(8, 0) dwsq7(rA_8bit_p7, ALU_8bit_sqrt_p7);
-// DW_sqrt #(8, 0) dwsq8(rA_8bit_p8, ALU_8bit_sqrt_p8);
-// //For 16 bit
-// DW_sqrt #(16, 0) dwsq9(rA_16bit_p1, ALU_16bit_sqrt_p1);
-// DW_sqrt #(16, 0) dwsq10(rA_16bit_p2, ALU_16bit_sqrt_p2);
-// DW_sqrt #(16, 0) dwsq11(rA_16bit_p3, ALU_16bit_sqrt_p3);
-// DW_sqrt #(16, 0) dwsq12(rA_16bit_p4, ALU_16bit_sqrt_p4);
-// //For 32 bit
-// DW_sqrt #(32, 0) dw_sqrt13(rA_32bit_p1, ALU_32bit_sqrt_p1);	
-// DW_sqrt #(32, 0) dw_sqrt14(rA_32bit_p2, ALU_32bit_sqrt_p2);
-// //For 64 bit
-// DW_sqrt #(64, 0) dw_sqrt15(rA_64bit_p1, ALU_64bit_sqrt_p1);
+DW_sqrt #(64, 0) dw_sqrt15(rA_64bit_p1, ALU_64bit_sqrt_p1);
 
 
 always @(*) begin	

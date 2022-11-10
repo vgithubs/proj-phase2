@@ -24,22 +24,17 @@ set link_library [list * gscl45nm.db dw_foundation.sldb standard.sldb]
 read_verilog ./src/${design_name}.v ;
 
 
-analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_sqrt.v
-elaborate DW_sqrt
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_sqrt_pipe.v
+elaborate DW_sqrt_pipe
 
 analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW02_mult.v
 elaborate DW02_mult
 
-analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div.v
-elaborate DW_div
-
-analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW01_add.v
-elaborate DW01_add
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div_pipe.v
+elaborate DW_div_pipe
 
 analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW01_addsub.v
 elaborate DW01_addsub
-
-
 
 
 
@@ -60,8 +55,8 @@ create_clock -name clk -period 5.0 -waveform [list 0 2.5] [get_ports Clock]
 
 # Setting timing constraints for combinational logic.
 # Specifying maximum delay from inputs to outputs
-set_max_delay 5.0 -to [all_outputs];
-set_max_delay 5.0 -from [all_inputs];
+#set_max_delay 5.0 -to [all_outputs];
+#set_max_delay 5.0 -from [all_inputs];
 
 # "check_design" checks the internal representation of the
 # current design for consistency and issues error and
@@ -69,7 +64,9 @@ set_max_delay 5.0 -from [all_inputs];
 check_design > report/$design_name.check_design ;
 
 # Perforing synthesis and optimization on the current_design.
-compile -gate_clock;
+#set compile_ultra_ungroup_small_heirarchies_false ;
+compile_ultra -gate_clock -retime;
+#compile
 
 # For better synthesis result, use "compile_ultra" command.
 # compile_ultra is doing automatic ungrouping during optimization,
@@ -84,8 +81,8 @@ compile -gate_clock;
 
 # Generating timing and are report of the synthezied design.
 report_timing > report/$design_name.timing ;
-report_area > report/$design_name.area ;
-report_power > report/$design_name.power ;
+report_area -hierarchy > report/$design_name.area ;
+report_power -hierarchy > report/$design_name.power ;
 report_clock_gating > report/$design_name.gating;
 
 # Writing synthesized gate-level verilog netlist.

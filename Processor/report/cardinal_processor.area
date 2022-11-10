@@ -3,28 +3,238 @@
 Report : area
 Design : cardinal_processor
 Version: K-2015.06-SP5-5
-Date   : Tue Nov  8 20:48:03 2022
+Date   : Thu Nov 10 12:24:35 2022
 ****************************************
 
 Library(s) Used:
 
-    gscl45nm (File: /home/scf-22/ee577/NCSU45PDK/FreePDK45/osu_soc/lib/files/gscl45nm.db)
+    gtech (File: /usr/local/synopsys/Design_Compiler/default/libraries/syn/gtech.db)
 
-Number of ports:                        60029
-Number of nets:                        281990
-Number of cells:                       238706
-Number of combinational cells:         235502
-Number of sequential cells:              2538
+Number of ports:                         8484
+Number of nets:                         31950
+Number of cells:                        14027
+Number of combinational cells:           9387
+Number of sequential cells:              4445
 Number of macros/black boxes:               0
-Number of buf/inv:                     107923
-Number of references:                      24
+Number of buf/inv:                        923
+Number of references:                      23
 
-Combinational area:             556775.632450
-Buf/Inv area:                   170056.013972
-Noncombinational area:           19702.152191
+Combinational area:                  0.000000
+Buf/Inv area:                        0.000000
+Noncombinational area:               0.000000
 Macro/Black Box area:                0.000000
 Net Interconnect area:      undefined  (No wire load specified)
 
-Total cell area:                576477.784642
+Total cell area:                     0.000000
 Total area:                 undefined
+
+Information: This design contains unmapped logic. (RPT-7)
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area          Local cell area
+                                  ------------------  --------------------------- 
+Hierarchical cell                 Absolute   Percent  Combi-    Noncombi-  Black-
+                                  Total      Total    national  national   boxes   Design
+--------------------------------  ---------  -------  --------  ---------  ------  -------------------------------------------------------------------------------------------------
+cardinal_processor                   0.0000      0.0    0.0000     0.0000  0.0000  cardinal_processor
+add_98                               0.0000      0.0    0.0000     0.0000  0.0000  *ADD_UNS_OP_8_1_8
+add_98/*cell*107                     0.0000      0.0    0.0000     0.0000  0.0000  DW01_inc_width8
+alu1                                 0.0000      0.0    0.0000     0.0000  0.0000  ALU
+alu1/as1                             0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_param_1
+alu1/as1/*cell*246                   0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_width8
+alu1/as2                             0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_param_1
+alu1/as2/*cell*247                   0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_width8
+alu1/as3                             0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_param_1
+alu1/as3/*cell*248                   0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_width8
+alu1/as4                             0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_param_1
+alu1/as4/*cell*249                   0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_width8
+alu1/as5                             0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_param_1
+alu1/as5/*cell*250                   0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_width8
+alu1/as6                             0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_param_1
+alu1/as6/*cell*251                   0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_width8
+alu1/as7                             0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_param_1
+alu1/as7/*cell*252                   0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_width8
+alu1/as8                             0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_param_1
+alu1/as8/*cell*253                   0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_width8
+alu1/dwm1                            0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult_param_1
+alu1/dwm1/*cell*254                  0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult
+alu1/dwm2                            0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult_param_1
+alu1/dwm2/*cell*255                  0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult
+alu1/dwm3                            0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult_param_1
+alu1/dwm3/*cell*256                  0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult
+alu1/dwm4                            0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult_param_1
+alu1/dwm4/*cell*257                  0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult
+alu1/dwm5                            0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult_param_2
+alu1/dwm5/*cell*258                  0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult
+alu1/dwm6                            0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult_param_2
+alu1/dwm6/*cell*259                  0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult
+alu1/dwm7                            0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult_param_3
+alu1/dwm7/*cell*260                  0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult
+alu1/dwpipe1                         0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_1
+alu1/dwpipe1/*cell*262               0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width8_b_width8_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
+alu1/dwpipe10                        0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_2
+alu1/dwpipe10/*cell*289              0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width16_b_width16_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
+alu1/dwpipe11                        0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_2
+alu1/dwpipe11/*cell*292              0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width16_b_width16_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
+alu1/dwpipe12                        0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_2
+alu1/dwpipe12/*cell*295              0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width16_b_width16_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
+alu1/dwpipe13                        0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_3
+alu1/dwpipe13/*cell*298              0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width32_b_width32_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
+alu1/dwpipe14                        0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_3
+alu1/dwpipe14/*cell*301              0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width32_b_width32_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
+alu1/dwpipe15                        0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_4
+alu1/dwpipe15/*cell*304              0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width64_b_width64_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
+alu1/dwpipe2                         0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_1
+alu1/dwpipe2/*cell*265               0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width8_b_width8_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
+alu1/dwpipe3                         0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_1
+alu1/dwpipe3/*cell*268               0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width8_b_width8_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
+alu1/dwpipe4                         0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_1
+alu1/dwpipe4/*cell*271               0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width8_b_width8_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
+alu1/dwpipe5                         0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_1
+alu1/dwpipe5/*cell*274               0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width8_b_width8_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
+alu1/dwpipe6                         0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_1
+alu1/dwpipe6/*cell*277               0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width8_b_width8_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
+alu1/dwpipe7                         0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_1
+alu1/dwpipe7/*cell*280               0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width8_b_width8_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
+alu1/dwpipe8                         0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_1
+alu1/dwpipe8/*cell*283               0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width8_b_width8_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
+alu1/dwpipe9                         0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_2
+alu1/dwpipe9/*cell*286               0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width16_b_width16_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
+alu1/dwsqpi1                         0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_1
+alu1/dwsqpi1/*cell*308               0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width8_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
+alu1/dwsqpi10                        0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_2
+alu1/dwsqpi10/*cell*353              0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width16_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
+alu1/dwsqpi11                        0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_2
+alu1/dwsqpi11/*cell*358              0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width16_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
+alu1/dwsqpi12                        0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_2
+alu1/dwsqpi12/*cell*363              0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width16_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
+alu1/dwsqpi13                        0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_3
+alu1/dwsqpi13/*cell*368              0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width32_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
+alu1/dwsqpi14                        0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_3
+alu1/dwsqpi14/*cell*373              0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width32_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
+alu1/dwsqpi15                        0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_4
+alu1/dwsqpi15/*cell*378              0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width64_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
+alu1/dwsqpi2                         0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_1
+alu1/dwsqpi2/*cell*313               0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width8_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
+alu1/dwsqpi3                         0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_1
+alu1/dwsqpi3/*cell*318               0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width8_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
+alu1/dwsqpi4                         0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_1
+alu1/dwsqpi4/*cell*323               0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width8_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
+alu1/dwsqpi5                         0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_1
+alu1/dwsqpi5/*cell*328               0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width8_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
+alu1/dwsqpi6                         0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_1
+alu1/dwsqpi6/*cell*333               0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width8_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
+alu1/dwsqpi7                         0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_1
+alu1/dwsqpi7/*cell*338               0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width8_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
+alu1/dwsqpi8                         0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_1
+alu1/dwsqpi8/*cell*343               0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width8_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
+alu1/dwsqpi9                         0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_2
+alu1/dwsqpi9/*cell*348               0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width16_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
+alu1/sll_633                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_8_3_8
+alu1/sll_633/*cell*127               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
+alu1/sll_634                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_8_3_8
+alu1/sll_634/*cell*129               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
+alu1/sll_635                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_8_3_8
+alu1/sll_635/*cell*131               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
+alu1/sll_636                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_8_3_8
+alu1/sll_636/*cell*133               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
+alu1/sll_637                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_8_3_8
+alu1/sll_637/*cell*135               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
+alu1/sll_638                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_8_3_8
+alu1/sll_638/*cell*137               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
+alu1/sll_639                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_8_3_8
+alu1/sll_639/*cell*139               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
+alu1/sll_640                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_8_3_8
+alu1/sll_640/*cell*141               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
+alu1/sll_644                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_16_4_16
+alu1/sll_644/*cell*143               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
+alu1/sll_645                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_16_4_16
+alu1/sll_645/*cell*145               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
+alu1/sll_646                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_16_4_16
+alu1/sll_646/*cell*147               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
+alu1/sll_647                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_16_4_16
+alu1/sll_647/*cell*149               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
+alu1/sll_652                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_32_5_32
+alu1/sll_652/*cell*151               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
+alu1/sll_653                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_32_5_32
+alu1/sll_653/*cell*153               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
+alu1/sll_657                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_64_6_64
+alu1/sll_657/*cell*155               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
+alu1/sra_710                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_8_3_8
+alu1/sra_710/*cell*202               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/sra_711                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_8_3_8
+alu1/sra_711/*cell*205               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/sra_712                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_8_3_8
+alu1/sra_712/*cell*208               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/sra_713                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_8_3_8
+alu1/sra_713/*cell*211               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/sra_714                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_8_3_8
+alu1/sra_714/*cell*214               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/sra_715                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_8_3_8
+alu1/sra_715/*cell*217               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/sra_716                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_8_3_8
+alu1/sra_716/*cell*220               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/sra_717                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_8_3_8
+alu1/sra_717/*cell*223               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/sra_722                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_16_4_16
+alu1/sra_722/*cell*226               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/sra_723                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_16_4_16
+alu1/sra_723/*cell*229               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/sra_724                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_16_4_16
+alu1/sra_724/*cell*232               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/sra_725                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_16_4_16
+alu1/sra_725/*cell*235               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/sra_730                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_32_5_32
+alu1/sra_730/*cell*238               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/sra_731                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_32_5_32
+alu1/sra_731/*cell*241               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/sra_736                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_64_6_64
+alu1/sra_736/*cell*244               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/srl_672                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_8_3_8
+alu1/srl_672/*cell*157               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/srl_673                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_8_3_8
+alu1/srl_673/*cell*160               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/srl_674                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_8_3_8
+alu1/srl_674/*cell*163               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/srl_675                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_8_3_8
+alu1/srl_675/*cell*166               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/srl_676                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_8_3_8
+alu1/srl_676/*cell*169               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/srl_677                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_8_3_8
+alu1/srl_677/*cell*172               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/srl_678                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_8_3_8
+alu1/srl_678/*cell*175               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/srl_679                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_8_3_8
+alu1/srl_679/*cell*178               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/srl_683                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_16_4_16
+alu1/srl_683/*cell*181               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/srl_684                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_16_4_16
+alu1/srl_684/*cell*184               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/srl_685                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_16_4_16
+alu1/srl_685/*cell*187               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/srl_686                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_16_4_16
+alu1/srl_686/*cell*190               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/srl_690                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_32_5_32
+alu1/srl_690/*cell*193               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/srl_691                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_32_5_32
+alu1/srl_691/*cell*196               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+alu1/srl_695                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_64_6_64
+alu1/srl_695/*cell*199               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
+bp                                   0.0000      0.0    0.0000     0.0000  0.0000  Branch_Predictor
+eq_199                               0.0000      0.0    0.0000     0.0000  0.0000  *EQ_UNS_OP_5_5_1
+eq_199/*cell*109                     0.0000      0.0    0.0000     0.0000  0.0000  DW01_cmp6_width5
+eq_227                               0.0000      0.0    0.0000     0.0000  0.0000  *EQ_UNS_OP_5_5_1
+eq_227/*cell*112                     0.0000      0.0    0.0000     0.0000  0.0000  DW01_cmp6_width5
+eq_230                               0.0000      0.0    0.0000     0.0000  0.0000  *EQ_UNS_OP_5_5_1
+eq_230/*cell*115                     0.0000      0.0    0.0000     0.0000  0.0000  DW01_cmp6_width5
+rf                                   0.0000      0.0    0.0000     0.0000  0.0000  reg_file
+rf/eq_58                             0.0000      0.0    0.0000     0.0000  0.0000  *EQ_UNS_OP_5_5_1
+rf/eq_58/*cell*120                   0.0000      0.0    0.0000     0.0000  0.0000  DW01_cmp6_width5
+rf/eq_95                             0.0000      0.0    0.0000     0.0000  0.0000  *EQ_UNS_OP_5_5_1
+rf/eq_95/*cell*123                   0.0000      0.0    0.0000     0.0000  0.0000  DW01_cmp6_width5
+--------------------------------  ---------  -------  --------  ---------  ------  -------------------------------------------------------------------------------------------------
+Total                                                   0.0000     0.0000  0.0000
+
 1

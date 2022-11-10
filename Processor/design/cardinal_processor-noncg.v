@@ -41,8 +41,6 @@ wire BIF;
 wire stall_comb;
 reg stall;
 reg stall_count;
-wire enable, gclk;
-reg en_out;
 
 //ID stage signals
 reg flush; //Input to WBFF in IF
@@ -84,16 +82,6 @@ reg [0:63] WB_PPP_rA_rD, WB_PPP_rB; //to forward while taking PPP in considerati
 
 //***
 
-//Clock Gating
-assign enable = !stall;
-
-always @ (enable or Clock) begin
-	if (!Clock) 
- 		en_out = enable; // build latch
-end
-
-assign gclk = en_out && Clock;
-
 //IF stage
 assign PC_next = PC + 1'b1;
 assign BEZ = (rA_rD_data == 0);
@@ -106,7 +94,7 @@ assign pred_actual = {IF_ID_pred, taken};
 
 assign Instr_Addr = PC;
 
-always @(posedge gclk) begin
+always @(posedge Clock) begin
 	if(Reset) begin
 		WBFF <= 1;
 		PC <= 0;
@@ -199,7 +187,7 @@ end
 assign stall_br_st = (Branch || Mem_Wr) && (ID_EX[0:4]==IF_ID[6:10]) && (ID_EX[0:4]!=0) && (ID_EX[28]==1'b1);
 
 //Stall logic for div and sqrt (FSM)
-assign stall_comb = ALU_op && ((IF_ID[26:31] == VDIV) || (IF_ID[26:31] == VSQRT) || (IF_ID[26:31] == VMOD));
+assign stall_comb = ALU_op && ((IF_ID[26:31] == VDIV) || (IF_ID[26:31] == VSQRT));
 always @(posedge Clock) begin
 	if(Reset) begin
 		stall <= 0;
@@ -223,7 +211,7 @@ end
 
 
 //Forwarding logic
-always @(posedge gclk) begin
+always @(posedge Clock) begin
     if((ID_EX[0:4]==IF_ID[11:15]) && (ID_EX[0:4]!=0))
 		fwd_rA <= 1;
 	else fwd_rA <= 0;
@@ -316,7 +304,7 @@ end
 //Dataflow
 assign WB_data = EX_WB[9]? EX_WB_mem_data : EX_WB_reg_data; //EX_WB[9] = Mem_to_Reg
 
-always @(posedge gclk) begin
+always @(posedge Clock) begin
 	if(Reset) begin
 		ID_EX <= 0;
 		ID_EX_rA_rD_data <= 0;

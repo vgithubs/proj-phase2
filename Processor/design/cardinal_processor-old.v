@@ -165,7 +165,7 @@ assign DmemWrEn = ID_EX[26];
 //ALU with forwarding (with PPP consideration)
 assign EX_rA_rD = fwd_rA ? WB_PPP_rA_rD : ID_EX_rA_rD_data;
 assign EX_rB = fwd_rB ? WB_PPP_rB : ID_EX_rB_data;
-ALU alu1(.rA_64bit_val(EX_rA_rD), .rB_64bit_val(EX_rB), .R_ins(ID_EX[10:15]), .Op_code(ID_EX[24]), .WW(ID_EX[8:9]), .ALU_out(ALU_out));
+ALUx alu1(.rA_64bit_val(EX_rA_rD), .rB_64bit_val(EX_rB), .R_ins(ID_EX[10:15]), .Op_code(ID_EX[24]), .WW(ID_EX[8:9]), .ALU_out(ALU_out));
 
 always @(*) begin
 	case(EX_WB[0:2])

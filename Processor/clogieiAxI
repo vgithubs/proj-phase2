@@ -1,0 +1,607 @@
+#@ # 
+#@ # Running dc_shell Version K-2015.06-SP5-5 for linux64 -- Aug 14, 2016
+#@ # Date:   Thu Nov 10 03:09:45 2022
+#@ # Run by: rushikes@viterbi-scf2
+#@ 
+
+source /usr/local/synopsys//Design_Compiler/default/admin/setup/.synopsys_dc.setup
+#@ # -- Starting source /usr/local/synopsys//Design_Compiler/default/admin/setup/.synopsys_dc.setup
+
+#@ #
+#@ #		".synopsys_dc.setup" Initialization File for
+#@ #
+#@ #		    Dc_Shell and Design_Analyzer
+#@ #
+#@ #	The variables in this file define the behavior of many parts
+#@ #	of the Synopsys Synthesis Tools.  Upon installation, they should 
+#@ #	be reviewed and modified to fit your site's needs.  Each engineer
+#@ #	can have a .synopsys file in his/her home directory or current
+#@ #	directory to override variable settings in this file.  
+#@ #
+#@ #  	Each logical grouping of variables is commented as to their 
+#@ #	nature and effect on the Synthesis Commands.  Examples of
+#@ #	variable groups are the Compile Variable Group, which affects 
+#@ #	the designs produced by the COMPILE command, and the Schematic 
+#@ #	Variable Group, which affects the output of the create_schematic
+#@ #	command.
+#@ #
+#@ #	You can type "man <group_name>_variables" in dc_shell or 
+#@ #	design_analyzer to get help about a group of variables.
+#@ #	For instance, to get help about the "system" variable group, 
+#@ #	type "help system_variables".  You can also type
+#@ #	"man <variable name>", to get help on the that variable's 
+#@ #	group.
+#@ #
+#@ 
+#@ # System variables
+#@ set sh_command_abbrev_mode       "Anywhere"
+#@ set sh_continue_on_error         "true"
+#@ update_app_var -default true sh_continue_on_error
+#@ set sh_enable_page_mode          "true"
+#@ update_app_var -default true sh_enable_page_mode
+#@ set sh_source_uses_search_path   "true"
+#@ update_app_var -default true sh_source_uses_search_path
+#@ if {$synopsys_program_name == "dc_shell" ||     $synopsys_program_name == "de_shell" ||     $synopsys_program_name == "dc_sms_shell" } {
+#@ set sh_new_variable_message	 "false"
+#@ update_app_var -default false sh_new_variable_message
+#@ } else {
+#@ set sh_new_variable_message	 "true"
+#@ update_app_var -default true sh_new_variable_message
+#@ }
+#@ 
+#@ if {$synopsys_program_name == "dc_shell"} {
+#@ set html_log_enable	     "false"
+#@ set html_log_filename	 "default.html"
+#@ }
+#@ 
+#@ if {$synopsys_program_name == "de_shell"} {
+#@ set de_log_html_filename	 "default.html"
+#@ }
+#@ 
+#@ if { [string compare $dc_shell_mode "tcl"] == 0 } {
+#@  set sh_enable_line_editing       "true"
+#@  set sh_line_editing_mode         "emacs"
+#@ }
+#@ 
+#@ if {$synopsys_program_name == "icc_shell"} {
+#@  if {"$sh_output_log_file" == ""} {
+#@   set sh_output_log_file "icc_output.txt"
+#@  }
+#@ 
+#@ ## the variable sh_redirect_progress_messages only makes it possible 
+#@ ## for some commands to redirect progress messages to the log file,thereby
+#@ ## bypassing the console and reducing the volume of messages on the console.
+#@  set sh_redirect_progress_messages true
+#@  }
+#@ 
+#@ 
+#@ # Suppress new variable messages for the following variables
+#@ array set auto_index {}
+#@ set auto_oldpath ""
+#@ 
+#@ # Enable customer support banner on fatal
+#@ if { $sh_arch == "linux"    || $sh_arch == "amd64"    || $sh_arch == "linux64" ||     $sh_arch == "suse32"   || $sh_arch == "suse64"   ||      $sh_arch == "sparcOS5" || $sh_arch == "sparc64"  ||      $sh_arch == "x86sol32" || $sh_arch == "x86sol64" ||      $sh_arch == "rs6000"   || $sh_arch == "aix64" } {
+#@    setenv SYNOPSYS_TRACE ""
+#@ }
+#@ 
+#@ #
+#@ # Load the procedures which make up part of the user interface.
+#@ #
+#@ if { [string compare $dc_shell_mode "tcl"] == 0 } {
+#@   source $synopsys_root/auxx/syn/.dc_common_procs.tcl
+#@   if {$synopsys_program_name != "dc_sms_shell"} {
+#@     source $synopsys_root/auxx/syn/.dc_procs.tcl
+#@   }
+#@   alias list_commands help
+#@ }
+#@ # -- Starting source /usr/local/synopsys//Design_Compiler/default/auxx/syn/.dc_common_procs.tcl
+
+#@ ##############################################################################
+#@ #
+#@ #
+#@ # FILE:         auxx/syn/.dc_common_procs.tcl
+#@ #
+#@ # ABSTRACT:     These procedures are part of the PrimeTime and DC
+#@ #               user interface.
+#@ #               They are loaded by .synopsys_pt.setup and .synopsys_dc.setup.
+#@ #
+#@ ##############################################################################
+#@ #
+#@ #
+#@ 
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #
+#@ #  PROCEDURE:   group_variable
+#@ #
+#@ #  ABSTRACT:    Add a variable to the specified variable group.
+#@ #               This command is typically used by the system
+#@ #               administrator only.
+#@ #
+#@ #               Below the proc is the command which creates the command
+#@ #               help information and semantic data for the argument.
+#@ #
+#@ #  RETURNS:     1 if it is successful.
+#@ #               error code if the variable does not exist.
+#@ #               error code of the variable is already in the group.
+#@ #
+#@ #  SYNTAX:      group_variable group_name variable_name
+#@ #
+#@ ##############################################################################
+#@ #
+#@ 
+#@ 
+#@ proc group_variable { args } {
+#@   global _Variable_Groups
+#@ 
+#@   parse_proc_arguments -args $args resarr
+#@   set group $resarr(group)
+#@   set var $resarr(variable_name)
+#@ 
+#@   if { ![info exists _Variable_Groups($group)] } {
+#@    set _Variable_Groups($group) ""
+#@   }
+#@ 
+#@   # Verify that var exists as a global variable
+#@ 
+#@   set cmd "uplevel #0 \{info exists $var\}"
+#@   if { ![eval $cmd] } {
+#@     return -code error "Variable '$var' is not defined."
+#@   }
+#@ 
+#@   # Only add it if it's not already there
+#@ 
+#@   if { [lsearch $_Variable_Groups($group) $var] == -1 } {
+#@     lappend _Variable_Groups($group) $var
+#@   }
+#@ 
+#@   return 1
+#@ }
+#@ 
+#@ define_proc_attributes group_variable     -info "Add a variable to a variable group"      -command_group "Builtins" -permanent -dont_abbrev     -define_args { 
+#@       {group "Variable group name" group}
+#@       {variable_name "Variable name" variable_name}}
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #
+#@ #  PROCEDURE:   print_variable_group
+#@ #
+#@ #  ABSTRACT:    Shows variables and their values defined in the given group.
+#@ 
+#@ #
+#@ #               Below the proc is the command which creates the command
+#@ #               help information and semantic data for the argument.
+#@ #
+#@ #  RETURNS:     1 if it is successful.
+#@ #               error code of the variable group does not exist.
+#@ #
+#@ #  SYNTAX:      print_variable_group group_name
+#@ #
+#@ ##############################################################################
+#@ #
+#@ 
+#@ proc print_variable_group { args } {
+#@   global _Variable_Groups
+#@ 
+#@   parse_proc_arguments -args $args resarr
+#@   set group $resarr(group)
+#@ 
+#@   if { [string compare $group "all"] == 0 } {
+#@     set cmd "uplevel #0 \{printvar\}"
+#@     return [eval $cmd]
+#@   }
+#@ 
+#@   if { ![info exists _Variable_Groups($group)] } {
+#@     return -code error "Variable group '$group' does not exist."
+#@   }
+#@ 
+#@   # Print out each global variable in the list. To be totally bulletproof, 
+#@   # test that each variable in the group is still defined.  If not, remove 
+#@   # it from the list.
+#@  
+#@   foreach var [lsort $_Variable_Groups($group)] {
+#@     set cmd "uplevel #0 \{info exists $var\}"
+#@     if { ![eval $cmd] } {
+#@       # Remove it
+#@       set n [lsearch $_Variable_Groups($group) $var]
+#@       set $_Variable_Groups($group) [lreplace $_Variable_Groups($group) $n $n]
+#@     } else {
+#@       # Print it.
+#@       set cmd "uplevel #0 \{set $var\}"
+#@       set val [eval $cmd]
+#@       echo [format "%-25s = \"%s\"" $var $val]
+#@     }
+#@   }
+#@ 
+#@   return 1
+#@ }
+#@ 
+#@ define_proc_attributes print_variable_group     -info "Print the contents of a variable group"      -command_group "Builtins" -permanent      -define_args {{group "Variable group name" group}}
+#@ 
+#@ 
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #
+#@ #  PROCEDURE:   _Variable_Groups_Get_Groups
+#@ #
+#@ #  ABSTRACT:    Return a list of all variable groups. This command is hidden
+#@ #               and is used by Design Vision.
+#@ #
+#@ #   RETURNS:    Tcl list of all variable groups including group all
+#@ #
+#@ #  SYNTAX:      _Variable_Groups_Get_Groups
+#@ ##############################################################################
+#@ #
+#@ 
+#@ proc _Variable_Groups_Get_Groups { } {
+#@    global _Variable_Groups
+#@ 
+#@    set groups  [array names _Variable_Groups]
+#@    append groups " all"
+#@    return $groups
+#@ }
+#@ define_proc_attributes _Variable_Groups_Get_Groups -hidden
+#@ 
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #
+#@ #  PROCEDURE:   _Variable_Groups_Get_Variables_Of_Group
+#@ #
+#@ #  ABSTRACT:    Return a list of all variables of a variable group.
+#@ #               It also works for pseudo group all.
+#@ #
+#@ #   RETURNS:    Tcl list of all variables of a variable group including
+#@ #               pseudo group all
+#@ #
+#@ #  SYNTAX:      _Variable_Groups_Get_Groups
+#@ ##############################################################################
+#@ #
+#@ 
+#@ proc _Variable_Groups_Get_Variables_Of_Group { group } {
+#@   global _Variable_Groups
+#@ 
+#@   if { [string compare $group "all"] == 0 } {
+#@     set itr [array startsearch _Variable_Groups]
+#@     for {  } { [array anymore _Variable_Groups $itr]} { } {
+#@       set index [array nextelement _Variable_Groups $itr]
+#@       append vars $_Variable_Groups($index)
+#@     }
+#@     array donesearch _Variable_Groups $itr
+#@     return $vars
+#@   }
+#@ 
+#@   if { ![info exists _Variable_Groups($group)] } {
+#@     return -code error "Variable group '$group' does not exist."
+#@   }
+#@ 
+#@   # Test if all variables in the list of variables are still defined.
+#@   # Remove not existing variables.
+#@   foreach var [lsort $_Variable_Groups($group)] {
+#@     set cmd "uplevel #0 \{info exists $var\}"
+#@     if { ![eval $cmd] } {
+#@       # Remove it
+#@       set n [lsearch $_Variable_Groups($group) $var]
+#@       set $_Variable_Groups($group) [lreplace $_Variable_Groups($group) $n $n]
+#@     }
+#@   }
+#@   return $_Variable_Groups($group)
+#@ }
+#@ define_proc_attributes _Variable_Groups_Get_Variables_Of_Group -hidden
+#@ 
+#@ # -- End source /usr/local/synopsys//Design_Compiler/default/auxx/syn/.dc_common_procs.tcl
+
+#@ # -- Starting source /usr/local/synopsys//Design_Compiler/default/auxx/syn/.dc_procs.tcl
+
+#@ ##############################################################################
+#@ #
+#@ #
+#@ # FILE:         auxx/syn/.dc_procs.tcl
+#@ #
+#@ # ABSTRACT:     These procedures are part of the Design Compiler Tcl 
+#@ #               user interface.
+#@ #               They are loaded by .synopsys_dc.setup.
+#@ #
+#@ ##############################################################################
+#@ #
+#@ #
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #
+#@ #  PROCEDURE:  read_verilog
+#@ #
+#@ #  ABSTRACT:   Emulate PT's read_verilog command in DC:
+#@ #
+#@ #  Usage:      read_verilog         #  Read one or more verilog files 
+#@ #                *[-hdl_compiler]       (Use HDL Compiler (ignored))
+#@ #                file_names             (Files to read)
+#@ #
+#@ #  Modified: Bharat 11/17/99. Use uplevel to ensure that the command
+#@ #            sees user/hidden variables from the top level. Star 92970.
+#@ #
+#@ #  Modified: Evan Rosser, 12/5/01. Support -netlist and -rtl flags.
+#@ #
+#@ ##############################################################################
+#@ #
+#@ 
+#@ if { $synopsys_program_name != "icc_shell" } {
+#@ proc read_verilog { args } {
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@   set cmd [format {read_file -format verilog %s %s [list %s]}                      [array names ra -rtl]                      [array names ra -netlist]                      $ra(file_names)]
+#@   return [uplevel #0 $cmd]
+#@ }
+#@ 
+#@ define_proc_attributes read_verilog     -info " Read one or more verilog files"     -permanent     -define_args {
+#@       {file_names "Files to read" file_names list required}
+#@    {-netlist "Use structural Verilog netlist reader" "" boolean optional}
+#@    {-rtl "Use RTL Verilog compiler (Presto or HDLC)" "" boolean optional}
+#@    {-hdl_compiler "Use HDL Compiler (ignored)" "" boolean {hidden optional}}
+#@ }
+#@ }
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #
+#@ #  PROCEDURE:  read_sverilog
+#@ #
+#@ #  ABSTRACT:   Emulate PT's read_sverilog command in DC:
+#@ #
+#@ #  Usage:      read_sverilog         #  Read one or more systemverilog files 
+#@ #                *[-hdl_compiler]       (Use HDL Compiler (ignored))
+#@ #                file_names             (Files to read)
+#@ #
+#@ #  Modified: Yong Xiao, 01/31/2003: Copied from read_verilog to support 
+#@ #            systemverilog input. 
+#@ #
+#@ ##############################################################################
+#@ #
+#@ 
+#@ proc read_sverilog { args } {
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@   set cmd [format {read_file -format sverilog %s %s [list %s]}                      [array names ra -rtl]                      [array names ra -netlist]                      $ra(file_names)]
+#@   return [uplevel #0 $cmd]
+#@ }
+#@ 
+#@ define_proc_attributes read_sverilog     -info " Read one or more systemverilog files"     -permanent     -define_args {
+#@       {file_names "Files to read" file_names list required}
+#@    {-netlist "Use structural Verilog netlist reader" "" boolean optional}
+#@    {-rtl "Use RTL Systemverilog compiler (Presto or HDLC)" "" boolean optional}
+#@    {-hdl_compiler "Use HDL Compiler (ignored)" "" boolean {hidden optional}}
+#@ }
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #
+#@ #  PROCEDURE: read_vhdl
+#@ #
+#@ #  ABSTRACT:  Emulate PT's read_vhdl command in DC:
+#@ #
+#@ #  Usage:     read_vhdl            #  Read one or more vhdl files
+#@ #               file_names             (Files to read)
+#@ #
+#@ #
+#@ ##############################################################################
+#@ #
+#@ 
+#@ proc read_vhdl { args } {
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@   set cmd [format {read_file -format vhdl %s [list %s]} 	       [array names ra -netlist] 	       $ra(file_names)]
+#@   return [uplevel #0 $cmd]
+#@ }
+#@ 
+#@ define_proc_attributes read_vhdl     -info " Read one or more vhdl files"     -permanent     -define_args {
+#@ 	{file_names "Files to read" file_names list required}
+#@ 	{-netlist "Use structural VHDL netlist reader" "" boolean optional}
+#@ }
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #
+#@ #  PROCEDURE:   read_db
+#@ #
+#@ #  ABSTRACT:    Emulate PT's read_db command in DC:
+#@ #
+#@ #  Usage: 
+#@ #     read_db              #  Read one or more db files
+#@ #       *[-netlist_only]       (Do not read any attributes from db (ignored))
+#@ #       *[-library]            (File is a library DB (ignored))
+#@ #      file_names             (Files to read)
+#@ #
+#@ #
+#@ ##############################################################################
+#@ #
+#@ 
+#@ proc read_db { args } {
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@   set cmd [format {read_file -format db  [list %s]} $ra(file_names)]
+#@   return [uplevel #0 $cmd]
+#@ }
+#@ 
+#@ define_proc_attributes read_db     -info " Read one or more db files"     -permanent    -define_args {
+#@       {file_names "Files to read" file_names list required}
+#@       {-netlist_only "Do not read any attributes from db (ignored)" "" boolean {hidden optional}}
+#@       {-library "File is a library DB (ignored)" "" boolean {hidden optional}}
+#@      }
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #
+#@ #  PROCEDURE:   read_edif
+#@ #
+#@ #  ABSTRACT:    Emulate PT's read_edif command in DC: 
+#@ #
+#@ #  Usage:     
+#@ #      read_edif            #  Read one or more edif files
+#@ #        *[-complete_language]  (Use ptxr to read the file (ignored))
+#@ #        file_names             (Files to read)
+#@ #
+#@ #
+#@ ##############################################################################
+#@ #
+#@ proc read_edif { args } {
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@   set cmd [format {read_file -format edif  [list %s]} $ra(file_names)]
+#@   return [uplevel #0 $cmd]
+#@ }
+#@ 
+#@ define_proc_attributes read_edif     -info " Read one or more edif files"     -permanent     -define_args {
+#@       {file_names "Files to read" file_names list required}
+#@       {-complete_language "Use ptxr to read the file (ignored)" "" boolean {hidden optional}}
+#@ }
+#@ 
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #
+#@ #  PROCEDURE:   read_ddc
+#@ #
+#@ #  ABSTRACT:    Shorthand for "read_file -format ddc":
+#@ #
+#@ #  Usage: 
+#@ #     read_ddc             #  Read one or more ddc files
+#@ #      *[-scenarios]		only read constraints for specified scenarios
+#@ #      *[-active_scenarios]     only activate the specified scenarios
+#@ #      file_names             (Files to read)
+#@ #
+#@ #
+#@ ##############################################################################
+#@ #
+#@ 
+#@ proc read_ddc { args } {
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@   set cmd "read_file -format ddc"
+#@   if { [ info exists ra(-scenarios) ] } {
+#@     set cmd "$cmd -scenarios { $ra(-scenarios) }"
+#@   }
+#@   if { [ info exists ra(-active_scenarios) ] } {
+#@     set cmd "$cmd -active_scenarios { $ra(-active_scenarios) }"
+#@   }
+#@   set cmd "$cmd { $ra(file_names) }"
+#@   return [uplevel \#0 $cmd]
+#@ }
+#@ 
+#@ define_proc_attributes read_ddc     -info "Read one or more ddc files"     -permanent     -define_args {
+#@       {file_names "Files to read" file_names list required}
+#@       {-scenarios "list of scenarios to be read from ddc file"
+#@ 	  scenario_list list optional}
+#@       {-active_scenarios "list of scenarios to be made active"
+#@ 	  active_scenario_list list optional}}
+#@ 
+#@ 
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #  PROCEDURE:   source_tcl_file
+#@ #
+#@ #  ABSTRACT:    generic procedure to source another tcl file
+#@ #
+#@ #  Arguments:
+#@ #               filename    tcl filename
+#@ #               dir         directory to check for file
+#@ #               msg         verbose message
+#@ #               verbose     verbose mode
+#@ #
+#@ #  Usage:     
+#@ #
+#@ ##############################################################################
+#@ #
+#@ proc source_tcl_file { filename dir msg {verbose 1} } {
+#@     set __qual_pref_file [file join $dir $filename]
+#@     if {[file exists  $__qual_pref_file]} {
+#@       if { $verbose } {
+#@         echo $msg $__qual_pref_file
+#@       }
+#@       # use catch to recover from errors in the pref file
+#@       echo_trace "Sourcing " $__qual_pref_file
+#@       # to speed up sourcing use read and eval
+#@       set f [open $__qual_pref_file]
+#@       if {[catch {namespace eval :: [read -nonewline $f]} __msg]} {
+#@           echo Error: Error during sourcing of $__qual_pref_file
+#@           if {$__msg != ""}  { echo $__msg }
+#@           # actually, it looks like $__msg is always null after
+#@           # source fails
+#@       }
+#@       close $f
+#@     } else {
+#@       echo_trace "Info: File '" $__qual_pref_file "' does not exist!"
+#@     }
+#@ }
+#@ define_proc_attributes source_tcl_file -hidden
+#@ 
+#@ 
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #  PROCEDURE:   echo_trace
+#@ #
+#@ #  ABSTRACT:    echo only in trace modus
+#@ #
+#@ ##############################################################################
+#@ #
+#@ proc echo_trace { args } {
+#@   if { [info exists ::env(TCL_TRACE)] } {
+#@     echo  TRACE\> [join $args "" ]
+#@   }
+#@ }
+#@ define_proc_attributes echo_trace -hidden
+#@ 
+#@ #############################################################################
+#@ #
+#@ # Following procedures added for PC write_script
+#@ #
+#@ #
+#@ #
+#@ ############################################################################
+#@ 
+#@ proc set_cell_restriction { args } {
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@     set cmd [format {set_attribute %s -type integer restrictions %s }     	$ra(cell)     	$ra(value)]
+#@     return [uplevel #0 $cmd]
+#@ 
+#@ }
+#@ define_proc_attributes set_cell_restriction -hidden   -define_args {            {cell "cell_name" cell string required} 	   {value   "value" value string required}    }
+#@ 
+#@ 
+#@ proc set_cell_soft_keepout {args} {
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@     set cmd [format {set_keepout_margin -type soft -outer {%d %d %d %d} [list %s] }         $ra(llx)         $ra(lly)         $ra(urx)         $ra(ury)     	$ra(objects)]
+#@     return [uplevel #0 $cmd]
+#@ 
+#@ 
+#@ }
+#@ 
+#@ define_proc_attributes set_cell_soft_keepout -hidden  -define_args {          {llx "llx" llx float required}          {lly "lly" lly float required}          {urx "urx" urx float required}          {ury "ury" ury float required}          {objects "objects" objects list  required}  }
+#@ 
+#@ proc set_cell_hard_keepout {args} {
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@     set cmd [format {set_keepout_margin -type soft -outer {%d %d %d %d} [list %s] }         $ra(llx)         $ra(lly)         $ra(urx)         $ra(ury)     	$ra(objects)]
+#@     return [uplevel #0 $cmd]
+#@ 
+#@ 
+#@ }
+#@ 
+#@ define_proc_attributes set_cell_hard_keepout -hidden  -define_args {          {llx "llx" llx float required}          {lly "lly" lly float required}          {urx "urx" urx float required}          {ury "ury" ury float required}          {objects "objects" objects list  required}  }
+#@ 
+#@ set mw_use_pdb_lib_format false
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #  PROCEDURE:   write_milkyway
+#@ #
+#@ #  ABSTRACT:    wrapper around save_mw_cel to support original write_milkyway
+#@ #               interface
+#@ # if { [info commands open_mw_cel] == "open_mw_cel" } {}
+#@ #

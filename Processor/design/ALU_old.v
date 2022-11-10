@@ -5,7 +5,7 @@
 `include "./include/sim_ver/DW_sqrt.v"
 //`include "./include/sim_ver/DW_shifter.v"
 
-module ALU(rA_64bit_val, rB_64bit_val, R_ins, Op_code, WW, ALU_out);
+module ALUy(rA_64bit_val, rB_64bit_val, R_ins, Op_code, WW, ALU_out);
 
 input [0:63] rA_64bit_val, rB_64bit_val;
 input [0:5] R_ins;
