@@ -2,31 +2,36 @@
 ****************************************
 check_design summary:
 Version:     K-2015.06-SP5-5
-Date:        Thu Nov 10 12:25:51 2022
+Date:        Thu Nov 10 20:28:01 2022
 ****************************************
 
                    Name                                            Total
 --------------------------------------------------------------------------------
-Inputs/Outputs                                                     22
-    Unconnected ports (LINT-28)                                    22
+Inputs/Outputs                                                     23
+    Unconnected ports (LINT-28)                                    23
 
-Cells                                                              13
+Cells                                                              43
     Cells do not drive (LINT-1)                                    13
+    Leaf pins connected to undriven nets (LINT-58)                 30
+
+Nets                                                                1
+    Undriven nets (LINT-3)                                          1
 --------------------------------------------------------------------------------
 
 Warning: In design 'reg_file', cell 'B_30' does not drive any nets. (LINT-1)
-Warning: In design 'ALU', cell 'C7304' does not drive any nets. (LINT-1)
-Warning: In design 'ALU', cell 'C7305' does not drive any nets. (LINT-1)
-Warning: In design 'ALU', cell 'C7306' does not drive any nets. (LINT-1)
-Warning: In design 'ALU', cell 'C7307' does not drive any nets. (LINT-1)
-Warning: In design 'ALU', cell 'C7313' does not drive any nets. (LINT-1)
-Warning: In design 'ALU', cell 'C7314' does not drive any nets. (LINT-1)
-Warning: In design 'ALU', cell 'C7315' does not drive any nets. (LINT-1)
-Warning: In design 'ALU', cell 'C7316' does not drive any nets. (LINT-1)
-Warning: In design 'ALU', cell 'C7322' does not drive any nets. (LINT-1)
-Warning: In design 'ALU', cell 'C7323' does not drive any nets. (LINT-1)
-Warning: In design 'ALU', cell 'C7324' does not drive any nets. (LINT-1)
-Warning: In design 'ALU', cell 'C7325' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C9052' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C9053' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C9054' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C9055' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C9061' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C9062' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C9063' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C9064' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C9070' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C9071' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C9072' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C9073' does not drive any nets. (LINT-1)
+Warning: In design 'cardinal_processor', net 'alu1/gclk' has no drivers.  Logic 0 assumed. (LINT-3)
 Warning: In design 'Branch_Predictor', port 'Instruction[6]' is not connected to any nets. (LINT-28)
 Warning: In design 'Branch_Predictor', port 'Instruction[7]' is not connected to any nets. (LINT-28)
 Warning: In design 'Branch_Predictor', port 'Instruction[8]' is not connected to any nets. (LINT-28)
@@ -49,4 +54,35 @@ Warning: In design 'Branch_Predictor', port 'Instruction[24]' is not connected t
 Warning: In design 'Branch_Predictor', port 'Instruction[25]' is not connected to any nets. (LINT-28)
 Warning: In design 'Branch_Predictor', port 'Instruction[26]' is not connected to any nets. (LINT-28)
 Warning: In design 'Branch_Predictor', port 'Instruction[27]' is not connected to any nets. (LINT-28)
+Warning: In design 'ALU', port 'Clock' is not connected to any nets. (LINT-28)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwpipe1' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwpipe2' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwpipe3' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwpipe4' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwpipe5' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwpipe6' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwpipe7' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwpipe8' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwpipe9' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwpipe10' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwpipe11' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwpipe12' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwpipe13' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwpipe14' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwpipe15' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwsqpi1' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwsqpi2' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwsqpi3' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwsqpi4' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwsqpi5' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwsqpi6' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwsqpi7' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwsqpi8' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwsqpi9' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwsqpi10' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwsqpi11' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwsqpi12' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwsqpi13' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwsqpi14' is connected to undriven net 'gclk'.  (LINT-58)
+Warning: In design 'ALU', input pin 'clk' of leaf cell 'dwsqpi15' is connected to undriven net 'gclk'.  (LINT-58)
 1

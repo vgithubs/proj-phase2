@@ -66,7 +66,7 @@ check_design > report/$design_name.check_design ;
 # Perforing synthesis and optimization on the current_design.
 #set compile_ultra_ungroup_small_heirarchies_false ;
 #compile_ultra -gate_clock -retime ;
-compile;
+compile -gate_clock;
 
 # For better synthesis result, use "compile_ultra" command.
 # compile_ultra is doing automatic ungrouping during optimization,

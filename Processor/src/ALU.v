@@ -226,28 +226,28 @@ wire zero_64bit_div_p1;
 
 // //For  8 bit
 
-DW_div_pipe #(8, 8, 0, 0, 3, 1, 2) dwpipe1 (.clk(gclk), .rst_n(Reset), .en(1'b1), .a(rA_8bit_div_p1), .b(rB_8bit_div_p1), .quotient(ALU_8bit_div_p1), .remainder(rem_8bit_div_p1), .divide_by_0() );
-DW_div_pipe #(8, 8, 0, 0, 3, 1, 2) dwpipe2 (.clk(gclk), .rst_n(Reset), .en(1'b1), .a(rA_8bit_div_p2), .b(rB_8bit_div_p2), .quotient(ALU_8bit_div_p2), .remainder(rem_8bit_div_p2), .divide_by_0() );
-DW_div_pipe #(8, 8, 0, 0, 3, 1, 2) dwpipe3 (.clk(gclk), .rst_n(Reset), .en(1'b1), .a(rA_8bit_div_p3), .b(rB_8bit_div_p3), .quotient(ALU_8bit_div_p3), .remainder(rem_8bit_div_p3), .divide_by_0() );
-DW_div_pipe #(8, 8, 0, 0, 3, 1, 2) dwpipe4 (.clk(gclk), .rst_n(Reset), .en(1'b1), .a(rA_8bit_div_p4), .b(rB_8bit_div_p4), .quotient(ALU_8bit_div_p4), .remainder(rem_8bit_div_p4), .divide_by_0() );
-DW_div_pipe #(8, 8, 0, 0, 3, 1, 2) dwpipe5 (.clk(gclk), .rst_n(Reset), .en(1'b1), .a(rA_8bit_div_p5), .b(rB_8bit_div_p5), .quotient(ALU_8bit_div_p5), .remainder(rem_8bit_div_p5), .divide_by_0() );
-DW_div_pipe #(8, 8, 0, 0, 3, 1, 2) dwpipe6 (.clk(gclk), .rst_n(Reset), .en(1'b1), .a(rA_8bit_div_p6), .b(rB_8bit_div_p6), .quotient(ALU_8bit_div_p6), .remainder(rem_8bit_div_p6), .divide_by_0() );
-DW_div_pipe #(8, 8, 0, 0, 3, 1, 2) dwpipe7 (.clk(gclk), .rst_n(Reset), .en(1'b1), .a(rA_8bit_div_p7), .b(rB_8bit_div_p7), .quotient(ALU_8bit_div_p7), .remainder(rem_8bit_div_p7), .divide_by_0() );
-DW_div_pipe #(8, 8, 0, 0, 3, 1, 2) dwpipe8 (.clk(gclk), .rst_n(Reset), .en(1'b1), .a(rA_8bit_div_p8), .b(rB_8bit_div_p8), .quotient(ALU_8bit_div_p8), .remainder(rem_8bit_div_p8), .divide_by_0() );
+DW_div_pipe #(8, 8, 0, 0, 3, 1, 2) dwpipe1 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_8bit_div_p1), .b(rB_8bit_div_p1), .quotient(ALU_8bit_div_p1), .remainder(rem_8bit_div_p1), .divide_by_0() );
+DW_div_pipe #(8, 8, 0, 0, 3, 1, 2) dwpipe2 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_8bit_div_p2), .b(rB_8bit_div_p2), .quotient(ALU_8bit_div_p2), .remainder(rem_8bit_div_p2), .divide_by_0() );
+DW_div_pipe #(8, 8, 0, 0, 3, 1, 2) dwpipe3 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_8bit_div_p3), .b(rB_8bit_div_p3), .quotient(ALU_8bit_div_p3), .remainder(rem_8bit_div_p3), .divide_by_0() );
+DW_div_pipe #(8, 8, 0, 0, 3, 1, 2) dwpipe4 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_8bit_div_p4), .b(rB_8bit_div_p4), .quotient(ALU_8bit_div_p4), .remainder(rem_8bit_div_p4), .divide_by_0() );
+DW_div_pipe #(8, 8, 0, 0, 3, 1, 2) dwpipe5 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_8bit_div_p5), .b(rB_8bit_div_p5), .quotient(ALU_8bit_div_p5), .remainder(rem_8bit_div_p5), .divide_by_0() );
+DW_div_pipe #(8, 8, 0, 0, 3, 1, 2) dwpipe6 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_8bit_div_p6), .b(rB_8bit_div_p6), .quotient(ALU_8bit_div_p6), .remainder(rem_8bit_div_p6), .divide_by_0() );
+DW_div_pipe #(8, 8, 0, 0, 3, 1, 2) dwpipe7 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_8bit_div_p7), .b(rB_8bit_div_p7), .quotient(ALU_8bit_div_p7), .remainder(rem_8bit_div_p7), .divide_by_0() );
+DW_div_pipe #(8, 8, 0, 0, 3, 1, 2) dwpipe8 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_8bit_div_p8), .b(rB_8bit_div_p8), .quotient(ALU_8bit_div_p8), .remainder(rem_8bit_div_p8), .divide_by_0() );
 
 //For 16 bit
 
-DW_div_pipe #(16, 16, 0, 0, 3, 1, 2) dwpipe9 (.clk(gclk), .rst_n(Reset), .en(1'b1), .a(rA_16bit_div_p1), .b(rB_16bit_div_p1), .quotient(ALU_16bit_div_p1), .remainder(rem_16bit_div_p1), .divide_by_0() );
-DW_div_pipe #(16, 16, 0, 0, 3, 1, 2) dwpipe10 (.clk(gclk), .rst_n(Reset), .en(1'b1), .a(rA_16bit_div_p2), .b(rB_16bit_div_p2), .quotient(ALU_16bit_div_p2), .remainder(rem_16bit_div_p2), .divide_by_0() );
-DW_div_pipe #(16, 16, 0, 0, 3, 1, 2) dwpipe11 (.clk(gclk), .rst_n(Reset), .en(1'b1), .a(rA_16bit_div_p3), .b(rB_16bit_div_p3), .quotient(ALU_16bit_div_p3), .remainder(rem_16bit_div_p3), .divide_by_0() );
-DW_div_pipe #(16, 16, 0, 0, 3, 1, 2) dwpipe12 (.clk(gclk), .rst_n(Reset), .en(1'b1), .a(rA_16bit_div_p4), .b(rB_16bit_div_p4), .quotient(ALU_16bit_div_p4), .remainder(rem_16bit_div_p4), .divide_by_0() );
+DW_div_pipe #(16, 16, 0, 0, 3, 1, 2) dwpipe9 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_16bit_div_p1), .b(rB_16bit_div_p1), .quotient(ALU_16bit_div_p1), .remainder(rem_16bit_div_p1), .divide_by_0() );
+DW_div_pipe #(16, 16, 0, 0, 3, 1, 2) dwpipe10 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_16bit_div_p2), .b(rB_16bit_div_p2), .quotient(ALU_16bit_div_p2), .remainder(rem_16bit_div_p2), .divide_by_0() );
+DW_div_pipe #(16, 16, 0, 0, 3, 1, 2) dwpipe11 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_16bit_div_p3), .b(rB_16bit_div_p3), .quotient(ALU_16bit_div_p3), .remainder(rem_16bit_div_p3), .divide_by_0() );
+DW_div_pipe #(16, 16, 0, 0, 3, 1, 2) dwpipe12 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_16bit_div_p4), .b(rB_16bit_div_p4), .quotient(ALU_16bit_div_p4), .remainder(rem_16bit_div_p4), .divide_by_0() );
 
 //For 32 bit
-DW_div_pipe #(32, 32, 0, 0, 3, 1, 2) dwpipe13 (.clk(gclk), .rst_n(Reset), .en(1'b1), .a(rA_32bit_div_p1), .b(rB_32bit_div_p1), .quotient(ALU_32bit_div_p1), .remainder(rem_32bit_div_p1), .divide_by_0() );
-DW_div_pipe #(32, 32, 0, 0, 3, 1, 2) dwpipe14 (.clk(gclk), .rst_n(Reset), .en(1'b1), .a(rA_32bit_div_p2), .b(rB_32bit_div_p2), .quotient(ALU_32bit_div_p2), .remainder(rem_32bit_div_p2), .divide_by_0() );
+DW_div_pipe #(32, 32, 0, 0, 3, 1, 2) dwpipe13 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_32bit_div_p1), .b(rB_32bit_div_p1), .quotient(ALU_32bit_div_p1), .remainder(rem_32bit_div_p1), .divide_by_0() );
+DW_div_pipe #(32, 32, 0, 0, 3, 1, 2) dwpipe14 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_32bit_div_p2), .b(rB_32bit_div_p2), .quotient(ALU_32bit_div_p2), .remainder(rem_32bit_div_p2), .divide_by_0() );
 
 //For 64 bit
-DW_div_pipe #(64, 64, 0, 0, 3, 1, 2) dwpipe15 (.clk(gclk), .rst_n(Reset), .en(1'b1), .a(rA_64bit_div_p1), .b(rB_64bit_div_p1), .quotient(ALU_64bit_div_p1), .remainder(rem_64bit_div_p1), .divide_by_0() );
+DW_div_pipe #(64, 64, 0, 0, 3, 1, 2) dwpipe15 (.clk(Clock), .rst_n(Reset), .en(1'b1), .a(rA_64bit_div_p1), .b(rB_64bit_div_p1), .quotient(ALU_64bit_div_p1), .remainder(rem_64bit_div_p1), .divide_by_0() );
 
 
 
@@ -279,14 +279,14 @@ assign rA_8bit_p6_sqrt = ((R_ins == VSQRT) & (WW==Width_8)) ? rA_8bit_p6 : 8'b0;
 assign rA_8bit_p7_sqrt = ((R_ins == VSQRT) & (WW==Width_8)) ? rA_8bit_p7 : 8'b0;
 assign rA_8bit_p8_sqrt = ((R_ins == VSQRT) & (WW==Width_8)) ? rA_8bit_p8 : 8'b0;
 
-DW_sqrt_pipe #(8, 1'b0, 3, 0, 2) dwsqpi1 (.clk(gclk), .rst_n(Reset),.en(1'b1), .a(rA_8bit_p1_sqrt), .root(ALU_8bit_sqrt_p1) );
-DW_sqrt_pipe #(8, 1'b0, 3, 0, 2) dwsqpi2 (.clk(gclk), .rst_n(Reset),.en(1'b1), .a(rA_8bit_p2_sqrt), .root(ALU_8bit_sqrt_p2) );
-DW_sqrt_pipe #(8, 1'b0, 3, 0, 2) dwsqpi3 (.clk(gclk), .rst_n(Reset),.en(1'b1), .a(rA_8bit_p3_sqrt), .root(ALU_8bit_sqrt_p3) );
-DW_sqrt_pipe #(8, 1'b0, 3, 0, 2) dwsqpi4 (.clk(gclk), .rst_n(Reset),.en(1'b1), .a(rA_8bit_p4_sqrt), .root(ALU_8bit_sqrt_p4) );
-DW_sqrt_pipe #(8, 1'b0, 3, 0, 2) dwsqpi5 (.clk(gclk), .rst_n(Reset),.en(1'b1), .a(rA_8bit_p5_sqrt), .root(ALU_8bit_sqrt_p5) );
-DW_sqrt_pipe #(8, 1'b0, 3, 0, 2) dwsqpi6 (.clk(gclk), .rst_n(Reset),.en(1'b1), .a(rA_8bit_p6_sqrt), .root(ALU_8bit_sqrt_p6) );
-DW_sqrt_pipe #(8, 1'b0, 3, 0, 2) dwsqpi7 (.clk(gclk), .rst_n(Reset),.en(1'b1), .a(rA_8bit_p7_sqrt), .root(ALU_8bit_sqrt_p7) );
-DW_sqrt_pipe #(8, 1'b0, 3, 0, 2) dwsqpi8 (.clk(gclk), .rst_n(Reset),.en(1'b1), .a(rA_8bit_p8_sqrt), .root(ALU_8bit_sqrt_p8) );
+DW_sqrt_pipe #(8, 1'b0, 3, 0, 2) dwsqpi1 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_8bit_p1_sqrt), .root(ALU_8bit_sqrt_p1) );
+DW_sqrt_pipe #(8, 1'b0, 3, 0, 2) dwsqpi2 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_8bit_p2_sqrt), .root(ALU_8bit_sqrt_p2) );
+DW_sqrt_pipe #(8, 1'b0, 3, 0, 2) dwsqpi3 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_8bit_p3_sqrt), .root(ALU_8bit_sqrt_p3) );
+DW_sqrt_pipe #(8, 1'b0, 3, 0, 2) dwsqpi4 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_8bit_p4_sqrt), .root(ALU_8bit_sqrt_p4) );
+DW_sqrt_pipe #(8, 1'b0, 3, 0, 2) dwsqpi5 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_8bit_p5_sqrt), .root(ALU_8bit_sqrt_p5) );
+DW_sqrt_pipe #(8, 1'b0, 3, 0, 2) dwsqpi6 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_8bit_p6_sqrt), .root(ALU_8bit_sqrt_p6) );
+DW_sqrt_pipe #(8, 1'b0, 3, 0, 2) dwsqpi7 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_8bit_p7_sqrt), .root(ALU_8bit_sqrt_p7) );
+DW_sqrt_pipe #(8, 1'b0, 3, 0, 2) dwsqpi8 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_8bit_p8_sqrt), .root(ALU_8bit_sqrt_p8) );
 
 
 //For 16 bit
@@ -295,10 +295,10 @@ assign rA_16bit_p2_sqrt = ((R_ins == VSQRT) & (WW==Width_16)) ? rA_16bit_p2 : 16
 assign rA_16bit_p3_sqrt = ((R_ins == VSQRT) & (WW==Width_16)) ? rA_16bit_p3 : 16'b0;
 assign rA_16bit_p4_sqrt = ((R_ins == VSQRT) & (WW==Width_16)) ? rA_16bit_p4 : 16'b0;
 
-DW_sqrt_pipe #(16, 1'b0, 3, 0, 2) dwsqpi9 (.clk(gclk), .rst_n(Reset),.en(1'b1), .a(rA_16bit_p1_sqrt), .root(ALU_16bit_sqrt_p1) );
-DW_sqrt_pipe #(16, 1'b0, 3, 0, 2) dwsqpi10 (.clk(gclk), .rst_n(Reset),.en(1'b1), .a(rA_16bit_p2_sqrt), .root(ALU_16bit_sqrt_p2) );
-DW_sqrt_pipe #(16, 1'b0, 3, 0, 2) dwsqpi11 (.clk(gclk), .rst_n(Reset),.en(1'b1), .a(rA_16bit_p3_sqrt), .root(ALU_16bit_sqrt_p3) );
-DW_sqrt_pipe #(16, 1'b0, 3, 0, 2) dwsqpi12 (.clk(gclk), .rst_n(Reset),.en(1'b1), .a(rA_16bit_p4_sqrt), .root(ALU_16bit_sqrt_p4) );
+DW_sqrt_pipe #(16, 1'b0, 3, 0, 2) dwsqpi9 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_16bit_p1_sqrt), .root(ALU_16bit_sqrt_p1) );
+DW_sqrt_pipe #(16, 1'b0, 3, 0, 2) dwsqpi10 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_16bit_p2_sqrt), .root(ALU_16bit_sqrt_p2) );
+DW_sqrt_pipe #(16, 1'b0, 3, 0, 2) dwsqpi11 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_16bit_p3_sqrt), .root(ALU_16bit_sqrt_p3) );
+DW_sqrt_pipe #(16, 1'b0, 3, 0, 2) dwsqpi12 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_16bit_p4_sqrt), .root(ALU_16bit_sqrt_p4) );
 
 
 //For 32 bit
@@ -306,13 +306,13 @@ DW_sqrt_pipe #(16, 1'b0, 3, 0, 2) dwsqpi12 (.clk(gclk), .rst_n(Reset),.en(1'b1),
 assign rA_32bit_p1_sqrt = ((R_ins == VSQRT) & (WW==Width_32)) ? rA_32bit_p1 : 32'b0;
 assign rA_32bit_p2_sqrt = ((R_ins == VSQRT) & (WW==Width_32)) ? rA_32bit_p2 : 32'b0;
 
-DW_sqrt_pipe #(32, 1'b0, 3, 0, 2) dwsqpi13 (.clk(gclk), .rst_n(Reset),.en(1'b1), .a(rA_32bit_p1_sqrt), .root(ALU_32bit_sqrt_p1) );
-DW_sqrt_pipe #(32, 1'b0, 3, 0, 2) dwsqpi14 (.clk(gclk), .rst_n(Reset),.en(1'b1), .a(rA_32bit_p2_sqrt), .root(ALU_32bit_sqrt_p2) );
+DW_sqrt_pipe #(32, 1'b0, 3, 0, 2) dwsqpi13 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_32bit_p1_sqrt), .root(ALU_32bit_sqrt_p1) );
+DW_sqrt_pipe #(32, 1'b0, 3, 0, 2) dwsqpi14 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_32bit_p2_sqrt), .root(ALU_32bit_sqrt_p2) );
 
 //For 64 bit
 assign rA_64bit_p1_sqrt = ((R_ins == VSQRT) & (WW==Width_64)) ? rA_64bit_p1 : 64'b0;
 
-DW_sqrt_pipe #(64, 1'b0, 3, 0, 2) dwsqpi15 (.clk(gclk), .rst_n(Reset),.en(1'b1), .a(rA_64bit_p1_sqrt), .root(ALU_64bit_sqrt_p1) );
+DW_sqrt_pipe #(64, 1'b0, 3, 0, 2) dwsqpi15 (.clk(Clock), .rst_n(Reset),.en(1'b1), .a(rA_64bit_p1_sqrt), .root(ALU_64bit_sqrt_p1) );
 
 // // Divider for Quotient and Mod
 // reg [0:7] rA_8bit_div_p1, rB_8bit_div_p1, rA_8bit_div_p2, rB_8bit_div_p2, rA_8bit_div_p3, rB_8bit_div_p3,  rA_8bit_div_p4, rB_8bit_div_p4, rA_8bit_div_p5, rB_8bit_div_p5, rA_8bit_div_p6, rB_8bit_div_p6, rA_8bit_div_p7, rB_8bit_div_p7, rA_8bit_div_p8, rB_8bit_div_p8;
