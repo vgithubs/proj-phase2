@@ -4,7 +4,6 @@
 /////////////////////////////////////////////////////////
 // Test Bench for the Cardinal Processor RTL Verification
 //Design folder has: cardinal_processor.v, ALU.v,reg_file.v
-`timescale 1ns/10ps
 
 //Define the clock cycle
 `define CYCLE_TIME 100

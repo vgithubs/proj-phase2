@@ -51,7 +51,7 @@ uniquify ;
 link ;
 
 # Create a clock with period of 5.
-create_clock -name clk -period 5.0 -waveform [list 0 2.5] [get_ports Clock]
+create_clock -name clk -period 6 -waveform [list 0 3] [get_ports Clock]
 
 # Setting timing constraints for combinational logic.
 # Specifying maximum delay from inputs to outputs
@@ -65,8 +65,8 @@ check_design > report/$design_name.check_design ;
 
 # Perforing synthesis and optimization on the current_design.
 #set compile_ultra_ungroup_small_heirarchies_false ;
-compile_ultra -gate_clock -retime;
-#compile
+#compile_ultra -gate_clock -retime ;
+compile;
 
 # For better synthesis result, use "compile_ultra" command.
 # compile_ultra is doing automatic ungrouping during optimization,

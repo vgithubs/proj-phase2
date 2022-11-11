@@ -41,8 +41,8 @@ wire BIF;
 wire stall_comb;
 reg stall;
 reg stall_count;
-wire enable, gclk;
-reg en_out;
+// wire enable, gclk;
+// reg en_out;
 
 //ID stage signals
 reg flush; //Input to WBFF in IF
@@ -84,15 +84,15 @@ reg [0:63] WB_PPP_rA_rD, WB_PPP_rB; //to forward while taking PPP in considerati
 
 //***
 
-//Clock Gating
-assign enable = !stall;
+// //Clock Gating
+// assign enable = !stall;
 
-always @ (enable or Clock) begin
-	if (!Clock) 
- 		en_out = enable; // build latch
-end
+// always @ (enable or Clock) begin
+// 	if (!Clock) 
+//  		en_out = enable; // build latch
+// end
 
-assign gclk = en_out && Clock;
+// assign gclk = en_out && Clock;
 
 //IF stage
 assign PC_next = PC + 1'b1;
@@ -106,7 +106,7 @@ assign pred_actual = {IF_ID_pred, taken};
 
 assign Instr_Addr = PC;
 
-always @(posedge gclk) begin
+always @(posedge Clock) begin
 	if(Reset) begin
 		WBFF <= 1;
 		PC <= 0;
@@ -223,7 +223,7 @@ end
 
 
 //Forwarding logic
-always @(posedge gclk) begin
+always @(posedge Clock) begin
     if((ID_EX[0:4]==IF_ID[11:15]) && (ID_EX[0:4]!=0))
 		fwd_rA <= 1;
 	else fwd_rA <= 0;
@@ -316,7 +316,7 @@ end
 //Dataflow
 assign WB_data = EX_WB[9]? EX_WB_mem_data : EX_WB_reg_data; //EX_WB[9] = Mem_to_Reg
 
-always @(posedge gclk) begin
+always @(posedge Clock) begin
 	if(Reset) begin
 		ID_EX <= 0;
 		ID_EX_rA_rD_data <= 0;
