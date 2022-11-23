@@ -1,0 +1,24 @@
+ 
+****************************************
+Report : clock_gating
+Design : cardinal_processor
+Version: K-2015.06-SP5-5
+Date   : Wed Nov  9 20:27:05 2022
+****************************************
+
+
+
+                             Clock Gating Summary
+          ------------------------------------------------------------
+          |    Number of Clock gating elements    |      128         |
+          |                                       |                  |
+          |    Number of Gated registers          |  2335 (38.85%)   |
+          |                                       |                  |
+          |    Number of Ungated registers        |  3676 (61.15%)   |
+          |                                       |                  |
+          |    Total number of registers          |     6011         |
+          ------------------------------------------------------------
+
+
+
+1

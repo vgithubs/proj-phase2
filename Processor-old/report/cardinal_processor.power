@@ -1,0 +1,433 @@
+Loading db file '/home/scf-22/ee577/NCSU45PDK/FreePDK45/osu_soc/lib/files/gscl45nm.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : cardinal_processor
+Version: K-2015.06-SP5-5
+Date   : Fri Nov 11 04:25:12 2022
+****************************************
+
+
+Library(s) Used:
+
+    gscl45nm (File: /home/scf-22/ee577/NCSU45PDK/FreePDK45/osu_soc/lib/files/gscl45nm.db)
+
+
+Operating Conditions: typical   Library: gscl45nm
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 1.1  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+cardinal_processor                        0.154    2.254 2.34e+06    4.752 100.0
+  add_74 (cardinal_processor_DW01_inc_0)
+                                       1.58e-04 2.77e-04  332.280 7.67e-04   0.0
+  alu1 (ALU)                           6.12e-03 8.17e-03 2.03e+06    2.047  43.1
+    dwdivi12 (ALU_DW_div_95)              0.000    0.000 8.56e+03 8.56e-03   0.2
+    dwdivi11 (ALU_DW_div_90)              0.000    0.000 8.56e+03 8.56e-03   0.2
+    dwdivi10 (ALU_DW_div_85)              0.000    0.000 8.58e+03 8.58e-03   0.2
+    dwdivi9 (ALU_DW_div_80)               0.000    0.000 8.58e+03 8.58e-03   0.2
+    dwdivi8 (ALU_DW_div_75)               0.000    0.000 2.38e+03 2.38e-03   0.0
+    dwdivi7 (ALU_DW_div_69)               0.000    0.000 2.38e+03 2.38e-03   0.0
+    dwdivi6 (ALU_DW_div_63)               0.000    0.000 2.38e+03 2.38e-03   0.0
+    dwdivi5 (ALU_DW_div_57)               0.000    0.000 2.36e+03 2.36e-03   0.0
+    dwdivi4 (ALU_DW_div_51)               0.000    0.000 2.38e+03 2.38e-03   0.0
+    dwdivi3 (ALU_DW_div_45)               0.000    0.000 2.36e+03 2.36e-03   0.0
+    dwdivi2 (ALU_DW_div_39)               0.000    0.000 2.36e+03 2.36e-03   0.0
+    dwdivi1 (ALU_DW_div_33)               0.000    0.000 2.39e+03 2.39e-03   0.1
+    dwdivi14 (ALU_DW_div_27)              0.000    0.000 1.24e+05    0.124   2.6
+    dwdivi13 (ALU_DW_div_22)              0.000    0.000 1.23e+05    0.123   2.6
+    dwdivi15/u_add_PartRem_20_6 (ALU_DW01_add_576)
+                                          0.000    0.000 1.98e+03 1.98e-03   0.0
+    dwdivi15/u_add_PartRem_21_1 (ALU_DW01_add_703)
+                                          0.000    0.000 1.70e+03 1.70e-03   0.0
+    dwdivi15/u_add_PartRem_20_5 (ALU_DW01_add_596)
+                                          0.000    0.000 1.97e+03 1.97e-03   0.0
+    dwdivi15/u_add_PartRem_20_7 (ALU_DW01_add_627)
+                                          0.000    0.000 2.18e+03 2.18e-03   0.0
+    dwdivi15/u_add_PartRem_20_3 (ALU_DW01_add_697)
+                                          0.000    0.000 2.12e+03 2.12e-03   0.0
+    dwdivi15/u_add_PartRem_6_1 (ALU_DW01_add_689)
+                                          0.000    0.000 8.42e+03 8.42e-03   0.2
+    dwdivi15/u_add_B3 (ALU_DW01_add_698)
+                                          0.000    0.000 1.17e+04 1.17e-02   0.2
+    dwdivi15/u_add_PartRem_7_1 (ALU_DW01_add_690)
+                                          0.000    0.000 7.97e+03 7.97e-03   0.2
+    dwdivi15/u_add_PartRem_20_2 (ALU_DW01_add_704)
+                                          0.000    0.000 1.55e+03 1.55e-03   0.0
+    dwdivi15/u_add_B6 (ALU_DW01_add_577)
+                                          0.000    0.000 1.27e+04 1.27e-02   0.3
+    dwdivi15/u_add_PartRem_6_2 (ALU_DW01_add_677)
+                                          0.000    0.000 8.38e+03 8.38e-03   0.2
+    dwdivi15/u_add_PartRem_18_1 (ALU_DW01_add_702)
+                                          0.000    0.000 2.26e+03 2.26e-03   0.0
+    dwdivi15/u_add_PartRem_8_1 (ALU_DW01_add_680)
+                                          0.000    0.000 7.56e+03 7.56e-03   0.2
+    dwdivi15/u_add_PartRem_7_2 (ALU_DW01_add_678)
+                                          0.000    0.000 8.40e+03 8.40e-03   0.2
+    dwdivi15/u_add_PartRem_18_4 (ALU_DW01_add_613)
+                                          0.000    0.000 2.56e+03 2.56e-03   0.1
+    dwdivi15/u_add_PartRem_19_2 (ALU_DW01_add_642)
+                                          0.000    0.000 2.03e+03 2.03e-03   0.0
+    dwdivi15/u_add_PartRem_18_2 (ALU_DW01_add_647)
+                                          0.000    0.000 2.31e+03 2.31e-03   0.0
+    dwdivi15/u_add_PartRem_8_2 (ALU_DW01_add_654)
+                                          0.000    0.000 7.79e+03 7.79e-03   0.2
+    dwdivi15/u_add_PartRem_7_4 (ALU_DW01_add_649)
+                                          0.000    0.000 8.11e+03 8.11e-03   0.2
+    dwdivi15/u_add_PartRem_6_4 (ALU_DW01_add_648)
+                                          0.000    0.000 8.43e+03 8.43e-03   0.2
+    dwdivi15/u_add_PartRem_19_6 (ALU_DW01_add_575)
+                                          0.000    0.000 2.20e+03 2.20e-03   0.0
+    dwdivi15/u_add_PartRem_19_1 (ALU_DW01_add_653)
+                                          0.000    0.000 1.94e+03 1.94e-03   0.0
+    dwdivi15/u_add_PartRem_19_3 (ALU_DW01_add_652)
+                                          0.000    0.000 2.06e+03 2.06e-03   0.0
+    dwdivi15/u_add_PartRem_19_5 (ALU_DW01_add_651)
+                                          0.000    0.000 2.05e+03 2.05e-03   0.0
+    dwdivi15/u_add_PartRem_19_7 (ALU_DW01_add_650)
+                                          0.000    0.000 2.12e+03 2.12e-03   0.0
+    dwdivi15/u_add_PartRem_18_3 (ALU_DW01_add_701)
+                                          0.000    0.000 2.33e+03 2.33e-03   0.0
+    dwdivi15/u_add_PartRem_18_5 (ALU_DW01_add_700)
+                                          0.000    0.000 2.34e+03 2.34e-03   0.0
+    dwdivi15/u_add_PartRem_18_7 (ALU_DW01_add_699)
+                                          0.000    0.000 2.40e+03 2.40e-03   0.1
+    dwdivi15/u_add_PartRem_18_6 (ALU_DW01_add_574)
+                                          0.000    0.000 2.40e+03 2.40e-03   0.1
+    dwdivi15/u_add_PartRem_17_3 (ALU_DW01_add_671)
+                                          0.000    0.000 3.05e+03 3.05e-03   0.1
+    dwdivi15/u_add_PartRem_17_5 (ALU_DW01_add_670)
+                                          0.000    0.000 2.95e+03 2.95e-03   0.1
+    dwdivi15/u_add_PartRem_17_7 (ALU_DW01_add_669)
+                                          0.000    0.000 3.00e+03 3.00e-03   0.1
+    dwdivi15/u_add_PartRem_17_1 (ALU_DW01_add_666)
+                                          0.000    0.000 2.88e+03 2.88e-03   0.1
+    dwdivi15/u_add_PartRem_19_4 (ALU_DW01_add_583)
+                                          0.000    0.000 1.94e+03 1.94e-03   0.0
+    dwdivi15/u_add_PartRem_17_6 (ALU_DW01_add_657)
+                                          0.000    0.000 3.09e+03 3.09e-03   0.1
+    dwdivi15/u_add_PartRem_6_7 (ALU_DW01_add_628)
+                                          0.000    0.000 8.29e+03 8.29e-03   0.2
+    dwdivi15/u_add_PartRem_14_2 (ALU_DW01_add_643)
+                                          0.000    0.000 4.23e+03 4.23e-03   0.1
+    dwdivi15/u_add_PartRem_7_7 (ALU_DW01_add_631)
+                                          0.000    0.000 8.18e+03 8.18e-03   0.2
+    dwdivi15/u_add_PartRem_16_4 (ALU_DW01_add_667)
+                                          0.000    0.000 3.40e+03 3.40e-03   0.1
+    dwdivi15/u_add_PartRem_8_7 (ALU_DW01_add_599)
+                                          0.000    0.000 7.48e+03 7.48e-03   0.2
+    dwdivi15/u_add_PartRem_7_3 (ALU_DW01_add_633)
+                                          0.000    0.000 7.49e+03 7.49e-03   0.2
+    dwdivi15/u_add_PartRem_7_5 (ALU_DW01_add_632)
+                                          0.000    0.000 7.65e+03 7.65e-03   0.2
+    dwdivi15/u_add_PartRem_6_6 (ALU_DW01_add_562)
+                                          0.000    0.000 8.65e+03 8.65e-03   0.2
+    dwdivi15/u_add_PartRem_7_6 (ALU_DW01_add_563)
+                                          0.000    0.000 8.15e+03 8.15e-03   0.2
+    dwdivi15/u_add_PartRem_6_3 (ALU_DW01_add_630)
+                                          0.000    0.000 7.72e+03 7.72e-03   0.2
+    dwdivi15/u_add_PartRem_6_5 (ALU_DW01_add_629)
+                                          0.000    0.000 7.78e+03 7.78e-03   0.2
+    dwdivi15/u_add_PartRem_8_5 (ALU_DW01_add_600)
+                                          0.000    0.000 7.62e+03 7.62e-03   0.2
+    dwdivi15/u_add_PartRem_8_6 (ALU_DW01_add_564)
+                                          0.000    0.000 8.16e+03 8.16e-03   0.2
+    dwdivi15/u_add_PartRem_14_1 (ALU_DW01_add_612)
+                                          0.000    0.000 4.08e+03 4.08e-03   0.1
+    dwdivi15/u_add_PartRem_14_6 (ALU_DW01_add_570)
+                                          0.000    0.000 4.44e+03 4.44e-03   0.1
+    dwdivi15/u_add_PartRem_14_3 (ALU_DW01_add_603)
+                                          0.000    0.000 4.20e+03 4.20e-03   0.1
+    dwdivi15/u_add_PartRem_14_5 (ALU_DW01_add_602)
+                                          0.000    0.000 4.41e+03 4.41e-03   0.1
+    dwdivi15/u_add_PartRem_14_7 (ALU_DW01_add_601)
+                                          0.000    0.000 4.33e+03 4.33e-03   0.1
+    dwdivi15/u_add_PartRem_8_3 (ALU_DW01_add_594)
+                                          0.000    0.000 7.25e+03 7.25e-03   0.2
+    dwdivi15/u_add_B5 (ALU_DW01_add_597)
+                                          0.000    0.000 1.18e+04 1.18e-02   0.2
+    dwdivi15/u_add_PartRem_12_4 (ALU_DW01_add_658)
+                                          0.000    0.000 5.64e+03 5.64e-03   0.1
+    dwdivi15/u_add_PartRem_12_2 (ALU_DW01_add_676)
+                                          0.000    0.000 5.10e+03 5.10e-03   0.1
+    dwdivi15/u_add_PartRem_17_2 (ALU_DW01_add_578)
+                                          0.000    0.000 2.97e+03 2.97e-03   0.1
+    dwdivi15/u_add_PartRem_13_2 (ALU_DW01_add_591)
+                                          0.000    0.000 4.93e+03 4.93e-03   0.1
+    dwdivi15/u_add_PartRem_4_1 (ALU_DW01_add_695)
+                                          0.000    0.000 8.78e+03 8.78e-03   0.2
+    dwdivi15/u_add_PartRem_12_1 (ALU_DW01_add_683)
+                                          0.000    0.000 5.30e+03 5.30e-03   0.1
+    dwdivi15/u_add_PartRem_13_1 (ALU_DW01_add_646)
+                                          0.000    0.000 4.75e+03 4.75e-03   0.1
+    dwdivi15/u_add_PartRem_13_4 (ALU_DW01_add_614)
+                                          0.000    0.000 4.82e+03 4.82e-03   0.1
+    dwdivi15/u_add_PartRem_5_1 (ALU_DW01_add_694)
+                                          0.000    0.000 7.99e+03 7.99e-03   0.2
+    dwdivi15/u_add_PartRem_14_4 (ALU_DW01_add_588)
+                                          0.000    0.000 4.16e+03 4.16e-03   0.1
+    dwdivi15/u_add_PartRem_4_2 (ALU_DW01_add_687)
+                                          0.000    0.000 8.31e+03 8.31e-03   0.2
+    dwdivi15/u_add_B7 (ALU_DW01_sub_3)    0.000    0.000 1.22e+04 1.22e-02   0.3
+    dwdivi15/u_add_PartRem_5_2 (ALU_DW01_add_684)
+                                          0.000    0.000 7.97e+03 7.97e-03   0.2
+    dwdivi15/u_add_PartRem_3_1 (ALU_DW01_add_696)
+                                          0.000    0.000 8.72e+03 8.72e-03   0.2
+    dwdivi15/u_add_PartRem_15_2 (ALU_DW01_add_589)
+                                          0.000    0.000 3.72e+03 3.72e-03   0.1
+    dwdivi15/u_add_PartRem_15_4 (ALU_DW01_add_593)
+                                          0.000    0.000 3.77e+03 3.77e-03   0.1
+    dwdivi15/u_add_PartRem_15_3 (ALU_DW01_add_609)
+                                          0.000    0.000 3.87e+03 3.87e-03   0.1
+    dwdivi15/u_add_PartRem_3_2 (ALU_DW01_add_688)
+                                          0.000    0.000 8.86e+03 8.86e-03   0.2
+    dwdivi15/u_add_PartRem_0_2 (ALU_DW01_add_655)
+                                          0.000    0.000 1.25e+04 1.25e-02   0.3
+    dwdivi15/u_add_PartRem_8_4 (ALU_DW01_add_592)
+                                          0.000    0.000 7.26e+03 7.26e-03   0.2
+    dwdivi15/u_add_PartRem_0_1 (ALU_DW01_add_664)
+                                          0.000    0.000 1.23e+04 1.23e-02   0.3
+    dwdivi15/u_add_PartRem_15_5 (ALU_DW01_add_611)
+                                          0.000    0.000 3.73e+03 3.73e-03   0.1
+    dwdivi15/u_add_PartRem_15_7 (ALU_DW01_add_610)
+                                          0.000    0.000 3.88e+03 3.88e-03   0.1
+    dwdivi15/u_add_PartRem_15_6 (ALU_DW01_add_580)
+                                          0.000    0.000 3.76e+03 3.76e-03   0.1
+    dwdivi15/u_add_PartRem_11_4 (ALU_DW01_add_656)
+                                          0.000    0.000 5.40e+03 5.40e-03   0.1
+    dwdivi15/u_add_PartRem_9_1 (ALU_DW01_add_693)
+                                          0.000    0.000 6.33e+03 6.33e-03   0.1
+    dwdivi15/u_add_PartRem_2_1 (ALU_DW01_add_692)
+                                          0.000    0.000 9.56e+03 9.56e-03   0.2
+    dwdivi15/u_add_PartRem_4_4 (ALU_DW01_add_668)
+                                          0.000    0.000 9.05e+03 9.05e-03   0.2
+    dwdivi15/u_add_PartRem_11_2 (ALU_DW01_add_675)
+                                          0.000    0.000 5.74e+03 5.74e-03   0.1
+    dwdivi15/u_add_PartRem_10_1 (ALU_DW01_add_691)
+                                          0.000    0.000 6.01e+03 6.01e-03   0.1
+    dwdivi15/u_add_PartRem_9_2 (ALU_DW01_add_681)
+                                          0.000    0.000 6.29e+03 6.29e-03   0.1
+    dwdivi15/u_add_PartRem_2_2 (ALU_DW01_add_682)
+                                          0.000    0.000 9.25e+03 9.25e-03   0.2
+    dwdivi15/u_add_PartRem_17_4 (ALU_DW01_add_573)
+                                          0.000    0.000 2.96e+03 2.96e-03   0.1
+    dwdivi15/u_add_PartRem_1_1 (ALU_DW01_add_685)
+                                          0.000    0.000 9.66e+03 9.66e-03   0.2
+    dwdivi15/u_add_PartRem_5_4 (ALU_DW01_add_665)
+                                          0.000    0.000 8.55e+03 8.55e-03   0.2
+    dwdivi15/u_add_PartRem_15_1 (ALU_DW01_add_571)
+                                          0.000    0.000 3.71e+03 3.71e-03   0.1
+    dwdivi15/u_add_PartRem_10_2 (ALU_DW01_add_679)
+                                          0.000    0.000 5.77e+03 5.77e-03   0.1
+    dwdivi15/u_add_PartRem_1_2 (ALU_DW01_add_686)
+                                          0.000    0.000 9.72e+03 9.72e-03   0.2
+    dwdivi15/u_add_PartRem_3_4 (ALU_DW01_add_673)
+                                          0.000    0.000 9.51e+03 9.51e-03   0.2
+    dwdivi15/u_add_PartRem_2_4 (ALU_DW01_add_662)
+                                          0.000    0.000 1.02e+04 1.02e-02   0.2
+    dwdivi15/u_add_PartRem_9_4 (ALU_DW01_add_661)
+                                          0.000    0.000 6.69e+03 6.69e-03   0.1
+    dwdivi15/u_add_PartRem_10_4 (ALU_DW01_add_660)
+                                          0.000    0.000 6.26e+03 6.26e-03   0.1
+    dwdivi15/u_add_PartRem_16_6 (ALU_DW01_add_572)
+                                          0.000    0.000 3.44e+03 3.44e-03   0.1
+    dwdivi15/u_add_PartRem_16_5 (ALU_DW01_add_605)
+                                          0.000    0.000 3.32e+03 3.32e-03   0.1
+    dwdivi15/u_add_PartRem_16_7 (ALU_DW01_add_604)
+                                          0.000    0.000 3.49e+03 3.49e-03   0.1
+    dwdivi15/u_add_PartRem_16_1 (ALU_DW01_add_586)
+                                          0.000    0.000 3.30e+03 3.30e-03   0.1
+    dwdivi15/u_add_PartRem_16_3 (ALU_DW01_add_585)
+                                          0.000    0.000 3.37e+03 3.37e-03   0.1
+    dwdivi15/u_add_PartRem_1_4 (ALU_DW01_add_659)
+                                          0.000    0.000 1.05e+04 1.05e-02   0.2
+    dwdivi15/u_add_PartRem_13_3 (ALU_DW01_add_569)
+                                          0.000    0.000 4.77e+03 4.77e-03   0.1
+    dwdivi15/u_add_PartRem_12_3 (ALU_DW01_add_674)
+                                          0.000    0.000 5.06e+03 5.06e-03   0.1
+    dwdivi15/u_add_PartRem_13_6 (ALU_DW01_add_584)
+                                          0.000    0.000 4.86e+03 4.86e-03   0.1
+    dwdivi15/u_add_PartRem_13_5 (ALU_DW01_add_582)
+                                          0.000    0.000 4.67e+03 4.67e-03   0.1
+    dwdivi15/u_add_PartRem_13_7 (ALU_DW01_add_581)
+                                          0.000    0.000 4.78e+03 4.78e-03   0.1
+    dwdivi15/u_add_PartRem_16_2 (ALU_DW01_add_598)
+                                          0.000    0.000 3.50e+03 3.50e-03   0.1
+    dwdivi15/u_add_PartRem_12_6 (ALU_DW01_add_568)
+                                          0.000    0.000 5.07e+03 5.07e-03   0.1
+    dwdivi15/u_add_PartRem_12_5 (ALU_DW01_add_635)
+                                          0.000    0.000 5.24e+03 5.24e-03   0.1
+    dwdivi15/u_add_PartRem_12_7 (ALU_DW01_add_634)
+                                          0.000    0.000 4.98e+03 4.98e-03   0.1
+    dwdivi15/u_add_PartRem_0_4 (ALU_DW01_add_672)
+                                          0.000    0.000 1.22e+04 1.22e-02   0.3
+    dwdivi15/u_add_PartRem_4_7 (ALU_DW01_add_621)
+                                          0.000    0.000 8.51e+03 8.51e-03   0.2
+    dwdivi15/u_add_PartRem_5_7 (ALU_DW01_add_624)
+                                          0.000    0.000 8.00e+03 8.00e-03   0.2
+    dwdivi15/u_add_PartRem_4_3 (ALU_DW01_add_623)
+                                          0.000    0.000 8.28e+03 8.28e-03   0.2
+    dwdivi15/u_add_PartRem_4_5 (ALU_DW01_add_622)
+                                          0.000    0.000 8.31e+03 8.31e-03   0.2
+    dwdivi15/u_add_PartRem_4_6 (ALU_DW01_add_560)
+                                          0.000    0.000 8.66e+03 8.66e-03   0.2
+    dwdivi15/u_add_PartRem_5_3 (ALU_DW01_add_626)
+                                          0.000    0.000 7.85e+03 7.85e-03   0.2
+    dwdivi15/u_add_PartRem_5_5 (ALU_DW01_add_625)
+                                          0.000    0.000 7.82e+03 7.82e-03   0.2
+    dwdivi15/u_add_PartRem_3_7 (ALU_DW01_add_618)
+                                          0.000    0.000 8.78e+03 8.78e-03   0.2
+    dwdivi15/u_add_PartRem_5_6 (ALU_DW01_add_561)
+                                          0.000    0.000 8.19e+03 8.19e-03   0.2
+    dwdivi15/u_add_PartRem_9_7 (ALU_DW01_add_639)
+                                          0.000    0.000 6.34e+03 6.34e-03   0.1
+    dwdivi15/u_add_PartRem_2_3 (ALU_DW01_add_617)
+                                          0.000    0.000 9.21e+03 9.21e-03   0.2
+    dwdivi15/u_add_PartRem_2_5 (ALU_DW01_add_616)
+                                          0.000    0.000 9.26e+03 9.26e-03   0.2
+    dwdivi15/u_add_PartRem_2_7 (ALU_DW01_add_615)
+                                          0.000    0.000 9.27e+03 9.27e-03   0.2
+    dwdivi15/u_add_PartRem_9_3 (ALU_DW01_add_641)
+                                          0.000    0.000 5.99e+03 5.99e-03   0.1
+    dwdivi15/u_add_PartRem_9_5 (ALU_DW01_add_640)
+                                          0.000    0.000 6.34e+03 6.34e-03   0.1
+    dwdivi15/u_add_PartRem_10_3 (ALU_DW01_add_638)
+                                          0.000    0.000 5.67e+03 5.67e-03   0.1
+    dwdivi15/u_add_PartRem_10_5 (ALU_DW01_add_637)
+                                          0.000    0.000 5.72e+03 5.72e-03   0.1
+    dwdivi15/u_add_PartRem_10_7 (ALU_DW01_add_636)
+                                          0.000    0.000 5.71e+03 5.71e-03   0.1
+    dwdivi15/u_add_PartRem_3_3 (ALU_DW01_add_620)
+                                          0.000    0.000 8.75e+03 8.75e-03   0.2
+    dwdivi15/u_add_PartRem_3_5 (ALU_DW01_add_619)
+                                          0.000    0.000 8.70e+03 8.70e-03   0.2
+    dwdivi15/u_add_PartRem_3_6 (ALU_DW01_add_559)
+                                          0.000    0.000 8.88e+03 8.88e-03   0.2
+    dwdivi15/u_add_PartRem_9_6 (ALU_DW01_add_565)
+                                          0.000    0.000 6.50e+03 6.50e-03   0.1
+    dwdivi15/u_add_PartRem_2_6 (ALU_DW01_add_558)
+                                          0.000    0.000 9.34e+03 9.34e-03   0.2
+    dwdivi15/u_add_PartRem_10_6 (ALU_DW01_add_566)
+                                          0.000    0.000 5.75e+03 5.75e-03   0.1
+    dwdivi15/u_add_PartRem_1_3 (ALU_DW01_add_645)
+                                          0.000    0.000 9.84e+03 9.84e-03   0.2
+    dwdivi15/u_add_PartRem_1_5 (ALU_DW01_add_579)
+                                          0.000    0.000 9.68e+03 9.68e-03   0.2
+    dwdivi15/u_add_PartRem_1_7 (ALU_DW01_add_644)
+                                          0.000    0.000 9.65e+03 9.65e-03   0.2
+    dwdivi15/u_add_PartRem_11_1 (ALU_DW01_add_663)
+                                          0.000    0.000 5.29e+03 5.29e-03   0.1
+    dwdivi15/u_add_PartRem_0_6 (ALU_DW01_add_556)
+                                          0.000    0.000 1.21e+04 1.21e-02   0.3
+    dwdivi15/u_add_PartRem_1_6 (ALU_DW01_add_557)
+                                          0.000    0.000 9.78e+03 9.78e-03   0.2
+    dwdivi15/u_add_PartRem_0_3 (ALU_DW01_add_608)
+                                          0.000    0.000 1.14e+04 1.14e-02   0.2
+    dwdivi15/u_add_PartRem_0_5 (ALU_DW01_add_607)
+                                          0.000    0.000 1.16e+04 1.16e-02   0.2
+    dwdivi15/u_add_PartRem_0_7 (ALU_DW01_add_606)
+                                          0.000    0.000 1.16e+04 1.16e-02   0.2
+    dwdivi15/u_add_PartRem_11_3 (ALU_DW01_add_590)
+                                          0.000    0.000 5.28e+03 5.28e-03   0.1
+    dwdivi15/u_add_PartRem_11_5 (ALU_DW01_add_587)
+                                          0.000    0.000 5.26e+03 5.26e-03   0.1
+    dwdivi15/u_add_PartRem_11_7 (ALU_DW01_add_595)
+                                          0.000    0.000 5.22e+03 5.22e-03   0.1
+    dwdivi15/u_add_PartRem_11_6 (ALU_DW01_add_567)
+                                          0.000    0.000 5.25e+03 5.25e-03   0.1
+    dwdivi15/u_add_PartRem_20_1 (ALU_DW01_add_221)
+                                          0.000    0.000 1.31e+03 1.31e-03   0.0
+    dwdivi15/u_add_PartRem_20_4 (ALU_DW01_add_224)
+                                          0.000    0.000 1.12e+03 1.12e-03   0.0
+    dw_sqrt15 (ALU_DW_sqrt_15)            0.000    0.000 9.74e+04 9.74e-02   2.0
+    dwad1 (ALU_DW01_add_210)              0.000    0.000  335.228 3.35e-04   0.0
+    dwad2 (ALU_DW01_add_209)              0.000    0.000  335.228 3.35e-04   0.0
+    dwad3 (ALU_DW01_add_208)              0.000    0.000  335.228 3.35e-04   0.0
+    dwad4 (ALU_DW01_add_207)              0.000    0.000  335.228 3.35e-04   0.0
+    dwad5 (ALU_DW01_add_206)              0.000    0.000  335.228 3.35e-04   0.0
+    dwad6 (ALU_DW01_add_205)              0.000    0.000  335.228 3.35e-04   0.0
+    dwad7 (ALU_DW01_add_204)              0.000    0.000  335.228 3.35e-04   0.0
+    dwad8 (ALU_DW01_add_203)              0.000    0.000  335.228 3.35e-04   0.0
+    dwad9 (ALU_DW01_add_202)              0.000    0.000  648.911 6.49e-04   0.0
+    dwad10 (ALU_DW01_add_201)             0.000    0.000  648.911 6.49e-04   0.0
+    dwad11 (ALU_DW01_add_200)             0.000    0.000  648.911 6.49e-04   0.0
+    dwad12 (ALU_DW01_add_199)             0.000    0.000  648.911 6.49e-04   0.0
+    dwad13 (ALU_DW01_add_198)             0.000    0.000 1.28e+03 1.28e-03   0.0
+    dwad14 (ALU_DW01_add_197)             0.000    0.000 1.28e+03 1.28e-03   0.0
+    dwad15 (ALU_DW01_add_196)             0.000    0.000 2.53e+03 2.53e-03   0.1
+    dwad16 (ALU_DW01_add_195)             0.000    0.000  318.196 3.18e-04   0.0
+    dwad17 (ALU_DW01_add_194)             0.000    0.000  318.196 3.18e-04   0.0
+    dwad18 (ALU_DW01_add_193)             0.000    0.000  318.196 3.18e-04   0.0
+    dwad19 (ALU_DW01_add_192)             0.000    0.000  318.196 3.18e-04   0.0
+    dwad20 (ALU_DW01_add_191)             0.000    0.000  318.196 3.18e-04   0.0
+    dwad21 (ALU_DW01_add_190)             0.000    0.000  318.196 3.18e-04   0.0
+    dwad22 (ALU_DW01_add_189)             0.000    0.000  318.196 3.18e-04   0.0
+    dwad23 (ALU_DW01_add_188)             0.000    0.000  318.196 3.18e-04   0.0
+    dwad24 (ALU_DW01_add_187)             0.000    0.000  631.879 6.32e-04   0.0
+    dwad25 (ALU_DW01_add_186)             0.000    0.000  631.879 6.32e-04   0.0
+    dwad26 (ALU_DW01_add_185)             0.000    0.000  631.879 6.32e-04   0.0
+    dwad27 (ALU_DW01_add_184)             0.000    0.000  631.879 6.32e-04   0.0
+    dwad28 (ALU_DW01_add_183)             0.000    0.000 1.26e+03 1.26e-03   0.0
+    dwad29 (ALU_DW01_add_182)             0.000    0.000 1.26e+03 1.26e-03   0.0
+    dwad30 (ALU_DW01_add_181)             0.000    0.000 2.51e+03 2.51e-03   0.1
+    dwm1 (ALU_DW02_mult_27)               0.000    0.000 3.26e+03 3.26e-03   0.1
+    dwm2 (ALU_DW02_mult_26)               0.000    0.000 3.26e+03 3.26e-03   0.1
+    dwm3 (ALU_DW02_mult_25)               0.000    0.000 3.26e+03 3.26e-03   0.1
+    dwm4 (ALU_DW02_mult_24)               0.000    0.000 3.26e+03 3.26e-03   0.1
+    dwm5 (ALU_DW02_mult_23)               0.000    0.000 1.21e+04 1.21e-02   0.3
+    dwm6 (ALU_DW02_mult_22)               0.000    0.000 1.21e+04 1.21e-02   0.3
+    dwm7 (ALU_DW02_mult_21)               0.000    0.000 5.84e+04 5.84e-02   1.2
+    dwm8 (ALU_DW02_mult_20)               0.000    0.000 3.26e+03 3.26e-03   0.1
+    dwm9 (ALU_DW02_mult_19)               0.000    0.000 3.26e+03 3.26e-03   0.1
+    dwm10 (ALU_DW02_mult_18)              0.000    0.000 3.26e+03 3.26e-03   0.1
+    dwm11 (ALU_DW02_mult_17)              0.000    0.000 3.26e+03 3.26e-03   0.1
+    dwm12 (ALU_DW02_mult_16)              0.000    0.000 1.21e+04 1.21e-02   0.3
+    dwm13 (ALU_DW02_mult_15)              0.000    0.000 1.21e+04 1.21e-02   0.3
+    dwm14 (ALU_DW02_mult_14)              0.000    0.000 5.84e+04 5.84e-02   1.2
+    dwm15 (ALU_DW02_mult_13)              0.000    0.000 1.59e+03 1.59e-03   0.0
+    dwm16 (ALU_DW02_mult_12)              0.000    0.000 1.59e+03 1.59e-03   0.0
+    dwm17 (ALU_DW02_mult_11)              0.000    0.000 1.59e+03 1.59e-03   0.0
+    dwm18 (ALU_DW02_mult_10)              0.000    0.000 1.59e+03 1.59e-03   0.0
+    dwm19 (ALU_DW02_mult_9)               0.000    0.000 6.70e+03 6.70e-03   0.1
+    dwm20 (ALU_DW02_mult_8)               0.000    0.000 6.70e+03 6.70e-03   0.1
+    dwm21 (ALU_DW02_mult_7)               0.000    0.000 2.75e+04 2.75e-02   0.6
+    dwm22 (ALU_DW02_mult_6)               0.000    0.000 1.59e+03 1.59e-03   0.0
+    dwm23 (ALU_DW02_mult_5)               0.000    0.000 1.59e+03 1.59e-03   0.0
+    dwm24 (ALU_DW02_mult_4)               0.000    0.000 1.59e+03 1.59e-03   0.0
+    dwm25 (ALU_DW02_mult_3)               0.000    0.000 1.59e+03 1.59e-03   0.0
+    dwm26 (ALU_DW02_mult_2)               0.000    0.000 6.70e+03 6.70e-03   0.1
+    dwm27 (ALU_DW02_mult_1)               0.000    0.000 6.70e+03 6.70e-03   0.1
+    dwm28 (ALU_DW02_mult_0)               0.000    0.000 2.75e+04 2.75e-02   0.6
+    dwsq1 (ALU_DW_sqrt_14)                0.000    0.000  515.432 5.15e-04   0.0
+    dwsq2 (ALU_DW_sqrt_13)                0.000    0.000  515.432 5.15e-04   0.0
+    dwsq3 (ALU_DW_sqrt_12)                0.000    0.000  515.432 5.15e-04   0.0
+    dwsq4 (ALU_DW_sqrt_11)                0.000    0.000  515.432 5.15e-04   0.0
+    dwsq5 (ALU_DW_sqrt_10)                0.000    0.000  515.432 5.15e-04   0.0
+    dwsq6 (ALU_DW_sqrt_9)                 0.000    0.000  515.432 5.15e-04   0.0
+    dwsq7 (ALU_DW_sqrt_8)                 0.000    0.000  515.432 5.15e-04   0.0
+    dwsq8 (ALU_DW_sqrt_7)                 0.000    0.000  515.432 5.15e-04   0.0
+    dwsq9 (ALU_DW_sqrt_6)                 0.000    0.000 2.12e+03 2.12e-03   0.0
+    dwsq10 (ALU_DW_sqrt_5)                0.000    0.000 2.12e+03 2.12e-03   0.0
+    dwsq11 (ALU_DW_sqrt_4)                0.000    0.000 2.12e+03 2.12e-03   0.0
+    dwsq12 (ALU_DW_sqrt_3)                0.000    0.000 2.12e+03 2.12e-03   0.0
+    dw_sqrt13 (ALU_DW_sqrt_2)             0.000    0.000 8.49e+03 8.49e-03   0.2
+    dw_sqrt14 (ALU_DW_sqrt_1)             0.000    0.000 8.42e+03 8.42e-03   0.2
+  rf (reg_file)                           0.133    1.924 2.73e+05    2.330  49.0
+1

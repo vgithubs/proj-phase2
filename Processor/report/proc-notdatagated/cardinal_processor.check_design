@@ -1,0 +1,52 @@
+ 
+****************************************
+check_design summary:
+Version:     K-2015.06-SP5-5
+Date:        Fri Nov 11 01:06:56 2022
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                     22
+    Unconnected ports (LINT-28)                                    22
+
+Cells                                                              13
+    Cells do not drive (LINT-1)                                    13
+--------------------------------------------------------------------------------
+
+Warning: In design 'reg_file', cell 'B_30' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C7304' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C7305' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C7306' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C7307' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C7313' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C7314' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C7315' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C7316' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C7322' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C7323' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C7324' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C7325' does not drive any nets. (LINT-1)
+Warning: In design 'Branch_Predictor', port 'Instruction[6]' is not connected to any nets. (LINT-28)
+Warning: In design 'Branch_Predictor', port 'Instruction[7]' is not connected to any nets. (LINT-28)
+Warning: In design 'Branch_Predictor', port 'Instruction[8]' is not connected to any nets. (LINT-28)
+Warning: In design 'Branch_Predictor', port 'Instruction[9]' is not connected to any nets. (LINT-28)
+Warning: In design 'Branch_Predictor', port 'Instruction[10]' is not connected to any nets. (LINT-28)
+Warning: In design 'Branch_Predictor', port 'Instruction[11]' is not connected to any nets. (LINT-28)
+Warning: In design 'Branch_Predictor', port 'Instruction[12]' is not connected to any nets. (LINT-28)
+Warning: In design 'Branch_Predictor', port 'Instruction[13]' is not connected to any nets. (LINT-28)
+Warning: In design 'Branch_Predictor', port 'Instruction[14]' is not connected to any nets. (LINT-28)
+Warning: In design 'Branch_Predictor', port 'Instruction[15]' is not connected to any nets. (LINT-28)
+Warning: In design 'Branch_Predictor', port 'Instruction[16]' is not connected to any nets. (LINT-28)
+Warning: In design 'Branch_Predictor', port 'Instruction[17]' is not connected to any nets. (LINT-28)
+Warning: In design 'Branch_Predictor', port 'Instruction[18]' is not connected to any nets. (LINT-28)
+Warning: In design 'Branch_Predictor', port 'Instruction[19]' is not connected to any nets. (LINT-28)
+Warning: In design 'Branch_Predictor', port 'Instruction[20]' is not connected to any nets. (LINT-28)
+Warning: In design 'Branch_Predictor', port 'Instruction[21]' is not connected to any nets. (LINT-28)
+Warning: In design 'Branch_Predictor', port 'Instruction[22]' is not connected to any nets. (LINT-28)
+Warning: In design 'Branch_Predictor', port 'Instruction[23]' is not connected to any nets. (LINT-28)
+Warning: In design 'Branch_Predictor', port 'Instruction[24]' is not connected to any nets. (LINT-28)
+Warning: In design 'Branch_Predictor', port 'Instruction[25]' is not connected to any nets. (LINT-28)
+Warning: In design 'Branch_Predictor', port 'Instruction[26]' is not connected to any nets. (LINT-28)
+Warning: In design 'Branch_Predictor', port 'Instruction[27]' is not connected to any nets. (LINT-28)
+1

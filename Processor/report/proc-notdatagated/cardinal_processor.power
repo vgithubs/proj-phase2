@@ -1,0 +1,89 @@
+Loading db file '/home/scf-22/ee577/NCSU45PDK/FreePDK45/osu_soc/lib/files/gscl45nm.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : cardinal_processor
+Version: K-2015.06-SP5-5
+Date   : Fri Nov 11 02:04:34 2022
+****************************************
+
+
+Library(s) Used:
+
+    gscl45nm (File: /home/scf-22/ee577/NCSU45PDK/FreePDK45/osu_soc/lib/files/gscl45nm.db)
+
+
+Operating Conditions: typical   Library: gscl45nm
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 1.1  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+cardinal_processor                        2.279   10.349 2.15e+06   14.777 100.0
+  add_98 (cardinal_processor_DW01_inc_0)
+                                       5.72e-04 7.14e-04  332.280 1.62e-03   0.0
+  alu1 (ALU)                              0.104    7.092 1.88e+06    9.075  61.4
+    as1 (ALU_DW01_addsub_7)            9.08e-06 2.07e-05  723.509 7.53e-04   0.0
+    as2 (ALU_DW01_addsub_6)            9.74e-06 2.83e-05  768.658 8.07e-04   0.0
+    as3 (ALU_DW01_addsub_5)            8.12e-06 1.83e-05  768.658 7.95e-04   0.0
+    as4 (ALU_DW01_addsub_4)            9.84e-06 2.92e-05  768.658 8.08e-04   0.0
+    as5 (ALU_DW01_addsub_3)            1.24e-05 2.73e-05  768.658 8.08e-04   0.0
+    as6 (ALU_DW01_addsub_2)            1.08e-05 2.93e-05  768.658 8.09e-04   0.0
+    as7 (ALU_DW01_addsub_1)            1.21e-05 2.52e-05  768.658 8.06e-04   0.0
+    as8 (ALU_DW01_addsub_0)            9.46e-06 2.34e-05  720.026 7.53e-04   0.0
+    dwm1 (ALU_DW02_mult_6)                0.000    0.000 3.26e+03 3.26e-03   0.0
+    dwm2 (ALU_DW02_mult_5)                0.000    0.000 3.26e+03 3.26e-03   0.0
+    dwm3 (ALU_DW02_mult_4)                0.000    0.000 3.26e+03 3.26e-03   0.0
+    dwm4 (ALU_DW02_mult_3)                0.000    0.000 3.26e+03 3.26e-03   0.0
+    dwm5 (ALU_DW02_mult_2)                0.000    0.000 1.30e+04 1.30e-02   0.1
+    dwm6 (ALU_DW02_mult_1)                0.000    0.000 1.30e+04 1.30e-02   0.1
+    dwm7 (ALU_DW02_mult_0)                0.000    0.000 5.85e+04 5.85e-02   0.4
+    dwpipe1 (ALU_DW_div_pipe_14)       6.78e-04 6.44e-02 4.55e+03 6.96e-02   0.5
+    dwpipe2 (ALU_DW_div_pipe_13)       6.78e-04 6.44e-02 4.57e+03 6.96e-02   0.5
+    dwpipe3 (ALU_DW_div_pipe_12)       6.78e-04 6.44e-02 4.55e+03 6.96e-02   0.5
+    dwpipe4 (ALU_DW_div_pipe_11)       6.78e-04 6.44e-02 4.53e+03 6.96e-02   0.5
+    dwpipe5 (ALU_DW_div_pipe_10)       6.78e-04 6.44e-02 4.57e+03 6.96e-02   0.5
+    dwpipe6 (ALU_DW_div_pipe_9)        6.78e-04 6.44e-02 4.55e+03 6.96e-02   0.5
+    dwpipe7 (ALU_DW_div_pipe_8)        6.78e-04 6.44e-02 4.61e+03 6.97e-02   0.5
+    dwpipe8 (ALU_DW_div_pipe_7)        6.78e-04 6.44e-02 4.57e+03 6.96e-02   0.5
+    dwpipe9 (ALU_DW_div_pipe_6)        1.65e-03    0.157 1.41e+04    0.173   1.2
+    dwpipe10 (ALU_DW_div_pipe_5)       1.65e-03    0.157 1.40e+04    0.173   1.2
+    dwpipe11 (ALU_DW_div_pipe_4)       1.65e-03    0.157 1.41e+04    0.173   1.2
+    dwpipe12 (ALU_DW_div_pipe_3)       1.65e-03    0.157 1.42e+04    0.173   1.2
+    dwpipe13 (ALU_DW_div_pipe_2)       4.95e-03    0.379 9.31e+04    0.477   3.2
+    dwpipe14 (ALU_DW_div_pipe_1)       4.99e-03    0.379 9.19e+04    0.476   3.2
+    dwpipe15 (ALU_DW_div_pipe_0)       6.03e-02    4.301 1.22e+06    5.584  37.8
+    dwsqpi1 (ALU_DW_sqrt_pipe_14)         0.000 1.61e-02 1.08e+03 1.72e-02   0.1
+    dwsqpi2 (ALU_DW_sqrt_pipe_13)         0.000 1.61e-02 1.08e+03 1.72e-02   0.1
+    dwsqpi3 (ALU_DW_sqrt_pipe_12)         0.000 1.61e-02 1.08e+03 1.72e-02   0.1
+    dwsqpi4 (ALU_DW_sqrt_pipe_11)         0.000 1.61e-02 1.08e+03 1.72e-02   0.1
+    dwsqpi5 (ALU_DW_sqrt_pipe_10)         0.000 1.61e-02 1.08e+03 1.72e-02   0.1
+    dwsqpi6 (ALU_DW_sqrt_pipe_9)          0.000 1.61e-02 1.08e+03 1.72e-02   0.1
+    dwsqpi7 (ALU_DW_sqrt_pipe_8)          0.000 1.61e-02 1.08e+03 1.72e-02   0.1
+    dwsqpi8 (ALU_DW_sqrt_pipe_7)          0.000 1.61e-02 1.08e+03 1.72e-02   0.1
+    dwsqpi9 (ALU_DW_sqrt_pipe_6)          0.000 3.21e-02 3.25e+03 3.54e-02   0.2
+    dwsqpi10 (ALU_DW_sqrt_pipe_5)         0.000 3.21e-02 3.25e+03 3.54e-02   0.2
+    dwsqpi11 (ALU_DW_sqrt_pipe_4)         0.000 3.21e-02 3.29e+03 3.54e-02   0.2
+    dwsqpi12 (ALU_DW_sqrt_pipe_3)         0.000 3.21e-02 3.29e+03 3.54e-02   0.2
+    dwsqpi13 (ALU_DW_sqrt_pipe_2)      9.24e-04    0.129 1.27e+04    0.142   1.0
+    dwsqpi14 (ALU_DW_sqrt_pipe_1)      9.25e-04    0.129 1.30e+04    0.143   1.0
+    dwsqpi15 (ALU_DW_sqrt_pipe_0)      4.59e-03    0.369 9.96e+04    0.473   3.2
+  rf (reg_file)                           1.668    2.516 2.31e+05    4.415  29.9
+  bp (Branch_Predictor)                1.61e-02 2.15e-02 2.02e+03 3.96e-02   0.3
+1

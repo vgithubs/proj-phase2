@@ -3,238 +3,584 @@
 Report : area
 Design : cardinal_processor
 Version: K-2015.06-SP5-5
-Date   : Thu Nov 10 12:24:35 2022
+Date   : Fri Nov 11 23:17:31 2022
 ****************************************
 
 Library(s) Used:
 
-    gtech (File: /usr/local/synopsys/Design_Compiler/default/libraries/syn/gtech.db)
+    gscl45nm (File: /home/scf-22/ee577/NCSU45PDK/FreePDK45/osu_soc/lib/files/gscl45nm.db)
 
-Number of ports:                         8484
-Number of nets:                         31950
-Number of cells:                        14027
-Number of combinational cells:           9387
-Number of sequential cells:              4445
+Number of ports:                        39812
+Number of nets:                        213911
+Number of cells:                       182561
+Number of combinational cells:         176272
+Number of sequential cells:              5976
 Number of macros/black boxes:               0
-Number of buf/inv:                        923
-Number of references:                      23
+Number of buf/inv:                      74243
+Number of references:                      24
 
-Combinational area:                  0.000000
-Buf/Inv area:                        0.000000
-Noncombinational area:               0.000000
+Combinational area:             413593.143069
+Buf/Inv area:                   115373.648315
+Noncombinational area:           47573.409245
 Macro/Black Box area:                0.000000
 Net Interconnect area:      undefined  (No wire load specified)
 
-Total cell area:                     0.000000
+Total cell area:                461166.552313
 Total area:                 undefined
-
-Information: This design contains unmapped logic. (RPT-7)
 
 Hierarchical area distribution
 ------------------------------
 
-                                  Global cell area          Local cell area
-                                  ------------------  --------------------------- 
-Hierarchical cell                 Absolute   Percent  Combi-    Noncombi-  Black-
-                                  Total      Total    national  national   boxes   Design
---------------------------------  ---------  -------  --------  ---------  ------  -------------------------------------------------------------------------------------------------
-cardinal_processor                   0.0000      0.0    0.0000     0.0000  0.0000  cardinal_processor
-add_98                               0.0000      0.0    0.0000     0.0000  0.0000  *ADD_UNS_OP_8_1_8
-add_98/*cell*107                     0.0000      0.0    0.0000     0.0000  0.0000  DW01_inc_width8
-alu1                                 0.0000      0.0    0.0000     0.0000  0.0000  ALU
-alu1/as1                             0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_param_1
-alu1/as1/*cell*246                   0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_width8
-alu1/as2                             0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_param_1
-alu1/as2/*cell*247                   0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_width8
-alu1/as3                             0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_param_1
-alu1/as3/*cell*248                   0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_width8
-alu1/as4                             0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_param_1
-alu1/as4/*cell*249                   0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_width8
-alu1/as5                             0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_param_1
-alu1/as5/*cell*250                   0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_width8
-alu1/as6                             0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_param_1
-alu1/as6/*cell*251                   0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_width8
-alu1/as7                             0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_param_1
-alu1/as7/*cell*252                   0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_width8
-alu1/as8                             0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_param_1
-alu1/as8/*cell*253                   0.0000      0.0    0.0000     0.0000  0.0000  DW01_addsub_width8
-alu1/dwm1                            0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult_param_1
-alu1/dwm1/*cell*254                  0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult
-alu1/dwm2                            0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult_param_1
-alu1/dwm2/*cell*255                  0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult
-alu1/dwm3                            0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult_param_1
-alu1/dwm3/*cell*256                  0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult
-alu1/dwm4                            0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult_param_1
-alu1/dwm4/*cell*257                  0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult
-alu1/dwm5                            0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult_param_2
-alu1/dwm5/*cell*258                  0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult
-alu1/dwm6                            0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult_param_2
-alu1/dwm6/*cell*259                  0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult
-alu1/dwm7                            0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult_param_3
-alu1/dwm7/*cell*260                  0.0000      0.0    0.0000     0.0000  0.0000  DW02_mult
-alu1/dwpipe1                         0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_1
-alu1/dwpipe1/*cell*262               0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width8_b_width8_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
-alu1/dwpipe10                        0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_2
-alu1/dwpipe10/*cell*289              0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width16_b_width16_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
-alu1/dwpipe11                        0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_2
-alu1/dwpipe11/*cell*292              0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width16_b_width16_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
-alu1/dwpipe12                        0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_2
-alu1/dwpipe12/*cell*295              0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width16_b_width16_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
-alu1/dwpipe13                        0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_3
-alu1/dwpipe13/*cell*298              0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width32_b_width32_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
-alu1/dwpipe14                        0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_3
-alu1/dwpipe14/*cell*301              0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width32_b_width32_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
-alu1/dwpipe15                        0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_4
-alu1/dwpipe15/*cell*304              0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width64_b_width64_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
-alu1/dwpipe2                         0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_1
-alu1/dwpipe2/*cell*265               0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width8_b_width8_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
-alu1/dwpipe3                         0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_1
-alu1/dwpipe3/*cell*268               0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width8_b_width8_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
-alu1/dwpipe4                         0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_1
-alu1/dwpipe4/*cell*271               0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width8_b_width8_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
-alu1/dwpipe5                         0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_1
-alu1/dwpipe5/*cell*274               0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width8_b_width8_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
-alu1/dwpipe6                         0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_1
-alu1/dwpipe6/*cell*277               0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width8_b_width8_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
-alu1/dwpipe7                         0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_1
-alu1/dwpipe7/*cell*280               0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width8_b_width8_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
-alu1/dwpipe8                         0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_1
-alu1/dwpipe8/*cell*283               0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width8_b_width8_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
-alu1/dwpipe9                         0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_param_2
-alu1/dwpipe9/*cell*286               0.0000      0.0    0.0000     0.0000  0.0000  DW_div_pipe_a_width16_b_width16_tc_mode0_rem_mode0_num_stages3_stall_mode1_rst_mode2_op_iso_mode0
-alu1/dwsqpi1                         0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_1
-alu1/dwsqpi1/*cell*308               0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width8_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
-alu1/dwsqpi10                        0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_2
-alu1/dwsqpi10/*cell*353              0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width16_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
-alu1/dwsqpi11                        0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_2
-alu1/dwsqpi11/*cell*358              0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width16_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
-alu1/dwsqpi12                        0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_2
-alu1/dwsqpi12/*cell*363              0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width16_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
-alu1/dwsqpi13                        0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_3
-alu1/dwsqpi13/*cell*368              0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width32_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
-alu1/dwsqpi14                        0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_3
-alu1/dwsqpi14/*cell*373              0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width32_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
-alu1/dwsqpi15                        0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_4
-alu1/dwsqpi15/*cell*378              0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width64_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
-alu1/dwsqpi2                         0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_1
-alu1/dwsqpi2/*cell*313               0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width8_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
-alu1/dwsqpi3                         0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_1
-alu1/dwsqpi3/*cell*318               0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width8_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
-alu1/dwsqpi4                         0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_1
-alu1/dwsqpi4/*cell*323               0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width8_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
-alu1/dwsqpi5                         0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_1
-alu1/dwsqpi5/*cell*328               0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width8_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
-alu1/dwsqpi6                         0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_1
-alu1/dwsqpi6/*cell*333               0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width8_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
-alu1/dwsqpi7                         0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_1
-alu1/dwsqpi7/*cell*338               0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width8_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
-alu1/dwsqpi8                         0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_1
-alu1/dwsqpi8/*cell*343               0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width8_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
-alu1/dwsqpi9                         0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_param_2
-alu1/dwsqpi9/*cell*348               0.0000      0.0    0.0000     0.0000  0.0000  DW_sqrt_pipe_width16_tc_mode0_num_stages3_stall_mode0_rst_mode2_op_iso_mode0
-alu1/sll_633                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_8_3_8
-alu1/sll_633/*cell*127               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
-alu1/sll_634                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_8_3_8
-alu1/sll_634/*cell*129               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
-alu1/sll_635                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_8_3_8
-alu1/sll_635/*cell*131               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
-alu1/sll_636                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_8_3_8
-alu1/sll_636/*cell*133               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
-alu1/sll_637                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_8_3_8
-alu1/sll_637/*cell*135               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
-alu1/sll_638                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_8_3_8
-alu1/sll_638/*cell*137               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
-alu1/sll_639                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_8_3_8
-alu1/sll_639/*cell*139               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
-alu1/sll_640                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_8_3_8
-alu1/sll_640/*cell*141               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
-alu1/sll_644                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_16_4_16
-alu1/sll_644/*cell*143               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
-alu1/sll_645                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_16_4_16
-alu1/sll_645/*cell*145               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
-alu1/sll_646                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_16_4_16
-alu1/sll_646/*cell*147               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
-alu1/sll_647                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_16_4_16
-alu1/sll_647/*cell*149               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
-alu1/sll_652                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_32_5_32
-alu1/sll_652/*cell*151               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
-alu1/sll_653                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_32_5_32
-alu1/sll_653/*cell*153               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
-alu1/sll_657                         0.0000      0.0    0.0000     0.0000  0.0000  *ASH_UNS_UNS_OP_64_6_64
-alu1/sll_657/*cell*155               0.0000      0.0    0.0000     0.0000  0.0000  DW_leftsh
-alu1/sra_710                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_8_3_8
-alu1/sra_710/*cell*202               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/sra_711                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_8_3_8
-alu1/sra_711/*cell*205               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/sra_712                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_8_3_8
-alu1/sra_712/*cell*208               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/sra_713                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_8_3_8
-alu1/sra_713/*cell*211               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/sra_714                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_8_3_8
-alu1/sra_714/*cell*214               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/sra_715                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_8_3_8
-alu1/sra_715/*cell*217               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/sra_716                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_8_3_8
-alu1/sra_716/*cell*220               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/sra_717                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_8_3_8
-alu1/sra_717/*cell*223               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/sra_722                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_16_4_16
-alu1/sra_722/*cell*226               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/sra_723                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_16_4_16
-alu1/sra_723/*cell*229               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/sra_724                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_16_4_16
-alu1/sra_724/*cell*232               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/sra_725                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_16_4_16
-alu1/sra_725/*cell*235               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/sra_730                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_32_5_32
-alu1/sra_730/*cell*238               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/sra_731                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_32_5_32
-alu1/sra_731/*cell*241               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/sra_736                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_TC_UNS_OP_64_6_64
-alu1/sra_736/*cell*244               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/srl_672                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_8_3_8
-alu1/srl_672/*cell*157               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/srl_673                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_8_3_8
-alu1/srl_673/*cell*160               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/srl_674                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_8_3_8
-alu1/srl_674/*cell*163               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/srl_675                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_8_3_8
-alu1/srl_675/*cell*166               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/srl_676                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_8_3_8
-alu1/srl_676/*cell*169               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/srl_677                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_8_3_8
-alu1/srl_677/*cell*172               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/srl_678                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_8_3_8
-alu1/srl_678/*cell*175               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/srl_679                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_8_3_8
-alu1/srl_679/*cell*178               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/srl_683                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_16_4_16
-alu1/srl_683/*cell*181               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/srl_684                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_16_4_16
-alu1/srl_684/*cell*184               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/srl_685                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_16_4_16
-alu1/srl_685/*cell*187               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/srl_686                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_16_4_16
-alu1/srl_686/*cell*190               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/srl_690                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_32_5_32
-alu1/srl_690/*cell*193               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/srl_691                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_32_5_32
-alu1/srl_691/*cell*196               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-alu1/srl_695                         0.0000      0.0    0.0000     0.0000  0.0000  *ASHR_UNS_UNS_OP_64_6_64
-alu1/srl_695/*cell*199               0.0000      0.0    0.0000     0.0000  0.0000  DW_rightsh
-bp                                   0.0000      0.0    0.0000     0.0000  0.0000  Branch_Predictor
-eq_199                               0.0000      0.0    0.0000     0.0000  0.0000  *EQ_UNS_OP_5_5_1
-eq_199/*cell*109                     0.0000      0.0    0.0000     0.0000  0.0000  DW01_cmp6_width5
-eq_227                               0.0000      0.0    0.0000     0.0000  0.0000  *EQ_UNS_OP_5_5_1
-eq_227/*cell*112                     0.0000      0.0    0.0000     0.0000  0.0000  DW01_cmp6_width5
-eq_230                               0.0000      0.0    0.0000     0.0000  0.0000  *EQ_UNS_OP_5_5_1
-eq_230/*cell*115                     0.0000      0.0    0.0000     0.0000  0.0000  DW01_cmp6_width5
-rf                                   0.0000      0.0    0.0000     0.0000  0.0000  reg_file
-rf/eq_58                             0.0000      0.0    0.0000     0.0000  0.0000  *EQ_UNS_OP_5_5_1
-rf/eq_58/*cell*120                   0.0000      0.0    0.0000     0.0000  0.0000  DW01_cmp6_width5
-rf/eq_95                             0.0000      0.0    0.0000     0.0000  0.0000  *EQ_UNS_OP_5_5_1
-rf/eq_95/*cell*123                   0.0000      0.0    0.0000     0.0000  0.0000  DW01_cmp6_width5
---------------------------------  ---------  -------  --------  ---------  ------  -------------------------------------------------------------------------------------------------
-Total                                                   0.0000     0.0000  0.0000
+                                  Global cell area              Local cell area
+                                  --------------------  ------------------------------- 
+Hierarchical cell                 Absolute     Percent  Combi-       Noncombi-   Black-
+                                  Total        Total    national     national    boxes   Design
+--------------------------------  -----------  -------  -----------  ----------  ------  -----------------------------
+cardinal_processor                461166.5523    100.0    5133.6726   2704.5758  0.0000  cardinal_processor
+add_98                                34.2589      0.0      34.2589      0.0000  0.0000  cardinal_processor_DW01_inc_0
+alu1                              391901.1590     85.0   26913.8851      0.0000  0.0000  ALU
+alu1/as1                             113.5706      0.0     113.5706      0.0000  0.0000  ALU_DW01_addsub_7
+alu1/as2                             162.8471      0.0     162.8471      0.0000  0.0000  ALU_DW01_addsub_14
+alu1/as3                             159.5620      0.0     159.5620      0.0000  0.0000  ALU_DW01_addsub_13
+alu1/as4                             162.8471      0.0     162.8471      0.0000  0.0000  ALU_DW01_addsub_12
+alu1/as5                             159.5620      0.0     159.5620      0.0000  0.0000  ALU_DW01_addsub_11
+alu1/as6                             159.5620      0.0     159.5620      0.0000  0.0000  ALU_DW01_addsub_10
+alu1/as7                             162.3778      0.0     162.3778      0.0000  0.0000  ALU_DW01_addsub_9
+alu1/as8                             145.9523      0.0     145.9523      0.0000  0.0000  ALU_DW01_addsub_8
+alu1/dwm1                            615.7216      0.1     615.7216      0.0000  0.0000  ALU_DW02_mult_6
+alu1/dwm2                            615.7216      0.1     615.7216      0.0000  0.0000  ALU_DW02_mult_5
+alu1/dwm3                            615.7216      0.1     615.7216      0.0000  0.0000  ALU_DW02_mult_4
+alu1/dwm4                            615.7216      0.1     615.7216      0.0000  0.0000  ALU_DW02_mult_3
+alu1/dwm5                           2620.5712      0.6    2620.5712      0.0000  0.0000  ALU_DW02_mult_2
+alu1/dwm6                           2620.5712      0.6    2620.5712      0.0000  0.0000  ALU_DW02_mult_1
+alu1/dwm7                          11996.7158      2.6   11996.7158      0.0000  0.0000  ALU_DW02_mult_0
+alu1/dwpipe1                         956.4334      0.2       1.4079      0.0000  0.0000  ALU_DW_div_pipe_14
+alu1/dwpipe1/U_DIV                   955.0255      0.2     699.7263    255.2992  0.0000  ALU_DW_div_23
+alu1/dwpipe10                       3022.2920      0.7      60.5397    143.6058  0.0000  ALU_DW_div_pipe_5
+alu1/dwpipe10/U_DIV                 2818.1465      0.6    2243.7233    574.4232  0.0000  ALU_DW_div_75
+alu1/dwpipe11                       3026.9850      0.7      60.5397    143.6058  0.0000  ALU_DW_div_pipe_4
+alu1/dwpipe11/U_DIV                 2822.8395      0.6    2248.4163    574.4232  0.0000  ALU_DW_div_80
+alu1/dwpipe12                       3026.9850      0.7      60.5397    143.6058  0.0000  ALU_DW_div_pipe_3
+alu1/dwpipe12/U_DIV                 2822.8395      0.6    2248.4163    574.4232  0.0000  ALU_DW_div_85
+alu1/dwpipe13                      20016.5832      4.3     107.0004    255.2992  0.0000  ALU_DW_div_pipe_2
+alu1/dwpipe13/U_DIV                19654.2836      4.3    4202.1122   1220.6493  0.0000  ALU_DW_div_90
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_0
+                                    1008.0564      0.2    1008.0564      0.0000  0.0000  ALU_DW01_add_1155
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_1
+                                     955.0255      0.2     955.0255      0.0000  0.0000  ALU_DW01_add_1154
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_10
+                                     612.4365      0.1     612.4365      0.0000  0.0000  ALU_DW01_add_1145
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_11
+                                     569.2609      0.1     569.2609      0.0000  0.0000  ALU_DW01_add_1144
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_12
+                                     538.7564      0.1     538.7564      0.0000  0.0000  ALU_DW01_add_1143
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_13
+                                     505.9054      0.1     505.9054      0.0000  0.0000  ALU_DW01_add_1142
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_14
+                                     475.4009      0.1     475.4009      0.0000  0.0000  ALU_DW01_add_1141
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_15
+                                     467.8921      0.1     467.8921      0.0000  0.0000  ALU_DW01_add_1140
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_16
+                                     445.3657      0.1     445.3657      0.0000  0.0000  ALU_DW01_add_1139
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_17
+                                     400.3129      0.1     400.3129      0.0000  0.0000  ALU_DW01_add_1138
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_18
+                                     363.7075      0.1     363.7075      0.0000  0.0000  ALU_DW01_add_1137
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_19
+                                     332.2644      0.1     332.2644      0.0000  0.0000  ALU_DW01_add_1136
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_2
+                                     914.6657      0.2     914.6657      0.0000  0.0000  ALU_DW01_add_1153
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_20
+                                     302.2292      0.1     302.2292      0.0000  0.0000  ALU_DW01_add_1135
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_21
+                                     259.9922      0.1     259.9922      0.0000  0.0000  ALU_DW01_add_1134
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_22
+                                     226.6719      0.0     226.6719      0.0000  0.0000  ALU_DW01_add_1133
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_23
+                                     201.7990      0.0     201.7990      0.0000  0.0000  ALU_DW01_add_1132
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_24
+                                     175.5182      0.0     175.5182      0.0000  0.0000  ALU_DW01_add_1131
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_25
+                                     139.8514      0.0     139.8514      0.0000  0.0000  ALU_DW01_add_1130
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_26
+                                     112.1627      0.0     112.1627      0.0000  0.0000  ALU_DW01_add_1129
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_3
+                                     864.9199      0.2     864.9199      0.0000  0.0000  ALU_DW01_add_1152
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_4
+                                     823.1522      0.2     823.1522      0.0000  0.0000  ALU_DW01_add_1151
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_5
+                                     773.8757      0.2     773.8757      0.0000  0.0000  ALU_DW01_add_1150
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_6
+                                     741.0247      0.2     741.0247      0.0000  0.0000  ALU_DW01_add_1149
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_7
+                                     710.5202      0.2     710.5202      0.0000  0.0000  ALU_DW01_add_1148
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_8
+                                     669.6911      0.1     669.6911      0.0000  0.0000  ALU_DW01_add_1147
+alu1/dwpipe13/U_DIV/u_add_PartRem_1_9
+                                     641.0638      0.1     641.0638      0.0000  0.0000  ALU_DW01_add_1146
+alu1/dwpipe14                      20228.2374      4.4     107.0004    255.2992  0.0000  ALU_DW_div_pipe_1
+alu1/dwpipe14/U_DIV                19865.9379      4.3    4433.0078   1220.6493  0.0000  ALU_DW_div_95
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_0
+                                    1003.3634      0.2    1003.3634      0.0000  0.0000  ALU_DW01_add_1329
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_1
+                                     956.4334      0.2     956.4334      0.0000  0.0000  ALU_DW01_add_1328
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_10
+                                     608.2128      0.1     608.2128      0.0000  0.0000  ALU_DW01_add_1319
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_11
+                                     566.9144      0.1     566.9144      0.0000  0.0000  ALU_DW01_add_1318
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_12
+                                     528.4318      0.1     528.4318      0.0000  0.0000  ALU_DW01_add_1317
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_13
+                                     502.1510      0.1     502.1510      0.0000  0.0000  ALU_DW01_add_1316
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_14
+                                     474.4623      0.1     474.4623      0.0000  0.0000  ALU_DW01_add_1315
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_15
+                                     450.9973      0.1     450.9973      0.0000  0.0000  ALU_DW01_add_1314
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_16
+                                     456.1596      0.1     456.1596      0.0000  0.0000  ALU_DW01_add_1313
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_17
+                                     401.7208      0.1     401.7208      0.0000  0.0000  ALU_DW01_add_1312
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_18
+                                     365.5847      0.1     365.5847      0.0000  0.0000  ALU_DW01_add_1311
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_19
+                                     334.1416      0.1     334.1416      0.0000  0.0000  ALU_DW01_add_1310
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_2
+                                     909.0341      0.2     909.0341      0.0000  0.0000  ALU_DW01_add_1327
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_20
+                                     301.7599      0.1     301.7599      0.0000  0.0000  ALU_DW01_add_1309
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_21
+                                     261.8694      0.1     261.8694      0.0000  0.0000  ALU_DW01_add_1308
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_22
+                                     226.6719      0.0     226.6719      0.0000  0.0000  ALU_DW01_add_1307
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_23
+                                     201.7990      0.0     201.7990      0.0000  0.0000  ALU_DW01_add_1306
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_24
+                                     175.5182      0.0     175.5182      0.0000  0.0000  ALU_DW01_add_1305
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_25
+                                     139.8514      0.0     139.8514      0.0000  0.0000  ALU_DW01_add_1304
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_26
+                                     112.1627      0.0     112.1627      0.0000  0.0000  ALU_DW01_add_1303
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_3
+                                     871.9594      0.2     871.9594      0.0000  0.0000  ALU_DW01_add_1326
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_4
+                                     825.0294      0.2     825.0294      0.0000  0.0000  ALU_DW01_add_1325
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_5
+                                     779.9766      0.2     779.9766      0.0000  0.0000  ALU_DW01_add_1324
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_6
+                                     737.2703      0.2     737.2703      0.0000  0.0000  ALU_DW01_add_1323
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_7
+                                     708.1737      0.2     708.1737      0.0000  0.0000  ALU_DW01_add_1322
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_8
+                                     669.6911      0.1     669.6911      0.0000  0.0000  ALU_DW01_add_1321
+alu1/dwpipe14/U_DIV/u_add_PartRem_1_9
+                                     642.9410      0.1     642.9410      0.0000  0.0000  ALU_DW01_add_1320
+alu1/dwpipe15                     254008.6191     55.1     243.0974    518.5765  0.0000  ALU_DW_div_pipe_0
+alu1/dwpipe15/U_DIV               253246.9452     54.9   41245.8375  11057.6464  0.0000  ALU_DW_div_15
+alu1/dwpipe15/U_DIV/u_add_B3        2465.2328      0.5    2465.2328      0.0000  0.0000  ALU_DW01_add_181
+alu1/dwpipe15/U_DIV/u_add_B5        2531.8734      0.5    2531.8734      0.0000  0.0000  ALU_DW01_add_182
+alu1/dwpipe15/U_DIV/u_add_B6        2710.2074      0.6    2710.2074      0.0000  0.0000  ALU_DW01_add_183
+alu1/dwpipe15/U_DIV/u_add_B7        2681.5801      0.6    2681.5801      0.0000  0.0000  ALU_DW01_sub_0
+alu1/dwpipe15/U_DIV/u_add_PartRem_0_1
+                                    1947.5950      0.4    1947.5950      0.0000  0.0000  ALU_DW01_add_331
+alu1/dwpipe15/U_DIV/u_add_PartRem_0_2
+                                    2019.8672      0.4    2003.9110     15.9562  0.0000  ALU_DW01_add_332
+alu1/dwpipe15/U_DIV/u_add_PartRem_0_3
+                                    2352.1315      0.5    2296.2848     55.8467  0.0000  ALU_DW01_add_333
+alu1/dwpipe15/U_DIV/u_add_PartRem_0_4
+                                    2611.6544      0.6    2372.3114    239.3430  0.0000  ALU_DW01_add_334
+alu1/dwpipe15/U_DIV/u_add_PartRem_0_5
+                                    2446.9301      0.5    2383.1053     63.8248  0.0000  ALU_DW01_add_335
+alu1/dwpipe15/U_DIV/u_add_PartRem_0_6
+                                    2476.0267      0.5    2412.2019     63.8248  0.0000  ALU_DW01_add_336
+alu1/dwpipe15/U_DIV/u_add_PartRem_0_7
+                                    2424.8730      0.5    2361.0482     63.8248  0.0000  ALU_DW01_add_337
+alu1/dwpipe15/U_DIV/u_add_PartRem_10_1
+                                    1150.7236      0.2    1150.7236      0.0000  0.0000  ALU_DW01_add_261
+alu1/dwpipe15/U_DIV/u_add_PartRem_10_2
+                                    1128.1972      0.2    1128.1972      0.0000  0.0000  ALU_DW01_add_262
+alu1/dwpipe15/U_DIV/u_add_PartRem_10_3
+                                    1312.1628      0.3    1312.1628      0.0000  0.0000  ALU_DW01_add_263
+alu1/dwpipe15/U_DIV/u_add_PartRem_10_4
+                                    1210.7940      0.3    1210.7940      0.0000  0.0000  ALU_DW01_add_264
+alu1/dwpipe15/U_DIV/u_add_PartRem_10_5
+                                    1324.8339      0.3    1316.8558      7.9781  0.0000  ALU_DW01_add_265
+alu1/dwpipe15/U_DIV/u_add_PartRem_10_6
+                                    1292.9215      0.3    1292.9215      0.0000  0.0000  ALU_DW01_add_266
+alu1/dwpipe15/U_DIV/u_add_PartRem_10_7
+                                    1315.4479      0.3    1307.4698      7.9781  0.0000  ALU_DW01_add_267
+alu1/dwpipe15/U_DIV/u_add_PartRem_11_1
+                                    1058.2715      0.2    1058.2715      0.0000  0.0000  ALU_DW01_add_254
+alu1/dwpipe15/U_DIV/u_add_PartRem_11_2
+                                    1027.2977      0.2    1027.2977      0.0000  0.0000  ALU_DW01_add_255
+alu1/dwpipe15/U_DIV/u_add_PartRem_11_3
+                                    1224.8730      0.3    1216.8949      7.9781  0.0000  ALU_DW01_add_256
+alu1/dwpipe15/U_DIV/u_add_PartRem_11_4
+                                     975.2054      0.2     975.2054      0.0000  0.0000  ALU_DW01_add_257
+alu1/dwpipe15/U_DIV/u_add_PartRem_11_5
+                                    1201.4080      0.3    1193.4299      7.9781  0.0000  ALU_DW01_add_258
+alu1/dwpipe15/U_DIV/u_add_PartRem_11_6
+                                    1272.7416      0.3    1272.7416      0.0000  0.0000  ALU_DW01_add_259
+alu1/dwpipe15/U_DIV/u_add_PartRem_11_7
+                                    1158.7017      0.3    1158.7017      0.0000  0.0000  ALU_DW01_add_260
+alu1/dwpipe15/U_DIV/u_add_PartRem_12_1
+                                     947.5167      0.2     947.5167      0.0000  0.0000  ALU_DW01_add_247
+alu1/dwpipe15/U_DIV/u_add_PartRem_12_2
+                                     964.4115      0.2     964.4115      0.0000  0.0000  ALU_DW01_add_248
+alu1/dwpipe15/U_DIV/u_add_PartRem_12_3
+                                    1065.3110      0.2    1049.3548     15.9562  0.0000  ALU_DW01_add_249
+alu1/dwpipe15/U_DIV/u_add_PartRem_12_4
+                                     936.7228      0.2     936.7228      0.0000  0.0000  ALU_DW01_add_250
+alu1/dwpipe15/U_DIV/u_add_PartRem_12_5
+                                    1058.7408      0.2    1042.7846     15.9562  0.0000  ALU_DW01_add_251
+alu1/dwpipe15/U_DIV/u_add_PartRem_12_6
+                                    1185.9211      0.3    1090.1839     95.7372  0.0000  ALU_DW01_add_252
+alu1/dwpipe15/U_DIV/u_add_PartRem_12_7
+                                    1052.6399      0.2    1044.6618      7.9781  0.0000  ALU_DW01_add_253
+alu1/dwpipe15/U_DIV/u_add_PartRem_13_1
+                                    1114.1182      0.2     970.5124    143.6058  0.0000  ALU_DW01_add_240
+alu1/dwpipe15/U_DIV/u_add_PartRem_13_2
+                                    1170.4342      0.3     923.1131    247.3211  0.0000  ALU_DW01_add_241
+alu1/dwpipe15/U_DIV/u_add_PartRem_13_3
+                                     947.0474      0.2     939.0693      7.9781  0.0000  ALU_DW01_add_242
+alu1/dwpipe15/U_DIV/u_add_PartRem_13_4
+                                    1176.0658      0.3     904.8104    271.2554  0.0000  ALU_DW01_add_243
+alu1/dwpipe15/U_DIV/u_add_PartRem_13_5
+                                     955.4948      0.2     947.5167      7.9781  0.0000  ALU_DW01_add_244
+alu1/dwpipe15/U_DIV/u_add_PartRem_13_6
+                                    1242.2371      0.3     994.9160    247.3211  0.0000  ALU_DW01_add_245
+alu1/dwpipe15/U_DIV/u_add_PartRem_13_7
+                                     932.4991      0.2     924.5210      7.9781  0.0000  ALU_DW01_add_246
+alu1/dwpipe15/U_DIV/u_add_PartRem_14_1
+                                     757.9195      0.2     757.9195      0.0000  0.0000  ALU_DW01_add_233
+alu1/dwpipe15/U_DIV/u_add_PartRem_14_2
+                                     756.0423      0.2     756.0423      0.0000  0.0000  ALU_DW01_add_234
+alu1/dwpipe15/U_DIV/u_add_PartRem_14_3
+                                     805.7881      0.2     805.7881      0.0000  0.0000  ALU_DW01_add_235
+alu1/dwpipe15/U_DIV/u_add_PartRem_14_4
+                                     762.6125      0.2     762.6125      0.0000  0.0000  ALU_DW01_add_236
+alu1/dwpipe15/U_DIV/u_add_PartRem_14_5
+                                     802.5030      0.2     802.5030      0.0000  0.0000  ALU_DW01_add_237
+alu1/dwpipe15/U_DIV/u_add_PartRem_14_6
+                                     805.3188      0.2     805.3188      0.0000  0.0000  ALU_DW01_add_238
+alu1/dwpipe15/U_DIV/u_add_PartRem_14_7
+                                     806.7267      0.2     806.7267      0.0000  0.0000  ALU_DW01_add_239
+alu1/dwpipe15/U_DIV/u_add_PartRem_15_1
+                                     681.8929      0.1     681.8929      0.0000  0.0000  ALU_DW01_add_226
+alu1/dwpipe15/U_DIV/u_add_PartRem_15_2
+                                     659.3665      0.1     659.3665      0.0000  0.0000  ALU_DW01_add_227
+alu1/dwpipe15/U_DIV/u_add_PartRem_15_3
+                                     687.0552      0.1     687.0552      0.0000  0.0000  ALU_DW01_add_228
+alu1/dwpipe15/U_DIV/u_add_PartRem_15_4
+                                     644.3489      0.1     644.3489      0.0000  0.0000  ALU_DW01_add_229
+alu1/dwpipe15/U_DIV/u_add_PartRem_15_5
+                                     692.2175      0.2     692.2175      0.0000  0.0000  ALU_DW01_add_230
+alu1/dwpipe15/U_DIV/u_add_PartRem_15_6
+                                     710.9895      0.2     710.9895      0.0000  0.0000  ALU_DW01_add_231
+alu1/dwpipe15/U_DIV/u_add_PartRem_15_7
+                                     696.4412      0.2     696.4412      0.0000  0.0000  ALU_DW01_add_232
+alu1/dwpipe15/U_DIV/u_add_PartRem_16_1
+                                     586.6250      0.1     586.6250      0.0000  0.0000  ALU_DW01_add_219
+alu1/dwpipe15/U_DIV/u_add_PartRem_16_2
+                                     605.8663      0.1     605.8663      0.0000  0.0000  ALU_DW01_add_220
+alu1/dwpipe15/U_DIV/u_add_PartRem_16_3
+                                     607.2742      0.1     607.2742      0.0000  0.0000  ALU_DW01_add_221
+alu1/dwpipe15/U_DIV/u_add_PartRem_16_4
+                                     542.0415      0.1     542.0415      0.0000  0.0000  ALU_DW01_add_222
+alu1/dwpipe15/U_DIV/u_add_PartRem_16_5
+                                     595.0724      0.1     595.0724      0.0000  0.0000  ALU_DW01_add_223
+alu1/dwpipe15/U_DIV/u_add_PartRem_16_6
+                                     609.6207      0.1     609.6207      0.0000  0.0000  ALU_DW01_add_224
+alu1/dwpipe15/U_DIV/u_add_PartRem_16_7
+                                     604.4584      0.1     604.4584      0.0000  0.0000  ALU_DW01_add_225
+alu1/dwpipe15/U_DIV/u_add_PartRem_17_1
+                                     492.2957      0.1     492.2957      0.0000  0.0000  ALU_DW01_add_212
+alu1/dwpipe15/U_DIV/u_add_PartRem_17_2
+                                     477.2781      0.1     477.2781      0.0000  0.0000  ALU_DW01_add_213
+alu1/dwpipe15/U_DIV/u_add_PartRem_17_3
+                                     502.1510      0.1     502.1510      0.0000  0.0000  ALU_DW01_add_214
+alu1/dwpipe15/U_DIV/u_add_PartRem_17_4
+                                     489.0106      0.1     489.0106      0.0000  0.0000  ALU_DW01_add_215
+alu1/dwpipe15/U_DIV/u_add_PartRem_17_5
+                                     495.5808      0.1     495.5808      0.0000  0.0000  ALU_DW01_add_216
+alu1/dwpipe15/U_DIV/u_add_PartRem_17_6
+                                     502.1510      0.1     502.1510      0.0000  0.0000  ALU_DW01_add_217
+alu1/dwpipe15/U_DIV/u_add_PartRem_17_7
+                                     497.9273      0.1     497.9273      0.0000  0.0000  ALU_DW01_add_218
+alu1/dwpipe15/U_DIV/u_add_PartRem_18_1
+                                     424.2472      0.1     424.2472      0.0000  0.0000  ALU_DW01_add_205
+alu1/dwpipe15/U_DIV/u_add_PartRem_18_2
+                                     412.5147      0.1     412.5147      0.0000  0.0000  ALU_DW01_add_206
+alu1/dwpipe15/U_DIV/u_add_PartRem_18_3
+                                     432.2253      0.1     432.2253      0.0000  0.0000  ALU_DW01_add_207
+alu1/dwpipe15/U_DIV/u_add_PartRem_18_4
+                                     407.8217      0.1     407.8217      0.0000  0.0000  ALU_DW01_add_208
+alu1/dwpipe15/U_DIV/u_add_PartRem_18_5
+                                     439.2648      0.1     439.2648      0.0000  0.0000  ALU_DW01_add_209
+alu1/dwpipe15/U_DIV/u_add_PartRem_18_6
+                                     453.8131      0.1     453.8131      0.0000  0.0000  ALU_DW01_add_210
+alu1/dwpipe15/U_DIV/u_add_PartRem_18_7
+                                     433.6332      0.1     433.6332      0.0000  0.0000  ALU_DW01_add_211
+alu1/dwpipe15/U_DIV/u_add_PartRem_19_1
+                                     353.8522      0.1     353.8522      0.0000  0.0000  ALU_DW01_add_198
+alu1/dwpipe15/U_DIV/u_add_PartRem_19_2
+                                     330.8565      0.1     330.8565      0.0000  0.0000  ALU_DW01_add_199
+alu1/dwpipe15/U_DIV/u_add_PartRem_19_3
+                                     359.9531      0.1     359.9531      0.0000  0.0000  ALU_DW01_add_200
+alu1/dwpipe15/U_DIV/u_add_PartRem_19_4
+                                     309.7380      0.1     309.7380      0.0000  0.0000  ALU_DW01_add_201
+alu1/dwpipe15/U_DIV/u_add_PartRem_19_5
+                                     368.8698      0.1     368.8698      0.0000  0.0000  ALU_DW01_add_202
+alu1/dwpipe15/U_DIV/u_add_PartRem_19_6
+                                     368.8698      0.1     368.8698      0.0000  0.0000  ALU_DW01_add_203
+alu1/dwpipe15/U_DIV/u_add_PartRem_19_7
+                                     357.6066      0.1     357.6066      0.0000  0.0000  ALU_DW01_add_204
+alu1/dwpipe15/U_DIV/u_add_PartRem_1_1
+                                    2061.6348      0.4    2061.6348      0.0000  0.0000  ALU_DW01_add_324
+alu1/dwpipe15/U_DIV/u_add_PartRem_1_2
+                                    2057.4112      0.4    2041.4550     15.9562  0.0000  ALU_DW01_add_325
+alu1/dwpipe15/U_DIV/u_add_PartRem_1_3
+                                    2291.1225      0.5    2259.2101     31.9124  0.0000  ALU_DW01_add_326
+alu1/dwpipe15/U_DIV/u_add_PartRem_1_4
+                                    2191.6310      0.5    2175.6748     15.9562  0.0000  ALU_DW01_add_327
+alu1/dwpipe15/U_DIV/u_add_PartRem_1_5
+                                    2284.5523      0.5    2252.6399     31.9124  0.0000  ALU_DW01_add_328
+alu1/dwpipe15/U_DIV/u_add_PartRem_1_6
+                                    2332.4209      0.5    2300.5085     31.9124  0.0000  ALU_DW01_add_329
+alu1/dwpipe15/U_DIV/u_add_PartRem_1_7
+                                    2283.1444      0.5    2251.2320     31.9124  0.0000  ALU_DW01_add_330
+alu1/dwpipe15/U_DIV/u_add_PartRem_20_1
+                                     260.4615      0.1     260.4615      0.0000  0.0000  ALU_DW01_add_191
+alu1/dwpipe15/U_DIV/u_add_PartRem_20_2
+                                     242.1588      0.1     242.1588      0.0000  0.0000  ALU_DW01_add_192
+alu1/dwpipe15/U_DIV/u_add_PartRem_20_3
+                                     277.8256      0.1     277.8256      0.0000  0.0000  ALU_DW01_add_193
+alu1/dwpipe15/U_DIV/u_add_PartRem_20_4
+                                     222.4482      0.0     222.4482      0.0000  0.0000  ALU_DW01_add_194
+alu1/dwpipe15/U_DIV/u_add_PartRem_20_5
+                                     282.5186      0.1     282.5186      0.0000  0.0000  ALU_DW01_add_195
+alu1/dwpipe15/U_DIV/u_add_PartRem_20_6
+                                     280.1721      0.1     280.1721      0.0000  0.0000  ALU_DW01_add_196
+alu1/dwpipe15/U_DIV/u_add_PartRem_20_7
+                                     274.5405      0.1     274.5405      0.0000  0.0000  ALU_DW01_add_197
+alu1/dwpipe15/U_DIV/u_add_PartRem_21_1
+                                     184.4349      0.0     184.4349      0.0000  0.0000  ALU_DW01_add_184
+alu1/dwpipe15/U_DIV/u_add_PartRem_2_1
+                                    1977.1609      0.4    1961.2047     15.9562  0.0000  ALU_DW01_add_317
+alu1/dwpipe15/U_DIV/u_add_PartRem_2_2
+                                    1948.0643      0.4    1932.1081     15.9562  0.0000  ALU_DW01_add_318
+alu1/dwpipe15/U_DIV/u_add_PartRem_2_3
+                                    2313.6489      0.5    2313.6489      0.0000  0.0000  ALU_DW01_add_319
+alu1/dwpipe15/U_DIV/u_add_PartRem_2_4
+                                    2043.8015      0.4    2027.8453     15.9562  0.0000  ALU_DW01_add_320
+alu1/dwpipe15/U_DIV/u_add_PartRem_2_5
+                                    2324.4428      0.5    2324.4428      0.0000  0.0000  ALU_DW01_add_321
+alu1/dwpipe15/U_DIV/u_add_PartRem_2_6
+                                    2285.4909      0.5    2285.4909      0.0000  0.0000  ALU_DW01_add_322
+alu1/dwpipe15/U_DIV/u_add_PartRem_2_7
+                                    2314.5875      0.5    2314.5875      0.0000  0.0000  ALU_DW01_add_323
+alu1/dwpipe15/U_DIV/u_add_PartRem_3_1
+                                    2198.6704      0.5    1879.5465    319.1240  0.0000  ALU_DW01_add_310
+alu1/dwpipe15/U_DIV/u_add_PartRem_3_2
+                                    1783.3400      0.4    1783.3400      0.0000  0.0000  ALU_DW01_add_311
+alu1/dwpipe15/U_DIV/u_add_PartRem_3_3
+                                    2113.7271      0.5    2113.7271      0.0000  0.0000  ALU_DW01_add_312
+alu1/dwpipe15/U_DIV/u_add_PartRem_3_4
+                                    1914.2747      0.4    1882.3623     31.9124  0.0000  ALU_DW01_add_313
+alu1/dwpipe15/U_DIV/u_add_PartRem_3_5
+                                    2117.9508      0.5    2117.9508      0.0000  0.0000  ALU_DW01_add_314
+alu1/dwpipe15/U_DIV/u_add_PartRem_3_6
+                                    2150.8019      0.5    2150.8019      0.0000  0.0000  ALU_DW01_add_315
+alu1/dwpipe15/U_DIV/u_add_PartRem_3_7
+                                    2117.0122      0.5    2117.0122      0.0000  0.0000  ALU_DW01_add_316
+alu1/dwpipe15/U_DIV/u_add_PartRem_4_1
+                                    1708.2520      0.4    1708.2520      0.0000  0.0000  ALU_DW01_add_303
+alu1/dwpipe15/U_DIV/u_add_PartRem_4_2
+                                    1732.1863      0.4    1732.1863      0.0000  0.0000  ALU_DW01_add_304
+alu1/dwpipe15/U_DIV/u_add_PartRem_4_3
+                                    2052.7182      0.4    2052.7182      0.0000  0.0000  ALU_DW01_add_305
+alu1/dwpipe15/U_DIV/u_add_PartRem_4_4
+                                    1936.3318      0.4    1840.5946     95.7372  0.0000  ALU_DW01_add_306
+alu1/dwpipe15/U_DIV/u_add_PartRem_4_5
+                                    2011.4198      0.4    2011.4198      0.0000  0.0000  ALU_DW01_add_307
+alu1/dwpipe15/U_DIV/u_add_PartRem_4_6
+                                    2022.2137      0.4    2022.2137      0.0000  0.0000  ALU_DW01_add_308
+alu1/dwpipe15/U_DIV/u_add_PartRem_4_7
+                                    2073.8367      0.4    2073.8367      0.0000  0.0000  ALU_DW01_add_309
+alu1/dwpipe15/U_DIV/u_add_PartRem_5_1
+                                    1574.5015      0.3    1574.5015      0.0000  0.0000  ALU_DW01_add_296
+alu1/dwpipe15/U_DIV/u_add_PartRem_5_2
+                                    1643.4886      0.4    1627.5324     15.9562  0.0000  ALU_DW01_add_297
+alu1/dwpipe15/U_DIV/u_add_PartRem_5_3
+                                    1898.3185      0.4    1898.3185      0.0000  0.0000  ALU_DW01_add_298
+alu1/dwpipe15/U_DIV/u_add_PartRem_5_4
+                                    1654.2825      0.4    1646.3044      7.9781  0.0000  ALU_DW01_add_299
+alu1/dwpipe15/U_DIV/u_add_PartRem_5_5
+                                    1890.8097      0.4    1890.8097      0.0000  0.0000  ALU_DW01_add_300
+alu1/dwpipe15/U_DIV/u_add_PartRem_5_6
+                                    1878.1386      0.4    1878.1386      0.0000  0.0000  ALU_DW01_add_301
+alu1/dwpipe15/U_DIV/u_add_PartRem_5_7
+                                    1867.8140      0.4    1867.8140      0.0000  0.0000  ALU_DW01_add_302
+alu1/dwpipe15/U_DIV/u_add_PartRem_6_1
+                                    2323.9735      0.5    1749.5504    574.4232  0.0000  ALU_DW01_add_289
+alu1/dwpipe15/U_DIV/u_add_PartRem_6_2
+                                    2329.6051      0.5    1755.1820    574.4232  0.0000  ALU_DW01_add_290
+alu1/dwpipe15/U_DIV/u_add_PartRem_6_3
+                                    2267.1882      0.5    1948.0643    319.1240  0.0000  ALU_DW01_add_291
+alu1/dwpipe15/U_DIV/u_add_PartRem_6_4
+                                    2231.5214      0.5    1681.0326    550.4889  0.0000  ALU_DW01_add_292
+alu1/dwpipe15/U_DIV/u_add_PartRem_6_5
+                                    2257.8022      0.5    1930.7002    327.1021  0.0000  ALU_DW01_add_293
+alu1/dwpipe15/U_DIV/u_add_PartRem_6_6
+                                    2362.4561      0.5    1995.4636    366.9926  0.0000  ALU_DW01_add_294
+alu1/dwpipe15/U_DIV/u_add_PartRem_6_7
+                                    2260.1487      0.5    1964.9591    295.1897  0.0000  ALU_DW01_add_295
+alu1/dwpipe15/U_DIV/u_add_PartRem_7_1
+                                    1450.1370      0.3    1450.1370      0.0000  0.0000  ALU_DW01_add_282
+alu1/dwpipe15/U_DIV/u_add_PartRem_7_2
+                                    1414.0009      0.3    1414.0009      0.0000  0.0000  ALU_DW01_add_283
+alu1/dwpipe15/U_DIV/u_add_PartRem_7_3
+                                    1688.5414      0.4    1688.5414      0.0000  0.0000  ALU_DW01_add_284
+alu1/dwpipe15/U_DIV/u_add_PartRem_7_4
+                                    1444.5054      0.3    1444.5054      0.0000  0.0000  ALU_DW01_add_285
+alu1/dwpipe15/U_DIV/u_add_PartRem_7_5
+                                    1631.7561      0.4    1631.7561      0.0000  0.0000  ALU_DW01_add_286
+alu1/dwpipe15/U_DIV/u_add_PartRem_7_6
+                                    1646.7737      0.4    1646.7737      0.0000  0.0000  ALU_DW01_add_287
+alu1/dwpipe15/U_DIV/u_add_PartRem_7_7
+                                    1654.7518      0.4    1654.7518      0.0000  0.0000  ALU_DW01_add_288
+alu1/dwpipe15/U_DIV/u_add_PartRem_8_1
+                                    1360.9700      0.3    1360.9700      0.0000  0.0000  ALU_DW01_add_275
+alu1/dwpipe15/U_DIV/u_add_PartRem_8_2
+                                    1320.1409      0.3    1320.1409      0.0000  0.0000  ALU_DW01_add_276
+alu1/dwpipe15/U_DIV/u_add_PartRem_8_3
+                                    1533.6724      0.3    1533.6724      0.0000  0.0000  ALU_DW01_add_277
+alu1/dwpipe15/U_DIV/u_add_PartRem_8_4
+                                    1313.5707      0.3    1313.5707      0.0000  0.0000  ALU_DW01_add_278
+alu1/dwpipe15/U_DIV/u_add_PartRem_8_5
+                                    1543.5277      0.3    1543.5277      0.0000  0.0000  ALU_DW01_add_279
+alu1/dwpipe15/U_DIV/u_add_PartRem_8_6
+                                    1518.1855      0.3    1518.1855      0.0000  0.0000  ALU_DW01_add_280
+alu1/dwpipe15/U_DIV/u_add_PartRem_8_7
+                                    1534.1417      0.3    1534.1417      0.0000  0.0000  ALU_DW01_add_281
+alu1/dwpipe15/U_DIV/u_add_PartRem_9_1
+                                    1259.6012      0.3    1259.6012      0.0000  0.0000  ALU_DW01_add_268
+alu1/dwpipe15/U_DIV/u_add_PartRem_9_2
+                                    1249.7459      0.3    1249.7459      0.0000  0.0000  ALU_DW01_add_269
+alu1/dwpipe15/U_DIV/u_add_PartRem_9_3
+                                    1366.1323      0.3    1366.1323      0.0000  0.0000  ALU_DW01_add_270
+alu1/dwpipe15/U_DIV/u_add_PartRem_9_4
+                                    1294.7987      0.3    1294.7987      0.0000  0.0000  ALU_DW01_add_271
+alu1/dwpipe15/U_DIV/u_add_PartRem_9_5
+                                    1396.6368      0.3    1396.6368      0.0000  0.0000  ALU_DW01_add_272
+alu1/dwpipe15/U_DIV/u_add_PartRem_9_6
+                                    1404.6149      0.3    1404.6149      0.0000  0.0000  ALU_DW01_add_273
+alu1/dwpipe15/U_DIV/u_add_PartRem_9_7
+                                    1410.2465      0.3    1410.2465      0.0000  0.0000  ALU_DW01_add_274
+alu1/dwpipe2                         958.3106      0.2       1.4079      0.0000  0.0000  ALU_DW_div_pipe_13
+alu1/dwpipe2/U_DIV                   956.9027      0.2     701.6035    255.2992  0.0000  ALU_DW_div_29
+alu1/dwpipe3                         941.8851      0.2       1.4079      0.0000  0.0000  ALU_DW_div_pipe_12
+alu1/dwpipe3/U_DIV                   940.4772      0.2     685.1780    255.2992  0.0000  ALU_DW_div_35
+alu1/dwpipe4                         951.2711      0.2       1.4079      0.0000  0.0000  ALU_DW_div_pipe_11
+alu1/dwpipe4/U_DIV                   949.8632      0.2     694.5640    255.2992  0.0000  ALU_DW_div_41
+alu1/dwpipe5                         953.6176      0.2       1.4079      0.0000  0.0000  ALU_DW_div_pipe_10
+alu1/dwpipe5/U_DIV                   952.2097      0.2     696.9105    255.2992  0.0000  ALU_DW_div_47
+alu1/dwpipe6                         958.3106      0.2       1.4079      0.0000  0.0000  ALU_DW_div_pipe_9
+alu1/dwpipe6/U_DIV                   956.9027      0.2     701.6035    255.2992  0.0000  ALU_DW_div_53
+alu1/dwpipe7                         953.6176      0.2       1.4079      0.0000  0.0000  ALU_DW_div_pipe_8
+alu1/dwpipe7/U_DIV                   952.2097      0.2     696.9105    255.2992  0.0000  ALU_DW_div_59
+alu1/dwpipe8                         951.2711      0.2       1.4079      0.0000  0.0000  ALU_DW_div_pipe_7
+alu1/dwpipe8/U_DIV                   949.8632      0.2     694.5640    255.2992  0.0000  ALU_DW_div_65
+alu1/dwpipe9                        3024.6385      0.7      60.5397    143.6058  0.0000  ALU_DW_div_pipe_6
+alu1/dwpipe9/U_DIV                  2820.4930      0.6    2246.0698    574.4232  0.0000  ALU_DW_div_70
+alu1/dwsqpi1                         198.0446      0.0      18.7720     63.8248  0.0000  ALU_DW_sqrt_pipe_14
+alu1/dwsqpi1/U_SQRT                  115.4478      0.0     115.4478      0.0000  0.0000  ALU_DW_sqrt_14
+alu1/dwsqpi10                        649.9805      0.1      37.5440    127.6496  0.0000  ALU_DW_sqrt_pipe_5
+alu1/dwsqpi10/U_SQRT                 484.7869      0.1     484.7869      0.0000  0.0000  ALU_DW_sqrt_5
+alu1/dwsqpi11                        641.0638      0.1      37.5440    127.6496  0.0000  ALU_DW_sqrt_pipe_4
+alu1/dwsqpi11/U_SQRT                 475.8702      0.1     475.8702      0.0000  0.0000  ALU_DW_sqrt_4
+alu1/dwsqpi12                        641.0638      0.1      37.5440    127.6496  0.0000  ALU_DW_sqrt_pipe_3
+alu1/dwsqpi12/U_SQRT                 475.8702      0.1     475.8702      0.0000  0.0000  ALU_DW_sqrt_3
+alu1/dwsqpi13                       2767.9314      0.6      48.3379    159.5620  0.0000  ALU_DW_sqrt_pipe_2
+alu1/dwsqpi13/U_SQRT                2560.0315      0.6    2137.1922    422.8393  0.0000  ALU_DW_sqrt_2
+alu1/dwsqpi14                       2742.1199      0.6      48.3379    159.5620  0.0000  ALU_DW_sqrt_pipe_1
+alu1/dwsqpi14/U_SQRT                2534.2200      0.5    2119.3588    414.8612  0.0000  ALU_DW_sqrt_1
+alu1/dwsqpi15                      20413.6109      4.4      80.2503    255.2992  0.0000  ALU_DW_sqrt_pipe_0
+alu1/dwsqpi15/U_SQRT               20078.0614      4.4    3968.8701   1172.7807  0.0000  ALU_DW_sqrt_15
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_0
+                                     510.1291      0.1     462.2605     47.8686  0.0000  ALU_DW01_add_365
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_1
+                                    1024.9512      0.2    1024.9512      0.0000  0.0000  ALU_DW01_add_364
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_10
+                                     655.1428      0.1     655.1428      0.0000  0.0000  ALU_DW01_add_355
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_11
+                                     628.3927      0.1     628.3927      0.0000  0.0000  ALU_DW01_add_354
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_12
+                                     591.3180      0.1     591.3180      0.0000  0.0000  ALU_DW01_add_353
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_13
+                                     553.3047      0.1     553.3047      0.0000  0.0000  ALU_DW01_add_352
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_14
+                                     527.9625      0.1     527.9625      0.0000  0.0000  ALU_DW01_add_351
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_15
+                                     496.9887      0.1     496.9887      0.0000  0.0000  ALU_DW01_add_350
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_16
+                                     467.8921      0.1     467.8921      0.0000  0.0000  ALU_DW01_add_349
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_17
+                                     440.2034      0.1     440.2034      0.0000  0.0000  ALU_DW01_add_348
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_18
+                                     398.9050      0.1     398.9050      0.0000  0.0000  ALU_DW01_add_347
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_19
+                                     363.2382      0.1     363.2382      0.0000  0.0000  ALU_DW01_add_346
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_2
+                                     965.8194      0.2     965.8194      0.0000  0.0000  ALU_DW01_add_363
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_20
+                                     342.5890      0.1     334.6109      7.9781  0.0000  ALU_DW01_add_345
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_21
+                                     281.1107      0.1     281.1107      0.0000  0.0000  ALU_DW01_add_344
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_22
+                                     247.3211      0.1     247.3211      0.0000  0.0000  ALU_DW01_add_343
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_23
+                                     218.6938      0.0     218.6938      0.0000  0.0000  ALU_DW01_add_342
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_24
+                                     192.8823      0.0     192.8823      0.0000  0.0000  ALU_DW01_add_341
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_25
+                                     154.3997      0.0     154.3997      0.0000  0.0000  ALU_DW01_add_340
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_26
+                                     120.6101      0.0     120.6101      0.0000  0.0000  ALU_DW01_add_339
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_27
+                                      91.9828      0.0      91.9828      0.0000  0.0000  ALU_DW01_add_338
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_3
+                                     926.8675      0.2     926.8675      0.0000  0.0000  ALU_DW01_add_362
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_4
+                                     898.2402      0.2     898.2402      0.0000  0.0000  ALU_DW01_add_361
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_5
+                                     842.3935      0.2     842.3935      0.0000  0.0000  ALU_DW01_add_360
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_6
+                                     800.6258      0.2     800.6258      0.0000  0.0000  ALU_DW01_add_359
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_7
+                                     769.1827      0.2     769.1827      0.0000  0.0000  ALU_DW01_add_358
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_8
+                                     733.5159      0.2     733.5159      0.0000  0.0000  ALU_DW01_add_357
+alu1/dwsqpi15/U_SQRT/u_add_PartRem_9
+                                     691.7482      0.1     683.7701      7.9781  0.0000  ALU_DW01_add_356
+alu1/dwsqpi2                         198.0446      0.0      18.7720     63.8248  0.0000  ALU_DW_sqrt_pipe_13
+alu1/dwsqpi2/U_SQRT                  115.4478      0.0     115.4478      0.0000  0.0000  ALU_DW_sqrt_13
+alu1/dwsqpi3                         198.0446      0.0      18.7720     63.8248  0.0000  ALU_DW_sqrt_pipe_12
+alu1/dwsqpi3/U_SQRT                  115.4478      0.0     115.4478      0.0000  0.0000  ALU_DW_sqrt_12
+alu1/dwsqpi4                         198.0446      0.0      18.7720     63.8248  0.0000  ALU_DW_sqrt_pipe_11
+alu1/dwsqpi4/U_SQRT                  115.4478      0.0     115.4478      0.0000  0.0000  ALU_DW_sqrt_11
+alu1/dwsqpi5                         198.0446      0.0      18.7720     63.8248  0.0000  ALU_DW_sqrt_pipe_10
+alu1/dwsqpi5/U_SQRT                  115.4478      0.0     115.4478      0.0000  0.0000  ALU_DW_sqrt_10
+alu1/dwsqpi6                         198.0446      0.0      18.7720     63.8248  0.0000  ALU_DW_sqrt_pipe_9
+alu1/dwsqpi6/U_SQRT                  115.4478      0.0     115.4478      0.0000  0.0000  ALU_DW_sqrt_9
+alu1/dwsqpi7                         198.0446      0.0      18.7720     63.8248  0.0000  ALU_DW_sqrt_pipe_8
+alu1/dwsqpi7/U_SQRT                  115.4478      0.0     115.4478      0.0000  0.0000  ALU_DW_sqrt_8
+alu1/dwsqpi8                         198.0446      0.0      18.7720     63.8248  0.0000  ALU_DW_sqrt_pipe_7
+alu1/dwsqpi8/U_SQRT                  115.4478      0.0     115.4478      0.0000  0.0000  ALU_DW_sqrt_7
+alu1/dwsqpi9                         641.0638      0.1      37.5440    127.6496  0.0000  ALU_DW_sqrt_pipe_6
+alu1/dwsqpi9/U_SQRT                  475.8702      0.1     475.8702      0.0000  0.0000  ALU_DW_sqrt_6
+bp                                   456.6289      0.1     328.9793    127.6496  0.0000  Branch_Predictor
+rf                                 60936.2571     13.2   44597.1087  16339.1484  0.0000  reg_file
+--------------------------------  -----------  -------  -----------  ----------  ------  -----------------------------
+Total                                                   413593.1431  47573.4092  0.0000
 
 1

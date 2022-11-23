@@ -22,7 +22,7 @@
 // b. 256 X 32 bit word Instruction memory
 // c. 256 X 64 bit word Data memory
 
-module tb_cardinal_processor;
+module tb_syn;
 
 reg Clock, Reset;
 

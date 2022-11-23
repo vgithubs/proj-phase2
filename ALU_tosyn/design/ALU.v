@@ -30,18 +30,18 @@ parameter Width_8 = 2'b00, Width_16 = 2'b01, Width_32 = 2'b10, Width_64 = 2'b11;
 
 reg signed [0:63] ALU_out_signed;
 
-wire enable, gclk;
-reg en_out;
+// wire enable, gclk;
+// reg en_out;
 
-//Clock Gating
-assign enable = (R_ins == VDIV ) | (R_ins == VMOD) | (R_ins == VSQRT);
+// //Clock Gating
+// assign enable = (R_ins == VDIV ) | (R_ins == VMOD) | (R_ins == VSQRT);
 
-always @ (enable or Clock) begin
-	if (!Clock) 
- 		en_out = enable; // build latch
-end
+// always @ (enable or Clock) begin
+// 	if (!Clock) 
+//  		en_out = enable; // build latch
+// end
 
-assign gclk = en_out && Clock;
+// assign gclk = en_out && Clock;
 
 
 

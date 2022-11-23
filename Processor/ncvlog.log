@@ -1,14 +1,14 @@
 ncvlog(64): 15.20-s079: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
-TOOL:	ncvlog(64)	15.20-s079: Started on Nov 03, 2022 at 20:32:02 PDT
+TOOL:	ncvlog(64)	15.20-s079: Started on Nov 15, 2022 at 21:54:47 PST
 ncvlog
     -STATUS
     -MESSAGES
     -UPDATE
     -INCDIR ./include
     -work work
-    ./tb/tb_cardinal_processor.v
+    ./tb/tb_syn.v
 
-file: ./tb/tb_cardinal_processor.v
+file: ./tb/tb_syn.v
 	module work.dmem
 		errors: 0, warnings: 0
 	module work.imem
@@ -85,10 +85,24 @@ file: ./tb/tb_cardinal_processor.v
 		errors: 0, warnings: 0
 	primitive work.udp_mux2
 		errors: 0, warnings: 0
+	module work.reg_file
+		errors: 0, warnings: 0
+	module work.DW02_mult
+		errors: 0, warnings: 0
+	module work.DW01_addsub
+		errors: 0, warnings: 0
+	module work.DW_div_pipe
+		errors: 0, warnings: 0
+	module work.DW_sqrt_pipe
+		errors: 0, warnings: 0
+	module work.ALU
+		errors: 0, warnings: 0
+	module work.Branch_Predictor
+		errors: 0, warnings: 0
 	module work.cardinal_processor
 		errors: 0, warnings: 0
-	module work.tb_cardinal_processor
+	module work.tb_syn
 		errors: 0, warnings: 0
-ncvlog: Memory Usage - 21.4M program + 29.1M data = 50.4M total
-ncvlog: CPU Usage - 0.0s system + 0.0s user = 0.1s total (0.2s, 25.5% cpu)
-TOOL:	ncvlog(64)	15.20-s079: Exiting on Nov 03, 2022 at 20:32:02 PDT  (total: 00:00:00)
+ncvlog: Memory Usage - 21.4M program + 29.3M data = 50.6M total
+ncvlog: CPU Usage - 0.1s system + 0.0s user = 0.1s total (0.2s, 36.9% cpu)
+TOOL:	ncvlog(64)	15.20-s079: Exiting on Nov 15, 2022 at 21:54:48 PST  (total: 00:00:01)

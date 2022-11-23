@@ -84,16 +84,6 @@ reg [0:63] WB_PPP_rA_rD, WB_PPP_rB; //to forward while taking PPP in considerati
 
 //***
 
-//Clock Gating
-// assign enable = !stall;
-
-// always @ (enable or Clock) begin
-// 	if (!Clock) 
-//  		en_out = enable; // build latch
-// end
-
-// assign gclk = en_out && Clock;
-
 //IF stage
 assign PC_next = PC + 1'b1;
 assign BEZ = (rA_rD_data == 0);
@@ -102,8 +92,6 @@ assign taken = Branch && ((BEZ && (IF_ID[0:5]==BRANCH_EZ)) || (BNEZ && (IF_ID[0:
 assign BIF = (Instruction[0:5]==BRANCH_EZ) || (Instruction[0:5]==BRANCH_NZ);
 assign Pred_Addr = Prediction ? Instruction[24:31] : PC_next;
 assign pred_actual = {IF_ID_pred, taken};
-
-
 assign Instr_Addr = PC;
 
 always @(posedge Clock) begin
@@ -126,14 +114,15 @@ always @(posedge Clock) begin
 end
 
 //Branch Pred
-Branch_Predictor bp(.Clock(Clock), .Reset(Reset), .Instruction(Instruction), .pred_actual(pred_actual), .Prediction(Prediction));
+Branch_Predictor bp(.Clock(Clock), .Reset(Reset), .En(Branch), .Current(Instruction[28:31]), .Prev(IF_ID[28:31]), .PredActual(pred_actual), .Prediction(Prediction));
+
 always @(posedge Clock) begin
 	if(BIF)
 		PC_checkpoint <= PC_next;
 end
 
 always @(*) begin
-	if(Branch) begin
+	if(Branch && !stall_br_st) begin
 		case(pred_actual)
 			2'b01: flush = 1'b1;
 			2'b10: flush = 1'b1;
@@ -144,7 +133,7 @@ always @(*) begin
 end
 
 always @(*) begin
-	if(Branch) begin
+if(Branch) begin
 		case(pred_actual)
 			2'b00: Next_Addr = PC_next;
 			2'b01: Next_Addr = IF_ID[24:31];
@@ -159,6 +148,7 @@ end
 //register file operation
 assign rA_rD_addr = (Mem_Wr || Branch) ? IF_ID[6:10] : IF_ID[11:15];
 assign rB_addr = IF_ID[16:20];
+
 reg_file rf(.clk(Clock), .rst(Reset), .wr_en(EX_WB[8]), .ppp(EX_WB[0:2]), .addr_r1(rA_rD_addr), .addr_r2(rB_addr), 
 	.data_r1(rA_rD_data), .data_r2(rB_data), .in_addr(EX_WB[3:7]), .in_data(WB_data));
 
@@ -224,10 +214,10 @@ end
 
 //Forwarding logic
 always @(posedge Clock) begin
-    if((ID_EX[0:4]==IF_ID[11:15]) && (ID_EX[0:4]!=0))
+    if((ID_EX[0:4]==IF_ID[11:15]) && (ID_EX[0:4]!=0) && (ID_EX[28]))
 		fwd_rA <= 1;
 	else fwd_rA <= 0;
-	if((ID_EX[0:4]==IF_ID[16:20]) && (ID_EX[0:4]!=0))
+	if((ID_EX[0:4]==IF_ID[16:20]) && (ID_EX[0:4]!=0) && (ID_EX[28]))
 		fwd_rB <= 1;
 	else fwd_rB <= 0;
 end
@@ -327,15 +317,15 @@ always @(posedge Clock) begin
 	end
 	else begin
 		if(~stall) begin
+			//EXMEM_WB
+			EX_WB <= {ID_EX[5:7], ID_EX[0:4], ID_EX[28:29]}; // [0:2] ppp, [3:7] rD_Addr, Reg_Wr, Mem_to_Reg;
+			EX_WB_mem_data <= Data_In;
+			EX_WB_reg_data <= ALU_out;
 			if(~stall_br_st) begin
 				//ID_EXMEM
 				ID_EX <= {IF_ID[6:10], IF_ID[21:25], IF_ID[26:31], IF_ID[24:31], ALU_op, Mem_Rd, Mem_Wr, Branch, Reg_Wr, Mem_to_Reg}; //0:29
 				ID_EX_rA_rD_data <= rA_rD_data;
 				ID_EX_rB_data <= rB_data;
-				//EXMEM_WB
-				EX_WB <= {ID_EX[5:7], ID_EX[0:4], ID_EX[28:29]}; // [0:2] ppp, [3:7] rD_Addr, Reg_Wr, Mem_to_Reg;
-				EX_WB_mem_data <= Data_In;
-				EX_WB_reg_data <= ALU_out;
 			end
 			else begin // send a bubble into EX stage
 				ID_EX <= 30'd0;

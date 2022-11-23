@@ -1,0 +1,45 @@
+ 
+****************************************
+check_design summary:
+Version:     K-2015.06-SP5-5
+Date:        Fri Nov 11 01:09:33 2022
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Cells                                                              13
+    Cells do not drive (LINT-1)                                    13
+
+Nets                                                               15
+    Unloaded nets (LINT-2)                                         15
+--------------------------------------------------------------------------------
+
+Warning: In design 'reg_file', cell 'B_30' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C14155' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C14156' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C14157' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C14158' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C14164' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C14165' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C14166' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C14167' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C14173' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C14174' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C14175' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C14176' does not drive any nets. (LINT-1)
+Warning: In design 'cardinal_processor', net 'alu1/zero_64bit_div_p1' driven by pin 'alu1/dwdivi15/divide_by_0' has no loads. (LINT-2)
+Warning: In design 'cardinal_processor', net 'alu1/zero_32bit_div_p2' driven by pin 'alu1/dwdivi14/divide_by_0' has no loads. (LINT-2)
+Warning: In design 'cardinal_processor', net 'alu1/zero_32bit_div_p1' driven by pin 'alu1/dwdivi13/divide_by_0' has no loads. (LINT-2)
+Warning: In design 'cardinal_processor', net 'alu1/zero_16bit_div_p4' driven by pin 'alu1/dwdivi12/divide_by_0' has no loads. (LINT-2)
+Warning: In design 'cardinal_processor', net 'alu1/zero_16bit_div_p3' driven by pin 'alu1/dwdivi11/divide_by_0' has no loads. (LINT-2)
+Warning: In design 'cardinal_processor', net 'alu1/zero_16bit_div_p2' driven by pin 'alu1/dwdivi10/divide_by_0' has no loads. (LINT-2)
+Warning: In design 'cardinal_processor', net 'alu1/zero_16bit_div_p1' driven by pin 'alu1/dwdivi9/divide_by_0' has no loads. (LINT-2)
+Warning: In design 'cardinal_processor', net 'alu1/zero_8bit_div_p8' driven by pin 'alu1/dwdivi8/divide_by_0' has no loads. (LINT-2)
+Warning: In design 'cardinal_processor', net 'alu1/zero_8bit_div_p7' driven by pin 'alu1/dwdivi7/divide_by_0' has no loads. (LINT-2)
+Warning: In design 'cardinal_processor', net 'alu1/zero_8bit_div_p6' driven by pin 'alu1/dwdivi6/divide_by_0' has no loads. (LINT-2)
+Warning: In design 'cardinal_processor', net 'alu1/zero_8bit_div_p5' driven by pin 'alu1/dwdivi5/divide_by_0' has no loads. (LINT-2)
+Warning: In design 'cardinal_processor', net 'alu1/zero_8bit_div_p4' driven by pin 'alu1/dwdivi4/divide_by_0' has no loads. (LINT-2)
+Warning: In design 'cardinal_processor', net 'alu1/zero_8bit_div_p3' driven by pin 'alu1/dwdivi3/divide_by_0' has no loads. (LINT-2)
+Warning: In design 'cardinal_processor', net 'alu1/zero_8bit_div_p2' driven by pin 'alu1/dwdivi2/divide_by_0' has no loads. (LINT-2)
+Warning: In design 'cardinal_processor', net 'alu1/zero_8bit_div_p1' driven by pin 'alu1/dwdivi1/divide_by_0' has no loads. (LINT-2)
+1

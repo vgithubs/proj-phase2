@@ -1,0 +1,27 @@
+ 
+****************************************
+check_design summary:
+Version:     K-2015.06-SP5-5
+Date:        Tue Nov  8 10:48:52 2022
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Cells                                                              13
+    Cells do not drive (LINT-1)                                    13
+--------------------------------------------------------------------------------
+
+Warning: In design 'reg_file', cell 'B_30' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C7304' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C7305' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C7306' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C7307' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C7313' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C7314' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C7315' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C7316' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C7322' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C7323' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C7324' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C7325' does not drive any nets. (LINT-1)
+1

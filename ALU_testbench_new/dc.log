@@ -1,0 +1,800 @@
+######################################################################
+#
+# EE-577b 2020 FALL
+# : DesignCompiler synthesis script
+#   modified by Linyi Hong
+#
+# use this script as a template for synthesizing combinational logic
+#
+######################################################################
+# Setting variable for design_name. (top module name)
+set design_name $env(DESIGN_NAME);
+ALU
+## For NCSUFreePDK45nm library
+set search_path [ list .                   /home/scf-22/ee577/NCSU45PDK/FreePDK45/osu_soc/lib/files ]
+. /home/scf-22/ee577/NCSU45PDK/FreePDK45/osu_soc/lib/files
+set target_library { gscl45nm.db }
+ gscl45nm.db 
+set synthetic_library [list dw_foundation.sldb standard.sldb ]
+dw_foundation.sldb standard.sldb
+set link_library [list * gscl45nm.db dw_foundation.sldb standard.sldb]
+* gscl45nm.db dw_foundation.sldb standard.sldb
+# Reading source verilog file.
+# copy your verilog file into ./src/ before synthesis.
+read_verilog ./src/${design_name}.v ;
+Loading db file '/home/scf-22/ee577/NCSU45PDK/FreePDK45/osu_soc/lib/files/gscl45nm.db'
+Loading db file '/usr/local/synopsys/Design_Compiler/default/libraries/syn/dw_foundation.sldb'
+Loading db file '/usr/local/synopsys/Design_Compiler/default/libraries/syn/standard.sldb'
+Loading db file '/usr/local/synopsys/Design_Compiler/default/libraries/syn/gtech.db'
+  Loading link library 'gscl45nm'
+  Loading link library 'gtech'
+Loading verilog file '/home/viterbi/08/rushikes/ee577b/project/proj-phase2/ALU_testbench_new/src/ALU.v'
+Detecting input file type automatically (-rtl or -netlist).
+Opening include file ./include/sim_ver/DW01_add.v
+Opening include file ./include/sim_ver/DW_div.v
+Opening include file ./include/sim_ver/DW_div_function.inc
+Opening include file ./include/sim_ver/DW02_mult.v
+Opening include file ./include/sim_ver/DW_sqrt.v
+Opening include file ./include/sim_ver/DW_sqrt_function.inc
+Reading with Presto HDL Compiler (equivalent to -rtl option).
+Running PRESTO HDLC
+Compiling source file /home/viterbi/08/rushikes/ee577b/project/proj-phase2/ALU_testbench_new/src/ALU.v
+Opening include file ./include/sim_ver/DW01_add.v
+Opening include file ./include/sim_ver/DW_div.v
+Opening include file ./include/sim_ver/DW_div_function.inc
+Warning:  ./include/sim_ver/DW_div_function.inc:53: Function 'DWF_div_uns' with non-empty body is mapped to 'DIV_UNS_OP'; body will be ignored. (VER-136)
+Warning:  ./include/sim_ver/DW_div_function.inc:90: Function 'DWF_div_tc' with non-empty body is mapped to 'DIV_TC_OP'; body will be ignored. (VER-136)
+Warning:  ./include/sim_ver/DW_div_function.inc:138: Function 'DWF_rem_uns' with non-empty body is mapped to 'REM_UNS_OP'; body will be ignored. (VER-136)
+Warning:  ./include/sim_ver/DW_div_function.inc:174: Function 'DWF_rem_tc' with non-empty body is mapped to 'REM_TC_OP'; body will be ignored. (VER-136)
+Warning:  ./include/sim_ver/DW_div_function.inc:220: Function 'DWF_mod_uns' with non-empty body is mapped to 'MOD_UNS_OP'; body will be ignored. (VER-136)
+Warning:  ./include/sim_ver/DW_div_function.inc:256: Function 'DWF_mod_tc' with non-empty body is mapped to 'MOD_TC_OP'; body will be ignored. (VER-136)
+Opening include file ./include/sim_ver/DW02_mult.v
+Warning:  ./include/sim_ver/DW_div.v:104: The statements in initial blocks are ignored. (VER-281)
+Opening include file ./include/sim_ver/DW_sqrt.v
+Opening include file ./include/sim_ver/DW_sqrt_function.inc
+Warning:  ./include/sim_ver/DW_sqrt_function.inc:40: Function 'DWF_sqrt_uns' with non-empty body is mapped to 'SQRT_UNS_OP'; body will be ignored. (VER-136)
+Warning:  ./include/sim_ver/DW_sqrt_function.inc:72: Function 'DWF_sqrt_tc' with non-empty body is mapped to 'SQRT_TC_OP'; body will be ignored. (VER-136)
+Opening include file ./include/sim_ver/DW_shifter.v
+Warning:  ./include/sim_ver/DW_sqrt.v:72: The statements in initial blocks are ignored. (VER-281)
+Opening include file ./include/sim_ver/DW_shifter_function.inc
+Warning:  ./include/sim_ver/DW_shifter_function.inc:32: Function 'DWF_shifter_uns_uns' with non-empty body is mapped to 'SHIFTER_UNS_UNS_OP'; body will be ignored. (VER-136)
+Warning:  ./include/sim_ver/DW_shifter_function.inc:58: Function 'DWF_shifter_tc_uns' with non-empty body is mapped to 'SHIFTER_TC_UNS_OP'; body will be ignored. (VER-136)
+Warning:  ./include/sim_ver/DW_shifter_function.inc:84: Function 'DWF_shifter_uns_tc' with non-empty body is mapped to 'SHIFTER_UNS_TC_OP'; body will be ignored. (VER-136)
+Warning:  ./include/sim_ver/DW_shifter_function.inc:125: Function 'DWF_shifter_tc_tc' with non-empty body is mapped to 'SHIFTER_TC_TC_OP'; body will be ignored. (VER-136)
+Warning:  ./include/sim_ver/DW_shifter_function.inc:190: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./include/sim_ver/DW_shifter_function.inc:194: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./include/sim_ver/DW_shifter_function.inc:195: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./include/sim_ver/DW_shifter_function.inc:220: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./include/sim_ver/DW_shifter_function.inc:226: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./include/sim_ver/DW_shifter_function.inc:232: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./include/sim_ver/DW_shifter_function.inc:233: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./include/sim_ver/DW_shifter_function.inc:238: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./include/sim_ver/DW_shifter_function.inc:239: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./include/sim_ver/DW_shifter_function.inc:261: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./include/sim_ver/DW_shifter_function.inc:265: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./include/sim_ver/DW_shifter_function.inc:266: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./include/sim_ver/DW_shifter_function.inc:291: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./include/sim_ver/DW_shifter_function.inc:298: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./include/sim_ver/DW_shifter_function.inc:304: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./include/sim_ver/DW_shifter_function.inc:305: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./include/sim_ver/DW_shifter_function.inc:310: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./include/sim_ver/DW_shifter_function.inc:311: signed to unsigned conversion occurs. (VER-318)
+
+Statistics for case statements in always block at line 315 in file
+        '/home/viterbi/08/rushikes/ee577b/project/proj-phase2/ALU_testbench_new/src/ALU.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           318            |     no/auto      |
+|           322            |     no/auto      |
+|           346            |    auto/auto     |
+|           430            |    auto/auto     |
+|           506            |     no/auto      |
+|           529            |     no/auto      |
+|           575            |    auto/auto     |
+|           607            |    auto/auto     |
+|           639            |    auto/auto     |
+|           717            |    auto/auto     |
+|           753            |    auto/auto     |
+|           869            |    auto/auto     |
+|           903            |     no/auto      |
+|           951            |     no/auto      |
+|           998            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+        in routine ALU line 315 in file
+                '/home/viterbi/08/rushikes/ee577b/project/proj-phase2/ALU_testbench_new/src/ALU.v'.
+===============================================================================
+|      Register Name      | Type  | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     rA_64bit_p1_reg     | Latch |  64   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rB_32bit_p2_reg     | Latch |  32   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rA_16bit_p4_reg     | Latch |  16   |  Y  | N  | N  | N  | -  | -  | -  |
+| amt_to_shift_16b_p1_reg | Latch |   4   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rA_8bit_p3_reg      | Latch |   8   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rB_16bit_p3_reg     | Latch |  16   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rB_8bit_p2_reg      | Latch |   8   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rA_16bit_p3_reg     | Latch |  16   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rA_8bit_p2_reg      | Latch |   8   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rB_16bit_p2_reg     | Latch |  16   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rB_8bit_p1_reg      | Latch |   8   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rA_16bit_p2_reg     | Latch |  16   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rA_8bit_p1_reg      | Latch |   8   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rB_16bit_p1_reg     | Latch |  16   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rB_64bit_p1_reg     | Latch |  64   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rA_16bit_p1_reg     | Latch |  16   |  Y  | N  | N  | N  | -  | -  | -  |
+|       ALU_out_reg       | Latch |  64   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rB_8bit_p8_reg      | Latch |   8   |  Y  | N  | N  | N  | -  | -  | -  |
+| amt_to_shift_32b_p2_reg | Latch |   5   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rA_8bit_p8_reg      | Latch |   8   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rA_32bit_p2_reg     | Latch |  32   |  Y  | N  | N  | N  | -  | -  | -  |
+| amt_to_shift_32b_p1_reg | Latch |   5   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rB_8bit_p7_reg      | Latch |   8   |  Y  | N  | N  | N  | -  | -  | -  |
+| amt_to_shift_16b_p4_reg | Latch |   4   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rA_8bit_p7_reg      | Latch |   8   |  Y  | N  | N  | N  | -  | -  | -  |
+| amt_to_shift_16b_p3_reg | Latch |   4   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rB_8bit_p6_reg      | Latch |   8   |  Y  | N  | N  | N  | -  | -  | -  |
+| amt_to_shift_16b_p2_reg | Latch |   4   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rA_8bit_p6_reg      | Latch |   8   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rB_16bit_p4_reg     | Latch |  16   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rB_8bit_p5_reg      | Latch |   8   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rA_32bit_p1_reg     | Latch |  32   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rA_8bit_p5_reg      | Latch |   8   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rB_32bit_p1_reg     | Latch |  32   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rB_8bit_p4_reg      | Latch |   8   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rA_8bit_p4_reg      | Latch |   8   |  Y  | N  | N  | N  | -  | -  | -  |
+|     rB_8bit_p3_reg      | Latch |   8   |  Y  | N  | N  | N  | -  | -  | -  |
+| amt_to_shift_8b_p8_reg  | Latch |   3   |  Y  | N  | N  | N  | -  | -  | -  |
+| amt_to_shift_8b_p7_reg  | Latch |   3   |  Y  | N  | N  | N  | -  | -  | -  |
+| amt_to_shift_8b_p6_reg  | Latch |   3   |  Y  | N  | N  | N  | -  | -  | -  |
+| amt_to_shift_8b_p5_reg  | Latch |   3   |  Y  | N  | N  | N  | -  | -  | -  |
+| amt_to_shift_8b_p4_reg  | Latch |   3   |  Y  | N  | N  | N  | -  | -  | -  |
+| amt_to_shift_8b_p3_reg  | Latch |   3   |  Y  | N  | N  | N  | -  | -  | -  |
+| amt_to_shift_8b_p2_reg  | Latch |   3   |  Y  | N  | N  | N  | -  | -  | -  |
+| amt_to_shift_8b_p1_reg  | Latch |   3   |  Y  | N  | N  | N  | -  | -  | -  |
+|    amt_to_shift_reg     | Latch |   6   |  Y  | N  | N  | N  | -  | -  | -  |
+===============================================================================
+Presto compilation completed successfully.
+Current design is now '/home/viterbi/08/rushikes/ee577b/project/proj-phase2/ALU_testbench_new/src/DW01_add.db:DW01_add'
+Warning:  File /home/viterbi/08/rushikes/ee577b/project/proj-phase2/ALU_testbench_new/DW01_add-verilog.pvl not found, or does not contain a usable description of DW01_add. (ELAB-320)
+Warning:  File /home/viterbi/08/rushikes/ee577b/project/proj-phase2/ALU_testbench_new/DW01_add-verilog.pvl not found, or does not contain a usable description of DW01_add. (ELAB-320)
+Warning:  File /home/viterbi/08/rushikes/ee577b/project/proj-phase2/ALU_testbench_new/DW01_add-verilog.pvl not found, or does not contain a usable description of DW01_add. (ELAB-320)
+Warning:  File /home/viterbi/08/rushikes/ee577b/project/proj-phase2/ALU_testbench_new/DW01_add-verilog.pvl not found, or does not contain a usable description of DW01_add. (ELAB-320)
+Warning:  File /home/viterbi/08/rushikes/ee577b/project/proj-phase2/ALU_testbench_new/DW02_mult-verilog.pvl not found, or does not contain a usable description of DW02_mult. (ELAB-320)
+Warning:  File /home/viterbi/08/rushikes/ee577b/project/proj-phase2/ALU_testbench_new/DW02_mult-verilog.pvl not found, or does not contain a usable description of DW02_mult. (ELAB-320)
+Warning:  File /home/viterbi/08/rushikes/ee577b/project/proj-phase2/ALU_testbench_new/DW02_mult-verilog.pvl not found, or does not contain a usable description of DW02_mult. (ELAB-320)
+Warning:  File /home/viterbi/08/rushikes/ee577b/project/proj-phase2/ALU_testbench_new/DW_div-verilog.pvl not found, or does not contain a usable description of DW_div. (ELAB-320)
+Warning:  File /home/viterbi/08/rushikes/ee577b/project/proj-phase2/ALU_testbench_new/DW_div-verilog.pvl not found, or does not contain a usable description of DW_div. (ELAB-320)
+Warning:  File /home/viterbi/08/rushikes/ee577b/project/proj-phase2/ALU_testbench_new/DW_div-verilog.pvl not found, or does not contain a usable description of DW_div. (ELAB-320)
+Warning:  File /home/viterbi/08/rushikes/ee577b/project/proj-phase2/ALU_testbench_new/DW_div-verilog.pvl not found, or does not contain a usable description of DW_div. (ELAB-320)
+Warning:  File /home/viterbi/08/rushikes/ee577b/project/proj-phase2/ALU_testbench_new/DW_sqrt-verilog.pvl not found, or does not contain a usable description of DW_sqrt. (ELAB-320)
+Warning:  File /home/viterbi/08/rushikes/ee577b/project/proj-phase2/ALU_testbench_new/DW_sqrt-verilog.pvl not found, or does not contain a usable description of DW_sqrt. (ELAB-320)
+Warning:  File /home/viterbi/08/rushikes/ee577b/project/proj-phase2/ALU_testbench_new/DW_sqrt-verilog.pvl not found, or does not contain a usable description of DW_sqrt. (ELAB-320)
+Warning:  File /home/viterbi/08/rushikes/ee577b/project/proj-phase2/ALU_testbench_new/DW_sqrt-verilog.pvl not found, or does not contain a usable description of DW_sqrt. (ELAB-320)
+Warning:  File /home/viterbi/08/rushikes/ee577b/project/proj-phase2/ALU_testbench_new/DW_shifter-verilog.pvl not found, or does not contain a usable description of DW_shifter. (ELAB-320)
+Warning:  File /home/viterbi/08/rushikes/ee577b/project/proj-phase2/ALU_testbench_new/DW_shifter-verilog.pvl not found, or does not contain a usable description of DW_shifter. (ELAB-320)
+Warning:  File /home/viterbi/08/rushikes/ee577b/project/proj-phase2/ALU_testbench_new/DW_shifter-verilog.pvl not found, or does not contain a usable description of DW_shifter. (ELAB-320)
+Warning:  File /home/viterbi/08/rushikes/ee577b/project/proj-phase2/ALU_testbench_new/DW_shifter-verilog.pvl not found, or does not contain a usable description of DW_shifter. (ELAB-320)
+Loaded 6 designs.
+Current design is 'DW01_add'.
+DW01_add DW_div DW02_mult DW_sqrt DW_shifter ALU
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_sqrt.v
+Running PRESTO HDLC
+Compiling source file /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_sqrt.v
+Opening include file /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_sqrt_function.inc
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_sqrt_function.inc:40: Function 'DWF_sqrt_uns' with non-empty body is mapped to 'SQRT_UNS_OP'; body will be ignored. (VER-136)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_sqrt_function.inc:72: Function 'DWF_sqrt_tc' with non-empty body is mapped to 'SQRT_TC_OP'; body will be ignored. (VER-136)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_sqrt.v:72: The statements in initial blocks are ignored. (VER-281)
+Presto compilation completed successfully.
+1
+elaborate DW_sqrt
+Running PRESTO HDLC
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'DW_sqrt'.
+1
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW01_add.v
+Running PRESTO HDLC
+Compiling source file /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW01_add.v
+Presto compilation completed successfully.
+1
+elaborate DW01_add
+Running PRESTO HDLC
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'DW01_add'.
+1
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW02_mult.v
+Running PRESTO HDLC
+Compiling source file /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW02_mult.v
+Presto compilation completed successfully.
+1
+elaborate DW02_mult
+Running PRESTO HDLC
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'DW02_mult'.
+1
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div.v
+Running PRESTO HDLC
+Compiling source file /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div.v
+Opening include file /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div_function.inc
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div_function.inc:53: Function 'DWF_div_uns' with non-empty body is mapped to 'DIV_UNS_OP'; body will be ignored. (VER-136)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div_function.inc:90: Function 'DWF_div_tc' with non-empty body is mapped to 'DIV_TC_OP'; body will be ignored. (VER-136)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div_function.inc:138: Function 'DWF_rem_uns' with non-empty body is mapped to 'REM_UNS_OP'; body will be ignored. (VER-136)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div_function.inc:174: Function 'DWF_rem_tc' with non-empty body is mapped to 'REM_TC_OP'; body will be ignored. (VER-136)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div_function.inc:220: Function 'DWF_mod_uns' with non-empty body is mapped to 'MOD_UNS_OP'; body will be ignored. (VER-136)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div_function.inc:256: Function 'DWF_mod_tc' with non-empty body is mapped to 'MOD_TC_OP'; body will be ignored. (VER-136)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_div.v:104: The statements in initial blocks are ignored. (VER-281)
+Presto compilation completed successfully.
+1
+elaborate DW_div
+Running PRESTO HDLC
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'DW_div'.
+1
+analyze -format verilog /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter.v
+Running PRESTO HDLC
+Compiling source file /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter.v
+Opening include file /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter_function.inc
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter_function.inc:32: Function 'DWF_shifter_uns_uns' with non-empty body is mapped to 'SHIFTER_UNS_UNS_OP'; body will be ignored. (VER-136)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter_function.inc:58: Function 'DWF_shifter_tc_uns' with non-empty body is mapped to 'SHIFTER_TC_UNS_OP'; body will be ignored. (VER-136)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter_function.inc:84: Function 'DWF_shifter_uns_tc' with non-empty body is mapped to 'SHIFTER_UNS_TC_OP'; body will be ignored. (VER-136)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter_function.inc:125: Function 'DWF_shifter_tc_tc' with non-empty body is mapped to 'SHIFTER_TC_TC_OP'; body will be ignored. (VER-136)
+Presto compilation completed successfully.
+1
+elaborate DW_shifter
+Running PRESTO HDLC
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter_function.inc:190: signed to unsigned conversion occurs. (VER-318)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter_function.inc:194: signed to unsigned conversion occurs. (VER-318)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter_function.inc:195: signed to unsigned conversion occurs. (VER-318)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter_function.inc:220: signed to unsigned conversion occurs. (VER-318)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter_function.inc:226: signed to unsigned conversion occurs. (VER-318)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter_function.inc:232: signed to unsigned conversion occurs. (VER-318)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter_function.inc:233: signed to unsigned conversion occurs. (VER-318)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter_function.inc:238: signed to unsigned conversion occurs. (VER-318)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter_function.inc:239: signed to unsigned conversion occurs. (VER-318)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter_function.inc:261: signed to unsigned conversion occurs. (VER-318)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter_function.inc:265: signed to unsigned conversion occurs. (VER-318)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter_function.inc:266: signed to unsigned conversion occurs. (VER-318)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter_function.inc:291: signed to unsigned conversion occurs. (VER-318)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter_function.inc:298: signed to unsigned conversion occurs. (VER-318)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter_function.inc:304: signed to unsigned conversion occurs. (VER-318)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter_function.inc:305: signed to unsigned conversion occurs. (VER-318)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter_function.inc:310: signed to unsigned conversion occurs. (VER-318)
+Warning:  /usr/local/synopsys/Design_Compiler/K-2015.06-SP5-5/dw/sim_ver/DW_shifter_function.inc:311: signed to unsigned conversion occurs. (VER-318)
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'DW_shifter'.
+1
+# Setting $design_name as current working design.
+# Use this command before setting any constraints.
+current_design $design_name ;
+Current design is 'ALU'.
+{ALU}
+# If you have multiple instances of the same module,
+# use this so that DesignCompiler optimizes each instance separately.
+uniquify ;
+Error: Width mismatch on port 'divide_by_0' of reference to 'DW_div' in 'refs'. (LINK-3)
+Error: Width mismatch on port 'divide_by_0' of reference to 'DW_div' in 'refs'. (LINK-3)
+Information: Building the design 'DW_div' instantiated from design 'ALU' with
+        the parameters "8,8". (HDL-193)
+Presto compilation completed successfully.
+Error: Width mismatch on port 'divide_by_0' of reference to 'DW_div' in 'refs'. (LINK-3)
+Error: Width mismatch on port 'divide_by_0' of reference to 'DW_div' in 'refs'. (LINK-3)
+Information: Building the design 'DW_div' instantiated from design 'ALU' with
+        the parameters "16,16". (HDL-193)
+Presto compilation completed successfully.
+Error: Width mismatch on port 'divide_by_0' of reference to 'DW_div' in 'refs'. (LINK-3)
+Error: Width mismatch on port 'divide_by_0' of reference to 'DW_div' in 'refs'. (LINK-3)
+Information: Building the design 'DW_div' instantiated from design 'ALU' with
+        the parameters "32,32". (HDL-193)
+Presto compilation completed successfully.
+Error: Width mismatch on port 'divide_by_0' of reference to 'DW_div' in 'refs'. (LINK-3)
+Error: Width mismatch on port 'divide_by_0' of reference to 'DW_div' in 'refs'. (LINK-3)
+Information: Building the design 'DW_div' instantiated from design 'ALU' with
+        the parameters "64,64". (HDL-193)
+Presto compilation completed successfully.
+Information: Uniquified 8 instances of design 'DW_div_a_width8_b_width8'. (OPT-1056)
+Information: Uniquified 4 instances of design 'DW_div_a_width16_b_width16'. (OPT-1056)
+Information: Uniquified 2 instances of design 'DW_div_a_width32_b_width32'. (OPT-1056)
+1
+# Linking your design into the cells in standard cell libraries.
+# This command checks whether your design can be compiled
+link ;
+
+  Linking design 'ALU'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (26 designs)              /home/viterbi/08/rushikes/ee577b/project/proj-phase2/ALU_testbench_new/src/ALU.db, etc
+  gscl45nm (library)          /home/scf-22/ee577/NCSU45PDK/FreePDK45/osu_soc/lib/files/gscl45nm.db
+  dw_foundation.sldb (library) /usr/local/synopsys/Design_Compiler/default/libraries/syn/dw_foundation.sldb
+
+1
+# Create a clock with period of 5.
+create_clock -name clk -period 5.0 -waveform [list 0 2.5] [get_ports clk]
+Warning: Can't find port 'clk' in design 'ALU'. (UID-95)
+Error: Value for list 'source_objects' must have 1 elements. (CMD-036)
+0
+# Setting timing constraints for combinational logic.
+# Specifying maximum delay from inputs to outputs
+set_max_delay 5.0 -to [all_outputs];
+1
+set_max_delay 5.0 -from [all_inputs];
+1
+# "check_design" checks the internal representation of the
+# current design for consistency and issues error and
+# warning messages as appropriate.
+check_design > report/$design_name.check_design ;
+# Perforing synthesis and optimization on the current_design.
+compile ;
+Information: Checking out the license 'DesignWare'. (SEC-104)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | K-2015.06-DWBB_201506.5.2
+                                                               |     *     |
+| Licensed DW Building Blocks        | K-2015.06-DWBB_201506.5.2
+                                                               |     *     |
+============================================================================
+
+
+Information: There are 211 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'DW_div_a_width64_b_width64'
+  Processing 'DW_div_a_width32_b_width32_0'
+  Processing 'DW_div_a_width16_b_width16_0'
+  Processing 'DW_div_a_width8_b_width8_0'
+  Processing 'ALU'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Implementation Selection
+  ----------------------------------
+  Processing 'ALU_DW_shifter_0'
+  Processing 'ALU_DW_shifter_1'
+  Processing 'ALU_DW_shifter_2'
+  Processing 'ALU_DW_shifter_3'
+  Processing 'ALU_DW_shifter_4'
+  Processing 'ALU_DW_shifter_5'
+  Processing 'ALU_DW_shifter_6'
+  Processing 'ALU_DW_shifter_7'
+  Processing 'ALU_DW_shifter_8'
+  Processing 'ALU_DW_shifter_9'
+  Processing 'ALU_DW_shifter_10'
+  Processing 'ALU_DW_shifter_11'
+  Processing 'ALU_DW_shifter_12'
+  Processing 'ALU_DW_shifter_13'
+  Processing 'ALU_DW_shifter_14'
+  Processing 'ALU_DW_sqrt_0'
+  Processing 'ALU_DW_sqrt_1'
+  Processing 'ALU_DW_sqrt_2'
+  Processing 'ALU_DW_sqrt_3'
+  Processing 'ALU_DW_sqrt_4'
+  Processing 'ALU_DW_sqrt_5'
+  Processing 'ALU_DW_sqrt_6'
+  Processing 'ALU_DW_sqrt_7'
+  Processing 'ALU_DW_sqrt_8'
+  Processing 'ALU_DW_sqrt_9'
+  Processing 'ALU_DW_sqrt_10'
+  Processing 'ALU_DW_sqrt_11'
+  Processing 'ALU_DW_sqrt_12'
+  Processing 'ALU_DW_sqrt_13'
+  Processing 'ALU_DW_sqrt_14'
+  Mapping 'ALU_DW02_mult_0'
+  Mapping 'ALU_DW02_mult_1'
+  Mapping 'ALU_DW02_mult_2'
+  Mapping 'ALU_DW02_mult_3'
+  Mapping 'ALU_DW02_mult_4'
+  Mapping 'ALU_DW02_mult_5'
+  Mapping 'ALU_DW02_mult_6'
+  Mapping 'ALU_DW02_mult_7'
+  Mapping 'ALU_DW02_mult_8'
+  Mapping 'ALU_DW02_mult_9'
+  Mapping 'ALU_DW02_mult_10'
+  Mapping 'ALU_DW02_mult_11'
+  Mapping 'ALU_DW02_mult_12'
+  Mapping 'ALU_DW02_mult_13'
+  Mapping 'ALU_DW02_mult_14'
+  Mapping 'ALU_DW02_mult_15'
+  Mapping 'ALU_DW02_mult_16'
+  Mapping 'ALU_DW02_mult_17'
+  Mapping 'ALU_DW02_mult_18'
+  Mapping 'ALU_DW02_mult_19'
+  Mapping 'ALU_DW02_mult_20'
+  Processing 'ALU_DW01_add_0'
+  Processing 'ALU_DW01_add_1'
+  Processing 'ALU_DW01_add_2'
+  Processing 'ALU_DW01_add_3'
+  Processing 'ALU_DW01_add_4'
+  Processing 'ALU_DW01_add_5'
+  Processing 'ALU_DW01_add_6'
+  Processing 'ALU_DW01_add_7'
+  Processing 'ALU_DW01_add_8'
+  Processing 'ALU_DW01_add_9'
+  Processing 'ALU_DW01_add_10'
+  Processing 'ALU_DW01_add_11'
+  Processing 'ALU_DW01_add_12'
+  Processing 'ALU_DW01_add_13'
+  Processing 'ALU_DW01_add_14'
+  Processing 'ALU_DW01_add_15'
+  Processing 'ALU_DW01_add_16'
+  Processing 'ALU_DW01_add_17'
+  Processing 'ALU_DW01_add_18'
+  Processing 'ALU_DW01_add_19'
+  Processing 'ALU_DW01_add_20'
+  Processing 'ALU_DW01_add_21'
+  Processing 'ALU_DW01_add_22'
+  Processing 'ALU_DW01_add_23'
+  Processing 'ALU_DW01_add_24'
+  Processing 'ALU_DW01_add_25'
+  Processing 'ALU_DW01_add_26'
+  Processing 'ALU_DW01_add_27'
+  Processing 'ALU_DW01_add_28'
+  Processing 'ALU_DW01_add_29'
+  Allocating blocks in 'DW_div_uns_a_width64_b_width64'
+  Allocating blocks in 'DW_div_a_width64_b_width64_tc_mode0_rem_mode1'
+  Processing 'ALU_DW_div_uns_0'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'ALU_DW01_add_30'
+  Mapping 'ALU_DW01_add_31'
+  Mapping 'ALU_DW01_add_32'
+  Mapping 'ALU_DW01_add_33'
+  Mapping 'ALU_DW01_add_34'
+  Mapping 'ALU_DW01_add_35'
+  Mapping 'ALU_DW01_add_36'
+  Mapping 'ALU_DW01_add_37'
+  Mapping 'ALU_DW01_add_38'
+  Mapping 'ALU_DW01_add_39'
+  Mapping 'ALU_DW01_add_40'
+  Mapping 'ALU_DW01_add_41'
+  Mapping 'ALU_DW01_add_42'
+  Mapping 'ALU_DW01_add_43'
+  Mapping 'ALU_DW01_add_44'
+  Mapping 'ALU_DW01_add_45'
+  Mapping 'ALU_DW01_add_46'
+  Mapping 'ALU_DW01_add_47'
+  Mapping 'ALU_DW01_add_48'
+  Mapping 'ALU_DW01_add_49'
+  Mapping 'ALU_DW01_add_50'
+  Mapping 'ALU_DW01_add_51'
+  Mapping 'ALU_DW01_add_52'
+  Mapping 'ALU_DW01_add_53'
+  Mapping 'ALU_DW01_add_54'
+  Mapping 'ALU_DW01_add_55'
+  Mapping 'ALU_DW01_add_56'
+  Mapping 'ALU_DW01_add_57'
+  Mapping 'ALU_DW01_add_58'
+  Mapping 'ALU_DW01_add_59'
+  Mapping 'ALU_DW01_add_60'
+  Mapping 'ALU_DW01_add_61'
+  Mapping 'ALU_DW01_add_62'
+  Mapping 'ALU_DW01_add_63'
+  Mapping 'ALU_DW01_add_64'
+  Mapping 'ALU_DW01_add_65'
+  Mapping 'ALU_DW01_add_66'
+  Mapping 'ALU_DW01_add_67'
+  Mapping 'ALU_DW01_add_68'
+  Mapping 'ALU_DW01_add_69'
+  Mapping 'ALU_DW01_add_70'
+  Mapping 'ALU_DW01_add_71'
+  Mapping 'ALU_DW01_add_72'
+  Mapping 'ALU_DW01_add_73'
+  Mapping 'ALU_DW01_add_74'
+  Mapping 'ALU_DW01_add_75'
+  Mapping 'ALU_DW01_add_76'
+  Mapping 'ALU_DW01_add_77'
+  Mapping 'ALU_DW01_add_78'
+  Mapping 'ALU_DW01_add_79'
+  Mapping 'ALU_DW01_add_80'
+  Mapping 'ALU_DW01_add_81'
+  Mapping 'ALU_DW01_add_82'
+  Mapping 'ALU_DW01_add_83'
+  Mapping 'ALU_DW01_add_84'
+  Mapping 'ALU_DW01_add_85'
+  Mapping 'ALU_DW01_add_86'
+  Mapping 'ALU_DW01_add_87'
+  Mapping 'ALU_DW01_add_88'
+  Allocating blocks in 'DW_div_uns_a_width32_b_width32'
+  Allocating blocks in 'DW_div_a_width32_b_width32_tc_mode0_rem_mode1'
+  Processing 'ALU_DW_div_uns_1'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'ALU_DW01_add_89'
+  Mapping 'ALU_DW01_add_90'
+  Mapping 'ALU_DW01_add_91'
+  Mapping 'ALU_DW01_add_92'
+  Mapping 'ALU_DW01_add_93'
+  Mapping 'ALU_DW01_add_94'
+  Mapping 'ALU_DW01_add_95'
+  Mapping 'ALU_DW01_add_96'
+  Mapping 'ALU_DW01_add_97'
+  Mapping 'ALU_DW01_add_98'
+  Mapping 'ALU_DW01_add_99'
+  Mapping 'ALU_DW01_add_100'
+  Mapping 'ALU_DW01_add_101'
+  Mapping 'ALU_DW01_add_102'
+  Mapping 'ALU_DW01_add_103'
+  Mapping 'ALU_DW01_add_104'
+  Mapping 'ALU_DW01_add_105'
+  Mapping 'ALU_DW01_add_106'
+  Mapping 'ALU_DW01_add_107'
+  Mapping 'ALU_DW01_add_108'
+  Mapping 'ALU_DW01_add_109'
+  Mapping 'ALU_DW01_add_110'
+  Mapping 'ALU_DW01_add_111'
+  Mapping 'ALU_DW01_add_112'
+  Mapping 'ALU_DW01_add_113'
+  Mapping 'ALU_DW01_add_114'
+  Mapping 'ALU_DW01_add_115'
+  Processing 'ALU_DW_div_uns_2'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'ALU_DW01_add_116'
+  Mapping 'ALU_DW01_add_117'
+  Mapping 'ALU_DW01_add_118'
+  Mapping 'ALU_DW01_add_119'
+  Mapping 'ALU_DW01_add_120'
+  Mapping 'ALU_DW01_add_121'
+  Mapping 'ALU_DW01_add_122'
+  Mapping 'ALU_DW01_add_123'
+  Mapping 'ALU_DW01_add_124'
+  Mapping 'ALU_DW01_add_125'
+  Mapping 'ALU_DW01_add_126'
+  Mapping 'ALU_DW01_add_127'
+  Mapping 'ALU_DW01_add_128'
+  Mapping 'ALU_DW01_add_129'
+  Mapping 'ALU_DW01_add_130'
+  Mapping 'ALU_DW01_add_131'
+  Mapping 'ALU_DW01_add_132'
+  Mapping 'ALU_DW01_add_133'
+  Mapping 'ALU_DW01_add_134'
+  Mapping 'ALU_DW01_add_135'
+  Mapping 'ALU_DW01_add_136'
+  Mapping 'ALU_DW01_add_137'
+  Mapping 'ALU_DW01_add_138'
+  Mapping 'ALU_DW01_add_139'
+  Mapping 'ALU_DW01_add_140'
+  Mapping 'ALU_DW01_add_141'
+  Mapping 'ALU_DW01_add_142'
+  Allocating blocks in 'DW_div_uns_a_width16_b_width16'
+  Allocating blocks in 'DW_div_a_width16_b_width16_tc_mode0_rem_mode1'
+  Processing 'ALU_DW_div_uns_3'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'ALU_DW01_add_143'
+  Mapping 'ALU_DW01_add_144'
+  Mapping 'ALU_DW01_add_145'
+  Mapping 'ALU_DW01_add_146'
+  Mapping 'ALU_DW01_add_147'
+  Mapping 'ALU_DW01_add_148'
+  Mapping 'ALU_DW01_add_149'
+  Mapping 'ALU_DW01_add_150'
+  Mapping 'ALU_DW01_add_151'
+  Mapping 'ALU_DW01_add_152'
+  Mapping 'ALU_DW01_add_153'
+  Processing 'ALU_DW_div_uns_4'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'ALU_DW01_add_154'
+  Mapping 'ALU_DW01_add_155'
+  Mapping 'ALU_DW01_add_156'
+  Mapping 'ALU_DW01_add_157'
+  Mapping 'ALU_DW01_add_158'
+  Mapping 'ALU_DW01_add_159'
+  Mapping 'ALU_DW01_add_160'
+  Mapping 'ALU_DW01_add_161'
+  Mapping 'ALU_DW01_add_162'
+  Mapping 'ALU_DW01_add_163'
+  Mapping 'ALU_DW01_add_164'
+  Processing 'ALU_DW_div_uns_5'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'ALU_DW01_add_165'
+  Mapping 'ALU_DW01_add_166'
+  Mapping 'ALU_DW01_add_167'
+  Mapping 'ALU_DW01_add_168'
+  Mapping 'ALU_DW01_add_169'
+  Mapping 'ALU_DW01_add_170'
+  Mapping 'ALU_DW01_add_171'
+  Mapping 'ALU_DW01_add_172'
+  Mapping 'ALU_DW01_add_173'
+  Mapping 'ALU_DW01_add_174'
+  Mapping 'ALU_DW01_add_175'
+  Processing 'ALU_DW_div_uns_6'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'ALU_DW01_add_176'
+  Mapping 'ALU_DW01_add_177'
+  Mapping 'ALU_DW01_add_178'
+  Mapping 'ALU_DW01_add_179'
+  Mapping 'ALU_DW01_add_180'
+  Mapping 'ALU_DW01_add_181'
+  Mapping 'ALU_DW01_add_182'
+  Mapping 'ALU_DW01_add_183'
+  Mapping 'ALU_DW01_add_184'
+  Mapping 'ALU_DW01_add_185'
+  Mapping 'ALU_DW01_add_186'
+  Processing 'ALU_DW_div_uns_7'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'ALU_DW01_add_187'
+  Mapping 'ALU_DW01_add_188'
+  Mapping 'ALU_DW01_add_189'
+  Processing 'ALU_DW_div_uns_8'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'ALU_DW01_add_190'
+  Mapping 'ALU_DW01_add_191'
+  Mapping 'ALU_DW01_add_192'
+  Processing 'ALU_DW_div_uns_9'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'ALU_DW01_add_193'
+  Mapping 'ALU_DW01_add_194'
+  Mapping 'ALU_DW01_add_195'
+  Processing 'ALU_DW_div_uns_10'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'ALU_DW01_add_196'
+  Mapping 'ALU_DW01_add_197'
+  Mapping 'ALU_DW01_add_198'
+  Processing 'ALU_DW_div_uns_11'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'ALU_DW01_add_199'
+  Mapping 'ALU_DW01_add_200'
+  Mapping 'ALU_DW01_add_201'
+  Processing 'ALU_DW_div_uns_12'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'ALU_DW01_add_202'
+  Mapping 'ALU_DW01_add_203'
+  Mapping 'ALU_DW01_add_204'
+  Processing 'ALU_DW_div_uns_13'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'ALU_DW01_add_205'
+  Mapping 'ALU_DW01_add_206'
+  Mapping 'ALU_DW01_add_207'
+  Processing 'ALU_DW_div_uns_14'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'ALU_DW01_add_208'
+  Mapping 'ALU_DW01_add_209'
+  Mapping 'ALU_DW01_add_210'
+  Processing 'ALU_DW01_inc_0'
+  Processing 'ALU_DW01_inc_1'
+  Processing 'ALU_DW01_inc_2'
+  Mapping 'DW_rightsh'
+Information: Added key list 'DesignWare' to design 'ALU'. (DDB-72)
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_rightsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Mapping 'DW_leftsh'
+  Processing 'DW_div_a_width64_b_width64_DW_div_uns_0'
+  Processing 'DW_div_a_width64_b_width64_DW_div_uns_1'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_0'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_1'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_2'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_3'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_4'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_5'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_6'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_7'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_8'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_9'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_10'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_11'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_12'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_13'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_14'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_15'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_16'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_17'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_18'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_19'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_20'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_21'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_22'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_23'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_24'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_25'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_26'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_27'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_28'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_29'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_30'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_31'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_32'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_33'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_34'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_35'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_36'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_37'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_38'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_39'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_40'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_41'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_42'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_43'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_44'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_45'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_46'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_47'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_48'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_49'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_50'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_51'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_52'
+  Mapping 'DW_div_a_width64_b_width64_DW01_add_53'
+Information: User interrupted execution of generator. (DWSC-26)
